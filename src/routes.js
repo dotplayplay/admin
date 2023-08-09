@@ -58,7 +58,7 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "Home setting",
+    name: "Genaral settings",
     key: "tables",
     route: "/",
     icon: <Settings size="12px" />,
