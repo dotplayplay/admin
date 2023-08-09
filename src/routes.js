@@ -25,7 +25,6 @@
 //  layouts
 import Dashboard from "layouts/dashboard";
 import Tables from "layouts/tables";
-// import Billing from "layouts/billing";
 import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
 import SignUp from "layouts/authentication/sign-up";
@@ -37,8 +36,6 @@ import Settings from "examples/Icons/Settings";
 import Document from "examples/Icons/Document";
 import SpaceShip from "examples/Icons/SpaceShip";
 import CustomerSupport from "examples/Icons/CustomerSupport";
-import CreditCard from "examples/Icons/CreditCard";
-import Cube from "examples/Icons/Cube";
 
 const routes = [
   {
@@ -56,6 +53,15 @@ const routes = [
     key: "tables",
     route: "/tables",
     icon: <Office size="12px" />,
+    component: <Tables />,
+    noCollapse: true
+  },
+  {
+    type: "collapse",
+    name: "Home setting",
+    key: "tables",
+    route: "/",
+    icon: <Settings size="12px" />,
     component: <Tables />,
     noCollapse: true
   },
