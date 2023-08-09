@@ -1,25 +1,6 @@
-/**
-=========================================================
-* Soft UI Dashboard React - v4.0.1
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
 import { useState } from "react";
-
-// @mui material components
 import Card from "@mui/material/Card";
 import Switch from "@mui/material/Switch";
-
-// Soft UI Dashboard React components
 import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
 
@@ -35,7 +16,7 @@ function PlatformSettings() {
     <Card>
       <SoftBox pt={2} px={2}>
         <SoftTypography variant="h6" fontWeight="medium" textTransform="capitalize">
-          platform settings
+          personal settings
         </SoftTypography>
       </SoftBox>
       <SoftBox pt={1.5} pb={2} px={2} lineHeight={1.25}>
@@ -48,7 +29,7 @@ function PlatformSettings() {
           </SoftBox>
           <SoftBox width="80%" ml={2}>
             <SoftTypography variant="button" fontWeight="regular" color="text">
-              Email me when someone follows me
+              Hide my Bio from others
             </SoftTypography>
           </SoftBox>
         </SoftBox>
@@ -58,17 +39,7 @@ function PlatformSettings() {
           </SoftBox>
           <SoftBox width="80%" ml={2}>
             <SoftTypography variant="button" fontWeight="regular" color="text">
-              Email me when someone answers on my post
-            </SoftTypography>
-          </SoftBox>
-        </SoftBox>
-        <SoftBox display="flex" py={1} mb={0.25}>
-          <SoftBox mt={0.25}>
-            <Switch checked={mentionsMe} onChange={() => setMentionsMe(!mentionsMe)} />
-          </SoftBox>
-          <SoftBox width="80%" ml={2}>
-            <SoftTypography variant="button" fontWeight="regular" color="text">
-              Email me when someone mentions me
+              Email me when I have a message from Boss
             </SoftTypography>
           </SoftBox>
         </SoftBox>
@@ -88,7 +59,7 @@ function PlatformSettings() {
           </SoftBox>
           <SoftBox width="80%" ml={2}>
             <SoftTypography variant="button" fontWeight="regular" color="text">
-              New launches and projects
+            Email me when a user start a conversation
             </SoftTypography>
           </SoftBox>
         </SoftBox>
@@ -98,7 +69,17 @@ function PlatformSettings() {
           </SoftBox>
           <SoftBox width="80%" ml={2}>
             <SoftTypography variant="button" fontWeight="regular" color="text">
-              Monthly product updates
+            Email me when a user has a pending deposit
+            </SoftTypography>
+          </SoftBox>
+        </SoftBox>
+        <SoftBox display="flex" py={1} mb={0.25}>
+          <SoftBox mt={0.25}>
+            <Switch checked={productUpdate} onChange={() => setProductUpdate(!productUpdate)} />
+          </SoftBox>
+          <SoftBox width="80%" ml={2}>
+            <SoftTypography variant="button" fontWeight="regular" color="text">
+            Email me when a user has a pending withdraws
             </SoftTypography>
           </SoftBox>
         </SoftBox>
@@ -108,7 +89,7 @@ function PlatformSettings() {
           </SoftBox>
           <SoftBox width="80%" ml={2}>
             <SoftTypography variant="button" fontWeight="regular" color="text">
-              Subscribe to newsletter
+              Show online Icon when I{"'"}m active
             </SoftTypography>
           </SoftBox>
         </SoftBox>
