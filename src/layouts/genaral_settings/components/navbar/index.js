@@ -12,12 +12,22 @@ import Cube from "examples/Icons/Cube";
 import Document from "examples/Icons/Document";
 import Settings from "examples/Icons/Settings";
 import breakpoints from "assets/theme/base/breakpoints";
-import burceMars from "assets/images/bruce-mars.jpg";
 import curved0 from "assets/images/curved-images/curved0.jpg";
 
 function Header() {
   const [tabsOrientation, setTabsOrientation] = useState("horizontal");
   const [tabValue, setTabValue] = useState(0);
+
+  const handleNavigate = ((e)=>{
+    if(e === 1){
+      console.log(e)
+    }
+    else if(e === 2){
+      console.log(e)
+    }else{
+      console.log(e)
+    }
+  })
 
   useEffect(() => {
     function handleTabsOrientation() {
@@ -36,7 +46,7 @@ function Header() {
   return (
     <SoftBox position="relative">
       <DashboardNavbar absolute light />
-      <SoftBox
+    <SoftBox
         display="flex"
         alignItems="center"
         position="relative"
@@ -67,15 +77,6 @@ function Header() {
       >
         <Grid container spacing={3} alignItems="center">
           <Grid item>
-            <SoftAvatar
-              src={"https://img2.nanogames.io/avatar/483516/s"}
-              alt="profile-image"
-              variant="rounded"
-              size="l"
-              shadow="sm"
-            />
-          </Grid>
-          <Grid item>
             <SoftBox height="100%" mt={0.5} lineHeight={1}>
               <SoftTypography variant="h5" fontWeight="medium">
                 Alex Thompson
@@ -85,7 +86,7 @@ function Header() {
               </SoftTypography>
             </SoftBox>
           </Grid>
-          <Grid item xs={12} md={6} lg={4} sx={{ ml: "auto" }}>
+          <Grid item xs={1} md={6} lg={8} sx={{ ml: "auto" }}>
             <AppBar position="static">
               <Tabs
                 orientation={tabsOrientation}
@@ -93,9 +94,9 @@ function Header() {
                 onChange={handleSetTabValue}
                 sx={{ background: "transparent" }}
               >
-                <Tab label="Profile" icon={<Cube />} />
-                <Tab label="Message" icon={<Document />} />
-                <Tab label="Settings" icon={<Settings />} />
+                <Tab label="Wallet Settings" onClick={()=>handleNavigate(1)} icon={<Cube />} />
+                <Tab label="Game settings" onClick={()=>handleNavigate(2)} icon={<Document />} />
+                <Tab label="Chat Room Settings" onClick={()=>handleNavigate(3)} icon={<Settings />} />
               </Tabs>
             </AppBar>
           </Grid>

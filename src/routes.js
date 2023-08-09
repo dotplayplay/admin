@@ -1,5 +1,3 @@
-
-
 /** 
   All of the routes  are added here,
   You can add a new route, customize the routes and delete the routes here.
@@ -28,6 +26,7 @@ import Tables from "layouts/tables";
 import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
 import SignUp from "layouts/authentication/sign-up";
+import Genaral from "layouts/genaral_settings"
 
 //  icons
 import Shop from "examples/Icons/Shop";
@@ -58,11 +57,11 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "Genaral settings",
-    key: "tables",
-    route: "/",
+    name: "General settings",
+    key: "general",
+    route: "/genaral-settings",
     icon: <Settings size="12px" />,
-    component: <Tables />,
+    component: <Genaral />,
     noCollapse: true
   },
   { type: "title", title: "Account Pages", key: "account-pages" },
