@@ -57,7 +57,7 @@ const routes = [
     route: "/tables",
     icon: <Office size="12px" />,
     component: <Tables />,
-    noCollapse: true,
+    noCollapse: true
   },
   { type: "title", title: "Account Pages", key: "account-pages" },
   {
@@ -69,6 +69,7 @@ const routes = [
     component: <Profile />,
     noCollapse: true,
   },
+
   // {
   //   type: "collapse",
   //   name: "Sign In",
