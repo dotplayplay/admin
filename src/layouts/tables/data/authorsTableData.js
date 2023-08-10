@@ -3,9 +3,7 @@ import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
 import SoftAvatar from "components/SoftAvatar";
 import SoftBadge from "components/SoftBadge";
-
-// Images
-import team2 from "assets/images/team-2.jpg";
+import { NavLink } from "react-router-dom";
 
 function Author({ image, name, email }) {
   return (
@@ -49,7 +47,7 @@ const authorsTableData = {
 
   rows: [
     {
-      users: <Author image={team2} name="John Michael" email="john@valiant_joe.com" />,
+      users: <Author image={"https://img2.nanogames.io/avatar/25671/s"} name="John Michael" email="john@valiant_joe.com" />,
       details: <Function job="$25,783" org="P2E" />,
       status: (
         <SoftBadge variant="gradient" badgeContent="online" color="success" size="xs" container />
@@ -62,12 +60,12 @@ const authorsTableData = {
       action: (
         <SoftTypography
           component="a"
-          href="#"
+          
           variant="caption"
           color="secondary"
           fontWeight="medium"
         >
-          Edit
+          profile
         </SoftTypography>
       ),
     },
@@ -85,17 +83,17 @@ const authorsTableData = {
       action: (
         <SoftTypography
           component="a"
-          href="#"
+          href="/user-pofile"
           variant="caption"
           color="secondary"
           fontWeight="medium"
         >
-          Edit
+         Profile
         </SoftTypography>
       ),
     },
     {
-      users: <Author image={team2} name="John Michael" email="john@valiant_joe.com" />,
+      users: <Author image={"https://img2.nanogames.io/avatar/25671/s"} name="John Michael" email="john@valiant_joe.com" />,
       details: <Function job="$2,783" org="normal" />,
       status: (
         <SoftBadge variant="gradient" badgeContent="offline" color="secondary" size="xs" container />
@@ -113,7 +111,7 @@ const authorsTableData = {
           color="secondary"
           fontWeight="medium"
         >
-          Edit
+          Pofile
         </SoftTypography>
       ),
     },

@@ -64,6 +64,16 @@ const routes = [
     component: <Genaral />,
     noCollapse: true
   },
+
+  {
+    name: "User Profile",
+    key: "user-pofile",
+    route: "/user-pofile",
+    icon: <Settings size="12px" />,
+    component: <Genaral />,
+    noCollapse: true
+  },
+  
   
   { type: "title", title: "Account Pages", key: "account-pages" },
   {

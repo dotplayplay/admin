@@ -12,7 +12,7 @@ import PlatformSettings from "layouts/profile/components/PlatformSettings";
 import profilesListData from "layouts/profile/data/profilesListData";
 
 
-function Overview() {
+function Userprofile() {
   return (
     <DashboardLayout>
       <Header />
@@ -62,4 +62,4 @@ function Overview() {
   );
 }
 
-export default Overview;
+export default Userprofile;
