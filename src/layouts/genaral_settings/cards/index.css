@@ -56,3 +56,40 @@
     min-height: 230px;
     min-width: 100%;
 }
+
+
+/* =========================== Game settings ================================ */
+.game-setting-input{
+    padding: 10px;
+    margin: 10px;
+}
+.game-setting-input label{
+    font-weight: 800;
+    font-size: 14px;
+    color: rgb(31, 117, 151);
+}
+.sellecting-container{
+    display: flex;
+    gap: 10px;
+}
+.sellecting-container .sgveussa{
+    padding: 0 2px;
+    font-size: 13px;
+}
+.sgveussa span{
+    font-size: 16px;
+    padding: 6px;
+}
+.sgveussa button{
+    padding: 4px 25px;
+    background: none;
+    border: none;
+    box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.148);
+    border-radius: 10px;
+    font-weight: 900;
+    font-size: 15px;
+    cursor: pointer;
+}
+.sgveussa button:hover{
+    box-shadow: 4px 2px 3px 1px rgba(0, 0, 0, 0.148);
+}
