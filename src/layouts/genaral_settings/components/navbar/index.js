@@ -14,19 +14,12 @@ import Settings from "examples/Icons/Settings";
 import breakpoints from "assets/theme/base/breakpoints";
 import curved0 from "assets/images/curved-images/curved0.jpg";
 
-function Header() {
+export default function Header(Taps) {
   const [tabsOrientation, setTabsOrientation] = useState("horizontal");
   const [tabValue, setTabValue] = useState(0);
 
   const handleNavigate = ((e)=>{
-    if(e === 1){
-      console.log(e)
-    }
-    else if(e === 2){
-      console.log(e)
-    }else{
-      console.log(e)
-    }
+    Taps.handleTaps(e)
   })
 
   useEffect(() => {
@@ -86,7 +79,7 @@ function Header() {
               </SoftTypography>
             </SoftBox>
           </Grid>
-          <Grid item xs={1} md={6} lg={8} sx={{ ml: "auto" }}>
+          <Grid item xs={12} md={10} lg={8} sx={{ ml: "auto" }}>
             <AppBar position="static">
               <Tabs
                 orientation={tabsOrientation}
@@ -94,9 +87,9 @@ function Header() {
                 onChange={handleSetTabValue}
                 sx={{ background: "transparent" }}
               >
-                <Tab label="Wallet Settings" onClick={()=>handleNavigate(1)} icon={<Cube />} />
-                <Tab label="Game settings" onClick={()=>handleNavigate(2)} icon={<Document />} />
-                <Tab label="Chat Room Settings" onClick={()=>handleNavigate(3)} icon={<Settings />} />
+                <Tab label="Wallet Settings" onClick={()=> handleNavigate('wallet')} icon={<Cube />} />
+                <Tab label="Game settings" onClick={()=> handleNavigate('game')} icon={<Document />} />
+                <Tab label="Chat Room Settings" onClick={()=> handleNavigate('chat')} icon={<Settings />} />
               </Tabs>
             </AppBar>
           </Grid>
@@ -106,4 +99,3 @@ function Header() {
   );
 }
 
-export default Header;
