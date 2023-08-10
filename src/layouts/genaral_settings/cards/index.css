@@ -1,3 +1,32 @@
-.general-settings{
-    margin-left: 123px;
+.wallet-setting-input{
+    padding: 10px;
+    font-size: 14px;
+    padding-bottom: 30px;
+}
+.sbhuvwa{
+    display: flex;
+    gap: 20px;
+}
+.wallet-setting-input-content{
+    display: flex;
+    text-align: left;
+    width: 50%;
+    padding: 6px;
+    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.111);
+    border-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.218);
+}
+.wallet-setting-input-content input{
+    outline: none;
+    border: none;
+    width: 100%;
+    height: 100%;
+    background: none;
+}
+.wallet-setting-input span{
+    padding: 5px 20px;
+    cursor: pointer;
+}
+.wallet-setting-input span:hover{
+    font-weight: 900;
 }

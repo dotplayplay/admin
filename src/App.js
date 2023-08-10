@@ -4,9 +4,7 @@ import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 // @mui material components
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import Icon from "@mui/material/Icon";
 
-import SoftBox from "components/SoftBox";
 import Sidenav from "examples/Sidenav";
 import Configurator from "examples/Configurator";
 import theme from "assets/theme";
@@ -19,7 +17,6 @@ import createCache from "@emotion/cache";
 import routes from "routes";
 // setOpenConfigurator
 import { useSoftUIController, setMiniSidenav,  } from "context";
-import brand from "assets/images/logo-ct.png";
 
 export default function App() {
   const [controller, dispatch] = useSoftUIController();
@@ -113,7 +110,7 @@ export default function App() {
           <>
             <Sidenav
               color={sidenavColor}
-              brand={brand}
+ 
               brandName="DOTPLAYPLAY"
               routes={routes}
               onMouseEnter={handleOnMouseEnter}

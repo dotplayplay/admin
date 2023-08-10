@@ -58,12 +58,13 @@ const routes = [
   {
     type: "collapse",
     name: "General settings",
-    key: "general",
+    key: "genaral-settings",
     route: "/genaral-settings",
     icon: <Settings size="12px" />,
     component: <Genaral />,
     noCollapse: true
   },
+  
   { type: "title", title: "Account Pages", key: "account-pages" },
   {
     type: "collapse",
