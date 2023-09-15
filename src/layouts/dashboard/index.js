@@ -11,13 +11,25 @@ import GradientLineChart from "examples/Charts/LineCharts/GradientLineChart";
 import typography from "assets/theme/base/typography";
 import Projects from "layouts/dashboard/components/Projects";
 import OrderOverview from "layouts/dashboard/components/OrderOverview";
-import { MdOutlinePaid } from "react-icons/md"
-import { MdRocketLaunch } from "react-icons/md"
-import { VscLaw } from "react-icons/vsc"
+import { MdOutlinePaid } from "react-icons/md";
+import { MdRocketLaunch } from "react-icons/md";
+import { VscLaw } from "react-icons/vsc";
+import { AiOutlineRight } from "react-icons/ai";
+import { AiOutlineDown } from "react-icons/ai";
+import { MdOutlineSupportAgent } from "react-icons/md";
+import { BsFillPersonLinesFill } from "react-icons/bs";
+import { AiOutlineFlag } from "react-icons/ai";
+import { GiRank3 } from "react-icons/gi";
+import { TbMilitaryRank } from "react-icons/tb";
+import { GiRank1 } from "react-icons/gi";
+import { MdPendingActions } from "react-icons/md";
+import { MdOutlinePendingActions } from "react-icons/md";
+import { MdOutlinePending } from "react-icons/md";
 
 // Data
 import reportsBarChartData from "layouts/dashboard/data/reportsBarChartData";
 import gradientLineChartData from "layouts/dashboard/data/gradientLineChartData";
+import { useState } from "react";
 
 function Dashboard() {
   const { size } = typography;
@@ -28,39 +40,80 @@ function Dashboard() {
       mainDashboard: [
         {
           title: "Deposited players",
-          count: { deposited_players: 60 },
+          data: { deposited_players: 60 },
           icon: { paid_players: <MdOutlinePaid className="text-[#fff]" /> },
         },
         {
           title: "Gross gaming revenue",
-          count: { gross_gaming_revenue: 340 },
+          data: { gross_gaming_revenue: 340 },
           icon: { gaming_revenue: <MdRocketLaunch className="text-[#fff]" /> },
         },
         {
           title: "Total player balance",
-          count: { total_player_balance: 660 },
+          data: { total_player_balance: 660 },
           icon: { player_balance: <VscLaw className="text-[#fff]" /> },
         },
       ],
       demographic: [
-        { age: 35 },
-        { average_online_hours: 18 },
-        { country: "Ghana" },
+        {
+          title: "Age",
+          data: { age: 35 },
+          icon: { player_age: <MdOutlineSupportAgent className="text-[#fff]" /> },
+        },
+        {
+          title: "average_online_hours",
+          data: { average_online_hours: 18 },
+          icon: { online_hours: <BsFillPersonLinesFill className="text-[#fff]" /> },
+        },
+        {
+          title: "Country",
+          data: { country: "Ghana" },
+          icon: { player_country: <AiOutlineFlag className="text-[#fff]" /> },
+        },
       ],
       playerBoard: [
-        { total_wagered_ranking: 25 },
-        { total_win_ranking: 80 },
-        { total_lose_ranking: 12 },
+        {
+          title: "total_wagered_ranking",
+          data: { total_wagered_ranking: 25 },
+          icon: { wagered_ranking: <GiRank3 className="text-[#fff]" /> },
+        },
+        {
+          title: "total_win_ranking",
+          data: { total_win_ranking: 80 },
+          icon: { win_ranking: <TbMilitaryRank className="text-[#fff]" /> },
+        },
+        {
+          title: "total_lose_ranking",
+          data: { total_lose_ranking: 12 },
+          icon: { lose_ranking: <GiRank1 className="text-[#fff]" /> }
+        },
       ],
       taskList: [
-        { pending_withdrawals: 34 },
-        { pending_claim_approvals: 40 },
-        { pending_deposit_approvals: 10 },
+        {
+          title: "pending_withdrawals",
+          data: { pending_withdrawals: 34 },
+          icon: { player_pending_withdrawals: <MdPendingActions className="text-[#fff]" /> },
+        },
+        {
+          title: "pending_claim_approvals",
+          data: { pending_claim_approvals: 40 },
+          icon: { player_pending_claim_approvals: <MdOutlinePendingActions className="text-[#fff]" /> },
+        },
+        {
+          title: "pending_deposit_approvals",
+          data: { pending_deposit_approvals: 10 },
+          icon: { player_pending_deposit_approvals: <MdOutlinePending className="text-[#fff]" /> },
+        },
       ]
     },
   ];
 
   const { mainDashboard, demographic, playerBoard, taskList } = gameComponents[0];
+
+  const [viewMore, setViewMore] = useState(false);
+  const handleViewMore = () => {
+    setViewMore(!viewMore)
+  }
 
   return (
     <DashboardLayout>
@@ -105,25 +158,111 @@ function Dashboard() {
             </Grid>
           </Grid>
         </SoftBox>
-        <div className="flex flex-wrap gap-4 mb-4">
-          {
-            mainDashboard.map((dashboardData, index) => (
-              <div key={index} className="bg-[#FFFFFF] w-full md:w-fit justify-between flex items-center gap-4 p-4 rounded-[14px] mb-[4px]">
-                <div>
-                  <p className="text-[13px] font-extrabold">{dashboardData.title}</p>
+        <div>
+          <div className="flex flex-wrap gap-4 mb-4">
+            {
+              mainDashboard.map((dashboardData, index) => (
+                <div key={index} className="bg-[#FFFFFF] w-full md:w-fit justify-between flex items-center gap-4 p-4 rounded-[14px] mb-[4px]">
                   <div>
-                    {dashboardData.count && (
-                      <p className="font-extrabold ">{Object.values(dashboardData.count)[0]}</p>
+                    <p className="text-[13px] font-extrabold">{dashboardData.title}</p>
+                    <div>
+                      {dashboardData.data && (
+                        <p className="font-extrabold ">{Object.values(dashboardData.data)[0]}</p>
+                      )}
+                    </div>
+                  </div>
+                  <div className="bg-[#23A6FE] rounded-[7px] p-4 w-fit">
+                    {dashboardData.icon && (
+                      <p> {Object.values(dashboardData.icon)[0]} </p>
                     )}
                   </div>
                 </div>
-                <div className="bg-[#23A6FE] rounded-[7px] p-4 w-fit">
-                  {dashboardData.icon && (
-                    <p> {Object.values(dashboardData.icon)[0]} </p>
-                  )}
+              ))
+            }
+          </div>
+          <div className="flex gap-2 cursor-pointer items-center">
+            <button
+              onClick={handleViewMore}
+            >{viewMore ? "view less" : "view more"}</button>
+            <button onClick={handleViewMore}>
+              {
+                viewMore ? (<AiOutlineDown />) : (<AiOutlineRight />)
+              }
+            </button>
+          </div>
+          {
+            viewMore ? (
+              <div>
+                <p className="text-[17px] font-extrabold mt-4">Demographic</p>
+                <div className="flex flex-wrap gap-4 mb-4">
+                  {
+                    demographic.map((demographicData, index) => (
+                      <div key={index} className="bg-[#FFFFFF] w-full md:w-fit justify-between flex items-center gap-4 p-4 rounded-[14px] mb-[4px]">
+                        <div>
+                          <p className="text-[13px] font-extrabold">{demographicData.title}</p>
+                          <div>
+                            {demographicData.data && (
+                              <p className="font-extrabold ">{Object.values(demographicData.data)[0]}</p>
+                            )}
+                          </div>
+                        </div>
+                        <div className="bg-[#23A6FE] rounded-[7px] p-4 w-fit">
+                          {demographicData.icon && (
+                            <p> {Object.values(demographicData.icon)[0]} </p>
+                          )}
+                        </div>
+                      </div>
+                    ))
+                  }
+                </div>
+                <p className="text-[17px] font-extrabold mt-4">PlayerBoard</p>
+                <div className="flex flex-wrap gap-4 mb-4">
+                  {
+                    playerBoard.map((playerBoardData, index) => (
+                      <div key={index} className="bg-[#FFFFFF] w-full md:w-fit justify-between flex items-center gap-4 p-4 rounded-[14px] mb-[4px]">
+                        <div>
+                          <p className="text-[13px] font-extrabold">{playerBoardData.title}</p>
+                          <div>
+                            {playerBoardData.data && (
+                              <p className="font-extrabold ">{Object.values(playerBoardData.data)[0]}</p>
+                            )}
+                          </div>
+                        </div>
+                        <div className="bg-[#23A6FE] rounded-[7px] p-4 w-fit">
+                          {playerBoardData.icon && (
+                            <p> {Object.values(playerBoardData.icon)[0]} </p>
+                          )}
+                        </div>
+                      </div>
+                    ))
+                  }
+                </div>
+                <p className="text-[17px] font-extrabold mt-4">Task List</p>
+                <div className="flex flex-wrap gap-4 mb-4">
+                  {
+                    taskList.map((taskListData, index) => (
+                      <div key={index} className="bg-[#FFFFFF] w-full md:w-fit justify-between flex items-center gap-4 p-4 rounded-[14px] mb-[4px]">
+                        <div>
+                          <p className="text-[13px] font-extrabold">{taskListData.title}</p>
+                          <div>
+                            {taskListData.data && (
+                              <p className="font-extrabold ">{Object.values(taskListData.data)[0]}</p>
+                            )}
+                          </div>
+                        </div>
+                        <div className="bg-[#23A6FE] rounded-[7px] p-4 w-fit">
+                          {taskListData.icon && (
+                            <p> {Object.values(taskListData.icon)[0]} </p>
+                          )}
+                        </div>
+                      </div>
+                    ))
+                  }
                 </div>
               </div>
-            ))
+            ) : (
+              <p></p>
+            )
           }
         </div>
         <SoftBox mb={3}>
