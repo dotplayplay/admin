@@ -180,7 +180,7 @@ function Dashboard() {
               ))
             }
           </div>
-          <div className="flex gap-2 cursor-pointer items-center">
+          <div className={`flex gap-2 cursor-pointer items-center ${viewMore ? "text-[#344767]" : "text-[#23A6FE]"}`}>
             <button
               onClick={handleViewMore}
             >{viewMore ? "view less" : "view more"}</button>

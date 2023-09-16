@@ -22,6 +22,7 @@
 
 //  layouts
 import Dashboard from "layouts/dashboard";
+import Members from "layouts/member_management/Members";
 import Tables from "layouts/tables";
 import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
@@ -35,6 +36,7 @@ import Settings from "examples/Icons/Settings";
 import Document from "examples/Icons/Document";
 import SpaceShip from "examples/Icons/SpaceShip";
 import CustomerSupport from "examples/Icons/CustomerSupport";
+import { BsPeopleFill } from "react-icons/bs";
 
 const routes = [
   {
@@ -44,6 +46,15 @@ const routes = [
     route: "/dashboard",
     icon: <Shop size="12px" />,
     component: <Dashboard />,
+    noCollapse: true,
+  },
+  {
+    type: "collapse",
+    name: "Members",
+    key: "Members",
+    route: "/members",
+    icon: <BsPeopleFill size="12px" />,
+    component: <Members />,
     noCollapse: true,
   },
   {
