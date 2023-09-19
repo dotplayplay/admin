@@ -7,23 +7,18 @@ const reportsBarChartData = {
   items: [
     {
       icon: { color: "primary", component: "library_books" },
-      label: "users",
-      progress: { content: "36K", percentage: 60 },
+      label: "Total wagered ranking",
+      progress: { content: "36k", percentage: 60 },
     },
     {
       icon: { color: "info", component: "touch_app" },
-      label: "visitors",
+      label: "Total win ranking",
       progress: { content: "2M", percentage: 90 },
     },
     {
       icon: { color: "warning", component: "payment" },
-      label: "deposit",
+      label: "Total lose ranking",
       progress: { content: "$435", percentage: 30 },
-    },
-    {
-      icon: { color: "error", component: "extension" },
-      label: "withdraws",
-      progress: { content: "$43K", percentage: 50 },
     },
   ],
 };

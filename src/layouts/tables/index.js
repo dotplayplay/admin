@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import Card from "@mui/material/Card";
 import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
@@ -21,7 +22,7 @@ function Tables() {
         <SoftBox mb={3}>
           <Card>
             <SoftBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
-              <SoftTypography variant="h6">Authors table</SoftTypography>
+              <SoftTypography variant="h6">MEMBER MANAGEMENT</SoftTypography>
             </SoftBox>
             <SoftBox
               sx={{

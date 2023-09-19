@@ -22,6 +22,7 @@
 
 //  layouts
 import Dashboard from "layouts/dashboard";
+// import Members from "layouts/member_management/Members";
 import Tables from "layouts/tables";
 import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
@@ -35,6 +36,7 @@ import Settings from "examples/Icons/Settings";
 import Document from "examples/Icons/Document";
 import SpaceShip from "examples/Icons/SpaceShip";
 import CustomerSupport from "examples/Icons/CustomerSupport";
+// import { BsPeopleFill } from "react-icons/bs";
 
 const routes = [
   {
@@ -48,9 +50,9 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "Tables",
-    key: "tables",
-    route: "/tables",
+    name: "Members",
+    key: "members",
+    route: "/members",
     icon: <Office size="12px" />,
     component: <Tables />,
     noCollapse: true

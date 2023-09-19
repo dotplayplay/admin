@@ -11,109 +11,107 @@ import GradientLineChart from "examples/Charts/LineCharts/GradientLineChart";
 import typography from "assets/theme/base/typography";
 import Projects from "layouts/dashboard/components/Projects";
 import OrderOverview from "layouts/dashboard/components/OrderOverview";
-import { MdOutlinePaid } from "react-icons/md";
-import { MdRocketLaunch } from "react-icons/md";
-import { VscLaw } from "react-icons/vsc";
-import { AiOutlineRight } from "react-icons/ai";
-import { AiOutlineDown } from "react-icons/ai";
-import { MdOutlineSupportAgent } from "react-icons/md";
-import { BsFillPersonLinesFill } from "react-icons/bs";
-import { AiOutlineFlag } from "react-icons/ai";
-import { GiRank3 } from "react-icons/gi";
-import { TbMilitaryRank } from "react-icons/tb";
-import { GiRank1 } from "react-icons/gi";
-import { MdPendingActions } from "react-icons/md";
-import { MdOutlinePendingActions } from "react-icons/md";
-import { MdOutlinePending } from "react-icons/md";
 
 // Data
 import reportsBarChartData from "layouts/dashboard/data/reportsBarChartData";
 import gradientLineChartData from "layouts/dashboard/data/gradientLineChartData";
 import { useState } from "react";
+import team2 from "assets/images/team-2.jpg";
 
 function Dashboard() {
   const { size } = typography;
   const { chart, items } = reportsBarChartData;
 
-  const gameComponents = [
+  const components = [
     {
-      mainDashboard: [
-        {
-          title: "Deposited players",
-          data: { deposited_players: 60 },
-          icon: { paid_players: <MdOutlinePaid className="text-[#fff]" /> },
-        },
-        {
-          title: "Gross gaming revenue",
-          data: { gross_gaming_revenue: 340 },
-          icon: { gaming_revenue: <MdRocketLaunch className="text-[#fff]" /> },
-        },
-        {
-          title: "Total player balance",
-          data: { total_player_balance: 660 },
-          icon: { player_balance: <VscLaw className="text-[#fff]" /> },
-        },
-      ],
-      demographic: [
-        {
-          title: "Age",
-          data: { age: 35 },
-          icon: { player_age: <MdOutlineSupportAgent className="text-[#fff]" /> },
-        },
-        {
-          title: "average_online_hours",
-          data: { average_online_hours: 18 },
-          icon: { online_hours: <BsFillPersonLinesFill className="text-[#fff]" /> },
-        },
-        {
-          title: "Country",
-          data: { country: "Ghana" },
-          icon: { player_country: <AiOutlineFlag className="text-[#fff]" /> },
-        },
-      ],
-      playerBoard: [
-        {
-          title: "total_wagered_ranking",
-          data: { total_wagered_ranking: 25 },
-          icon: { wagered_ranking: <GiRank3 className="text-[#fff]" /> },
-        },
-        {
-          title: "total_win_ranking",
-          data: { total_win_ranking: 80 },
-          icon: { win_ranking: <TbMilitaryRank className="text-[#fff]" /> },
-        },
-        {
-          title: "total_lose_ranking",
-          data: { total_lose_ranking: 12 },
-          icon: { lose_ranking: <GiRank1 className="text-[#fff]" /> }
-        },
-      ],
-      taskList: [
-        {
-          title: "pending_withdrawals",
-          data: { pending_withdrawals: 34 },
-          icon: { player_pending_withdrawals: <MdPendingActions className="text-[#fff]" /> },
-        },
-        {
-          title: "pending_claim_approvals",
-          data: { pending_claim_approvals: 40 },
-          icon: { player_pending_claim_approvals: <MdOutlinePendingActions className="text-[#fff]" /> },
-        },
-        {
-          title: "pending_deposit_approvals",
-          data: { pending_deposit_approvals: 10 },
-          icon: { player_pending_deposit_approvals: <MdOutlinePending className="text-[#fff]" /> },
-        },
-      ]
+      title: "Total wagered ranking",
+      progress: { content: "36k", percentage: 60 },
     },
-  ];
+    {
+      title: "Total win ranking",
+      progress: { content: "2M", percentage: 90 },
+    },
+    {
+      title: "Total lose ranking",
+      progress: { content: "$435", percentage: 30 },
+    },
+  ]
 
-  const { mainDashboard, demographic, playerBoard, taskList } = gameComponents[0];
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  const [viewMore, setViewMore] = useState(false);
-  const handleViewMore = () => {
-    setViewMore(!viewMore)
-  }
+  const handleButtonClick = (itemIndex) => {
+    setSelectedItem(components[itemIndex]);
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setSelectedItem(null);
+    setModalIsOpen(false);
+  };
+
+  const usersRanking = [
+    {
+      username: "Ifeanyi",
+      userImg: team2,
+      betId: 40320903,
+      email: "john@valiant_joe.com"
+    },
+    {
+      username: "Joe",
+      userImg: team2,
+      betId: 43340163,
+      email: "jaeme@valiant_joe.com"
+    },
+    {
+      username: "Ifeanyi305",
+      userImg: "https://img2.nanogames.io/avatar/25671/s",
+      betId: 423920903,
+      email: "john@valiant_joe.com"
+    },
+    {
+      username: "Collins",
+      userImg: "https://img2.nanogames.io/avatar/25671/s",
+      betId: 403345903,
+      email: "jaeme@valiant_joe.com"
+    },
+    {
+      username: "Laura",
+      userImg: team2,
+      betId: 4032474,
+      email: "jaeme@valiant_joe.com"
+    },
+    {
+      username: "Ralph",
+      userImg: "https://img2.nanogames.io/avatar/25671/s",
+      betId: 420903,
+      email: "john@valiant_joe.com"
+    },
+    {
+      username: "Jonh",
+      userImg: team2,
+      betId: 3040595,
+      email: "jaeme@valiant_joe.com"
+    },
+    {
+      username: "Doe",
+      userImg: "https://img2.nanogames.io/avatar/25671/s",
+      betId: 420903,
+      email: "john@valiant_joe.com"
+    },
+    {
+      username: "Vincent",
+      userImg: team2,
+      betId: 403903,
+      email: "jaeme@valiant_joe.com"
+    },
+    {
+      username: "Darcel",
+      userImg: team2,
+      betId: 403903,
+      email: "john@valiant_joe.com"
+    }
+  ]
 
   return (
     <DashboardLayout>
@@ -123,15 +121,7 @@ function Dashboard() {
           <Grid container spacing={3}>
             <Grid item xs={12} sm={6} xl={3}>
               <MiniStatisticsCard
-                title={{ text: "Wallet balance" }}
-                count="$53,000"
-                percentage={{ color: "success", text: "+55%" }}
-                icon={{ color: "info", component: "paid" }}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6} xl={3}>
-              <MiniStatisticsCard
-                title={{ text: "new users" }}
+                title={{ text: "Gross gaming revenue" }}
                 count="2,300"
                 percentage={{ color: "success", text: "+3%" }}
                 icon={{ color: "info", component: "public" }}
@@ -139,132 +129,21 @@ function Dashboard() {
             </Grid>
             <Grid item xs={12} sm={6} xl={3}>
               <MiniStatisticsCard
-                title={{ text: "P2E users" }}
-                count="+3,462"
+                title={{ text: "Total player balance" }}
+                count="$3,462"
                 percentage={{ color: "success", text: "+2%" }}
                 icon={{ color: "info", component: "emoji_events" }}
               />
             </Grid>
             <Grid item xs={12} sm={6} xl={3}>
               <MiniStatisticsCard
-                title={{ text: "Total withdrawals" }}
-                count="$103,430"
-                percentage={{ color: "error", text: "+5%" }}
-                icon={{
-                  color: "info",
-                  component: "paid"
-                }}
+                title={{ text: "Deposited players" }}
+                count="460"
+                icon={{ color: "info", component: "paid" }}
               />
             </Grid>
           </Grid>
         </SoftBox>
-        <div>
-          <div className="flex flex-wrap gap-4 mb-4">
-            {
-              mainDashboard.map((dashboardData, index) => (
-                <div key={index} className="bg-[#FFFFFF] w-full md:w-fit justify-between flex items-center gap-4 p-4 rounded-[14px] mb-[4px]">
-                  <div>
-                    <p className="text-[13px] font-extrabold">{dashboardData.title}</p>
-                    <div>
-                      {dashboardData.data && (
-                        <p className="font-extrabold ">{Object.values(dashboardData.data)[0]}</p>
-                      )}
-                    </div>
-                  </div>
-                  <div className="bg-[#23A6FE] rounded-[7px] p-4 w-fit">
-                    {dashboardData.icon && (
-                      <p> {Object.values(dashboardData.icon)[0]} </p>
-                    )}
-                  </div>
-                </div>
-              ))
-            }
-          </div>
-          <div className="flex gap-2 cursor-pointer items-center">
-            <button
-              onClick={handleViewMore}
-            >{viewMore ? "view less" : "view more"}</button>
-            <button onClick={handleViewMore}>
-              {
-                viewMore ? (<AiOutlineDown />) : (<AiOutlineRight />)
-              }
-            </button>
-          </div>
-          {
-            viewMore ? (
-              <div>
-                <p className="text-[17px] font-extrabold mt-4">Demographic</p>
-                <div className="flex flex-wrap gap-4 mb-4">
-                  {
-                    demographic.map((demographicData, index) => (
-                      <div key={index} className="bg-[#FFFFFF] w-full md:w-fit justify-between flex items-center gap-4 p-4 rounded-[14px] mb-[4px]">
-                        <div>
-                          <p className="text-[13px] font-extrabold">{demographicData.title}</p>
-                          <div>
-                            {demographicData.data && (
-                              <p className="font-extrabold ">{Object.values(demographicData.data)[0]}</p>
-                            )}
-                          </div>
-                        </div>
-                        <div className="bg-[#23A6FE] rounded-[7px] p-4 w-fit">
-                          {demographicData.icon && (
-                            <p> {Object.values(demographicData.icon)[0]} </p>
-                          )}
-                        </div>
-                      </div>
-                    ))
-                  }
-                </div>
-                <p className="text-[17px] font-extrabold mt-4">PlayerBoard</p>
-                <div className="flex flex-wrap gap-4 mb-4">
-                  {
-                    playerBoard.map((playerBoardData, index) => (
-                      <div key={index} className="bg-[#FFFFFF] w-full md:w-fit justify-between flex items-center gap-4 p-4 rounded-[14px] mb-[4px]">
-                        <div>
-                          <p className="text-[13px] font-extrabold">{playerBoardData.title}</p>
-                          <div>
-                            {playerBoardData.data && (
-                              <p className="font-extrabold ">{Object.values(playerBoardData.data)[0]}</p>
-                            )}
-                          </div>
-                        </div>
-                        <div className="bg-[#23A6FE] rounded-[7px] p-4 w-fit">
-                          {playerBoardData.icon && (
-                            <p> {Object.values(playerBoardData.icon)[0]} </p>
-                          )}
-                        </div>
-                      </div>
-                    ))
-                  }
-                </div>
-                <p className="text-[17px] font-extrabold mt-4">Task List</p>
-                <div className="flex flex-wrap gap-4 mb-4">
-                  {
-                    taskList.map((taskListData, index) => (
-                      <div key={index} className="bg-[#FFFFFF] w-full md:w-fit justify-between flex items-center gap-4 p-4 rounded-[14px] mb-[4px]">
-                        <div>
-                          <p className="text-[13px] font-extrabold">{taskListData.title}</p>
-                          <div>
-                            {taskListData.data && (
-                              <p className="font-extrabold ">{Object.values(taskListData.data)[0]}</p>
-                            )}
-                          </div>
-                        </div>
-                        <div className="bg-[#23A6FE] rounded-[7px] p-4 w-fit">
-                          {taskListData.icon && (
-                            <p> {Object.values(taskListData.icon)[0]} </p>
-                          )}
-                        </div>
-                      </div>
-                    ))
-                  }
-                </div>
-              </div>
-            ) : (
-              <p></p>
-            )
-          }
-        </div>
         <SoftBox mb={3}>
           <Grid container spacing={3}>
           </Grid>
@@ -285,7 +164,7 @@ function Dashboard() {
             </Grid>
             <Grid item xs={12} lg={7}>
               <GradientLineChart
-                title="Users registration Overview"
+                title="Demographic"
                 description={
                   <SoftBox display="flex" alignItems="center">
                     <SoftBox fontSize={size.lg} color="success" mb={0.3} mr={0.5} lineHeight={0}>
@@ -305,6 +184,49 @@ function Dashboard() {
             </Grid>
           </Grid>
         </SoftBox>
+        {components.map((item, index) => (
+          <div key={index} className="flex gap-4">
+            <div>
+              <button onClick={() => handleButtonClick(index)}>
+                {item.progress.content}
+              </button>
+            </div>
+          </div>
+        ))}
+        <div className="bg-[#fff] top-[-20%] md:w-[45%] mb-4 flex justify-center">
+          {selectedItem && (
+            <div>
+              <div className="flex justify-between items-center gap-2 p-4">
+                <h2>{selectedItem.title}</h2>
+                <button onClick={closeModal}>&times;</button>
+              </div>
+              <div className="overflow-x-auto">
+                <table className="p-[9px]">
+                  <thead>
+                    <tr>
+                      <th className="px-4 py-2 text-left">User</th>
+                      <th className="px-4 py-2 text-left">Bet ID</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {usersRanking.map((rank, index) => (
+                      <tr key={index} className={index % 2 === 0 ? 'bg-gray-100' : ''}>
+                        <td className="px-4 py-2 flex gap-4 items-center">
+                          <img className="w-[30px] rounded-[50%]" alt="user_img" src={rank.userImg} />
+                          <div>
+                            <p>{rank.username}</p>
+                            <small>{rank.email}</small>
+                          </div>
+                        </td>
+                        <td className="px-4 py-2 overflow-hidden whitespace-nowrap text-ellipsis max-w-xs">{rank.betId}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+        </div>
         <Grid container spacing={3}>
           <Grid item xs={12} md={6} lg={8}>
             <Projects />

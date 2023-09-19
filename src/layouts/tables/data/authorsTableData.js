@@ -41,22 +41,22 @@ function Function({ job, org }) {
 const authorsTableData = {
   columns: [
     { name: "users", align: "left" },
-    { name: "country", align: "left" },
+    { name: "number", align: "left" },
     { name: "status", align: "center" },
-    { name: "details", align: "center" },
+    { name: "referalID", align: "center" },
     { name: "action", align: "center" },
   ],
 
   rows: [
     {
       users: <Author image={team2} name="John Michael" email="john@valiant_joe.com" />,
-      details: <Function job="$25,783" org="P2E" />,
+      referalID: <Function job="sqz11829sgh" org="P2E" />,
       status: (
         <SoftBadge variant="gradient" badgeContent="online" color="success" size="xs" container />
       ),
-      country: (
+      number: (
         <SoftTypography variant="caption" color="secondary" fontWeight="medium">
-         Nigeria
+         07089283903
         </SoftTypography>
       ),
       action: (
@@ -73,13 +73,13 @@ const authorsTableData = {
     },
     {
       users: <Author image={"https://img2.nanogames.io/avatar/25671/s"} name="Jaeme Michael" email="jaeme@valiant_joe.com" />,
-      details: <Function job="$25,783" org="P2E" />,
+      referalID: <Function job="jtaz823n" org="P2E" />,
       status: (
         <SoftBadge variant="gradient" badgeContent="online" color="success" size="xs" container />
       ),
-      country: (
+      number: (
         <SoftTypography variant="caption" color="secondary" fontWeight="medium">
-         Nigeria
+         090672663547
         </SoftTypography>
       ),
       action: (
@@ -96,13 +96,13 @@ const authorsTableData = {
     },
     {
       users: <Author image={team2} name="John Michael" email="john@valiant_joe.com" />,
-      details: <Function job="$2,783" org="normal" />,
+      referalID: <Function job="quasi19" org="normal" />,
       status: (
         <SoftBadge variant="gradient" badgeContent="offline" color="secondary" size="xs" container />
       ),
-      country: (
+      number: (
         <SoftTypography variant="caption" color="secondary" fontWeight="medium">
-         Nigeria
+         08169937218
         </SoftTypography>
       ),
       action: (
