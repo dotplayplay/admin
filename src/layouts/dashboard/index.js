@@ -102,7 +102,7 @@ function Dashboard() {
     {
       username: "Vincent",
       userImg: team2,
-      betId: 403903,
+      betId: 40903,
       email: "jaeme@valiant_joe.com"
     },
     {
