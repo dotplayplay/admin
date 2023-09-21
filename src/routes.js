@@ -22,13 +22,14 @@
 
 //  layouts
 import Dashboard from "layouts/dashboard";
-// import Members from "layouts/member_management/Members";
 import DailyReport from "layouts/dailyReport/DailyReport";
+import GameReport from "layouts/gameReport/GameReport";
 import Tables from "layouts/tables";
 import Profile from "layouts/profile";
+import GgrReport from "layouts/ggrReport";
 import SignIn from "layouts/authentication/sign-in";
 import SignUp from "layouts/authentication/sign-up";
-import Genaral from "layouts/genaral_settings"
+import Genaral from "layouts/genaral_settings";
 
 //  icons
 import Shop from "examples/Icons/Shop";
@@ -38,6 +39,7 @@ import Document from "examples/Icons/Document";
 import SpaceShip from "examples/Icons/SpaceShip";
 import CustomerSupport from "examples/Icons/CustomerSupport";
 import { GoReport } from "react-icons/go";
+import { MdOutlineVideogameAssetOff } from "react-icons/md";
 
 const routes = [
   {
@@ -65,6 +67,24 @@ const routes = [
     route: "/daily_report",
     icon: <GoReport size="12px" />,
     component: <DailyReport />,
+    noCollapse: true
+  },
+  {
+    type: "collapse",
+    name: "Game Report",
+    key: "game_report",
+    route: "/game_report",
+    icon: <MdOutlineVideogameAssetOff size="12px" />,
+    component: <GameReport />,
+    noCollapse: true
+  },
+  {
+    type: "collapse",
+    name: "GGR Report",
+    key: "ggr_report",
+    route: "/ggr_report",
+    icon: <GoReport size="12px" />,
+    component: <GgrReport />,
     noCollapse: true
   },
   {
