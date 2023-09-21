@@ -7,8 +7,8 @@
   z-index: 1000;
 }
 
-@media screen and (min-width: 1200) {
+@media screen and (min-width: 1200px) {
   .screen_size {
-    margin-left: 20%;
+    margin-left: 22%;
   }
 }
