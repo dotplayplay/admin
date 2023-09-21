@@ -6,3 +6,9 @@
   overflow-y: auto;
   z-index: 1000;
 }
+
+@media screen and (min-width: 1200) {
+  .screen_size {
+    margin-left: 20%;
+  }
+}

@@ -23,6 +23,7 @@
 //  layouts
 import Dashboard from "layouts/dashboard";
 // import Members from "layouts/member_management/Members";
+import DailyReport from "layouts/dailyReport/DailyReport";
 import Tables from "layouts/tables";
 import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
@@ -36,7 +37,7 @@ import Settings from "examples/Icons/Settings";
 import Document from "examples/Icons/Document";
 import SpaceShip from "examples/Icons/SpaceShip";
 import CustomerSupport from "examples/Icons/CustomerSupport";
-// import { BsPeopleFill } from "react-icons/bs";
+import { GoReport } from "react-icons/go";
 
 const routes = [
   {
@@ -55,6 +56,15 @@ const routes = [
     route: "/members",
     icon: <Office size="12px" />,
     component: <Tables />,
+    noCollapse: true
+  },
+  {
+    type: "collapse",
+    name: "Daily Report",
+    key: "daily_report",
+    route: "/daily_report",
+    icon: <GoReport size="12px" />,
+    component: <DailyReport />,
     noCollapse: true
   },
   {
