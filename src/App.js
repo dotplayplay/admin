@@ -16,7 +16,8 @@ import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
 import routes from "routes";
 // setOpenConfigurator
-import { useSoftUIController, setMiniSidenav,  } from "context";
+import { useSoftUIController, setMiniSidenav, } from "context";
+import MemberDetails from "layouts/member_management/MemberDetails";
 
 export default function App() {
   const [controller, dispatch] = useSoftUIController();
@@ -102,6 +103,12 @@ export default function App() {
   //   </SoftBox>
   // );
 
+  return (
+    <Routes>
+      <Route path="/members_details" component={() => <MemberDetails />} />
+    </Routes>
+  )
+
   return direction === "rtl" ? (
     <CacheProvider value={rtlCache}>
       <ThemeProvider theme={themeRTL}>
@@ -110,7 +117,7 @@ export default function App() {
           <>
             <Sidenav
               color={sidenavColor}
- 
+
               brandName="DOTPLAYPLAY"
               routes={routes}
               onMouseEnter={handleOnMouseEnter}
