@@ -43,7 +43,6 @@ const authorsTableData = {
     { name: "users", align: "left" },
     { name: "userID", align: "center" },
     { name: "number", align: "center" },
-    { name: "email", align: "center" },
     { name: "totalWagered", align: "center" },
     { name: "totalGCR", align: "center" },
     { name: "chatMessages", align: "center" },
@@ -70,11 +69,6 @@ const authorsTableData = {
          07089283903
         </SoftTypography>
       ),
-      email: (
-        <SoftTypography variant="caption" color="secondary" fontWeight="medium">
-         john@gmail.com
-        </SoftTypography>
-      ),
       totalWagered: (
         <SoftTypography variant="caption" color="secondary" fontWeight="medium">
          102345
@@ -87,7 +81,7 @@ const authorsTableData = {
       ),
       chatMessages: (
         <SoftTypography variant="caption" color="secondary" fontWeight="medium">
-         Hi there!!!
+         10
         </SoftTypography>
       ),
       walletBalance: (
@@ -148,11 +142,6 @@ const authorsTableData = {
          090672663547
         </SoftTypography>
       ),
-      email: (
-        <SoftTypography variant="caption" color="secondary" fontWeight="medium">
-         johnDoe@gmail.com
-        </SoftTypography>
-      ),
       totalWagered: (
         <SoftTypography variant="caption" color="secondary" fontWeight="medium">
          1016275
@@ -165,7 +154,7 @@ const authorsTableData = {
       ),
       chatMessages: (
         <SoftTypography variant="caption" color="secondary" fontWeight="medium">
-         Hi there!!!
+         4
         </SoftTypography>
       ),
       walletBalance: (
@@ -226,11 +215,6 @@ const authorsTableData = {
          08169937218
         </SoftTypography>
       ),
-      email: (
-        <SoftTypography variant="caption" color="secondary" fontWeight="medium">
-         ifeanyi@gmail.com
-        </SoftTypography>
-      ),
       totalWagered: (
         <SoftTypography variant="caption" color="secondary" fontWeight="medium">
          112345
@@ -243,7 +227,7 @@ const authorsTableData = {
       ),
       chatMessages: (
         <SoftTypography variant="caption" color="secondary" fontWeight="medium">
-         Hi there!!!
+         9
         </SoftTypography>
       ),
       walletBalance: (

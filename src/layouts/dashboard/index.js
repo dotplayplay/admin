@@ -42,7 +42,7 @@ function Dashboard() {
 
   const handleButtonClick = (itemIndex) => {
     setSelectedItem(components[itemIndex]);
-    setModalIsOpen(true);
+    setModalIsOpen(!modalIsOpen);
   };
 
   const closeModal = () => {
@@ -115,87 +115,90 @@ function Dashboard() {
 
   return (
     <DashboardLayout>
-      <DashboardNavbar />
+      <div className="dashboard">
+        <DashboardNavbar />
+      </div>
       <SoftBox py={3}>
-        <SoftBox mb={3}>
-          <Grid container spacing={3}>
-            <Grid item xs={12} sm={6} xl={3}>
-              <MiniStatisticsCard
-                title={{ text: "Gross gaming revenue" }}
-                count="2,300"
-                percentage={{ color: "success", text: "+3%" }}
-                icon={{ color: "info", component: "public" }}
-              />
+        <div className="dashboard">
+          <SoftBox mb={3}>
+            <Grid container spacing={4}>
+              <Grid item xs={12} sm={6} xl={3}>
+                <MiniStatisticsCard
+                  title={{ text: "Gross gaming revenue" }}
+                  count="2,300"
+                  percentage={{ color: "success", text: "+3%" }}
+                  icon={{ color: "info", component: "public" }}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6} xl={3}>
+                <MiniStatisticsCard
+                  title={{ text: "Total player balance" }}
+                  count="$3,462"
+                  percentage={{ color: "success", text: "+2%" }}
+                  icon={{ color: "info", component: "emoji_events" }}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6} xl={3}>
+                <MiniStatisticsCard
+                  title={{ text: "Deposited players" }}
+                  count="460"
+                  icon={{ color: "info", component: "paid" }}
+                />
+              </Grid>
             </Grid>
-            <Grid item xs={12} sm={6} xl={3}>
-              <MiniStatisticsCard
-                title={{ text: "Total player balance" }}
-                count="$3,462"
-                percentage={{ color: "success", text: "+2%" }}
-                icon={{ color: "info", component: "emoji_events" }}
-              />
+          </SoftBox>
+          <SoftBox mb={3}>
+            <Grid container spacing={3}>
             </Grid>
-            <Grid item xs={12} sm={6} xl={3}>
-              <MiniStatisticsCard
-                title={{ text: "Deposited players" }}
-                count="460"
-                icon={{ color: "info", component: "paid" }}
-              />
-            </Grid>
-          </Grid>
-        </SoftBox>
-        <SoftBox mb={3}>
-          <Grid container spacing={3}>
-          </Grid>
-        </SoftBox>
-        <SoftBox mb={3}>
-          <Grid container spacing={3}>
-            <Grid item xs={12} lg={5}>
-              <ReportsBarChart
-                title="active users"
-                description={
-                  <>
-                    (<strong>+23%</strong>) than last week
-                  </>
-                }
-                chart={chart}
-                items={items}
-              />
-            </Grid>
-            <Grid item xs={12} lg={7}>
-              <GradientLineChart
-                title="Demographic"
-                description={
-                  <SoftBox display="flex" alignItems="center">
-                    <SoftBox fontSize={size.lg} color="success" mb={0.3} mr={0.5} lineHeight={0}>
-                      <Icon className="font-bold">arrow_upward</Icon>
-                    </SoftBox>
-                    <SoftTypography variant="button" color="text" fontWeight="medium">
-                      4% more{" "}
-                      <SoftTypography variant="button" color="text" fontWeight="regular">
-                        in 2022
+          </SoftBox>
+          <SoftBox mb={3}>
+            <Grid container spacing={3}>
+              <Grid item xs={12} lg={5}>
+                <ReportsBarChart
+                  title="active users"
+                  description={
+                    <>
+                      (<strong>+23%</strong>) than last week
+                    </>
+                  }
+                  chart={chart}
+                  items={items}
+                />
+              </Grid>
+              <Grid item xs={12} lg={7}>
+                <GradientLineChart
+                  title="Demographic"
+                  description={
+                    <SoftBox display="flex" alignItems="center">
+                      <SoftBox fontSize={size.lg} color="success" mb={0.3} mr={0.5} lineHeight={0}>
+                        <Icon className="font-bold">arrow_upward</Icon>
+                      </SoftBox>
+                      <SoftTypography variant="button" color="text" fontWeight="medium">
+                        4% more{" "}
+                        <SoftTypography variant="button" color="text" fontWeight="regular">
+                          in 2022
+                        </SoftTypography>
                       </SoftTypography>
-                    </SoftTypography>
-                  </SoftBox>
-                }
-                height="20.25rem"
-                chart={gradientLineChartData}
-              />
+                    </SoftBox>
+                  }
+                  height="20.25rem"
+                  chart={gradientLineChartData}
+                />
+              </Grid>
             </Grid>
-          </Grid>
-        </SoftBox>
+          </SoftBox>
+        </div>
         {components.map((item, index) => (
-          <div key={index} className="flex gap-4">
-            <div>
+          <div key={index}>
+            <div className="flex gap-4 dashboard">
               <button onClick={() => handleButtonClick(index)}>
                 {item.progress.content}
               </button>
             </div>
           </div>
         ))}
-        <div className="bg-[#fff] top-[-20%] md:w-[45%] mb-4 flex justify-center">
-          {selectedItem && (
-            <div>
+          {modalIsOpen ? (
+            <div className="bg-[#fff] w-[52%] md:left-[40%] wagered fixed h-[80%] overflow-y-auto create_user_container top-[10%] md:w-[30%] mb-4">
               <div className="flex justify-between items-center gap-2 p-4">
                 <h2>{selectedItem.title}</h2>
                 <button onClick={closeModal}>&times;</button>
@@ -218,25 +221,28 @@ function Dashboard() {
                             <small>{rank.email}</small>
                           </div>
                         </td>
-                        <td className="px-4 py-2 overflow-hidden whitespace-nowrap text-ellipsis max-w-xs">{rank.betId}</td>
+                        <td className="px-4 py-2">{rank.betId}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
             </div>
-          )}
+          ) : <></>}
+        <div className="dashboard">
+          <Grid container spacing={3}>
+            <Grid item xs={12} md={6} lg={8}>
+              <Projects />
+            </Grid>
+            <Grid item xs={12} md={6} lg={4}>
+              <OrderOverview />
+            </Grid>
+          </Grid>
         </div>
-        <Grid container spacing={3}>
-          <Grid item xs={12} md={6} lg={8}>
-            <Projects />
-          </Grid>
-          <Grid item xs={12} md={6} lg={4}>
-            <OrderOverview />
-          </Grid>
-        </Grid>
       </SoftBox>
-      <Footer />
+      <div className="dashboard">
+        <Footer />
+      </div>
     </DashboardLayout>
   );
 }

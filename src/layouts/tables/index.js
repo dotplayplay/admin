@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Card from "@mui/material/Card";
 import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
@@ -15,6 +16,7 @@ function Tables() {
   const { columns, rows } = authorsTableData;
   const { columns: prCols, rows: prRows } = projectsTableData;
   const [addMember, setAddMember] = useState(false);
+  const modalRef = useRef(null);
   const handleAddMember = () => {
     setAddMember(!addMember)
   }
@@ -70,19 +72,26 @@ function Tables() {
 
   const style = {
     input: "w-full border-[#6B6B6B] p-2 block border-[1px] rounded-[8px]",
+    tableCol: "px-4 py-2 text-center"
   }
 
   return (
     <DashboardLayout>
-      <DashboardNavbar />
+      <div className="members_table">
+        <DashboardNavbar />
+      </div>
       <div>
         <button
           onClick={handleAddMember}
-          className="bg-[#23A6FE] px-4 py-2 rounded-[7px] text-[#fff]"
+          className="bg-[#fff] members_table px-4 text-[13px] py-2 rounded-[7px] text-[#76839A]"
         >Add new member</button>
         {
           addMember ? (
-            <div className="bg-[#fff] p-6 md:w-[75%] rounded-[15px] mt-4">
+            <div className="bg-[#fff] fixed create_user_container w-[90%] h-[90%] absolute top-[5%] md:left-[12%] add_member p-6 md:w-[55%] rounded-[15px] mt-4">
+              <div className="flex mb-[5%] items-center justify-between">
+                <p className="text-[#99a0ab] text-[20px] font-extrabold">Add new Member</p>
+                <button type="button" onClick={handleAddMember} className="text-[25px]">&times;</button>
+              </div>
               <form onSubmit={handleSubmit}>
                 <div>
                   <label className="block">Username:</label>
@@ -164,31 +173,69 @@ function Tables() {
           )
         }
       </div>
-      <SoftBox py={3}>
-        <SoftBox mb={3}>
-          <Card>
-            <SoftBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
-              <SoftTypography variant="h6">MEMBER MANAGEMENT</SoftTypography>
-            </SoftBox>
-            <SoftBox
-              sx={{
-                "& .MuiTableRow-root:not(:last-child)": {
-                  "& td": {
-                    borderBottom: ({ borders: { borderWidth, borderColor } }) =>
-                      `${borderWidth[1]} solid ${borderColor}`,
+      <div className="members_table">
+        <SoftBox py={3}>
+          <SoftBox mb={3}>
+            <Card>
+              <SoftBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
+                <SoftTypography variant="h6">MEMBER MANAGEMENT</SoftTypography>
+              </SoftBox>
+              <SoftBox
+                sx={{
+                  "& .MuiTableRow-root:not(:last-child)": {
+                    "& td": {
+                      borderBottom: ({ borders: { borderWidth, borderColor } }) =>
+                        `${borderWidth[1]} solid ${borderColor}`,
+                    },
                   },
-                },
-              }}
-            >
-              <Table columns={columns} rows={rows} />
-            </SoftBox>
-          </Card>
+                }}
+              >
+                <div className="overflow-x-auto">
+                  <table>
+                    <thead>
+                      <tr>
+                        {columns.map((column, columnIndex) => (
+                          <th
+                            className="text-[#99a0ab] text-[12px] text-center px-4"
+                            key={columnIndex}
+                          >{column.name}</th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {rows.map((row, rowIndex) => (
+                        <tr key={rowIndex}>
+                          <Link to={`/details/${row.userID.props.job}`} state={{ rowData: row }}>
+                            <td className={style.tableCol}>{row.users}</td>
+                          </Link>
+                          <td className={style.tableCol}>{row.userID}</td>
+                          <td className={style.tableCol}>{row.number}</td>
+                          <td className={style.tableCol}>{row.totalWagered}</td>
+                          <td className={style.tableCol}>{row.totalGCR}</td>
+                          <td className={style.tableCol}>{row.chatMessages}</td>
+                          <td className={style.tableCol}>{row.walletBalance}</td>
+                          <td className={style.tableCol}>{row.RegisteredDate}</td>
+                          <td className={style.tableCol}>{row.FirstDepositDate}</td>
+                          <td className={style.tableCol}>{row.LastDepositDate}</td>
+                          <td className={style.tableCol}>{row.LastLoginDate}</td>
+                          <td className={style.tableCol}>{row.LastLoginIP}</td>
+                          <td className={style.tableCol}>{row.Chat}</td>
+                          <td className={style.tableCol}>{row.status}</td>
+                          <td className={style.tableCol}>{row.action}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </SoftBox>
+            </Card>
+          </SoftBox>
         </SoftBox>
-
-      </SoftBox>
-      <Footer />
+      </div>
+      <div className="members_table">
+        <Footer />
+      </div>
     </DashboardLayout>
   );
 }
-
 export default Tables;
