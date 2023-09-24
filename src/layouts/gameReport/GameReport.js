@@ -37,7 +37,6 @@ const GameReport = () => {
         </SoftBox>
 
       </SoftBox>
-      <Footer />
     </DashboardLayout>
   );
 };

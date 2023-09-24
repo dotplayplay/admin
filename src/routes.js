@@ -22,6 +22,7 @@
 
 //  layouts
 import Dashboard from "layouts/dashboard";
+import Report from "layouts/reports";
 import DailyReport from "layouts/dailyReport/DailyReport";
 import GameReport from "layouts/gameReport/GameReport";
 import Tables from "layouts/tables";
@@ -62,29 +63,11 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "Daily Report",
-    key: "daily_report",
-    route: "/daily_report",
+    name: "Reports",
+    key: "reports",
+    route: "/reports",
     icon: <GoReport size="12px" />,
-    component: <DailyReport />,
-    noCollapse: true
-  },
-  {
-    type: "collapse",
-    name: "Game Report",
-    key: "game_report",
-    route: "/game_report",
-    icon: <MdOutlineVideogameAssetOff size="12px" />,
-    component: <GameReport />,
-    noCollapse: true
-  },
-  {
-    type: "collapse",
-    name: "GGR Report",
-    key: "ggr_report",
-    route: "/ggr_report",
-    icon: <GoReport size="12px" />,
-    component: <GgrReport />,
+    component: <Report />,
     noCollapse: true
   },
   {

@@ -15,6 +15,12 @@ import OrderOverview from "layouts/dashboard/components/OrderOverview";
 // Data
 import reportsBarChartData from "layouts/dashboard/data/reportsBarChartData";
 import gradientLineChartData from "layouts/dashboard/data/gradientLineChartData";
+
+// icons
+import { GiCoalWagon } from "react-icons/gi";
+import { GiWindyStripes } from "react-icons/gi";
+import { MdClosedCaptionOff } from "react-icons/md";
+
 import { useState } from "react";
 import team2 from "assets/images/team-2.jpg";
 
@@ -26,14 +32,17 @@ function Dashboard() {
     {
       title: "Total wagered ranking",
       progress: { content: "36k", percentage: 60 },
+      icon: <GiCoalWagon className="text-[#343483]" />,
     },
     {
       title: "Total win ranking",
       progress: { content: "2M", percentage: 90 },
+      icon: <GiWindyStripes className="text-[#ffa600ea]" />,
     },
     {
       title: "Total lose ranking",
       progress: { content: "$435", percentage: 30 },
+      icon: <MdClosedCaptionOff className="text-[#9a3b28]" />,
     },
   ]
 
@@ -154,16 +163,28 @@ function Dashboard() {
           <SoftBox mb={3}>
             <Grid container spacing={3}>
               <Grid item xs={12} lg={5}>
-                <ReportsBarChart
-                  title="active users"
-                  description={
-                    <>
-                      (<strong>+23%</strong>) than last week
-                    </>
-                  }
-                  chart={chart}
-                  items={items}
-                />
+                <div className="bg-[#fff] p-4 rounded-[13px]">
+                  <ReportsBarChart chart={chart}/>
+                  <div className="my-4">
+                    <p className="text-[#344767] text-[13px] font-extrabold">Active Users</p>
+                    <p className="text-[#79859C] text-[13px]">(<strong>+23%</strong>) than last week</p>
+                  </div>
+                  <div className="flex gap-4 items-center mb-4 dashboard">
+                    {components.map((item, index) => (
+                      <div key={index}>
+                        <div>
+                          <div className="flex gap-2 items-center my-2">
+                            <button onClick={() => handleButtonClick(index)}>{item.icon}</button>
+                            <p className="text-[13px] font-extrabold">{item.title}</p>
+                          </div>
+                          <button className="font-extrabold" onClick={() => handleButtonClick(index)}>
+                            {item.progress.content}
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </Grid>
               <Grid item xs={12} lg={7}>
                 <GradientLineChart
@@ -188,47 +209,38 @@ function Dashboard() {
             </Grid>
           </SoftBox>
         </div>
-        {components.map((item, index) => (
-          <div key={index}>
-            <div className="flex gap-4 dashboard">
-              <button onClick={() => handleButtonClick(index)}>
-                {item.progress.content}
-              </button>
+        {modalIsOpen ? (
+          <div className="bg-[#fff] w-[52%] md:left-[40%] wagered fixed h-[80%] overflow-y-auto create_user_container top-[10%] md:w-[30%] mb-4">
+            <div className="flex justify-between items-center gap-2 p-4">
+              <h2 className="text-[16px] font-extrabold">{selectedItem.title}</h2>
+              <button onClick={closeModal}>&times;</button>
+            </div>
+            <div className="overflow-x-auto">
+              <table className="p-[9px] w-full">
+                <thead>
+                  <tr>
+                    <th className="px-4 text-[12] py-2 text-left">User</th>
+                    <th className="px-4 text-[12] py-2 text-left">Bet ID</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {usersRanking.map((rank, index) => (
+                    <tr key={index} className={index % 2 === 0 ? 'bg-gray-100' : ''}>
+                      <td className="px-4 py-2 flex gap-4 items-center">
+                        <img className="w-[30px] rounded-[50%]" alt="user_img" src={rank.userImg} />
+                        <div>
+                          <p className="text-[13px] font-extrabold">{rank.username}</p>
+                          <small className="text-[12px]">{rank.email}</small>
+                        </div>
+                      </td>
+                      <td className="px-4 py-2 text-[13px] font-extrabold">{rank.betId}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
-        ))}
-          {modalIsOpen ? (
-            <div className="bg-[#fff] w-[52%] md:left-[40%] wagered fixed h-[80%] overflow-y-auto create_user_container top-[10%] md:w-[30%] mb-4">
-              <div className="flex justify-between items-center gap-2 p-4">
-                <h2>{selectedItem.title}</h2>
-                <button onClick={closeModal}>&times;</button>
-              </div>
-              <div className="overflow-x-auto">
-                <table className="p-[9px]">
-                  <thead>
-                    <tr>
-                      <th className="px-4 py-2 text-left">User</th>
-                      <th className="px-4 py-2 text-left">Bet ID</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {usersRanking.map((rank, index) => (
-                      <tr key={index} className={index % 2 === 0 ? 'bg-gray-100' : ''}>
-                        <td className="px-4 py-2 flex gap-4 items-center">
-                          <img className="w-[30px] rounded-[50%]" alt="user_img" src={rank.userImg} />
-                          <div>
-                            <p>{rank.username}</p>
-                            <small>{rank.email}</small>
-                          </div>
-                        </td>
-                        <td className="px-4 py-2">{rank.betId}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          ) : <></>}
+        ) : <></>}
         <div className="dashboard">
           <Grid container spacing={3}>
             <Grid item xs={12} md={6} lg={8}>

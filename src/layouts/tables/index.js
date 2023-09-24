@@ -81,10 +81,6 @@ function Tables() {
         <DashboardNavbar />
       </div>
       <div>
-        <button
-          onClick={handleAddMember}
-          className="bg-[#fff] members_table px-4 text-[13px] py-2 rounded-[7px] text-[#76839A]"
-        >Add new member</button>
         {
           addMember ? (
             <div className="bg-[#fff] fixed create_user_container w-[90%] h-[90%] absolute top-[5%] md:left-[12%] add_member p-6 md:w-[55%] rounded-[15px] mt-4">
@@ -179,6 +175,10 @@ function Tables() {
             <Card>
               <SoftBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
                 <SoftTypography variant="h6">MEMBER MANAGEMENT</SoftTypography>
+                <button
+                  onClick={handleAddMember}
+                  className="bg-[#fff] border-[1px] members_table px-4 text-[13px] py-2 rounded-[7px] text-[#76839A]"
+                >Add new member</button>
               </SoftBox>
               <SoftBox
                 sx={{

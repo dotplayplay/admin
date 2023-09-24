@@ -13,7 +13,6 @@ const DailyReport = () => {
 
   return (
     <DashboardLayout>
-      <DashboardNavbar />
       <SoftBox py={3}>
         <SoftBox mb={3}>
           <Card>
@@ -36,7 +35,6 @@ const DailyReport = () => {
         </SoftBox>
 
       </SoftBox>
-      <Footer />
     </DashboardLayout>
   );
 };

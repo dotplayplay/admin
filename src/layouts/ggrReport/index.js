@@ -15,7 +15,6 @@ const GgrReport = () => {
 
   return (
     <DashboardLayout>
-      <DashboardNavbar />
       <SoftBox py={3}>
         <SoftBox mb={3}>
           <Card>
