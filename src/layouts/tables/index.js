@@ -71,8 +71,9 @@ function Tables() {
   };
 
   const style = {
-    input: "w-full border-[#6B6B6B] p-2 block border-[1px] rounded-[8px]",
-    tableCol: "px-4 py-2 text-center"
+    input: "w-full border-[#6B6B6B] px-[5px] py-[1px] block border-[1px] rounded-[8px]",
+    tableCol: "px-4 py-2 text-center",
+    label: "block text-[13px]"
   }
 
   return (
@@ -90,7 +91,7 @@ function Tables() {
               </div>
               <form onSubmit={handleSubmit}>
                 <div>
-                  <label className="block">Username:</label>
+                  <label className={style.label}>Username:</label>
                   <input
                     type="text"
                     name="username"
@@ -100,7 +101,7 @@ function Tables() {
                   />
                 </div>
                 <div>
-                  <label className="block">Password:</label>
+                  <label className={style.label}>Password:</label>
                   <input
                     type="password"
                     name="password"
@@ -110,7 +111,7 @@ function Tables() {
                   />
                 </div>
                 <div>
-                  <label className="block">Confirm Password:</label>
+                  <label className={style.label}>Confirm Password:</label>
                   <input
                     type="password"
                     name="confirmPassword"
@@ -120,7 +121,7 @@ function Tables() {
                   />
                 </div>
                 <div>
-                  <label className="block">Email:</label>
+                  <label className={style.label}>Email:</label>
                   <input
                     type="email"
                     name="email"
@@ -130,7 +131,7 @@ function Tables() {
                   />
                 </div>
                 <div>
-                  <label className="block">Phone Number:</label>
+                  <label className={style.label}>Phone Number:</label>
                   <input
                     type="tel"
                     name="number"
@@ -140,7 +141,7 @@ function Tables() {
                   />
                 </div>
                 <div>
-                  <label className="block">Vip level</label>
+                  <label className={style.label}>Vip level</label>
                   <input
                     type="number"
                     name="vipLevel"
@@ -150,7 +151,7 @@ function Tables() {
                   />
                 </div>
                 <div>
-                  <label className="block">Affiliate model</label>
+                  <label className={style.label}>Affiliate model</label>
                   <input
                     type="text"
                     name="affliateModel"
@@ -160,7 +161,7 @@ function Tables() {
                   />
                 </div>
                 <button
-                  className="bg-[#23A6FE] mt-2 px-4 py-2 rounded-[7px] text-[#fff]"
+                  className="bg-[#fff] border-[1px] mt-2 px-4 py-2 rounded-[7px]"
                   type="submit">Create member</button>
               </form>
             </div>

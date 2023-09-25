@@ -130,7 +130,7 @@ function Dashboard() {
       <SoftBox py={3}>
         <div className="dashboard">
           <SoftBox mb={3}>
-            <Grid container spacing={4}>
+            <div className="flex gap-4 items-center justify-between flex-wrap">
               <Grid item xs={12} sm={6} xl={3}>
                 <MiniStatisticsCard
                   title={{ text: "Gross gaming revenue" }}
@@ -154,7 +154,7 @@ function Dashboard() {
                   icon={{ color: "info", component: "paid" }}
                 />
               </Grid>
-            </Grid>
+            </div>
           </SoftBox>
           <SoftBox mb={3}>
             <Grid container spacing={3}>
@@ -169,10 +169,10 @@ function Dashboard() {
                     <p className="text-[#344767] text-[13px] font-extrabold">Active Users</p>
                     <p className="text-[#79859C] text-[13px]">(<strong>+23%</strong>) than last week</p>
                   </div>
-                  <div className="flex gap-4 items-center mb-4 dashboard">
+                  <div className="flex gap-6 items-center mb-4 dashboard">
                     {components.map((item, index) => (
                       <div key={index}>
-                        <div>
+                        <div className="cursor-pointer" onClick={() => handleButtonClick(index)}>
                           <div className="flex gap-2 items-center my-2">
                             <button onClick={() => handleButtonClick(index)}>{item.icon}</button>
                             <p className="text-[13px] font-extrabold">{item.title}</p>
@@ -211,7 +211,7 @@ function Dashboard() {
         </div>
         {modalIsOpen ? (
           <div className="bg-[#fff] w-[52%] md:left-[40%] wagered fixed h-[80%] overflow-y-auto create_user_container top-[10%] md:w-[30%] mb-4">
-            <div className="flex justify-between items-center gap-2 p-4">
+            <div className="flex top-[0px] bg-[#fff] sticky justify-between items-center gap-2 p-4">
               <h2 className="text-[16px] font-extrabold">{selectedItem.title}</h2>
               <button onClick={closeModal}>&times;</button>
             </div>

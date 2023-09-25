@@ -53,17 +53,12 @@ const authorsTableData = {
     { name: "LastLoginDate", align: "center" },
     { name: "LastLoginIP", align: "center" },
     { name: "Chat", align: "center" },
-    { name: "status", align: "center" },
-    { name: "action", align: "center" },
   ],
 
   rows: [
     {
       users: <Author image={team2} name="John Michael" email="john@valiant_joe.com" />,
       userID: <Function job="sqz11829sgh" />,
-      status: (
-        <SoftBadge variant="gradient" badgeContent="online" color="success" size="xs" container />
-      ),
       number: (
         <SoftTypography variant="caption" color="secondary" fontWeight="medium">
          07089283903
@@ -119,24 +114,10 @@ const authorsTableData = {
           <button>chat on whatsapp</button>
         </SoftTypography>
       ),
-      action: (
-        <SoftTypography
-          component="a"
-          href="#"
-          variant="caption"
-          color="secondary"
-          fontWeight="medium"
-        >
-          Edit
-        </SoftTypography>
-      ),
     },
     {
       users: <Author image={"https://img2.nanogames.io/avatar/25671/s"} name="Jaeme Michael" email="jaeme@valiant_joe.com" />,
       userID: <Function job="jtaz823n" />,
-      status: (
-        <SoftBadge variant="gradient" badgeContent="online" color="success" size="xs" container />
-      ),
       number: (
         <SoftTypography variant="caption" color="secondary" fontWeight="medium">
          090672663547
@@ -192,24 +173,10 @@ const authorsTableData = {
           <button>chat on whatsapp</button>
         </SoftTypography>
       ),
-      action: (
-        <SoftTypography
-          component="a"
-          href="#"
-          variant="caption"
-          color="secondary"
-          fontWeight="medium"
-        >
-          Edit
-        </SoftTypography>
-      ),
     },
     {
       users: <Author image={team2} name="John Michael" email="john@valiant_joe.com" />,
       userID: <Function job="quasi19" />,
-      status: (
-        <SoftBadge variant="gradient" badgeContent="offline" color="secondary" size="xs" container />
-      ),
       number: (
         <SoftTypography variant="caption" color="secondary" fontWeight="medium">
          08169937218
@@ -263,17 +230,6 @@ const authorsTableData = {
       Chat: (
         <SoftTypography variant="caption" color="secondary" fontWeight="medium">
           <button>chat on whatsapp</button>
-        </SoftTypography>
-      ),
-      action: (
-        <SoftTypography
-          component="a"
-          href="#"
-          variant="caption"
-          color="secondary"
-          fontWeight="medium"
-        >
-          Edit
         </SoftTypography>
       ),
     },
