@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Card from "@mui/material/Card";
 import SoftBox from "components/SoftBox";
+import SoftButton from "components/SoftButton";
 import SoftTypography from "components/SoftTypography";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
@@ -73,7 +74,8 @@ function Tables() {
   const style = {
     input: "w-full border-[#6B6B6B] px-[5px] py-[1px] block border-[1px] rounded-[8px]",
     tableCol: "px-4 py-2 text-center",
-    label: "block text-[13px]"
+    label: "block text-[13px]",
+    inputCon: "mb-[10px]"
   }
 
   return (
@@ -90,7 +92,7 @@ function Tables() {
                 <button type="button" onClick={handleAddMember} className="text-[25px]">&times;</button>
               </div>
               <form onSubmit={handleSubmit}>
-                <div>
+                <div className={style.inputCon}>
                   <label className={style.label}>Username:</label>
                   <input
                     type="text"
@@ -100,7 +102,7 @@ function Tables() {
                     onChange={handleChange}
                   />
                 </div>
-                <div>
+                <div className={style.inputCon}>
                   <label className={style.label}>Password:</label>
                   <input
                     type="password"
@@ -110,7 +112,7 @@ function Tables() {
                     onChange={handleChange}
                   />
                 </div>
-                <div>
+                <div className={style.inputCon}>
                   <label className={style.label}>Confirm Password:</label>
                   <input
                     type="password"
@@ -120,7 +122,7 @@ function Tables() {
                     onChange={handleChange}
                   />
                 </div>
-                <div>
+                <div className={style.inputCon}>
                   <label className={style.label}>Email:</label>
                   <input
                     type="email"
@@ -130,7 +132,7 @@ function Tables() {
                     onChange={handleChange}
                   />
                 </div>
-                <div>
+                <div className={style.inputCon}>
                   <label className={style.label}>Phone Number:</label>
                   <input
                     type="tel"
@@ -140,7 +142,7 @@ function Tables() {
                     onChange={handleChange}
                   />
                 </div>
-                <div>
+                <div className={style.inputCon}>
                   <label className={style.label}>Vip level</label>
                   <input
                     type="number"
@@ -150,7 +152,7 @@ function Tables() {
                     onChange={handleChange}
                   />
                 </div>
-                <div>
+                <div className={style.inputCon}>
                   <label className={style.label}>Affiliate model</label>
                   <input
                     type="text"
@@ -160,9 +162,11 @@ function Tables() {
                     onChange={handleChange}
                   />
                 </div>
-                <button
-                  className="bg-[#fff] border-[1px] mt-2 px-4 py-2 rounded-[7px]"
-                  type="submit">Create member</button>
+                <SoftBox mt={4} mb={1}>
+                  <SoftButton variant="gradient" color="info" fullWidth>
+                    <button type="submit">Create member</button>
+                  </SoftButton>
+                </SoftBox>
               </form>
             </div>
           ) : (

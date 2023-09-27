@@ -130,7 +130,7 @@ function Dashboard() {
       <SoftBox py={3}>
         <div className="dashboard">
           <SoftBox mb={3}>
-            <div className="flex gap-4 items-center justify-between flex-wrap">
+            <div className="flex gap-4 items-center justify-around flex-wrap">
               <Grid item xs={12} sm={6} xl={3}>
                 <MiniStatisticsCard
                   title={{ text: "Gross gaming revenue" }}
@@ -171,11 +171,11 @@ function Dashboard() {
                   </div>
                   <div className="flex gap-6 items-center mb-4 dashboard">
                     {components.map((item, index) => (
-                      <div key={index}>
+                      <div key={index} className="bg-[#e2e4eb85] px-2 py-[3px] rounded-[10px]">
                         <div className="cursor-pointer" onClick={() => handleButtonClick(index)}>
                           <div className="flex gap-2 items-center my-2">
-                            <button onClick={() => handleButtonClick(index)}>{item.icon}</button>
                             <p className="text-[13px] font-extrabold">{item.title}</p>
+                            <button onClick={() => handleButtonClick(index)}>{item.icon}</button>
                           </div>
                           <button className="font-extrabold" onClick={() => handleButtonClick(index)}>
                             {item.progress.content}
@@ -247,7 +247,9 @@ function Dashboard() {
               <Projects />
             </Grid>
             <Grid item xs={12} md={6} lg={4}>
-              <OrderOverview />
+              <div className="h-[70%] create_user_container">
+                <OrderOverview />
+              </div>
             </Grid>
           </Grid>
         </div>
