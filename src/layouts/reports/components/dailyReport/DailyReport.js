@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from "@mui/material/Card";
 import SoftBox from 'components/SoftBox';
 import SoftTypography from "components/SoftTypography";
@@ -14,17 +14,33 @@ import { BsArrowUpRight } from 'react-icons/bs';
 const DailyReport = () => {
   const { columns, rows } = dailyReportTable;
   const { currentPage, entriesPerPage, entries } = usePagination(1, 10);
+
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearch = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
   const style = {
     tableCol: "px-4 py-2 text-center",
   }
 
   return (
-    <DashboardLayout>
+    <div>
       <SoftBox py={3}>
         <SoftBox mb={3}>
           <Card>
             <SoftBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
               <SoftTypography variant="h6">DAILY REPORT</SoftTypography>
+              <SoftTypography variant="h6">
+                <input
+                  className="border-[1px] rounded-[5px] px-4 py-[1px]"
+                  placeholder="search reports"
+                  value={searchQuery}
+                  onChange={handleSearch}
+                  type="text"
+                />
+              </SoftTypography>
             </SoftBox>
             <SoftBox
               sx={{
@@ -63,40 +79,54 @@ const DailyReport = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {rows.slice(entries.indexOfFirst, entries.indexOfLast).map((row, rowIndex) => (
-                      <tr key={rowIndex}>
-                        <td className={style.tableCol}>{row.date}</td>
-                        <td className={style.tableCol}>{row.dau}</td>
-                        <td className={style.tableCol}>{row.newRegister}</td>
-                        <td className={style.tableCol}>{row.totalNewDeposit}</td>
-                        <td className={style.tableCol}>{row.newDeposit}</td>
-                        <td className={style.tableCol}>{row.totalReDeposit}</td>
-                        <td className={style.tableCol}>{row.totalDeposit}</td>
-                        <td className={style.tableCol}>{row.totalWithdrawal}</td>
-                        <td className={style.tableCol}>{row.totalwagered}</td>
-                        <td className={style.tableCol}>{row.totalWinningPayout}</td>
-                        <td className={style.tableCol}>{row.totalGGR}</td>
-                        <td className={style.tableCol}>{row.totalDepositBonus}</td>
-                        <td className={style.tableCol}>{row.totalDepositUnlocked}</td>
-                        <td className={style.tableCol}>{row.vipLevelUp}</td>
-                        <td className={style.tableCol}>{row.luckySpin}</td>
-                        <td className={style.tableCol}>{row.rollCompetion}</td>
-                        <td className={style.tableCol}>{row.dailyContest}</td>
-                        <td className={style.tableCol}>{row.medal}</td>
-                        <td className={style.tableCol}>{row.binggo}</td>
-                        <td className={style.tableCol}>{row.rain}</td>
-                        <td className={style.tableCol}>{row.coindrop}</td>
-                        <td className={style.tableCol}>{row.totalFreeUnlocked}</td>
-                        <td className={style.tableCol}>{row.commisionRakeback}</td>
-                        <td className={style.tableCol}>{row.directReferal}</td>
-                        <td className={style.tableCol}>{row.totalAffiliateUnlocked}</td>
-                        <td className={style.tableCol}>{row.recharge}</td>
-                        <td className={style.tableCol}>{row.weeklyCashback}</td>
-                        <td className={style.tableCol}>{row.monthlyCashback}</td>
-                        <td className={style.tableCol}>{row.ticket}</td>
-                        <td className={style.tableCol}>{row.prize}</td>
+                    {rows.slice(entries.indexOfFirst, entries.indexOfLast).filter((row) =>
+                      row.dau.props.children.toLowerCase().includes(searchQuery.toLowerCase())
+                    ).length === 0 ? (
+                      <tr>
+                        <td className={style.tableCol}>
+                          <SoftTypography variant="h6">
+                            Empty
+                          </SoftTypography>
+                        </td>
                       </tr>
-                    ))}
+                    ) : (
+                      rows.slice(entries.indexOfFirst, entries.indexOfLast).filter((row) =>
+                        row.dau.props.children.toLowerCase().includes(searchQuery.toLowerCase())
+                      ).map((row, rowIndex) => (
+                        <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'bg-gray-100' : ''}>
+                          <td className={style.tableCol}>{row.date}</td>
+                          <td className={style.tableCol}>{row.dau}</td>
+                          <td className={style.tableCol}>{row.newRegister}</td>
+                          <td className={style.tableCol}>{row.totalNewDeposit}</td>
+                          <td className={style.tableCol}>{row.newDeposit}</td>
+                          <td className={style.tableCol}>{row.totalReDeposit}</td>
+                          <td className={style.tableCol}>{row.totalDeposit}</td>
+                          <td className={style.tableCol}>{row.totalWithdrawal}</td>
+                          <td className={style.tableCol}>{row.totalwagered}</td>
+                          <td className={style.tableCol}>{row.totalWinningPayout}</td>
+                          <td className={style.tableCol}>{row.totalGGR}</td>
+                          <td className={style.tableCol}>{row.totalDepositBonus}</td>
+                          <td className={style.tableCol}>{row.totalDepositUnlocked}</td>
+                          <td className={style.tableCol}>{row.vipLevelUp}</td>
+                          <td className={style.tableCol}>{row.luckySpin}</td>
+                          <td className={style.tableCol}>{row.rollCompetion}</td>
+                          <td className={style.tableCol}>{row.dailyContest}</td>
+                          <td className={style.tableCol}>{row.medal}</td>
+                          <td className={style.tableCol}>{row.binggo}</td>
+                          <td className={style.tableCol}>{row.rain}</td>
+                          <td className={style.tableCol}>{row.coindrop}</td>
+                          <td className={style.tableCol}>{row.totalFreeUnlocked}</td>
+                          <td className={style.tableCol}>{row.commisionRakeback}</td>
+                          <td className={style.tableCol}>{row.directReferal}</td>
+                          <td className={style.tableCol}>{row.totalAffiliateUnlocked}</td>
+                          <td className={style.tableCol}>{row.recharge}</td>
+                          <td className={style.tableCol}>{row.weeklyCashback}</td>
+                          <td className={style.tableCol}>{row.monthlyCashback}</td>
+                          <td className={style.tableCol}>{row.ticket}</td>
+                          <td className={style.tableCol}>{row.prize}</td>
+                        </tr>
+                      ))
+                    )}
                   </tbody>
                 </table>
               </div>
@@ -129,7 +159,7 @@ const DailyReport = () => {
         navPrevCustom={{ steps: 5, content: "\u00B7\u00B7\u00B7" }}
         navNextCustom={{ steps: 5, content: "\u00B7\u00B7\u00B7" }}
       />
-    </DashboardLayout>
+    </div>
   );
 };
 

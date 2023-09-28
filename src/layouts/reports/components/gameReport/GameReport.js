@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from "@mui/material/Card";
 import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
-
 //data
 import gameReport from './data/gameReportTable';
 import { usePagination, Pagination } from "pagination-react-js";
@@ -14,17 +13,32 @@ import { BsArrowUpRight } from 'react-icons/bs';
 const GameReport = () => {
   const { columns, rows } = gameReport;
   const { currentPage, entriesPerPage, entries } = usePagination(1, 10);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearch = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
   const style = {
     tableCol: "px-4 py-2 text-center",
   }
+
   return (
-    <DashboardLayout>
-      <DashboardNavbar />
+    <div>
       <SoftBox py={3}>
         <SoftBox mb={3}>
           <Card>
             <SoftBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
               <SoftTypography variant="h6">GAME REPORT</SoftTypography>
+              <SoftTypography variant="h6">
+                <input
+                  className="border-[1px] rounded-[5px] px-4 py-[1px]"
+                  placeholder="search reports"
+                  value={searchQuery}
+                  onChange={handleSearch}
+                  type="text"
+                />
+              </SoftTypography>
             </SoftBox>
             <SoftBox
               sx={{
@@ -63,23 +77,37 @@ const GameReport = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {rows.slice(entries.indexOfFirst, entries.indexOfLast).map((row, rowIndex) => (
-                      <tr key={rowIndex}>
-                        <td className={style.tableCol}>{row.no}</td>
-                        <td className={style.tableCol}>{row.game}</td>
-                        <td className={style.tableCol}>{row.totalWagered}</td>
-                        <td className={style.tableCol}>{row.totalPayout}</td>
-                        <td className={style.tableCol}>{row.totalGGR}</td>
-                        <td className={style.tableCol}>{row.GGR}</td>
+                    {rows.slice(entries.indexOfFirst, entries.indexOfLast).filter((row) =>
+                      row.game.props.children.toLowerCase().includes(searchQuery.toLowerCase())
+                    ).length === 0 ? (
+                      <tr>
+                        <td className={style.tableCol}>
+                          <SoftTypography variant="h6">
+                            Game not found
+                          </SoftTypography>
+                        </td>
                       </tr>
-                    ))}
+                    ) : (
+                      rows.slice(entries.indexOfFirst, entries.indexOfLast).filter((row) =>
+                        row.game.props.children.toLowerCase().includes(searchQuery.toLowerCase())
+                      ).map((row, rowIndex) => (
+                        <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'bg-gray-100' : ''}>
+                          <td className={style.tableCol}>{row.no}</td>
+                          <td className={style.tableCol}>{row.game}</td>
+                          <td className={style.tableCol}>{row.totalWagered}</td>
+                          <td className={style.tableCol}>{row.totalPayout}</td>
+                          <td className={style.tableCol}>{row.totalGGR}</td>
+                          <td className={style.tableCol}>{row.GGR}</td>
+                        </tr>
+                      ))
+                    )}
                   </tbody>
+
                 </table>
               </div>
             </SoftBox>
           </Card>
         </SoftBox>
-
       </SoftBox>
       <Pagination
         entriesPerPage={entriesPerPage.get}
@@ -106,7 +134,8 @@ const GameReport = () => {
         navPrevCustom={{ steps: 5, content: "\u00B7\u00B7\u00B7" }}
         navNextCustom={{ steps: 5, content: "\u00B7\u00B7\u00B7" }}
       />
-    </DashboardLayout>
+      {/* </DashboardLayout> */}
+    </div>
   );
 };
 
