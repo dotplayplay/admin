@@ -41,6 +41,10 @@ body:has(.wagered) .dashboard {
   z-index: 0;
   filter: blur(8px);
 }
+body:has(.game) .container {
+  z-index: 0;
+  filter: blur(8px);
+}
 
 .toggle {
   position: relative;

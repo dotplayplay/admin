@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import Card from "@mui/material/Card";
-import SoftBox from 'components/SoftBox';
+import SoftBox from "components/SoftBox";
+import SoftButton from "components/SoftButton";
 import SoftTypography from "components/SoftTypography";
-import DashboardLayout from 'examples/LayoutContainers/DashboardLayout';
-import DashboardNavbar from 'examples/Navbars/DashboardNavbar';
-import Footer from "examples/Footer";
-import Table from "examples/Tables/Table";
 import dailyReportTable from './data/dailyReportData';
 import { usePagination, Pagination } from "pagination-react-js";
 import { BsArrowUpLeft } from 'react-icons/bs';
@@ -14,6 +13,34 @@ import { BsArrowUpRight } from 'react-icons/bs';
 const DailyReport = () => {
   const { columns, rows } = dailyReportTable;
   const { currentPage, entriesPerPage, entries } = usePagination(1, 10);
+  const [sortedData, setSortedData] = useState(rows);
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+  const [showDate, setShowDate] = useState(false);
+
+  const handleShowDate = () => {
+    setShowDate(!showDate)
+  }
+
+  const sortData = (start, end) => {
+    if (start && end) {
+      const filteredData = rows.filter(row => {
+        const rowDate = new Date(row.date);
+        return rowDate >= start && rowDate <= end;
+      });
+
+      filteredData.sort((a, b) => {
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
+        return dateA - dateB;
+      });
+
+      setSortedData(filteredData);
+      setShowDate(!showDate)
+    } else {
+      setSortedData(rows);
+    }
+  };
 
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -30,18 +57,20 @@ const DailyReport = () => {
       <SoftBox py={3}>
         <SoftBox mb={3}>
           <Card>
-            <SoftBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
-              <SoftTypography variant="h6">DAILY REPORT</SoftTypography>
-              <SoftTypography variant="h6">
-                <input
-                  className="border-[1px] rounded-[5px] px-4 py-[1px]"
-                  placeholder="search reports"
-                  value={searchQuery}
-                  onChange={handleSearch}
-                  type="text"
-                />
-              </SoftTypography>
-            </SoftBox>
+            <div className="">
+              <SoftBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
+                <SoftTypography variant="h6">DAILY REPORT</SoftTypography>
+                <SoftTypography variant="h6">
+                  <input
+                    className="border-[1px] rounded-[5px] px-4 py-[1px]"
+                    placeholder="search reports"
+                    value={searchQuery}
+                    onChange={handleSearch}
+                    type="text"
+                  />
+                </SoftTypography>
+              </SoftBox>
+            </div>
             <SoftBox
               sx={{
                 "& .MuiTableRow-root:not(:last-child)": {
@@ -52,21 +81,51 @@ const DailyReport = () => {
                 },
               }}
             >
-              <div className="select-wrapper max-elements px-6">
-                <label className="text-[15px]" htmlFor="max-elements">Entries per page:</label>
-                <select className="py-2 text-[13px] hover:bg-[#E1E4E7] cursor-pointer focus:outline-none px-2 rounded-[10px]" name="max-elements" id="max-elements" onChange={e => { currentPage.set(1); entriesPerPage.set(Number(e.target.value)); }}>
-                  <option value={1}>1</option>
-                  <option value={2}>2</option>
-                  <option value={10}>10</option>
-                  <option value={15}>15</option>
-                  <option value={20}>20</option>
-                  <option value={30}>30</option>
-                  <option value={50}>50</option>
-                  <option value={100}>100</option>
-                  <option value={rows?.length}>All</option>
-                </select>
+              <div className="flex items-center justify-between my-4">
+                <div className="select-wrapper max-elements px-6">
+                  <label className="text-[15px]" htmlFor="max-elements">Entries per page:</label>
+                  <select className="py-2 text-[13px] hover:bg-[#E1E4E7] cursor-pointer focus:outline-none px-2 rounded-[10px]" name="max-elements" id="max-elements" onChange={e => { currentPage.set(1); entriesPerPage.set(Number(e.target.value)); }}>
+                    <option value={1}>1</option>
+                    <option value={2}>2</option>
+                    <option value={10}>10</option>
+                    <option value={15}>15</option>
+                    <option value={20}>20</option>
+                    <option value={30}>30</option>
+                    <option value={50}>50</option>
+                    <option value={100}>100</option>
+                    <option value={rows?.length}>All</option>
+                  </select>
+                </div>
+                <button className="px-4 mx-4 border-[1px] " onClick={handleShowDate}>
+                  <SoftTypography variant="h6">filter by date</SoftTypography>
+                </button>
               </div>
-              <div className="overflow-x-auto">
+              {
+                showDate ? (
+                  <div className="flex justify-center border-[1px]">
+                    <div className="bg-[#fff] p-4 w-[80%] m-auto md:left-[40%] fixed top-[30%] md:w-[30%] mb-4">
+                      <div className="flex top-[0px] bg-[#fff] sticky justify-between items-center gap-2 p-4">
+                        <h2 className="text-[16px] font-extrabold">Filter</h2>
+                        <button onClick={handleShowDate}>&times;</button>
+                      </div>
+                      <div>
+                        <SoftTypography variant="h6">Start Date:</ SoftTypography>
+                        <DatePicker className="text-[14px] border-[1px] px-4 w-full py-[3px]" selected={startDate} onChange={date => setStartDate(date)} />
+                      </div>
+                      <div className="mt-2">
+                        <SoftTypography variant="h6">End Date:</ SoftTypography>
+                        <DatePicker className="text-[14px] border-[1px] px-4 w-full py-[3px]" selected={endDate} onChange={date => setEndDate(date)} />
+                      </div>
+                      <SoftBox mt={4} mb={1}>
+                        <SoftButton variant="gradient" color="info" fullWidth>
+                          <button onClick={() => sortData(startDate, endDate)}>Sort Date</button>
+                        </SoftButton>
+                      </SoftBox>
+                    </div>
+                  </div>
+                ) : (<></>)
+              }
+              <div className="overflow-x-auto dashboard">
                 <table className="w-full">
                   <thead>
                     <tr>
@@ -79,7 +138,7 @@ const DailyReport = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {rows.slice(entries.indexOfFirst, entries.indexOfLast).filter((row) =>
+                    {sortedData.slice(entries.indexOfFirst, entries.indexOfLast).filter((row) =>
                       row.dau.props.children.toLowerCase().includes(searchQuery.toLowerCase())
                     ).length === 0 ? (
                       <tr>
@@ -90,7 +149,7 @@ const DailyReport = () => {
                         </td>
                       </tr>
                     ) : (
-                      rows.slice(entries.indexOfFirst, entries.indexOfLast).filter((row) =>
+                      sortedData.slice(entries.indexOfFirst, entries.indexOfLast).filter((row) =>
                         row.dau.props.children.toLowerCase().includes(searchQuery.toLowerCase())
                       ).map((row, rowIndex) => (
                         <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'bg-gray-100' : ''}>

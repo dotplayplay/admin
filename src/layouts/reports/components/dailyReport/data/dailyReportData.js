@@ -37,7 +37,7 @@ const dailyReportTable = {
     {
       date: (
         <SoftTypography variant="caption" color="secondary" fontWeight="medium">
-         03/08/2023, 23:48:14
+         03/08/2023
         </SoftTypography>
       ),
       dau: (
@@ -189,7 +189,7 @@ const dailyReportTable = {
     {
       date: (
         <SoftTypography variant="caption" color="secondary" fontWeight="medium">
-         09/12/2023, 03:18:14
+         09/12/2023
         </SoftTypography>
       ),
       dau: (
@@ -341,7 +341,7 @@ const dailyReportTable = {
     {
       date: (
         <SoftTypography variant="caption" color="secondary" fontWeight="medium">
-         10/03/2023, 13:48:14
+         10/03/2023
         </SoftTypography>
       ),
       dau: (
