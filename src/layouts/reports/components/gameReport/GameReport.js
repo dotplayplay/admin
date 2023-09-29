@@ -28,84 +28,87 @@ const GameReport = () => {
       <SoftBox py={3}>
         <SoftBox mb={3}>
           <Card>
-            <SoftBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
-              <SoftTypography variant="h6">GAME REPORT</SoftTypography>
-              <SoftTypography variant="h6">
-                <input
-                  className="border-[1px] rounded-[5px] px-4 py-[1px]"
-                  placeholder="search reports"
-                  value={searchQuery}
-                  onChange={handleSearch}
-                  type="text"
-                />
-              </SoftTypography>
-            </SoftBox>
-            <SoftBox
-              sx={{
-                "& .MuiTableRow-root:not(:last-child)": {
-                  "& td": {
-                    borderBottom: ({ borders: { borderWidth, borderColor } }) =>
-                      `${borderWidth[1]} solid ${borderColor}`,
+            <div className="bg-[#1a1e32e4]">
+              <div className="bg-[#282a32] mb-4">
+                <SoftBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
+                  <SoftTypography variant="h6"><p className="text-[#fff]">GAME REPORT</p></SoftTypography>
+                  <SoftTypography variant="h6">
+                    <input
+                      className="border-[1px] rounded-[5px] px-4 py-[1px]"
+                      placeholder="search reports"
+                      value={searchQuery}
+                      onChange={handleSearch}
+                      type="text"
+                    />
+                  </SoftTypography>
+                </SoftBox>
+              </div>
+              <SoftBox
+                sx={{
+                  "& .MuiTableRow-root:not(:last-child)": {
+                    "& td": {
+                      borderBottom: ({ borders: { borderWidth, borderColor } }) =>
+                        `${borderWidth[1]} solid ${borderColor}`,
+                    },
                   },
-                },
-              }}
-            >
-              <div className="select-wrapper max-elements px-6">
-                <label className="text-[15px]" htmlFor="max-elements">Entries per page:</label>
-                <select className="py-2 text-[13px] hover:bg-[#E1E4E7] cursor-pointer focus:outline-none px-2 rounded-[10px]" name="max-elements" id="max-elements" onChange={e => { currentPage.set(1); entriesPerPage.set(Number(e.target.value)); }}>
-                  <option value={1}>1</option>
-                  <option value={2}>2</option>
-                  <option value={10}>10</option>
-                  <option value={15}>15</option>
-                  <option value={20}>20</option>
-                  <option value={30}>30</option>
-                  <option value={50}>50</option>
-                  <option value={100}>100</option>
-                  <option value={rows?.length}>All</option>
-                </select>
-              </div>
-              <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead>
-                    <tr>
-                      {columns.map((column, columnIndex) => (
-                        <th
-                          className="text-[#99a0ab] text-[12px] text-center px-4"
-                          key={columnIndex}
-                        >{column.name}</th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {rows.slice(entries.indexOfFirst, entries.indexOfLast).filter((row) =>
-                      row.game.props.children.toLowerCase().includes(searchQuery.toLowerCase())
-                    ).length === 0 ? (
+                }}
+              >
+                <div className="select-wrapper my-2 max-elements px-6">
+                  <label className="text-[15px] text-[#fff] px-2" htmlFor="max-elements">Entries per page:</label>
+                  <select className="py-2 text-[13px] hover:bg-[#E1E4E7] cursor-pointer focus:outline-none px-2 rounded-[10px]" name="max-elements" id="max-elements" onChange={e => { currentPage.set(1); entriesPerPage.set(Number(e.target.value)); }}>
+                    <option value={1}>1</option>
+                    <option value={2}>2</option>
+                    <option value={10}>10</option>
+                    <option value={15}>15</option>
+                    <option value={20}>20</option>
+                    <option value={30}>30</option>
+                    <option value={50}>50</option>
+                    <option value={100}>100</option>
+                    <option value={rows?.length}>All</option>
+                  </select>
+                </div>
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead>
                       <tr>
-                        <td className={style.tableCol}>
-                          <SoftTypography variant="h6">
-                            Game not found
-                          </SoftTypography>
-                        </td>
+                        {columns.map((column, columnIndex) => (
+                          <th
+                            className="text-[#fff] text-[12px] text-center px-4"
+                            key={columnIndex}
+                          >{column.name}</th>
+                        ))}
                       </tr>
-                    ) : (
-                      rows.slice(entries.indexOfFirst, entries.indexOfLast).filter((row) =>
+                    </thead>
+                    <tbody>
+                      {rows.slice(entries.indexOfFirst, entries.indexOfLast).filter((row) =>
                         row.game.props.children.toLowerCase().includes(searchQuery.toLowerCase())
-                      ).map((row, rowIndex) => (
-                        <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'bg-gray-100' : ''}>
-                          <td className={style.tableCol}>{row.no}</td>
-                          <td className={style.tableCol}>{row.game}</td>
-                          <td className={style.tableCol}>{row.totalWagered}</td>
-                          <td className={style.tableCol}>{row.totalPayout}</td>
-                          <td className={style.tableCol}>{row.totalGGR}</td>
-                          <td className={style.tableCol}>{row.GGR}</td>
+                      ).length === 0 ? (
+                        <tr>
+                          <td className={style.tableCol}>
+                            <SoftTypography variant="h6" color="white">
+                              Game not found
+                            </SoftTypography>
+                          </td>
                         </tr>
-                      ))
-                    )}
-                  </tbody>
-
-                </table>
-              </div>
-            </SoftBox>
+                      ) : (
+                        rows.slice(entries.indexOfFirst, entries.indexOfLast).filter((row) =>
+                          row.game.props.children.toLowerCase().includes(searchQuery.toLowerCase())
+                        ).map((row, rowIndex) => (
+                          <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'bg-[#706c6c]' : ''}>
+                            <td className={style.tableCol}>{row.no}</td>
+                            <td className={style.tableCol}>{row.game}</td>
+                            <td className={style.tableCol}>{row.totalWagered}</td>
+                            <td className={style.tableCol}>{row.totalPayout}</td>
+                            <td className={style.tableCol}>{row.totalGGR}</td>
+                            <td className={style.tableCol}>{row.GGR}</td>
+                          </tr>
+                        ))
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              </SoftBox>
+            </div>
           </Card>
         </SoftBox>
       </SoftBox>

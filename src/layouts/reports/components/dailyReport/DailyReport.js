@@ -57,139 +57,141 @@ const DailyReport = () => {
       <SoftBox py={3}>
         <SoftBox mb={3}>
           <Card>
-            <div className="">
-              <SoftBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
-                <SoftTypography variant="h6">DAILY REPORT</SoftTypography>
-                <SoftTypography variant="h6">
-                  <input
-                    className="border-[1px] rounded-[5px] px-4 py-[1px]"
-                    placeholder="search reports"
-                    value={searchQuery}
-                    onChange={handleSearch}
-                    type="text"
-                  />
-                </SoftTypography>
+            <div className="bg-[#1a1e32e4]">
+              <div className="bg-[#282a32] mb-4">
+                <SoftBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
+                  <SoftTypography variant="h6"><p className="text-[#fff]">DAILY REPORT</p></SoftTypography>
+                  <SoftTypography variant="h6">
+                    <input
+                      className="border-[1px] rounded-[5px] px-4 py-[1px]"
+                      placeholder="search reports"
+                      value={searchQuery}
+                      onChange={handleSearch}
+                      type="text"
+                    />
+                  </SoftTypography>
+                </SoftBox>
+              </div>
+              <SoftBox
+                sx={{
+                  "& .MuiTableRow-root:not(:last-child)": {
+                    "& td": {
+                      borderBottom: ({ borders: { borderWidth, borderColor } }) =>
+                        `${borderWidth[1]} solid ${borderColor}`,
+                    },
+                  },
+                }}
+              >
+                <div className="flex items-center justify-between my-4">
+                  <div className="select-wrapper max-elements px-6">
+                    <label className="text-[15px] text-[#fff] px-2" htmlFor="max-elements">Entries per page:</label>
+                    <select className="py-2 text-[13px] hover:bg-[#E1E4E7] cursor-pointer focus:outline-none px-2 rounded-[10px]" name="max-elements" id="max-elements" onChange={e => { currentPage.set(1); entriesPerPage.set(Number(e.target.value)); }}>
+                      <option value={1}>1</option>
+                      <option value={2}>2</option>
+                      <option value={10}>10</option>
+                      <option value={15}>15</option>
+                      <option value={20}>20</option>
+                      <option value={30}>30</option>
+                      <option value={50}>50</option>
+                      <option value={100}>100</option>
+                      <option value={rows?.length}>All</option>
+                    </select>
+                  </div>
+                  <button className="px-4 mx-4 border-[1px] rounded-[5px] bg-[#fff]" onClick={handleShowDate}>
+                    <SoftTypography variant="h6">filter by date</SoftTypography>
+                  </button>
+                </div>
+                {
+                  showDate ? (
+                    <div className="flex justify-center border-[1px]">
+                      <div className="bg-[#fff] p-4 w-[80%] m-auto md:left-[40%] fixed top-[30%] md:w-[30%] mb-4">
+                        <div className="flex top-[0px] bg-[#fff] sticky justify-between items-center gap-2 p-4">
+                          <h2 className="text-[16px] font-extrabold">Filter</h2>
+                          <button onClick={handleShowDate}>&times;</button>
+                        </div>
+                        <div>
+                          <SoftTypography variant="h6">Start Date:</ SoftTypography>
+                          <DatePicker className="text-[14px] border-[1px] px-4 w-full py-[3px]" selected={startDate} onChange={date => setStartDate(date)} />
+                        </div>
+                        <div className="mt-2">
+                          <SoftTypography variant="h6">End Date:</ SoftTypography>
+                          <DatePicker className="text-[14px] border-[1px] px-4 w-full py-[3px]" selected={endDate} onChange={date => setEndDate(date)} />
+                        </div>
+                        <SoftBox mt={4} mb={1}>
+                          <SoftButton variant="gradient" color="info" fullWidth>
+                            <button onClick={() => sortData(startDate, endDate)}>Sort Date</button>
+                          </SoftButton>
+                        </SoftBox>
+                      </div>
+                    </div>
+                  ) : (<></>)
+                }
+                <div className="overflow-x-auto dashboard">
+                  <table className="w-full">
+                    <thead>
+                      <tr>
+                        {columns.map((column, columnIndex) => (
+                          <th
+                            className="text-[#fff] text-[12px] text-center px-4"
+                            key={columnIndex}
+                          >{column.name}</th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {sortedData.slice(entries.indexOfFirst, entries.indexOfLast).filter((row) =>
+                        row.dau.props.children.toLowerCase().includes(searchQuery.toLowerCase())
+                      ).length === 0 ? (
+                        <tr>
+                          <td className={style.tableCol}>
+                            <SoftTypography variant="h6" color="white">
+                              Empty
+                            </SoftTypography>
+                          </td>
+                        </tr>
+                      ) : (
+                        sortedData.slice(entries.indexOfFirst, entries.indexOfLast).filter((row) =>
+                          row.dau.props.children.toLowerCase().includes(searchQuery.toLowerCase())
+                        ).map((row, rowIndex) => (
+                          <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'bg-[#706c6c]' : ''}>
+                            <td className={style.tableCol}>{row.date}</td>
+                            <td className={style.tableCol}>{row.dau}</td>
+                            <td className={style.tableCol}>{row.newRegister}</td>
+                            <td className={style.tableCol}>{row.totalNewDeposit}</td>
+                            <td className={style.tableCol}>{row.newDeposit}</td>
+                            <td className={style.tableCol}>{row.totalReDeposit}</td>
+                            <td className={style.tableCol}>{row.totalDeposit}</td>
+                            <td className={style.tableCol}>{row.totalWithdrawal}</td>
+                            <td className={style.tableCol}>{row.totalwagered}</td>
+                            <td className={style.tableCol}>{row.totalWinningPayout}</td>
+                            <td className={style.tableCol}>{row.totalGGR}</td>
+                            <td className={style.tableCol}>{row.totalDepositBonus}</td>
+                            <td className={style.tableCol}>{row.totalDepositUnlocked}</td>
+                            <td className={style.tableCol}>{row.vipLevelUp}</td>
+                            <td className={style.tableCol}>{row.luckySpin}</td>
+                            <td className={style.tableCol}>{row.rollCompetion}</td>
+                            <td className={style.tableCol}>{row.dailyContest}</td>
+                            <td className={style.tableCol}>{row.medal}</td>
+                            <td className={style.tableCol}>{row.binggo}</td>
+                            <td className={style.tableCol}>{row.rain}</td>
+                            <td className={style.tableCol}>{row.coindrop}</td>
+                            <td className={style.tableCol}>{row.totalFreeUnlocked}</td>
+                            <td className={style.tableCol}>{row.commisionRakeback}</td>
+                            <td className={style.tableCol}>{row.directReferal}</td>
+                            <td className={style.tableCol}>{row.totalAffiliateUnlocked}</td>
+                            <td className={style.tableCol}>{row.recharge}</td>
+                            <td className={style.tableCol}>{row.weeklyCashback}</td>
+                            <td className={style.tableCol}>{row.monthlyCashback}</td>
+                            <td className={style.tableCol}>{row.ticket}</td>
+                            <td className={style.tableCol}>{row.prize}</td>
+                          </tr>
+                        ))
+                      )}
+                    </tbody>
+                  </table>
+                </div>
               </SoftBox>
             </div>
-            <SoftBox
-              sx={{
-                "& .MuiTableRow-root:not(:last-child)": {
-                  "& td": {
-                    borderBottom: ({ borders: { borderWidth, borderColor } }) =>
-                      `${borderWidth[1]} solid ${borderColor}`,
-                  },
-                },
-              }}
-            >
-              <div className="flex items-center justify-between my-4">
-                <div className="select-wrapper max-elements px-6">
-                  <label className="text-[15px]" htmlFor="max-elements">Entries per page:</label>
-                  <select className="py-2 text-[13px] hover:bg-[#E1E4E7] cursor-pointer focus:outline-none px-2 rounded-[10px]" name="max-elements" id="max-elements" onChange={e => { currentPage.set(1); entriesPerPage.set(Number(e.target.value)); }}>
-                    <option value={1}>1</option>
-                    <option value={2}>2</option>
-                    <option value={10}>10</option>
-                    <option value={15}>15</option>
-                    <option value={20}>20</option>
-                    <option value={30}>30</option>
-                    <option value={50}>50</option>
-                    <option value={100}>100</option>
-                    <option value={rows?.length}>All</option>
-                  </select>
-                </div>
-                <button className="px-4 mx-4 border-[1px] " onClick={handleShowDate}>
-                  <SoftTypography variant="h6">filter by date</SoftTypography>
-                </button>
-              </div>
-              {
-                showDate ? (
-                  <div className="flex justify-center border-[1px]">
-                    <div className="bg-[#fff] p-4 w-[80%] m-auto md:left-[40%] fixed top-[30%] md:w-[30%] mb-4">
-                      <div className="flex top-[0px] bg-[#fff] sticky justify-between items-center gap-2 p-4">
-                        <h2 className="text-[16px] font-extrabold">Filter</h2>
-                        <button onClick={handleShowDate}>&times;</button>
-                      </div>
-                      <div>
-                        <SoftTypography variant="h6">Start Date:</ SoftTypography>
-                        <DatePicker className="text-[14px] border-[1px] px-4 w-full py-[3px]" selected={startDate} onChange={date => setStartDate(date)} />
-                      </div>
-                      <div className="mt-2">
-                        <SoftTypography variant="h6">End Date:</ SoftTypography>
-                        <DatePicker className="text-[14px] border-[1px] px-4 w-full py-[3px]" selected={endDate} onChange={date => setEndDate(date)} />
-                      </div>
-                      <SoftBox mt={4} mb={1}>
-                        <SoftButton variant="gradient" color="info" fullWidth>
-                          <button onClick={() => sortData(startDate, endDate)}>Sort Date</button>
-                        </SoftButton>
-                      </SoftBox>
-                    </div>
-                  </div>
-                ) : (<></>)
-              }
-              <div className="overflow-x-auto dashboard">
-                <table className="w-full">
-                  <thead>
-                    <tr>
-                      {columns.map((column, columnIndex) => (
-                        <th
-                          className="text-[#99a0ab] text-[12px] text-center px-4"
-                          key={columnIndex}
-                        >{column.name}</th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {sortedData.slice(entries.indexOfFirst, entries.indexOfLast).filter((row) =>
-                      row.dau.props.children.toLowerCase().includes(searchQuery.toLowerCase())
-                    ).length === 0 ? (
-                      <tr>
-                        <td className={style.tableCol}>
-                          <SoftTypography variant="h6">
-                            Empty
-                          </SoftTypography>
-                        </td>
-                      </tr>
-                    ) : (
-                      sortedData.slice(entries.indexOfFirst, entries.indexOfLast).filter((row) =>
-                        row.dau.props.children.toLowerCase().includes(searchQuery.toLowerCase())
-                      ).map((row, rowIndex) => (
-                        <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'bg-gray-100' : ''}>
-                          <td className={style.tableCol}>{row.date}</td>
-                          <td className={style.tableCol}>{row.dau}</td>
-                          <td className={style.tableCol}>{row.newRegister}</td>
-                          <td className={style.tableCol}>{row.totalNewDeposit}</td>
-                          <td className={style.tableCol}>{row.newDeposit}</td>
-                          <td className={style.tableCol}>{row.totalReDeposit}</td>
-                          <td className={style.tableCol}>{row.totalDeposit}</td>
-                          <td className={style.tableCol}>{row.totalWithdrawal}</td>
-                          <td className={style.tableCol}>{row.totalwagered}</td>
-                          <td className={style.tableCol}>{row.totalWinningPayout}</td>
-                          <td className={style.tableCol}>{row.totalGGR}</td>
-                          <td className={style.tableCol}>{row.totalDepositBonus}</td>
-                          <td className={style.tableCol}>{row.totalDepositUnlocked}</td>
-                          <td className={style.tableCol}>{row.vipLevelUp}</td>
-                          <td className={style.tableCol}>{row.luckySpin}</td>
-                          <td className={style.tableCol}>{row.rollCompetion}</td>
-                          <td className={style.tableCol}>{row.dailyContest}</td>
-                          <td className={style.tableCol}>{row.medal}</td>
-                          <td className={style.tableCol}>{row.binggo}</td>
-                          <td className={style.tableCol}>{row.rain}</td>
-                          <td className={style.tableCol}>{row.coindrop}</td>
-                          <td className={style.tableCol}>{row.totalFreeUnlocked}</td>
-                          <td className={style.tableCol}>{row.commisionRakeback}</td>
-                          <td className={style.tableCol}>{row.directReferal}</td>
-                          <td className={style.tableCol}>{row.totalAffiliateUnlocked}</td>
-                          <td className={style.tableCol}>{row.recharge}</td>
-                          <td className={style.tableCol}>{row.weeklyCashback}</td>
-                          <td className={style.tableCol}>{row.monthlyCashback}</td>
-                          <td className={style.tableCol}>{row.ticket}</td>
-                          <td className={style.tableCol}>{row.prize}</td>
-                        </tr>
-                      ))
-                    )}
-                  </tbody>
-                </table>
-              </div>
-            </SoftBox>
           </Card>
         </SoftBox>
       </SoftBox>

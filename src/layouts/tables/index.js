@@ -178,61 +178,65 @@ function Tables() {
         <SoftBox py={3}>
           <SoftBox mb={3}>
             <Card>
-              <SoftBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
-                <SoftTypography variant="h6">MEMBER MANAGEMENT</SoftTypography>
-                <button
-                  onClick={handleAddMember}
-                  className="bg-[#fff] border-[1px] members_table px-4 text-[13px] py-2 rounded-[7px] text-[#76839A]"
-                >Add new member</button>
-              </SoftBox>
-              <SoftBox
-                sx={{
-                  "& .MuiTableRow-root:not(:last-child)": {
-                    "& td": {
-                      borderBottom: ({ borders: { borderWidth, borderColor } }) =>
-                        `${borderWidth[1]} solid ${borderColor}`,
-                    },
-                  },
-                }}
-              >
-                <div className="overflow-x-auto">
-                  <table>
-                    <thead>
-                      <tr>
-                        {columns.map((column, columnIndex) => (
-                          <th
-                            className="text-[#99a0ab] text-[12px] text-center px-4"
-                            key={columnIndex}
-                          >{column.name}</th>
-                        ))}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {rows.map((row, rowIndex) => (
-                        <tr key={rowIndex}>
-                          <Link to={`/details/${row.userID.props.job}`} state={{ rowData: row }}>
-                            <td className={style.tableCol}>{row.users}</td>
-                          </Link>
-                          <td className={style.tableCol}>{row.userID}</td>
-                          <td className={style.tableCol}>{row.number}</td>
-                          <td className={style.tableCol}>{row.totalWagered}</td>
-                          <td className={style.tableCol}>{row.totalGCR}</td>
-                          <td className={style.tableCol}>{row.chatMessages}</td>
-                          <td className={style.tableCol}>{row.walletBalance}</td>
-                          <td className={style.tableCol}>{row.RegisteredDate}</td>
-                          <td className={style.tableCol}>{row.FirstDepositDate}</td>
-                          <td className={style.tableCol}>{row.LastDepositDate}</td>
-                          <td className={style.tableCol}>{row.LastLoginDate}</td>
-                          <td className={style.tableCol}>{row.LastLoginIP}</td>
-                          <td className={style.tableCol}>{row.Chat}</td>
-                          <td className={style.tableCol}>{row.status}</td>
-                          <td className={style.tableCol}>{row.action}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
+              <div className="bg-[#1a1e32e4]">
+                <div className="bg-[#282a32] mb-4">
+                  <SoftBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
+                    <SoftTypography variant="h6"><p className="text-[#fff]">MEMBER MANAGEMENT</p></SoftTypography>
+                    <button
+                      onClick={handleAddMember}
+                      className="bg-[#fff] border-[1px] members_table px-4 text-[13px] py-2 rounded-[7px] text-[#76839A]"
+                    >Add new member</button>
+                  </SoftBox>
                 </div>
-              </SoftBox>
+                <SoftBox
+                  sx={{
+                    "& .MuiTableRow-root:not(:last-child)": {
+                      "& td": {
+                        borderBottom: ({ borders: { borderWidth, borderColor } }) =>
+                          `${borderWidth[1]} solid ${borderColor}`,
+                      },
+                    },
+                  }}
+                >
+                  <div className="overflow-x-auto">
+                    <table>
+                      <thead>
+                        <tr>
+                          {columns.map((column, columnIndex) => (
+                            <th
+                              className="text-[#fff] text-[12px] text-center px-4"
+                              key={columnIndex}
+                            >{column.name}</th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {rows.map((row, rowIndex) => (
+                          <tr key={rowIndex}>
+                            <Link to={`/details/${row.userID.props.job}`} state={{ rowData: row }}>
+                              <td className={style.tableCol}>{row.users}</td>
+                            </Link>
+                            <td className={style.tableCol}>{row.userID}</td>
+                            <td className={style.tableCol}>{row.number}</td>
+                            <td className={style.tableCol}>{row.totalWagered}</td>
+                            <td className={style.tableCol}>{row.totalGCR}</td>
+                            <td className={style.tableCol}>{row.chatMessages}</td>
+                            <td className={style.tableCol}>{row.walletBalance}</td>
+                            <td className={style.tableCol}>{row.RegisteredDate}</td>
+                            <td className={style.tableCol}>{row.FirstDepositDate}</td>
+                            <td className={style.tableCol}>{row.LastDepositDate}</td>
+                            <td className={style.tableCol}>{row.LastLoginDate}</td>
+                            <td className={style.tableCol}>{row.LastLoginIP}</td>
+                            <td className={style.tableCol}>{row.Chat}</td>
+                            <td className={style.tableCol}>{row.status}</td>
+                            <td className={style.tableCol}>{row.action}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </SoftBox>
+              </div>
             </Card>
           </SoftBox>
         </SoftBox>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Card from "@mui/material/Card";
 import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
@@ -12,6 +13,7 @@ import { BsArrowUpRight } from 'react-icons/bs';
 const GgrReport = () => {
   const { columns, rows } = grrReport;
   const { currentPage, entriesPerPage, entries } = usePagination(1, 10);
+  console.log("rows", rows[0].userID.props.children);
 
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -28,82 +30,90 @@ const GgrReport = () => {
       <SoftBox py={3}>
         <SoftBox mb={3}>
           <Card>
-            <SoftBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
-              <SoftTypography variant="h6">GGR Report</SoftTypography>
-              <SoftTypography variant="h6">
-                <input
-                  className="border-[1px] rounded-[5px] px-4 py-[1px]"
-                  placeholder="search reports"
-                  value={searchQuery}
-                  onChange={handleSearch}
-                  type="text"
-                />
-              </SoftTypography>
-            </SoftBox>
-            <SoftBox
-              sx={{
-                "& .MuiTableRow-root:not(:last-child)": {
-                  "& td": {
-                    borderBottom: ({ borders: { borderWidth, borderColor } }) =>
-                      `${borderWidth[1]} solid ${borderColor}`,
+            <div className="bg-[#1a1e32e4]">
+              <div className="bg-[#282a32] mb-4">
+                <SoftBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
+                  <SoftTypography variant="h6"><p className="text-[#fff]">GGR Report</p></SoftTypography>
+                  <SoftTypography variant="h6">
+                    <input
+                      className="border-[1px] rounded-[5px] px-4 py-[1px]"
+                      placeholder="search reports"
+                      value={searchQuery}
+                      onChange={handleSearch}
+                      type="text"
+                    />
+                  </SoftTypography>
+                </SoftBox>
+              </div>
+              <SoftBox
+                sx={{
+                  "& .MuiTableRow-root:not(:last-child)": {
+                    "& td": {
+                      borderBottom: ({ borders: { borderWidth, borderColor } }) =>
+                        `${borderWidth[1]} solid ${borderColor}`,
+                    },
                   },
-                },
-              }}
-            >
-              <div className="select-wrapper max-elements px-6">
-                <label className="text-[15px]" htmlFor="max-elements">Entries per page:</label>
-                <select className="py-2 text-[13px] hover:bg-[#E1E4E7] cursor-pointer focus:outline-none px-2 rounded-[10px]" name="max-elements" id="max-elements" onChange={e => { currentPage.set(1); entriesPerPage.set(Number(e.target.value)); }}>
-                  <option value={1}>1</option>
-                  <option value={2}>2</option>
-                  <option value={10}>10</option>
-                  <option value={15}>15</option>
-                  <option value={20}>20</option>
-                  <option value={30}>30</option>
-                  <option value={50}>50</option>
-                  <option value={100}>100</option>
-                  <option value={rows?.length}>All</option>
-                </select>
-              </div>
-              <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead>
-                    <tr>
-                      {columns.map((column, columnIndex) => (
-                        <th
-                          className="text-[#99a0ab] text-[12px] text-center px-4"
-                          key={columnIndex}
-                        >{column.name}</th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {rows.slice(entries.indexOfFirst, entries.indexOfLast).filter((row) =>
-                      row.username.props.children.toLowerCase().includes(searchQuery.toLowerCase())
-                    ).length === 0 ? (
+                }}
+              >
+                <div className="select-wrapper max-elements px-6 my-2">
+                  <label className="text-[15px] text-[#fff] px-2" htmlFor="max-elements">Entries per page:</label>
+                  <select className="py-2 text-[13px] hover:bg-[#E1E4E7] cursor-pointer focus:outline-none px-2 rounded-[10px]" name="max-elements" id="max-elements" onChange={e => { currentPage.set(1); entriesPerPage.set(Number(e.target.value)); }}>
+                    <option value={1}>1</option>
+                    <option value={2}>2</option>
+                    <option value={10}>10</option>
+                    <option value={15}>15</option>
+                    <option value={20}>20</option>
+                    <option value={30}>30</option>
+                    <option value={50}>50</option>
+                    <option value={100}>100</option>
+                    <option value={rows?.length}>All</option>
+                  </select>
+                </div>
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead>
                       <tr>
-                        <td className={style.tableCol}>
-                          <SoftTypography variant="h6">
-                            user not found
-                          </SoftTypography>
-                        </td>
+                        {columns.map((column, columnIndex) => (
+                          <th
+                            className="text-[#fff] text-[12px] text-center px-4"
+                            key={columnIndex}
+                          >{column.name}</th>
+                        ))}
                       </tr>
-                    ) : (
-                      rows.slice(entries.indexOfFirst, entries.indexOfLast).filter((row) =>
+                    </thead>
+                    <tbody>
+                      {rows.slice(entries.indexOfFirst, entries.indexOfLast).filter((row) =>
                         row.username.props.children.toLowerCase().includes(searchQuery.toLowerCase())
-                      ).map((row, rowIndex) => (
-                        <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'bg-gray-100' : ''}>
-                          <td className={style.tableCol}>{row.userID}</td>
-                          <td className={style.tableCol}>{row.username}</td>
-                          <td className={style.tableCol}>{row.totalWagered}</td>
-                          <td className={style.tableCol}>{row.totalPayout}</td>
-                          <td className={style.tableCol}>{row.totalGGR}</td>
+                      ).length === 0 ? (
+                        <tr>
+                          <td className={style.tableCol}>
+                            <SoftTypography variant="h6" color="white">
+                              user not found
+                            </SoftTypography>
+                          </td>
                         </tr>
-                      ))
-                    )}
-                  </tbody>
-                </table>
-              </div>
-            </SoftBox>
+                      ) : (
+                        rows.slice(entries.indexOfFirst, entries.indexOfLast).filter((row) =>
+                          row.username.props.children.toLowerCase().includes(searchQuery.toLowerCase())
+                        ).map((row, rowIndex) => (
+                          <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'bg-[#706c6c]' : ''}>
+                            <td className={style.tableCol}>
+                              <Link to={`/details/${row.userID.props.children}`} state={{ rowData: row }}>
+                                {row.username}
+                              </Link>
+                            </td>
+                            <td className={style.tableCol}>{row.userID}</td>
+                            <td className={style.tableCol}>{row.totalWagered}</td>
+                            <td className={style.tableCol}>{row.totalPayout}</td>
+                            <td className={style.tableCol}>{row.totalGGR}</td>
+                          </tr>
+                        ))
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              </SoftBox>
+            </div>
           </Card>
         </SoftBox>
         <Pagination
