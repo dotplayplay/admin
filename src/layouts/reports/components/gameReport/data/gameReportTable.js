@@ -4,9 +4,9 @@ const gameReport = {
   columns: [
     { name: "no", align: "center" },
     { name: "game", align: "center" },
-    { name: "totalWagered", align: "center" },
-    { name: "totalPayout", align: "center" },
-    { name: "totalGGR", align: "center" },
+    { name: "total Wagered", align: "center" },
+    { name: "total Payout", align: "center" },
+    { name: "total GGR", align: "center" },
     { name: "GGR", align: "center" },
   ],
   rows: [

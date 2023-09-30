@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Card from "@mui/material/Card";
 import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
@@ -13,7 +13,11 @@ import { BsArrowUpRight } from 'react-icons/bs';
 const GgrReport = () => {
   const { columns, rows } = grrReport;
   const { currentPage, entriesPerPage, entries } = usePagination(1, 10);
-  console.log("rows", rows[0].userID.props.children);
+  const navigate = useNavigate();
+
+  const memberDetail = (rowId) => {
+    navigate(`/details/${rows[rowId].userID.props.children}`);
+  }
 
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -31,7 +35,7 @@ const GgrReport = () => {
         <SoftBox mb={3}>
           <Card>
             <div className="bg-[#1a1e32e4]">
-              <div className="bg-[#282a32] mb-4">
+              <div className="bg-[#282a32]">
                 <SoftBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
                   <SoftTypography variant="h6"><p className="text-[#fff]">GGR Report</p></SoftTypography>
                   <SoftTypography variant="h6">
@@ -55,7 +59,7 @@ const GgrReport = () => {
                   },
                 }}
               >
-                <div className="select-wrapper max-elements px-6 my-2">
+                <div className="select-wrapper max-elements px-6 py-4 bg-[#202128]">
                   <label className="text-[15px] text-[#fff] px-2" htmlFor="max-elements">Entries per page:</label>
                   <select className="py-2 text-[13px] hover:bg-[#E1E4E7] cursor-pointer focus:outline-none px-2 rounded-[10px]" name="max-elements" id="max-elements" onChange={e => { currentPage.set(1); entriesPerPage.set(Number(e.target.value)); }}>
                     <option value={1}>1</option>
@@ -75,7 +79,7 @@ const GgrReport = () => {
                       <tr>
                         {columns.map((column, columnIndex) => (
                           <th
-                            className="text-[#fff] text-[12px] text-center px-4"
+                            className="text-[#fff] bg-[#202128] text-[14px] text-center px-4"
                             key={columnIndex}
                           >{column.name}</th>
                         ))}
@@ -96,12 +100,12 @@ const GgrReport = () => {
                         rows.slice(entries.indexOfFirst, entries.indexOfLast).filter((row) =>
                           row.username.props.children.toLowerCase().includes(searchQuery.toLowerCase())
                         ).map((row, rowIndex) => (
-                          <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'bg-[#706c6c]' : ''}>
-                            <td className={style.tableCol}>
-                              <Link to={`/details/${row.userID.props.children}`} state={{ rowData: row }}>
-                                {row.username}
-                              </Link>
-                            </td>
+                          <tr
+                            key={rowIndex}
+                            onClick={() => memberDetail(rowIndex)}
+                            className={`cursor-pointer ${rowIndex % 2 === 0 ? 'bg-[#706c6c]' : ''}`}
+                          >
+                            <td className={style.tableCol}>{row.username}</td>
                             <td className={style.tableCol}>{row.userID}</td>
                             <td className={style.tableCol}>{row.totalWagered}</td>
                             <td className={style.tableCol}>{row.totalPayout}</td>

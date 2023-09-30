@@ -58,7 +58,7 @@ const DailyReport = () => {
         <SoftBox mb={3}>
           <Card>
             <div className="bg-[#1a1e32e4]">
-              <div className="bg-[#282a32] mb-4">
+              <div className="bg-[#282a32]">
                 <SoftBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
                   <SoftTypography variant="h6"><p className="text-[#fff]">DAILY REPORT</p></SoftTypography>
                   <SoftTypography variant="h6">
@@ -82,7 +82,7 @@ const DailyReport = () => {
                   },
                 }}
               >
-                <div className="flex items-center justify-between my-4">
+                <div className="flex items-center justify-between py-4 bg-[#202128]">
                   <div className="select-wrapper max-elements px-6">
                     <label className="text-[15px] text-[#fff] px-2" htmlFor="max-elements">Entries per page:</label>
                     <select className="py-2 text-[13px] hover:bg-[#E1E4E7] cursor-pointer focus:outline-none px-2 rounded-[10px]" name="max-elements" id="max-elements" onChange={e => { currentPage.set(1); entriesPerPage.set(Number(e.target.value)); }}>
@@ -132,7 +132,7 @@ const DailyReport = () => {
                       <tr>
                         {columns.map((column, columnIndex) => (
                           <th
-                            className="text-[#fff] text-[12px] text-center px-4"
+                            className="text-[#fff] text-[12px] bg-[#202128] text-center px-4"
                             key={columnIndex}
                           >{column.name}</th>
                         ))}

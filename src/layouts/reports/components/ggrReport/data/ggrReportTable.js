@@ -3,10 +3,10 @@ import SoftTypography from "components/SoftTypography";
 const grrReport = {
   columns: [
     { name: "username", align: "center" },
-    { name: "userID", align: "center" },
-    { name: "totalWagered", align: "center" },
-    { name: "totalPayout", align: "center" },
-    { name: "totalGGR", align: "center" },
+    { name: "user ID", align: "center" },
+    { name: "total Wagered", align: "center" },
+    { name: "total Payout", align: "center" },
+    { name: "total GGR", align: "center" },
   ],
   rows: [
     {

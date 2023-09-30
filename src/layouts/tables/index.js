@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Card from "@mui/material/Card";
 import SoftBox from "components/SoftBox";
 import SoftButton from "components/SoftButton";
@@ -15,11 +15,14 @@ import projectsTableData from "layouts/tables/data/projectsTableData";
 
 function Tables() {
   const { columns, rows } = authorsTableData;
-  const { columns: prCols, rows: prRows } = projectsTableData;
   const [addMember, setAddMember] = useState(false);
-  const modalRef = useRef(null);
+  const navigate = useNavigate();
   const handleAddMember = () => {
     setAddMember(!addMember)
+  }
+
+  const memberDetail = (rowId) => {
+    navigate(`/details/${rows[rowId].userID.props.job}`);
   }
 
   const [formData, setFormData] = useState({
@@ -179,7 +182,7 @@ function Tables() {
           <SoftBox mb={3}>
             <Card>
               <div className="bg-[#1a1e32e4]">
-                <div className="bg-[#282a32] mb-4">
+                <div className="bg-[#282a32]">
                   <SoftBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
                     <SoftTypography variant="h6"><p className="text-[#fff]">MEMBER MANAGEMENT</p></SoftTypography>
                     <button
@@ -204,7 +207,7 @@ function Tables() {
                         <tr>
                           {columns.map((column, columnIndex) => (
                             <th
-                              className="text-[#fff] text-[12px] text-center px-4"
+                              className="text-[#fff] bg-[#202128] w-full text-[14px] text-center px-4"
                               key={columnIndex}
                             >{column.name}</th>
                           ))}
@@ -212,10 +215,12 @@ function Tables() {
                       </thead>
                       <tbody>
                         {rows.map((row, rowIndex) => (
-                          <tr key={rowIndex}>
-                            <Link to={`/details/${row.userID.props.job}`} state={{ rowData: row }}>
-                              <td className={style.tableCol}>{row.users}</td>
-                            </Link>
+                          <tr
+                            key={rowIndex}
+                            onClick={() => memberDetail(rowIndex)}
+                            className={`cursor-pointer ${rowIndex % 2 === 0 ? 'bg-[#706c6c]' : ''}`}
+                          >
+                            <td className={style.tableCol}>{row.users}</td>
                             <td className={style.tableCol}>{row.userID}</td>
                             <td className={style.tableCol}>{row.number}</td>
                             <td className={style.tableCol}>{row.totalWagered}</td>
