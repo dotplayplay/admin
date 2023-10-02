@@ -10,13 +10,19 @@ import Configurator from "examples/Configurator";
 import theme from "assets/theme";
 import themeRTL from "assets/theme/theme-rtl";
 
+//members details
+import MemberDetails from "layouts/tables/MemberDetails";
+
+//dashboard
+import Dashboard from "layouts/dashboard/index"
+
 // plugins
 import rtlPlugin from "stylis-plugin-rtl";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
 import routes from "routes";
 // setOpenConfigurator
-import { useSoftUIController, setMiniSidenav,  } from "context";
+import { useSoftUIController, setMiniSidenav, } from "context";
 
 export default function App() {
   const [controller, dispatch] = useSoftUIController();
@@ -110,7 +116,7 @@ export default function App() {
           <>
             <Sidenav
               color={sidenavColor}
- 
+
               brandName="DOTPLAYPLAY"
               routes={routes}
               onMouseEnter={handleOnMouseEnter}
@@ -123,7 +129,8 @@ export default function App() {
         {layout === "vr" && <Configurator />}
         <Routes>
           {getRoutes(routes)}
-          <Route path="*" element={<Navigate to="/dashboard" />} />
+          <Route path="*" element={<Dashboard />} />
+          <Route path="/details/:rowIndex" element={<MemberDetails />} />
         </Routes>
       </ThemeProvider>
     </CacheProvider>
@@ -146,7 +153,8 @@ export default function App() {
       {layout === "vr" && <Configurator />}
       <Routes>
         {getRoutes(routes)}
-        <Route path="*" element={<Navigate to="/dashboard" />} />
+        <Route path="*" element={<Dashboard />} />
+        <Route path="/details/:rowIndex" element={<MemberDetails />} />
       </Routes>
     </ThemeProvider>
   );

@@ -10,7 +10,7 @@ function OrdersOverview() {
     <Card className="h-100">
       <SoftBox pt={3} px={3}>
         <SoftTypography variant="h6" fontWeight="medium">
-            New KYC Reg. Review
+            Task list
         </SoftTypography>
         <SoftBox mt={1} mb={2}>
           <SoftTypography variant="button" color="text" fontWeight="regular">
@@ -31,38 +31,44 @@ function OrdersOverview() {
         <TimelineItem
           color="success"
           icon="vpn_key"
-          title="Valiant Joe, "
-          dateTime="22 DEC 7:20 PM"
+          title="Valiant Joe"
+          description="Pending withdrawals"
+          email="valiant@gmail.com"
+        />
+                <TimelineItem
+          color="success"
+          icon="vpn_key"
+          title="Luxury Jam"
+          description="Pending deposit approvals"
+          email="luxury@gmail.com"
+        />
+                <TimelineItem
+          color="success"
+          icon="vpn_key"
+          title="John Doe"
+          description="Pending claim approvals"
+          email="johndoe@gmail.com"
+        />
+                <TimelineItem
+          color="success"
+          icon="vpn_key"
+          title="John Uche"
+          description="Pending withdrawals"
+          email="doejohn@gmail.com"
+        />
+                <TimelineItem
+          color="success"
+          icon="vpn_key"
+          title="Ifeanyi 305"
+          description="Pending deposit approvals"
+          email="ifeanyi@gmail.com"
         />
                 <TimelineItem
           color="success"
           icon="vpn_key"
           title="Valiant Joe, "
-          dateTime="22 DEC 7:20 PM"
-        />
-                <TimelineItem
-          color="success"
-          icon="vpn_key"
-          title="Valiant Joe, "
-          dateTime="22 DEC 7:20 PM"
-        />
-                <TimelineItem
-          color="success"
-          icon="vpn_key"
-          title="Valiant Joe, "
-          dateTime="22 DEC 7:20 PM"
-        />
-                <TimelineItem
-          color="success"
-          icon="vpn_key"
-          title="Valiant Joe, "
-          dateTime="22 DEC 7:20 PM"
-        />
-                <TimelineItem
-          color="success"
-          icon="vpn_key"
-          title="Valiant Joe, "
-          dateTime="22 DEC 7:20 PM"
+          description="Pending claim approvals"
+          email="johndoe@gmail.com"
         />
         
        

@@ -1,239 +1,272 @@
-/* eslint-disable react/prop-types */
-import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
-import SoftAvatar from "components/SoftAvatar";
-import SoftBadge from "components/SoftBadge";
 
-// Images
-import team2 from "assets/images/team-2.jpg";
-
-function Author({ image, name, email }) {
-  return (
-    <SoftBox display="flex" alignItems="center" px={1} py={0.5}>
-      <SoftBox mr={2}>
-        <SoftAvatar src={image} alt={name} size="sm" variant="rounded" />
-      </SoftBox>
-      <SoftBox display="flex" flexDirection="column">
-        <SoftTypography variant="button" color="white" fontWeight="medium">
-          {name}
-        </SoftTypography>
-        <SoftTypography variant="caption" color="white">
-          {email}
-        </SoftTypography>
-      </SoftBox>
-    </SoftBox>
-  );
-}
-
-function Function({ job, org }) {
-  return (
-    <SoftBox display="flex" flexDirection="column">
-      <SoftTypography variant="caption" color="white" fontWeight="medium">
-        {job}
-      </SoftTypography>
-      <SoftTypography variant="caption" color="secondary">
-        {org}
-      </SoftTypography>
-    </SoftBox>
-  );
-}
-
-const authorsTableData = {
+const gameReport = {
   columns: [
-    { name: "users", align: "left" },
-    { name: "user ID", align: "center" },
-    { name: "number", align: "center" },
+    { name: "no", align: "center" },
+    { name: "game", align: "center" },
     { name: "total Wagered", align: "center" },
-    { name: "total GCR", align: "center" },
-    { name: "chat Messages", align: "center" },
-    { name: "wallet Balance", align: "center" },
-    { name: "Registered Date", align: "center" },
-    { name: "First Deposit Date", align: "center" },
-    { name: "Last Deposit Date", align: "center" },
-    { name: "Last Login Date", align: "center" },
-    { name: "Last Login IP", align: "center" },
-    { name: "Chat", align: "center" },
+    { name: "total Payout", align: "center" },
+    { name: "total GGR", align: "center" },
+    { name: "GGR", align: "center" },
   ],
-
   rows: [
     {
-      users: <Author image={team2} name="John Michael" email="john@valiant_joe.com" />,
-      userID: <Function job="sqz11829sgh" />,
-      number: (
+      no: (
         <SoftTypography variant="caption" color="white" fontWeight="medium">
-         07089283903
+         1
+        </SoftTypography>
+      ),
+      game: (
+        <SoftTypography variant="caption" color="white" fontWeight="medium">
+          Crash
         </SoftTypography>
       ),
       totalWagered: (
         <SoftTypography variant="caption" color="white" fontWeight="medium">
-         102345
+          $304
         </SoftTypography>
       ),
-      totalGCR: (
+      totalPayout: (
         <SoftTypography variant="caption" color="white" fontWeight="medium">
-         1023.48
+          $230
         </SoftTypography>
       ),
-      chatMessages: (
+      totalGGR: (
         <SoftTypography variant="caption" color="white" fontWeight="medium">
-         10
+          $23
         </SoftTypography>
       ),
-      walletBalance: (
+      GGR: (
         <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $345
-        </SoftTypography>
-      ),
-      RegisteredDate: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          03/08/2023, 23:48:14
-        </SoftTypography>
-      ),
-      FirstDepositDate: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          02/09/2023, 13:48:14
-        </SoftTypography>
-      ),
-      LastDepositDate: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          03/10/2023, 20:48:14
-        </SoftTypography>
-      ),
-      LastLoginDate: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          04/10/2023, 20:48:14
-        </SoftTypography>
-      ),
-      LastLoginIP: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          234rtpd123
-        </SoftTypography>
-      ),
-      Chat: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          <button>chat on whatsapp</button>
+          $23
         </SoftTypography>
       ),
     },
     {
-      users: <Author image={"https://img2.nanogames.io/avatar/25671/s"} name="Jaeme Michael" email="jaeme@valiant_joe.com" />,
-      userID: <Function job="jtaz823n" />,
-      number: (
+      no: (
         <SoftTypography variant="caption" color="white" fontWeight="medium">
-         090672663547
+         2
+        </SoftTypography>
+      ),
+      game: (
+        <SoftTypography variant="caption" color="white" fontWeight="medium">
+          Hilo
         </SoftTypography>
       ),
       totalWagered: (
         <SoftTypography variant="caption" color="white" fontWeight="medium">
-         1016275
+          $300
         </SoftTypography>
       ),
-      totalGCR: (
+      totalPayout: (
         <SoftTypography variant="caption" color="white" fontWeight="medium">
-          34923.48
+          $210
         </SoftTypography>
       ),
-      chatMessages: (
+      totalGGR: (
+        <SoftTypography variant="caption" color="white" fontWeight="medium">
+          $239
+        </SoftTypography>
+      ),
+      GGR: (
+        <SoftTypography variant="caption" color="white" fontWeight="medium">
+          $33
+        </SoftTypography>
+      ),
+    },
+    {
+      no: (
+        <SoftTypography variant="caption" color="white" fontWeight="medium">
+         3
+        </SoftTypography>
+      ),
+      game: (
+        <SoftTypography variant="caption" color="white" fontWeight="medium">
+          Mines
+        </SoftTypography>
+      ),
+      totalWagered: (
+        <SoftTypography variant="caption" color="white" fontWeight="medium">
+          $354
+        </SoftTypography>
+      ),
+      totalPayout: (
+        <SoftTypography variant="caption" color="white" fontWeight="medium">
+          $430
+        </SoftTypography>
+      ),
+      totalGGR: (
+        <SoftTypography variant="caption" color="white" fontWeight="medium">
+          $23
+        </SoftTypography>
+      ),
+      GGR: (
+        <SoftTypography variant="caption" color="white" fontWeight="medium">
+          $23
+        </SoftTypography>
+      ),
+    },
+    {
+      no: (
         <SoftTypography variant="caption" color="white" fontWeight="medium">
          4
         </SoftTypography>
       ),
-      walletBalance: (
+      game: (
         <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $500
-        </SoftTypography>
-      ),
-      RegisteredDate: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          06/10/2023, 23:48:14
-        </SoftTypography>
-      ),
-      FirstDepositDate: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          01/02/2023, 10:48:14
-        </SoftTypography>
-      ),
-      LastDepositDate: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          03/11/2023, 21:48:14
-        </SoftTypography>
-      ),
-      LastLoginDate: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          02/11/2023, 20:42:14
-        </SoftTypography>
-      ),
-      LastLoginIP: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          290rtpd123
-        </SoftTypography>
-      ),
-      Chat: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          <button>chat on whatsapp</button>
-        </SoftTypography>
-      ),
-    },
-    {
-      users: <Author image={team2} name="John Michael" email="john@valiant_joe.com" />,
-      userID: <Function job="quasi19" />,
-      number: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-         08169937218
+          Tower
         </SoftTypography>
       ),
       totalWagered: (
         <SoftTypography variant="caption" color="white" fontWeight="medium">
-         112345
+          $324
         </SoftTypography>
       ),
-      totalGCR: (
+      totalPayout: (
         <SoftTypography variant="caption" color="white" fontWeight="medium">
-         11203.48
+          $130
         </SoftTypography>
       ),
-      chatMessages: (
+      totalGGR: (
         <SoftTypography variant="caption" color="white" fontWeight="medium">
-         9
+          $213
         </SoftTypography>
       ),
-      walletBalance: (
+      GGR: (
         <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $450
-        </SoftTypography>
-      ),
-      RegisteredDate: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          03/10/2023, 13:48:14
-        </SoftTypography>
-      ),
-      FirstDepositDate: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          01/09/2023, 16:48:14
-        </SoftTypography>
-      ),
-      LastDepositDate: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          04/10/2023, 20:48:14
-        </SoftTypography>
-      ),
-      LastLoginDate: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          04/10/2023, 20:48:14
-        </SoftTypography>
-      ),
-      LastLoginIP: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          234rtpd121
-        </SoftTypography>
-      ),
-      Chat: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          <button>chat on whatsapp</button>
+          $238
         </SoftTypography>
       ),
     },
-  ],
-};
+    {
+      no: (
+        <SoftTypography variant="caption" color="white" fontWeight="medium">
+         5
+        </SoftTypography>
+      ),
+      game: (
+        <SoftTypography variant="caption" color="white" fontWeight="medium">
+          Keno
+        </SoftTypography>
+      ),
+      totalWagered: (
+        <SoftTypography variant="caption" color="white" fontWeight="medium">
+          $3204
+        </SoftTypography>
+      ),
+      totalPayout: (
+        <SoftTypography variant="caption" color="white" fontWeight="medium">
+          $2301
+        </SoftTypography>
+      ),
+      totalGGR: (
+        <SoftTypography variant="caption" color="white" fontWeight="medium">
+          $232
+        </SoftTypography>
+      ),
+      GGR: (
+        <SoftTypography variant="caption" color="white" fontWeight="medium">
+          $231
+        </SoftTypography>
+      ),
+    },
+    {
+      no: (
+        <SoftTypography variant="caption" color="white" fontWeight="medium">
+          6
+        </SoftTypography>
+      ),
+      game: (
+        <SoftTypography variant="caption" color="white" fontWeight="medium">
+          Dice
+        </SoftTypography>
+      ),
+      totalWagered: (
+        <SoftTypography variant="caption" color="white" fontWeight="medium">
+          $324
+        </SoftTypography>
+      ),
+      totalPayout: (
+        <SoftTypography variant="caption" color="white" fontWeight="medium">
+          $23
+        </SoftTypography>
+      ),
+      totalGGR: (
+        <SoftTypography variant="caption" color="white" fontWeight="medium">
+          $230
+        </SoftTypography>
+      ),
+      GGR: (
+        <SoftTypography variant="caption" color="white" fontWeight="medium">
+          $21
+        </SoftTypography>
+      ),
+    },
+    {
+      no: (
+        <SoftTypography variant="caption" color="white" fontWeight="medium">
+         7
+        </SoftTypography>
+      ),
+      game: (
+        <SoftTypography variant="caption" color="white" fontWeight="medium">
+          Plinko
+        </SoftTypography>
+      ),
+      totalWagered: (
+        <SoftTypography variant="caption" color="white" fontWeight="medium">
+          $104
+        </SoftTypography>
+      ),
+      totalPayout: (
+        <SoftTypography variant="caption" color="white" fontWeight="medium">
+          $230
+        </SoftTypography>
+      ),
+      totalGGR: (
+        <SoftTypography variant="caption" color="white" fontWeight="medium">
+          $23
+        </SoftTypography>
+      ),
+      GGR: (
+        <SoftTypography variant="caption" color="white" fontWeight="medium">
+          $23
+        </SoftTypography>
+      ),
+    },
+    {
+      no: (
+        <SoftTypography variant="caption" color="white" fontWeight="medium">
+         8
+        </SoftTypography>
+      ),
+      game: (
+        <SoftTypography variant="caption" color="white" fontWeight="medium">
+          Lottery
+        </SoftTypography>
+      ),
+      totalWagered: (
+        <SoftTypography variant="caption" color="white" fontWeight="medium">
+          $119
+        </SoftTypography>
+      ),
+      totalPayout: (
+        <SoftTypography variant="caption" color="white" fontWeight="medium">
+          $230
+        </SoftTypography>
+      ),
+      totalGGR: (
+        <SoftTypography variant="caption" color="white" fontWeight="medium">
+          $23
+        </SoftTypography>
+      ),
+      GGR: (
+        <SoftTypography variant="caption" color="white" fontWeight="medium">
+          $23
+        </SoftTypography>
+      ),
+    },
+  ]
+}
 
-export default authorsTableData;
+export default gameReport;
