@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import Card from "@mui/material/Card";
 import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
-import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
-import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 //data
 import gameReport from './data/gameReportTable';
 import { usePagination, Pagination } from "pagination-react-js";
@@ -80,8 +78,10 @@ const GameReport = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {rows.slice(entries.indexOfFirst, entries.indexOfLast).filter((row) =>
-                        row.game.props.children.toLowerCase().includes(searchQuery.toLowerCase())
+                      {rows
+                      .slice(entries.indexOfFirst, entries.indexOfLast)
+                      .filter(
+                        (row) => row.game.props.children.toLowerCase().includes(searchQuery.toLowerCase())
                       ).length === 0 ? (
                         <tr>
                           <td className={style.tableCol}>
@@ -90,10 +90,13 @@ const GameReport = () => {
                             </SoftTypography>
                           </td>
                         </tr>
-                      ) : (
-                        rows.slice(entries.indexOfFirst, entries.indexOfLast).filter((row) =>
-                          row.game.props.children.toLowerCase().includes(searchQuery.toLowerCase())
-                        ).map((row, rowIndex) => (
+                      ) 
+                      : (rows
+                        .slice(entries.indexOfFirst, entries.indexOfLast)
+                        .filter(
+                          (row) => row.game.props.children.toLowerCase().includes(searchQuery.toLowerCase())
+                        )
+                        .map((row, rowIndex) => (
                           <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'bg-[#706c6c]' : ''}>
                             <td className={style.tableCol}>{row.no}</td>
                             <td className={style.tableCol}>{row.game}</td>

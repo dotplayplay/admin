@@ -4,8 +4,6 @@ import GameReport from './components/gameReport/GameReport';
 import DailyReport from './components/dailyReport/DailyReport';
 import GgrReport from './components/ggrReport';
 import Header from './components/navbar';
-import DashboardNavbar from 'examples/Navbars/DashboardNavbar';
-import DashboardLayout from 'examples/LayoutContainers/DashboardLayout';
 import SoftBox from "components/SoftBox";
 import Footer from "examples/Footer";
 
@@ -29,7 +27,7 @@ const Report = () => {
   })
 
   return (
-    <DashboardLayout>
+    <div>
       <Header handleTaps={handleTaps} />
       {isGameReport && <SoftBox mt={5} mb={3}>
         <Grid item xs={12} md={6} xl={4}>
@@ -47,7 +45,7 @@ const Report = () => {
         </Grid>
       </SoftBox>}
       <Footer />
-    </DashboardLayout>
+    </div>
   );
 };
 
