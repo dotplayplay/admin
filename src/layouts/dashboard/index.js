@@ -5,7 +5,7 @@ import SoftTypography from "components/SoftTypography";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
-// import MiniStatisticsCard from "examples/Cards/StatisticsCards/MiniStatisticsCard";
+import MiniStatisticsCard from "examples/Cards/StatisticsCards/MiniStatisticsCard";
 import ReportsBarChart from "examples/Charts/BarCharts/ReportsBarChart";
 import GradientLineChart from "examples/Charts/LineCharts/GradientLineChart";
 import typography from "assets/theme/base/typography";
@@ -27,7 +27,7 @@ function Dashboard() {
         <SoftBox mb={3}>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={6} xl={3}>
-              {/* <MiniStatisticsCard
+              <MiniStatisticsCard
                 title={{ text: "Wallet balance" }}
                 count="$53,000"
                 percentage={{ color: "success", text: "+55%" }}
@@ -59,7 +59,7 @@ function Dashboard() {
                   color: "info",
                   component: "paid"
                 }}
-              /> */}
+              />
             </Grid>
           </Grid>
         </SoftBox>

@@ -5,7 +5,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import SoftBox from "components/SoftBox";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import Footer from "examples/Footer";
-// import ProfileInfoCard from "examples/Cards/InfoCards/ProfileInfoCard";
+import ProfileInfoCard from "examples/Cards/InfoCards/ProfileInfoCard";
 import ProfilesList from "examples/Lists/ProfilesList";
 import Header from "layouts/profile/components/Header";
 import PlatformSettings from "layouts/profile/components/PlatformSettings";
@@ -22,7 +22,7 @@ function Overview() {
             <PlatformSettings />
           </Grid>
           <Grid item xs={12} md={6} xl={4}>
-            {/* <ProfileInfoCard
+            <ProfileInfoCard
               title="profile information"
               description="Hi, I’m Valiant Joe, Decisions: If you can’t decide, the answer is no. If two equally difficult paths, choose the one more painful in the short term (pain avoidance is creating an illusion of equality)."
               info={{
@@ -50,7 +50,7 @@ function Overview() {
                 },
               ]}
               action={{ route: "", tooltip: "Edit Profile" }}
-            /> */}
+            />
           </Grid>
           <Grid item xs={12} xl={4}>
             <ProfilesList title="Live chat" profiles={profilesListData} />

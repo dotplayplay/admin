@@ -16,7 +16,7 @@ function PlatformSettings() {
     <Card>
       <SoftBox pt={2} px={2}>
         <SoftTypography variant="h6" fontWeight="medium" textTransform="capitalize">
-          personal settings
+          User&apos;s settings
         </SoftTypography>
       </SoftBox>
       <SoftBox pt={1.5} pb={2} px={2} lineHeight={1.25}>
@@ -29,7 +29,7 @@ function PlatformSettings() {
           </SoftBox>
           <SoftBox width="80%" ml={2}>
             <SoftTypography variant="button" fontWeight="regular" color="text">
-              Hide my Bio from others
+              Suspend this user
             </SoftTypography>
           </SoftBox>
         </SoftBox>
@@ -39,7 +39,17 @@ function PlatformSettings() {
           </SoftBox>
           <SoftBox width="80%" ml={2}>
             <SoftTypography variant="button" fontWeight="regular" color="text">
-              Email me when I have a message from Boss
+             Allow this user to deposit
+            </SoftTypography>
+          </SoftBox>
+        </SoftBox>
+        <SoftBox display="flex" py={1} mb={0.25}>
+          <SoftBox mt={0.25}>
+            <Switch checked={answersPost} onChange={() => setAnswersPost(!answersPost)} />
+          </SoftBox>
+          <SoftBox width="80%" ml={2}>
+            <SoftTypography variant="button" fontWeight="regular" color="text">
+             Allow this user to withdraw
             </SoftTypography>
           </SoftBox>
         </SoftBox>
@@ -59,7 +69,7 @@ function PlatformSettings() {
           </SoftBox>
           <SoftBox width="80%" ml={2}>
             <SoftTypography variant="button" fontWeight="regular" color="text">
-            Email me when a user start a conversation
+              Allow to chat in room
             </SoftTypography>
           </SoftBox>
         </SoftBox>
@@ -69,17 +79,7 @@ function PlatformSettings() {
           </SoftBox>
           <SoftBox width="80%" ml={2}>
             <SoftTypography variant="button" fontWeight="regular" color="text">
-            Email me when a user has a pending deposit
-            </SoftTypography>
-          </SoftBox>
-        </SoftBox>
-        <SoftBox display="flex" py={1} mb={0.25}>
-          <SoftBox mt={0.25}>
-            <Switch checked={productUpdate} onChange={() => setProductUpdate(!productUpdate)} />
-          </SoftBox>
-          <SoftBox width="80%" ml={2}>
-            <SoftTypography variant="button" fontWeight="regular" color="text">
-            Email me when a user has a pending withdraws
+            other settings
             </SoftTypography>
           </SoftBox>
         </SoftBox>
@@ -89,9 +89,31 @@ function PlatformSettings() {
           </SoftBox>
           <SoftBox width="80%" ml={2}>
             <SoftTypography variant="button" fontWeight="regular" color="text">
-              Show online Icon when I{"'"}m active
+              other settings
             </SoftTypography>
           </SoftBox>
+          
+        </SoftBox>
+        <SoftBox display="flex" py={1} mb={0.25}>
+          <SoftBox mt={0.25}>
+            <Switch checked={mentionsMe} onChange={() => setMentionsMe(!newsletter)} />
+          </SoftBox>
+          <SoftBox width="80%" ml={2}>
+            <SoftTypography variant="button" fontWeight="regular" color="text">
+              other settings
+            </SoftTypography>
+          </SoftBox>
+        </SoftBox>
+        <SoftBox display="flex" py={1} mb={0.25}>
+          <SoftBox mt={0.25}>
+            <Switch checked={newsletter} onChange={() => setNewsletter(!newsletter)} />
+          </SoftBox>
+          <SoftBox width="80%" ml={2}>
+            <SoftTypography variant="button" fontWeight="regular" color="text">
+              other settings
+            </SoftTypography>
+          </SoftBox>
+          
         </SoftBox>
       </SoftBox>
     </Card>

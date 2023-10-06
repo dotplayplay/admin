@@ -12,10 +12,9 @@ import Cube from "examples/Icons/Cube";
 import Document from "examples/Icons/Document";
 import Settings from "examples/Icons/Settings";
 import breakpoints from "assets/theme/base/breakpoints";
-import burceMars from "assets/images/bruce-mars.jpg";
 import curved0 from "assets/images/curved-images/curved0.jpg";
 
-function Header() {
+function Header(props) {
   const [tabsOrientation, setTabsOrientation] = useState("horizontal");
   const [tabValue, setTabValue] = useState(0);
 
@@ -81,7 +80,10 @@ function Header() {
                 Alex Thompson
               </SoftTypography>
               <SoftTypography variant="button" color="text" fontWeight="medium">
-                Customer Support
+                VIP: V12 
+              </SoftTypography> <br />
+              <SoftTypography variant="button" color="button" fontWeight="bold">
+                ID: vsv565HJgfdsuekw12 
               </SoftTypography>
             </SoftBox>
           </Grid>

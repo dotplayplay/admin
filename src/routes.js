@@ -27,6 +27,7 @@ import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
 import SignUp from "layouts/authentication/sign-up";
 import Genaral from "layouts/genaral_settings"
+import Userprofile from "layouts/userprofile";
 
 //  icons
 import Shop from "examples/Icons/Shop";
@@ -48,7 +49,7 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "Tables",
+    name: "Users Tables",
     key: "tables",
     route: "/tables",
     icon: <Office size="12px" />,
@@ -70,7 +71,7 @@ const routes = [
     key: "user-pofile",
     route: "/user-pofile",
     icon: <Settings size="12px" />,
-    component: <Genaral />,
+    component: <Userprofile />,
     noCollapse: true
   },
   

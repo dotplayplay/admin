@@ -1,7 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
-
-// @mui material components
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 
@@ -10,7 +8,6 @@ import Configurator from "examples/Configurator";
 import theme from "assets/theme";
 import themeRTL from "assets/theme/theme-rtl";
 
-// plugins
 import rtlPlugin from "stylis-plugin-rtl";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
@@ -50,11 +47,6 @@ export default function App() {
       setOnMouseEnter(false);
     }
   };
-
-  // Change the openConfigurator state
-  // const handleConfiguratorOpen = () => setOpenConfigurator(dispatch, !openConfigurator);
-
-  // Setting the dir attribute for the body element
   useEffect(() => {
     document.body.setAttribute("dir", direction);
   }, [direction]);
@@ -77,30 +69,6 @@ export default function App() {
 
       return null;
     });
-
-  // const configsButton = (
-  //   <SoftBox
-  //     display="flex"
-  //     justifyContent="center"
-  //     alignItems="center"
-  //     width="3.5rem"
-  //     height="3.5rem"
-  //     bgColor="white"
-  //     shadow="sm"
-  //     borderRadius="50%"
-  //     position="fixed"
-  //     right="2rem"
-  //     bottom="2rem"
-  //     zIndex={99}
-  //     color="dark"
-  //     sx={{ cursor: "pointer" }}
-  //     onClick={handleConfiguratorOpen}
-  //   >
-  //     <Icon fontSize="default" color="inherit">
-  //       settings
-  //     </Icon>
-  //   </SoftBox>
-  // );
 
   return direction === "rtl" ? (
     <CacheProvider value={rtlCache}>

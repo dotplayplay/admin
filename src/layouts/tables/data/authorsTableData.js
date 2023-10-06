@@ -60,8 +60,8 @@ const authorsTableData = {
       action: (
         <SoftTypography
           component="a"
-          
           variant="caption"
+          href="/user-pofile"
           color="secondary"
           fontWeight="medium"
         >
@@ -100,13 +100,13 @@ const authorsTableData = {
       ),
       country: (
         <SoftTypography variant="caption" color="secondary" fontWeight="medium">
-         Nigeria
+         London
         </SoftTypography>
       ),
       action: (
         <SoftTypography
           component="a"
-          href="#"
+          href="/user-pofile"
           variant="caption"
           color="secondary"
           fontWeight="medium"
