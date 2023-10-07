@@ -50,6 +50,9 @@ const DailyReport = () => {
 
   const style = {
     tableCol: "py-3 text-slate-800 text-center text-[10px] max-w-[40px] hover:max-w-full text-ellipsis truncate",
+    customTheadCol1: [4,5,6].includes(columnIndex) ? "bg-blue-200" : "bg-slate-100",
+    customTheadCol2: [4,5,6].includes(columnIndex) ? "bg-blue-200" : "bg-slate-100",
+    customTheadCo31: [4,5,6].includes(columnIndex) ? "bg-blue-200" : "bg-slate-100",
   }
 
   return (
@@ -131,11 +134,7 @@ const DailyReport = () => {
                       <tr>
                         {columns.map((column, columnIndex) => (
                           <th
-                            className={`text-slate-700 text-[10px] text-left pr-1 py-2 ${
-                              columnIndex === 4 || columnIndex === 5 || columnIndex === 6
-                                ? "bg-blue-200"
-                                : "bg-slate-100"
-                            }`}
+                            className={`text-slate-700 text-[10px] text-left pr-1 py-2 ${style.customTheadCol1}`}
                             key={columnIndex}
                           >{column.name}</th>
                         ))}
