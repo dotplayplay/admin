@@ -32,7 +32,7 @@ function Projects(_data) {
       }
     }
   })
-
+// 
   const openMenu = ({ currentTarget }) => setMenu(currentTarget);
   const closeMenu = () => setMenu(null);
 
