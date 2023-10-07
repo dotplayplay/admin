@@ -30,6 +30,7 @@
 .create_user_container::-webkit-scrollbar {
   height: 5px;
   width: 1px;
+  color: #9dc9fa;
 }
 
 body:has(.add_member) .members_table {

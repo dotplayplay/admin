@@ -12,300 +12,76 @@ const gameReport = {
   ],
   rows: [
     {
-      no: (
-        <SoftTypography variant="caption" color="white">
-         1
-        </SoftTypography>
-      ),
-      game: (
-        <SoftTypography variant="caption" color="white">
-          Crash
-        </SoftTypography>
-      ),
-      totalWagered: (
-        <SoftTypography variant="caption" color="white">
-          $304
-        </SoftTypography>
-      ),
-      totalPayout: (
-        <SoftTypography variant="caption" color="white">
-          $230
-        </SoftTypography>
-      ),
-      totalGGR: (
-        <SoftTypography variant="caption" color="white">
-          $23
-        </SoftTypography>
-      ),
-      GGR: (
-        <SoftTypography variant="caption" color="white">
-          $23
-        </SoftTypography>
-      ),
-      date: (
-        <SoftTypography variant="caption" color="white">
-          03/08/2023
-        </SoftTypography>
-      )
+      no: "1",
+      game: "Crash",
+      totalWagered: "$304",
+      totalPayout: "$230",
+      totalGGR: "$23",
+      GGR: "$23",
+      date: "03/08/2023"
     },
     {
-      no: (
-        <SoftTypography variant="caption" color="white">
-         2
-        </SoftTypography>
-      ),
-      game: (
-        <SoftTypography variant="caption" color="white">
-          Hilo
-        </SoftTypography>
-      ),
-      totalWagered: (
-        <SoftTypography variant="caption" color="white">
-          $300
-        </SoftTypography>
-      ),
-      totalPayout: (
-        <SoftTypography variant="caption" color="white">
-          $210
-        </SoftTypography>
-      ),
-      totalGGR: (
-        <SoftTypography variant="caption" color="white">
-          $239
-        </SoftTypography>
-      ),
-      GGR: (
-        <SoftTypography variant="caption" color="white">
-          $33
-        </SoftTypography>
-      ),
-      date: (
-        <SoftTypography variant="caption" color="white">
-          03/08/2023
-        </SoftTypography>
-      )
+      no: "2",
+      game: "Hilo",
+      totalWagered: "$300",
+      totalPayout: "$210",
+      totalGGR: "$239",
+      GGR: "$33",
+      date: "03/08/2023"
     },
     {
-      no: (
-        <SoftTypography variant="caption" color="white">
-         3
-        </SoftTypography>
-      ),
-      game: (
-        <SoftTypography variant="caption" color="white">
-          Mines
-        </SoftTypography>
-      ),
-      totalWagered: (
-        <SoftTypography variant="caption" color="white">
-          $354
-        </SoftTypography>
-      ),
-      totalPayout: (
-        <SoftTypography variant="caption" color="white">
-          $430
-        </SoftTypography>
-      ),
-      totalGGR: (
-        <SoftTypography variant="caption" color="white">
-          $23
-        </SoftTypography>
-      ),
-      GGR: (
-        <SoftTypography variant="caption" color="white">
-          $23
-        </SoftTypography>
-      ),
-      date: (
-        <SoftTypography variant="caption" color="white">
-          03/08/2023
-        </SoftTypography>
-      )
+      no: "3",
+      game: "Mines",
+      totalWagered: "$354",
+      totalPayout: "$430",
+      totalGGR: "$23",
+      GGR: "$23",
+      date: "03/08/2023"
     },
     {
-      no: (
-        <SoftTypography variant="caption" color="white">
-         4
-        </SoftTypography>
-      ),
-      game: (
-        <SoftTypography variant="caption" color="white">
-          Tower
-        </SoftTypography>
-      ),
-      totalWagered: (
-        <SoftTypography variant="caption" color="white">
-          $324
-        </SoftTypography>
-      ),
-      totalPayout: (
-        <SoftTypography variant="caption" color="white">
-          $130
-        </SoftTypography>
-      ),
-      totalGGR: (
-        <SoftTypography variant="caption" color="white">
-          $213
-        </SoftTypography>
-      ),
-      GGR: (
-        <SoftTypography variant="caption" color="white">
-          $238
-        </SoftTypography>
-      ),
-      date: (
-        <SoftTypography variant="caption" color="white">
-          03/08/2023
-        </SoftTypography>
-      )
+      no: "4",
+      game: "Tower",
+      totalWagered: "$324",
+      totalPayout: "$130",
+      totalGGR: "$213",
+      GGR: "$238",
+      date: "03/08/2023"
     },
     {
-      no: (
-        <SoftTypography variant="caption" color="white">
-         5
-        </SoftTypography>
-      ),
-      game: (
-        <SoftTypography variant="caption" color="white">
-          Keno
-        </SoftTypography>
-      ),
-      totalWagered: (
-        <SoftTypography variant="caption" color="white">
-          $3204
-        </SoftTypography>
-      ),
-      totalPayout: (
-        <SoftTypography variant="caption" color="white">
-          $2301
-        </SoftTypography>
-      ),
-      totalGGR: (
-        <SoftTypography variant="caption" color="white">
-          $232
-        </SoftTypography>
-      ),
-      GGR: (
-        <SoftTypography variant="caption" color="white">
-          $231
-        </SoftTypography>
-      ),
-      date: (
-        <SoftTypography variant="caption" color="white">
-          03/08/2023
-        </SoftTypography>
-      )
+      no: "5",
+      game: "Keno",
+      totalWagered: "$3204",
+      totalPayout: "$2301",
+      totalGGR: "$232",
+      GGR: "$231",
+      date: "03/08/2023"
     },
     {
-      no: (
-        <SoftTypography variant="caption" color="white">
-          6
-        </SoftTypography>
-      ),
-      game: (
-        <SoftTypography variant="caption" color="white">
-          Dice
-        </SoftTypography>
-      ),
-      totalWagered: (
-        <SoftTypography variant="caption" color="white">
-          $324
-        </SoftTypography>
-      ),
-      totalPayout: (
-        <SoftTypography variant="caption" color="white">
-          $23
-        </SoftTypography>
-      ),
-      totalGGR: (
-        <SoftTypography variant="caption" color="white">
-          $230
-        </SoftTypography>
-      ),
-      GGR: (
-        <SoftTypography variant="caption" color="white">
-          $21
-        </SoftTypography>
-      ),
-      date: (
-        <SoftTypography variant="caption" color="white">
-          10/06/2023
-        </SoftTypography>
-      )
+    no: "6",
+      game: "Dice",
+      totalWagered: "$324",
+      totalPayout: "$23",
+      totalGGR: "$230",
+      GGR: "$21",
+      date: "10/06/2023"
     },
     {
-      no: (
-        <SoftTypography variant="caption" color="white">
-         7
-        </SoftTypography>
-      ),
-      game: (
-        <SoftTypography variant="caption" color="white">
-          Plinko
-        </SoftTypography>
-      ),
-      totalWagered: (
-        <SoftTypography variant="caption" color="white">
-          $104
-        </SoftTypography>
-      ),
-      totalPayout: (
-        <SoftTypography variant="caption" color="white">
-          $230
-        </SoftTypography>
-      ),
-      totalGGR: (
-        <SoftTypography variant="caption" color="white">
-          $23
-        </SoftTypography>
-      ),
-      GGR: (
-        <SoftTypography variant="caption" color="white">
-          $23
-        </SoftTypography>
-      ),
-      date: (
-        <SoftTypography variant="caption" color="white">
-          10/07/2023
-        </SoftTypography>
-      )
+      no: "7",
+      game: "Plinko",
+      totalWagered: "$104",
+      totalPayout: "$230",
+      totalGGR: "$23",
+      GGR: "$23",
+      date: "10/07/2023"
     },
     {
-      no: (
-        <SoftTypography variant="caption" color="white">
-         8
-        </SoftTypography>
-      ),
-      game: (
-        <SoftTypography variant="caption" color="white">
-          Lottery
-        </SoftTypography>
-      ),
-      totalWagered: (
-        <SoftTypography variant="caption" color="white">
-          $119
-        </SoftTypography>
-      ),
-      totalPayout: (
-        <SoftTypography variant="caption" color="white">
-          $230
-        </SoftTypography>
-      ),
-      totalGGR: (
-        <SoftTypography variant="caption" color="white">
-          $23
-        </SoftTypography>
-      ),
-      GGR: (
-        <SoftTypography variant="caption" color="white">
-          $23
-        </SoftTypography>
-      ),
-      date: (
-        <SoftTypography variant="caption" color="white">
-          03/08/2023
-        </SoftTypography>
-      )
+      no: "8",
+      game: "Lottery",
+      totalWagered: "$119",
+      totalPayout: "$230",
+      totalGGR: "$23",
+      GGR: "$23",
+      date: "03/08/2023"
     },
   ]
 }

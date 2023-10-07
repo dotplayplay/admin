@@ -25,7 +25,7 @@ const GameReport = () => {
   const sortData = (gameDate) => {
     if (gameDate) {
       const filteredData = rows.filter(row => {
-        const rowDate = new Date(row.date.props.children);
+        const rowDate = new Date(row.date);
         const sortDate = new Date(gameDate);
         return rowDate.getTime() === sortDate.getTime();
       });
@@ -50,21 +50,21 @@ const GameReport = () => {
   };
 
   const style = {
-    tableCol: "px-1 py-2 text-center",
+    tableCol: "px-1 py-2 text-slate-800 text-[12px] text-center",
   }
 
   return (
     <div>
-      <SoftBox py={3} className="bg-[#1a1e32e4]">
+      <SoftBox py={3}>
         <SoftBox mb={3}>
           <Card>
-            <div className="bg-[#1a1e32e4] this-is-it">
-              <div className="bg-[#282a32]">
+            <div>
+              <div className="bg-none">
                 <SoftBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
-                  <SoftTypography variant="h6"><p className="text-[#fff]">GAME REPORT</p></SoftTypography>
+                  <SoftTypography variant="h6"><p className="text-slate-700">GAME REPORT</p></SoftTypography>
                   <SoftTypography variant="h6">
                     <input
-                      className="border-[1px] rounded-[5px] px-4 py-[1px]"
+                      className="border-[1px] border-slate-400 rounded-[5px] px-4 py-[1px]"
                       placeholder="search reports"
                       value={searchQuery}
                       onChange={handleSearch}
@@ -83,9 +83,9 @@ const GameReport = () => {
                   },
                 }}
               >
-                <div className="select-wrapper max-elements px-6 py-4 bg-[#202128] flex">
-                  <label className="text-[15px] text-[#fff] px-2" htmlFor="max-elements">Entries per page:</label>
-                  <select className="py-2 text-[13px] hover:bg-[#E1E4E7] cursor-pointer focus:outline-none px-2 rounded-[10px]" name="max-elements" id="max-elements" onChange={e => { currentPage.set(1); entriesPerPage.set(Number(e.target.value)); }}>
+                <div className="select-wrapper max-elements px-6 py-4 bg-slate-200 rounded-t-[10px] flex">
+                  <label className="text-[15px] text-slate-700 px-2" htmlFor="max-elements">Entries per page:</label>
+                  <select className="py-2 text-[13px] cursor-pointer focus:outline-none px-2 rounded-[10px]" name="max-elements" id="max-elements" onChange={e => { currentPage.set(1); entriesPerPage.set(Number(e.target.value)); }}>
                     <option value={1}>1</option>
                     <option value={2}>2</option>
                     <option value={10}>10</option>
@@ -97,7 +97,7 @@ const GameReport = () => {
                     <option value={rows?.length}>All</option>
                   </select>
                   <div className="flex-1"></div>
-                  <button className="px-4 mx-4 border-[1px] rounded-[5px] bg-[#fff]" onClick={handleShowDate}>
+                  <button className="px-4 mx-4 border-[1px] rounded-[5px] bg-slate-100" onClick={handleShowDate}>
                     <SoftTypography variant="h6">filter by date</SoftTypography>
                   </button>
                   {showDate && 
@@ -128,7 +128,7 @@ const GameReport = () => {
                       <tr>
                         {columns.map((column, columnIndex) => (
                           <th
-                            className="text-[#fff] text-[14px] bg-[#202128] text-center px-1"
+                            className="text-slate-700 bg-slate-100] text-[14px] text-center py-3 px-1"
                             key={columnIndex}
                           >{column.name}</th>
                         ))}
@@ -138,11 +138,11 @@ const GameReport = () => {
                       {sortedData
                       .slice(entries.indexOfFirst, entries.indexOfLast)
                       .filter(
-                        (row) => row.game.props.children.toLowerCase().includes(searchQuery.toLowerCase())
+                        (row) => row.game.toLowerCase().includes(searchQuery.toLowerCase())
                       ).length === 0 ? (
                         <tr>
                           <td className={style.tableCol}>
-                            <SoftTypography variant="h6" color="white">
+                            <SoftTypography variant="h6" color="black">
                               Game not found
                             </SoftTypography>
                           </td>
@@ -151,10 +151,10 @@ const GameReport = () => {
                       : (sortedData
                         .slice(entries.indexOfFirst, entries.indexOfLast)
                         .filter(
-                          (row) => row.game.props.children.toLowerCase().includes(searchQuery.toLowerCase())
+                          (row) => row.game.toLowerCase().includes(searchQuery.toLowerCase())
                         )
                         .map((row, rowIndex) => (
-                          <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'bg-[#706c6c]' : ''}>
+                          <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'bg-slate-200' : 'bg-slate-100'}>
                             <td className={style.tableCol}>{row.no}</td>
                             <td className={style.tableCol}>{row.game}</td>
                             <td className={style.tableCol}>{row.totalWagered}</td>

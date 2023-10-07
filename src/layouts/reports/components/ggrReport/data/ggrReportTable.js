@@ -11,164 +11,76 @@ const grrReport = {
   ],
   rows: [
     {
-      userID: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          4we123
-        </SoftTypography>
-      ),
-      username: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          Ifeanyi305
-        </SoftTypography>
-      ),
-      totalWagered: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $1,200
-        </SoftTypography>
-      ),
-      totalPayout: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $1,000
-        </SoftTypography>
-      ),
-      totalGGR: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $200
-        </SoftTypography>
-      ),
-      date: (
-        <SoftTypography variant="caption" color="white">
-          03/08/2023
-        </SoftTypography>
-      )
+      userID: "4we123",
+      username: "Ifeanyi305",
+      totalWagered: "$1,200",
+      totalPayout: "$1,000",
+      totalGGR: "$200",
+      date: "03/08/2023"
     },
     {
-      userID: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          12eq1z3
-        </SoftTypography>
-      ),
-      username: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          Valiant
-        </SoftTypography>
-      ),
-      totalWagered: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $500
-        </SoftTypography>
-      ),
-      totalPayout: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $200
-        </SoftTypography>
-      ),
-      totalGGR: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $300
-        </SoftTypography>
-      ),
-      date: (
-        <SoftTypography variant="caption" color="white">
-          03/08/2023
-        </SoftTypography>
-      )
+      userID: "12eq1z3",
+      username: "Valiant",
+      totalWagered: "$500",
+      totalPayout: "$200",
+      totalGGR: "$300",
+      date: "03/08/2023"
     },
     {
-      userID: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          4we1234
-        </SoftTypography>
-      ),
-      username: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          Ifeanyi305
-        </SoftTypography>
-      ),
-      totalWagered: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $1,200
-        </SoftTypography>
-      ),
-      totalPayout: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $1,000
-        </SoftTypography>
-      ),
-      totalGGR: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $200
-        </SoftTypography>
-      ),
-      date: (
-        <SoftTypography variant="caption" color="white">
-          10/06/2023
-        </SoftTypography>
-      )
+      userID: "4we1234",
+      username: "Ifeanyi305",
+      totalWagered: "$1,200",
+      totalPayout: "$1,000",
+      totalGGR: "$200",
+      date: "10/06/2023"
     },
     {
-      userID: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          4we123
-        </SoftTypography>
-      ),
-      username: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          Ifeanyi305
-        </SoftTypography>
-      ),
-      totalWagered: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $1,200
-        </SoftTypography>
-      ),
-      totalPayout: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $1,000
-        </SoftTypography>
-      ),
-      totalGGR: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $200
-        </SoftTypography>
-      ),
-      date: (
-        <SoftTypography variant="caption" color="white">
-          10/07/2023
-        </SoftTypography>
-      )
+      userID: "4we123",
+      username: "Ifeanyi305",
+      totalWagered: "$1,200",
+      totalPayout: "$1,000",
+      totalGGR: "$200",
+      date: "10/07/2023"
     },
     {
-      userID: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          q56fd23
-        </SoftTypography>
-      ),
-      username: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          JohnDoe
-        </SoftTypography>
-      ),
-      totalWagered: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $1,200
-        </SoftTypography>
-      ),
-      totalPayout: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $1,000
-        </SoftTypography>
-      ),
-      totalGGR: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $200
-        </SoftTypography>
-      ),
-      date: (
-        <SoftTypography variant="caption" color="white">
-          03/08/2023
-        </SoftTypography>
-      )
+      userID: "q56fd23",
+      username: "JohnDoe",
+      totalWagered: "$1,200",
+      totalPayout: "$1,000",
+      totalGGR: "$200",
+      date: "03/08/2023"
+    },
+    {
+      userID: "4we123",
+      username: "Ifeanyi305",
+      totalWagered: "$1,200",
+      totalPayout: "$1,000",
+      totalGGR: "$200",
+      date: "10/07/2023"
+    },
+    {
+      userID: "q56fd23",
+      username: "JohnDoe",
+      totalWagered: "$1,200",
+      totalPayout: "$1,000",
+      totalGGR: "$200",
+      date: "03/08/2023"
+    },
+    {
+      userID: "4we123",
+      username: "Ifeanyi305",
+      totalWagered: "$1,200",
+      totalPayout: "$1,000",
+      totalGGR: "$200",
+      date: "10/07/2023"
+    },
+    {
+      userID: "q56fd23",
+      username: "JohnDoe",
+      totalWagered: "$1,200",
+      totalPayout: "$1,000",
+      totalGGR: "$200",
+      date: "03/08/2023"
     }
   ]
 }

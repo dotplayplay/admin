@@ -49,7 +49,7 @@ const DailyReport = () => {
   };
 
   const style = {
-    tableCol: "py-3 text-[#f2f2f2] text-center text-[10px] max-w-[40px] hover:max-w-full text-ellipsis truncate",
+    tableCol: "py-3 text-slate-800 text-center text-[10px] max-w-[40px] hover:max-w-full text-ellipsis truncate",
   }
 
   return (
@@ -57,13 +57,13 @@ const DailyReport = () => {
       <SoftBox py={3}>
         <SoftBox mb={3}>
           <Card>
-            <div className="bg-[#1a1e32e4]">
-              <div className="bg-[#282a32]">
+            <div>
+              <div className="bg-none">
                 <SoftBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
-                  <SoftTypography variant="h6"><p className="text-[#fff]">DAILY REPORT</p></SoftTypography>
+                  <SoftTypography variant="h6"><p className="text-slate-700">DAILY REPORT</p></SoftTypography>
                   <SoftTypography variant="h6">
                     <input
-                      className="border-[1px] rounded-[5px] px-4 py-[1px]"
+                      className="border-[1px] border-slate-400 rounded-[5px] px-4 py-[1px]"
                       placeholder="search reports"
                       value={searchQuery}
                       onChange={handleSearch}
@@ -82,10 +82,10 @@ const DailyReport = () => {
                   },
                 }}
               >
-                <div className="flex items-center justify-between py-4 bg-[#202128]">
+                <div className="flex items-center justify-between py-4 bg-slate-200 rounded-t-[10px]">
                   <div className="select-wrapper max-elements px-6">
-                    <label className="text-[15px] text-[#fff] px-2" htmlFor="max-elements">Entries per page:</label>
-                    <select className="py-2 text-[13px] hover:bg-[#E1E4E7] cursor-pointer focus:outline-none px-2 rounded-[10px]" name="max-elements" id="max-elements" onChange={e => { currentPage.set(1); entriesPerPage.set(Number(e.target.value)); }}>
+                    <label className="text-[15px] text-slate-700 px-2" htmlFor="max-elements">Entries per page:</label>
+                    <select className="py-2 text-[13px] cursor-pointer focus:outline-none px-2 rounded-[5px]" name="max-elements" id="max-elements" onChange={e => { currentPage.set(1); entriesPerPage.set(Number(e.target.value)); }}>
                       <option value={1}>1</option>
                       <option value={2}>2</option>
                       <option value={10}>10</option>
@@ -97,12 +97,11 @@ const DailyReport = () => {
                       <option value={rows?.length}>All</option>
                     </select>
                   </div>
-                  <button className="px-4 mx-4 border-[1px] rounded-[5px] bg-[#fff]" onClick={handleShowDate}>
-                    <SoftTypography variant="h6">filter by date</SoftTypography>
+                  <button className="px-4 mx-4 border-[1px] rounded-[5px] bg-slate-100" onClick={handleShowDate}>
+                    <SoftTypography variant="h6" color="#4A90E2">filter by date</SoftTypography>
                   </button>
                 </div>
-                {
-                  showDate ? (
+                {showDate ? (
                     <div className="flex justify-center border-[1px]">
                       <div className="bg-[#fff] p-4 w-[80%] m-auto md:left-[40%] fixed top-[30%] md:w-[30%] mb-4">
                         <div className="flex top-[0px] bg-[#fff] sticky justify-between items-center gap-2 p-4">
@@ -132,7 +131,11 @@ const DailyReport = () => {
                       <tr>
                         {columns.map((column, columnIndex) => (
                           <th
-                            className="text-[#fff] text-[10px] bg-[#202128] text-left pr-1 py-2"
+                            className={`text-slate-700 text-[10px] text-left pr-1 py-2 ${
+                              columnIndex === 4 || columnIndex === 5 || columnIndex === 6
+                                ? "bg-blue-200"
+                                : "bg-slate-100"
+                            }`}
                             key={columnIndex}
                           >{column.name}</th>
                         ))}
@@ -144,8 +147,8 @@ const DailyReport = () => {
                       ).length === 0 ? (
                         <tr>
                           <td className={`${style.tableCol}`}>
-                            <SoftTypography variant="h6" color="white">
-                              Empty
+                            <SoftTypography variant="h6" color="black">
+                              <span className="min-w-max">Empty</span>
                             </SoftTypography>
                           </td>
                         </tr>
@@ -161,7 +164,7 @@ const DailyReport = () => {
                           }).format(dateObject);
                         
                           return (
-                            <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'bg-[#706c6c]' : ''}>
+                            <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'bg-slate-200' : 'bg-slate-100'}>
                               <td className={`${style.tableCol} date-col`}>
                                 <span className="short-date">{formattedDate.slice(0, 5)}</span>
                                 <span className="long-date">{formattedDate}</span>
@@ -169,9 +172,9 @@ const DailyReport = () => {
                               <td className={`${style.tableCol} pl-1`}>{row.dau}</td>
                               <td className={`${style.tableCol}`}>{row.newRegister}</td>
                               <td className={`${style.tableCol}`}>{row.totalNewDeposit}</td>
-                              <td className={`${style.tableCol}`}>{row.newDeposit}</td>
-                              <td className={`${style.tableCol}`}>{row.totalReDeposit}</td>
-                              <td className={`${style.tableCol}`}>{row.totalDeposit}</td>
+                              <td className={`${style.tableCol} bg-blue-400/20`}>{row.newDeposit}</td>
+                              <td className={`${style.tableCol} bg-blue-400/20`}>{row.totalReDeposit}</td>
+                              <td className={`${style.tableCol} bg-blue-400/20`}>{row.totalDeposit}</td>
                               <td className={`${style.tableCol}`}>{row.totalWithdrawal}</td>
                               <td className={`${style.tableCol}`}>{row.totalwagered}</td>
                               <td className={`${style.tableCol}`}>{row.totalWinningPayout}</td>
