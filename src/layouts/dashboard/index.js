@@ -11,14 +11,72 @@ import GradientLineChart from "examples/Charts/LineCharts/GradientLineChart";
 import typography from "assets/theme/base/typography";
 import Projects from "layouts/dashboard/components/Projects";
 import OrderOverview from "layouts/dashboard/components/OrderOverview";
+import { useEffect, useState } from "react";
 
 // Data
 import reportsBarChartData from "layouts/dashboard/data/reportsBarChartData";
 import gradientLineChartData from "layouts/dashboard/data/gradientLineChartData";
 
 function Dashboard() {
+
+  const [loading,setLoading] = useState(true);
+  const [dashboardData, setDashboardData] = useState();
+
+  useEffect(() => {
+    async function getLogs() {
+      const url = `http://localhost:8000/api/dashboard-details`;
+      try {
+        setLoading(true);
+        const response = await fetch(url);
+        const data = await response.json();
+        if (data?.data) {
+          setDashboardData(data.data)
+        }
+        setLoading(false);
+      } catch (err) {
+        console.log(err.message);
+      }
+    }
+    getLogs();
+  }, []);
+
+
+
+
+  
+const _reportsBarChartData = {
+  chart: {
+    labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    datasets: { label: "total deposit", data: [450, 200, 100, 220, 500, 100, 400, 230, 500] },
+  },
+  items: [
+    {
+      icon: { color: "primary", component: "library_books" },
+      label: "total wins",
+      progress: { content: [loading?"loading":dashboardData[1].totalWins], percentage: 60 },
+    },
+    {
+      icon: { color: "info", component: "touch_app" },
+      label: "total loses",
+      progress: { content: [loading?"loading": dashboardData[1].totalLoses], percentage: 90 },
+    },
+    {
+      icon: { color: "warning", component: "payment" },
+      label: "total bets",
+      progress: { content: [loading?"loading":dashboardData[1].totalBets], percentage: 30 },
+    },
+    {
+      icon: { color: "error", component: "extension" },
+      label: "total wagered",
+      progress: { content: [loading?"loading":"$"+dashboardData[1].totalWagered], percentage: 50 },
+    },
+  ],
+};
+
+
   const { size } = typography;
-  const { chart, items } = reportsBarChartData;
+  const { chart, items } = _reportsBarChartData;
+
 
   return (
     <DashboardLayout>
@@ -28,32 +86,32 @@ function Dashboard() {
           <Grid container spacing={3}>
             <Grid item xs={12} sm={6} xl={3}>
               <MiniStatisticsCard
-                title={{ text: "Wallet balance" }}
-                count="$53,000"
+                title={{ text: "Total deposited player" }}
+                count={loading?"loading...": dashboardData[0].totalDepositedPlayers}
                 percentage={{ color: "success", text: "+55%" }}
                 icon={{ color: "info", component: "paid" }}
               />
             </Grid>
             <Grid item xs={12} sm={6} xl={3}>
               <MiniStatisticsCard
-                title={{ text: "new users" }}
-                count="2,300"
+                title={{ text: "TotalGGR" }}
+                count={loading?"loading...":dashboardData[0].totalGGR}
                 percentage={{ color: "success", text: "+3%" }}
                 icon={{ color: "info", component: "public" }}
               />
             </Grid>
             <Grid item xs={12} sm={6} xl={3}>
               <MiniStatisticsCard
-                title={{ text: "P2E users" }}
-                count="+3,462"
+                title={{ text: "TotalPlayer balance" }}
+                count={loading?"loading...":dashboardData[0].totalPlayerBalance}
                 percentage={{ color: "success", text: "+2%" }}
                 icon={{ color: "info", component: "emoji_events" }}
               />
             </Grid>
             <Grid item xs={12} sm={6} xl={3}>
               <MiniStatisticsCard
-                title={{ text: "Total withdraws" }}
-                count="$103,430"
+                title={{ text: "Total wagered" }}
+                count={loading? "loading":"$"+dashboardData[1].totalWagered}
                 percentage={{ color: "error", text: "+5%" }}
                 icon={{
                   color: "info",
@@ -105,7 +163,10 @@ function Dashboard() {
         </SoftBox>
         <Grid container spacing={3}>
           <Grid item xs={12} md={6} lg={8}>
-            <Projects />
+            {dashboardData?.length !== 0? (
+             <Projects data={dashboardData} />
+            ):('')
+            }
           </Grid>
           <Grid item xs={12} md={6} lg={4}>
             <OrderOverview />

@@ -23,7 +23,6 @@ import configs from "examples/Charts/BarCharts/ReportsBarChart/configs";
 
 function ReportsBarChart({ color, title, description, chart, items }) {
   const { data, options } = configs(chart.labels || [], chart.datasets || {});
-
   const renderItems = items.map(({ icon, label, progress }) => (
     <Grid item xs={6} sm={3} key={label}>
       <BarReportsChartItem
