@@ -49,7 +49,7 @@ const DailyReport = () => {
   };
 
   const style = {
-    tableCol: "px-4 py-2 text-center",
+    tableCol: "py-3 text-[#f2f2f2] text-center text-[10px] max-w-[40px] hover:max-w-full text-ellipsis truncate",
   }
 
   return (
@@ -132,7 +132,7 @@ const DailyReport = () => {
                       <tr>
                         {columns.map((column, columnIndex) => (
                           <th
-                            className="text-[#fff] text-[12px] bg-[#202128] text-center px-4"
+                            className="text-[#fff] text-[10px] bg-[#202128] text-left pr-1 py-2"
                             key={columnIndex}
                           >{column.name}</th>
                         ))}
@@ -140,10 +140,10 @@ const DailyReport = () => {
                     </thead>
                     <tbody>
                       {sortedData.slice(entries.indexOfFirst, entries.indexOfLast).filter((row) =>
-                        row.dau.props.children.toLowerCase().includes(searchQuery.toLowerCase())
+                        row.dau.toLowerCase().includes(searchQuery.toLowerCase())
                       ).length === 0 ? (
                         <tr>
-                          <td className={style.tableCol}>
+                          <td className={`${style.tableCol}`}>
                             <SoftTypography variant="h6" color="white">
                               Empty
                             </SoftTypography>
@@ -151,41 +151,52 @@ const DailyReport = () => {
                         </tr>
                       ) : (
                         sortedData.slice(entries.indexOfFirst, entries.indexOfLast).filter((row) =>
-                          row.dau.props.children.toLowerCase().includes(searchQuery.toLowerCase())
-                        ).map((row, rowIndex) => (
-                          <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'bg-[#706c6c]' : ''}>
-                            <td className={style.tableCol}>{row.date}</td>
-                            <td className={style.tableCol}>{row.dau}</td>
-                            <td className={style.tableCol}>{row.newRegister}</td>
-                            <td className={style.tableCol}>{row.totalNewDeposit}</td>
-                            <td className={style.tableCol}>{row.newDeposit}</td>
-                            <td className={style.tableCol}>{row.totalReDeposit}</td>
-                            <td className={style.tableCol}>{row.totalDeposit}</td>
-                            <td className={style.tableCol}>{row.totalWithdrawal}</td>
-                            <td className={style.tableCol}>{row.totalwagered}</td>
-                            <td className={style.tableCol}>{row.totalWinningPayout}</td>
-                            <td className={style.tableCol}>{row.totalGGR}</td>
-                            <td className={style.tableCol}>{row.totalDepositBonus}</td>
-                            <td className={style.tableCol}>{row.totalDepositUnlocked}</td>
-                            <td className={style.tableCol}>{row.vipLevelUp}</td>
-                            <td className={style.tableCol}>{row.luckySpin}</td>
-                            <td className={style.tableCol}>{row.rollCompetion}</td>
-                            <td className={style.tableCol}>{row.dailyContest}</td>
-                            <td className={style.tableCol}>{row.medal}</td>
-                            <td className={style.tableCol}>{row.binggo}</td>
-                            <td className={style.tableCol}>{row.rain}</td>
-                            <td className={style.tableCol}>{row.coindrop}</td>
-                            <td className={style.tableCol}>{row.totalFreeUnlocked}</td>
-                            <td className={style.tableCol}>{row.commisionRakeback}</td>
-                            <td className={style.tableCol}>{row.directReferal}</td>
-                            <td className={style.tableCol}>{row.totalAffiliateUnlocked}</td>
-                            <td className={style.tableCol}>{row.recharge}</td>
-                            <td className={style.tableCol}>{row.weeklyCashback}</td>
-                            <td className={style.tableCol}>{row.monthlyCashback}</td>
-                            <td className={style.tableCol}>{row.ticket}</td>
-                            <td className={style.tableCol}>{row.prize}</td>
-                          </tr>
-                        ))
+                          row.dau.toLowerCase().includes(searchQuery.toLowerCase())
+                        ).map((row, rowIndex) => {
+                          const dateObject = new Date(row.date);
+                          const formattedDate = new Intl.DateTimeFormat('en-US', {
+                            year: '2-digit',
+                            month: '2-digit',
+                            day: '2-digit',
+                          }).format(dateObject);
+                        
+                          return (
+                            <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'bg-[#706c6c]' : ''}>
+                              <td className={`${style.tableCol} date-col`}>
+                                <span className="short-date">{formattedDate.slice(0, 5)}</span>
+                                <span className="long-date">{formattedDate}</span>
+                              </td>
+                              <td className={`${style.tableCol} pl-1`}>{row.dau}</td>
+                              <td className={`${style.tableCol}`}>{row.newRegister}</td>
+                              <td className={`${style.tableCol}`}>{row.totalNewDeposit}</td>
+                              <td className={`${style.tableCol}`}>{row.newDeposit}</td>
+                              <td className={`${style.tableCol}`}>{row.totalReDeposit}</td>
+                              <td className={`${style.tableCol}`}>{row.totalDeposit}</td>
+                              <td className={`${style.tableCol}`}>{row.totalWithdrawal}</td>
+                              <td className={`${style.tableCol}`}>{row.totalwagered}</td>
+                              <td className={`${style.tableCol}`}>{row.totalWinningPayout}</td>
+                              <td className={`${style.tableCol}`}>{row.totalGGR}</td>
+                              <td className={`${style.tableCol}`}>{row.totalDepositBonus}</td>
+                              <td className={`${style.tableCol}`}>{row.totalDepositUnlocked}</td>
+                              <td className={`${style.tableCol}`}>{row.vipLevelUp}</td>
+                              <td className={`${style.tableCol}`}>{row.luckySpin}</td>
+                              <td className={`${style.tableCol}`}>{row.rollCompetion}</td>
+                              <td className={`${style.tableCol}`}>{row.dailyContest}</td>
+                              <td className={`${style.tableCol}`}>{row.medal}</td>
+                              <td className={`${style.tableCol}`}>{row.binggo}</td>
+                              <td className={`${style.tableCol}`}>{row.rain}</td>
+                              <td className={`${style.tableCol}`}>{row.coindrop}</td>
+                              <td className={`${style.tableCol}`}>{row.totalFreeUnlocked}</td>
+                              <td className={`${style.tableCol}`}>{row.commisionRakeback}</td>
+                              <td className={`${style.tableCol}`}>{row.directReferal}</td>
+                              <td className={`${style.tableCol}`}>{row.totalAffiliateUnlocked}</td>
+                              <td className={`${style.tableCol}`}>{row.recharge}</td>
+                              <td className={`${style.tableCol}`}>{row.weeklyCashback}</td>
+                              <td className={`${style.tableCol}`}>{row.monthlyCashback}</td>
+                              <td className={`${style.tableCol}`}>{row.ticket}</td>
+                              <td className={`${style.tableCol}`}>{row.prize}</td>
+                            </tr>
+                        )})
                       )}
                     </tbody>
                   </table>

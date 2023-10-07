@@ -87,3 +87,16 @@ body:has(.game) .container {
 .toggle input[type="checkbox"]:checked + label::before {
   transform: translateX(20px);
 }
+
+/* FOR GAME REPORT */
+.long-date {
+  display: none;
+}
+
+.date-col:hover .short-date {
+  display: none;
+}
+
+.date-col:hover .long-date {
+  display: inline;
+}

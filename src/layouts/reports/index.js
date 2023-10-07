@@ -4,6 +4,8 @@ import GameReport from './components/gameReport/GameReport';
 import DailyReport from './components/dailyReport/DailyReport';
 import GgrReport from './components/ggrReport';
 import Header from './components/navbar';
+import DashboardNavbar from 'examples/Navbars/DashboardNavbar';
+import DashboardLayout from 'examples/LayoutContainers/DashboardLayout';
 import SoftBox from "components/SoftBox";
 import Footer from "examples/Footer";
 
@@ -24,22 +26,23 @@ const Report = () => {
     } else if (e === "ggrReport") {
       setGgrReport(true)
     }
-  })
+  });
+
 
   return (
     <div>
       <Header handleTaps={handleTaps} />
-      {isGameReport && <SoftBox mt={5} mb={3}>
+      {isGameReport && <SoftBox mt={2} mb={1}>
         <Grid item xs={12} md={6} xl={4}>
           <GameReport />
         </Grid>
       </SoftBox>}
-      {isDailyReport && <SoftBox mt={5} mb={3}>
+      {isDailyReport && <SoftBox mt={2} mb={1}>
         <Grid item xs={12} md={6} xl={4}>
           <DailyReport />
         </Grid>
       </SoftBox>}
-      {isGgrReport && <SoftBox mt={5} mb={3}>
+      {isGgrReport && <SoftBox mt={2} mb={1}>
         <Grid item xs={12} md={6} xl={4}>
           <GgrReport />
         </Grid>

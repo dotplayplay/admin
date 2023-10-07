@@ -30,22 +30,22 @@ export default function Settings() {
 
   return (
     <DashboardLayout>
-         <Header handleTaps={handleTaps}  />
-         { isWallet &&  <SoftBox mt={5} mb={3}>
-            <Grid item xs={12} md={6} xl={4}>
-              <Wallet />
-            </Grid>
-          </SoftBox>  }
-          { isGame &&  <SoftBox mt={5} mb={3}>
-            <Grid item xs={12} md={6} xl={4}>
-              <Games />
-            </Grid>
-          </SoftBox>  }
-          { ischat &&  <SoftBox mt={5} mb={3}>
-            <Grid item xs={12} md={6} xl={4}>
-              <Chat />
-            </Grid>
-          </SoftBox>  }
+        <Header handleTaps={handleTaps}  />
+        { isWallet &&  <SoftBox mt={5} mb={3}>
+          <Grid item xs={12} md={6} xl={4}>
+            <Wallet />
+          </Grid>
+        </SoftBox>  }
+        { isGame &&  <SoftBox mt={5} mb={3}>
+          <Grid item xs={12} md={6} xl={4}>
+            <Games />
+          </Grid>
+        </SoftBox>  }
+        { ischat &&  <SoftBox mt={5} mb={3}>
+          <Grid item xs={12} md={6} xl={4}>
+            <Chat />
+          </Grid>
+        </SoftBox>  }
     </DashboardLayout>
   )
 }

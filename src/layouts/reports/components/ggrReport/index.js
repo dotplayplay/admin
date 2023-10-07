@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import DatePicker from 'react-datepicker';
+import { useNavigate } from 'react-router-dom';
 import Card from "@mui/material/Card";
 import SoftBox from "components/SoftBox";
+import SoftButton from "components/SoftButton";
 import SoftTypography from "components/SoftTypography";
 
 //data
@@ -13,16 +15,45 @@ import { BsArrowUpRight } from 'react-icons/bs';
 const GgrReport = () => {
   const { columns, rows } = grrReport;
   const { currentPage, entriesPerPage, entries } = usePagination(1, 10);
+  const [sortedData, setSortedData] = useState(rows);
+  const [ggrReportDate, setGgrReportDate] = useState(null);
+  const [showDate, setShowDate] = useState(false);
   const navigate = useNavigate();
 
   const memberDetail = (rowId) => {
     navigate(`/details/${rows[rowId].userID.props.children}`);
   }
 
+  // For search function
   const [searchQuery, setSearchQuery] = useState('');
-
   const handleSearch = (event) => {
     setSearchQuery(event.target.value);
+  };
+
+  // For filtering by date
+  const handleShowDate = () => {
+    setShowDate(!showDate)
+  }
+
+  const sortData = (gameDate) => {
+    if (gameDate) {
+      const filteredData = rows.filter(row => {
+        const rowDate = new Date(row.date.props.children);
+        const sortDate = new Date(gameDate);
+        return rowDate.getTime() === sortDate.getTime();
+      });
+
+      filteredData.sort((a, b) => {
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
+        return dateA - dateB;
+      });
+
+      setSortedData(filteredData);
+    } else {
+      setSortedData(rows);
+    }
+    setShowDate(!showDate);
   };
 
   const style = {
@@ -59,7 +90,7 @@ const GgrReport = () => {
                   },
                 }}
               >
-                <div className="select-wrapper max-elements px-6 py-4 bg-[#202128]">
+                <div className="select-wrapper max-elements px-6 py-4 bg-[#202128] flex">
                   <label className="text-[15px] text-[#fff] px-2" htmlFor="max-elements">Entries per page:</label>
                   <select className="py-2 text-[13px] hover:bg-[#E1E4E7] cursor-pointer focus:outline-none px-2 rounded-[10px]" name="max-elements" id="max-elements" onChange={e => { currentPage.set(1); entriesPerPage.set(Number(e.target.value)); }}>
                     <option value={1}>1</option>
@@ -72,6 +103,31 @@ const GgrReport = () => {
                     <option value={100}>100</option>
                     <option value={rows?.length}>All</option>
                   </select>
+                  <div className="flex-1"></div>
+                  <button className="px-4 mx-4 border-[1px] rounded-[5px] bg-[#fff]" onClick={handleShowDate}>
+                    <SoftTypography variant="h6">filter by date</SoftTypography>
+                  </button>
+                  {showDate && 
+                  <div className="flex justify-center">
+                    <div className="bg-[#fff] p-4 w-[80%] m-auto md:left-[40%] fixed top-[30%] md:w-[30%] mb-4">
+                      <div className="flex top-[0px] bg-[#fff] sticky justify-between items-center gap-2 p-4">
+                        <h2 className="text-[16px] font-extrabold">Filter</h2>
+                        <button onClick={handleShowDate}>&times;</button>
+                      </div>
+                      <div>
+                        <SoftTypography variant="h6">Game Date:</ SoftTypography>
+                        <div className="h-full flex text-center align-center">
+                          <DatePicker className="text-[14px] border-[1px] px-4 w-full py-[3px]" selected={ggrReportDate} onChange={date=>setGgrReportDate(date)} />
+                          <button className="h-full text-black-200 hover:text-black-500 pt-1 px-3" onClick={()=>{setGgrReportDate('');sortData();}}>&times;</button>
+                        </div>
+                      </div>
+                      <SoftBox mt={4} mb={1}>
+                        <SoftButton variant="gradient" color="info" fullWidth onClick={()=>sortData(ggrReportDate)}>
+                          <span>Sort Date</span>
+                        </SoftButton>
+                      </SoftBox>
+                    </div>
+                  </div>}
                 </div>
                 <div className="overflow-x-auto">
                   <table className="w-full">
@@ -86,7 +142,7 @@ const GgrReport = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {rows.slice(entries.indexOfFirst, entries.indexOfLast).filter((row) =>
+                      {sortedData.slice(entries.indexOfFirst, entries.indexOfLast).filter((row) =>
                         row.username.props.children.toLowerCase().includes(searchQuery.toLowerCase())
                       ).length === 0 ? (
                         <tr>
@@ -97,7 +153,7 @@ const GgrReport = () => {
                           </td>
                         </tr>
                       ) : (
-                        rows.slice(entries.indexOfFirst, entries.indexOfLast).filter((row) =>
+                        sortedData.slice(entries.indexOfFirst, entries.indexOfLast).filter((row) =>
                           row.username.props.children.toLowerCase().includes(searchQuery.toLowerCase())
                         ).map((row, rowIndex) => (
                           <tr
@@ -106,10 +162,11 @@ const GgrReport = () => {
                             className={`cursor-pointer ${rowIndex % 2 === 0 ? 'bg-[#706c6c]' : ''}`}
                           >
                             <td className={style.tableCol}>{row.username}</td>
-                            <td className={style.tableCol}>{row.userID}</td>
+                            <td className={`${style.tableCol}`}>{row.userID}</td>
                             <td className={style.tableCol}>{row.totalWagered}</td>
                             <td className={style.tableCol}>{row.totalPayout}</td>
                             <td className={style.tableCol}>{row.totalGGR}</td>
+                            <td className={style.tableCol}>{row.date}</td>
                           </tr>
                         ))
                       )}

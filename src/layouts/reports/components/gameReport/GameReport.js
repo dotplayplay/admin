@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import DatePicker from 'react-datepicker';
 import Card from "@mui/material/Card";
 import SoftBox from "components/SoftBox";
+import SoftButton from "components/SoftButton";
 import SoftTypography from "components/SoftTypography";
 //data
 import gameReport from './data/gameReportTable';
@@ -11,22 +13,52 @@ import { BsArrowUpRight } from 'react-icons/bs';
 const GameReport = () => {
   const { columns, rows } = gameReport;
   const { currentPage, entriesPerPage, entries } = usePagination(1, 10);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [sortedData, setSortedData] = useState(rows);
+  const [gameReportDate, setGameReportDate] = useState(null);
+  const [showDate, setShowDate] = useState(false);
 
+  // For filtering by date
+  const handleShowDate = () => {
+    setShowDate(!showDate)
+  }
+
+  const sortData = (gameDate) => {
+    if (gameDate) {
+      const filteredData = rows.filter(row => {
+        const rowDate = new Date(row.date.props.children);
+        const sortDate = new Date(gameDate);
+        return rowDate.getTime() === sortDate.getTime();
+      });
+
+      filteredData.sort((a, b) => {
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
+        return dateA - dateB;
+      });
+
+      setSortedData(filteredData);
+    } else {
+      setSortedData(rows);
+    }
+    setShowDate(!showDate);
+  };
+
+  // For search function
+  const [searchQuery, setSearchQuery] = useState('');
   const handleSearch = (event) => {
     setSearchQuery(event.target.value);
   };
 
   const style = {
-    tableCol: "px-4 py-2 text-center",
+    tableCol: "px-1 py-2 text-center",
   }
 
   return (
     <div>
-      <SoftBox py={3}>
+      <SoftBox py={3} className="bg-[#1a1e32e4]">
         <SoftBox mb={3}>
           <Card>
-            <div className="bg-[#1a1e32e4]">
+            <div className="bg-[#1a1e32e4] this-is-it">
               <div className="bg-[#282a32]">
                 <SoftBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
                   <SoftTypography variant="h6"><p className="text-[#fff]">GAME REPORT</p></SoftTypography>
@@ -51,7 +83,7 @@ const GameReport = () => {
                   },
                 }}
               >
-                <div className="select-wrapper max-elements px-6 py-4 bg-[#202128]">
+                <div className="select-wrapper max-elements px-6 py-4 bg-[#202128] flex">
                   <label className="text-[15px] text-[#fff] px-2" htmlFor="max-elements">Entries per page:</label>
                   <select className="py-2 text-[13px] hover:bg-[#E1E4E7] cursor-pointer focus:outline-none px-2 rounded-[10px]" name="max-elements" id="max-elements" onChange={e => { currentPage.set(1); entriesPerPage.set(Number(e.target.value)); }}>
                     <option value={1}>1</option>
@@ -64,6 +96,31 @@ const GameReport = () => {
                     <option value={100}>100</option>
                     <option value={rows?.length}>All</option>
                   </select>
+                  <div className="flex-1"></div>
+                  <button className="px-4 mx-4 border-[1px] rounded-[5px] bg-[#fff]" onClick={handleShowDate}>
+                    <SoftTypography variant="h6">filter by date</SoftTypography>
+                  </button>
+                  {showDate && 
+                  <div className="flex justify-center">
+                    <div className="bg-[#fff] p-4 w-[80%] m-auto md:left-[40%] fixed top-[30%] md:w-[30%] mb-4">
+                      <div className="flex top-[0px] bg-[#fff] sticky justify-between items-center gap-2 p-4">
+                        <h2 className="text-[16px] font-extrabold">Filter</h2>
+                        <button onClick={handleShowDate}>&times;</button>
+                      </div>
+                      <div>
+                        <SoftTypography variant="h6">Game Date:</ SoftTypography>
+                        <div className="h-full flex text-center align-center">
+                          <DatePicker className="text-[14px] border-[1px] px-4 w-full py-[3px]" selected={gameReportDate} onChange={date=>setGameReportDate(date)} />
+                          <button className="h-full text-black-200 hover:text-black-500 pt-1 px-3" onClick={()=>{setGameReportDate('');sortData();}}>&times;</button>
+                        </div>
+                      </div>
+                      <SoftBox mt={4} mb={1}>
+                        <SoftButton variant="gradient" color="info" fullWidth onClick={()=>sortData(gameReportDate)}>
+                          <span>Sort Date</span>
+                        </SoftButton>
+                      </SoftBox>
+                    </div>
+                  </div>}
                 </div>
                 <div className="overflow-x-auto">
                   <table className="w-full">
@@ -71,14 +128,14 @@ const GameReport = () => {
                       <tr>
                         {columns.map((column, columnIndex) => (
                           <th
-                            className="text-[#fff] text-[14px] bg-[#202128] text-center px-4"
+                            className="text-[#fff] text-[14px] bg-[#202128] text-center px-1"
                             key={columnIndex}
                           >{column.name}</th>
                         ))}
                       </tr>
                     </thead>
                     <tbody>
-                      {rows
+                      {sortedData
                       .slice(entries.indexOfFirst, entries.indexOfLast)
                       .filter(
                         (row) => row.game.props.children.toLowerCase().includes(searchQuery.toLowerCase())
@@ -91,7 +148,7 @@ const GameReport = () => {
                           </td>
                         </tr>
                       ) 
-                      : (rows
+                      : (sortedData
                         .slice(entries.indexOfFirst, entries.indexOfLast)
                         .filter(
                           (row) => row.game.props.children.toLowerCase().includes(searchQuery.toLowerCase())
@@ -104,6 +161,7 @@ const GameReport = () => {
                             <td className={style.tableCol}>{row.totalPayout}</td>
                             <td className={style.tableCol}>{row.totalGGR}</td>
                             <td className={style.tableCol}>{row.GGR}</td>
+                            <td className={style.tableCol}>{row.date}</td>
                           </tr>
                         ))
                       )}
