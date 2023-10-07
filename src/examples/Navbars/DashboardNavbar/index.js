@@ -32,6 +32,10 @@ import {
 // Images
 import team2 from "assets/images/team-2.jpg";
 
+// redux 
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleSidebar } from '../../../reducers/actions';
+
 
 function DashboardNavbar({ absolute, light, isMini }) {
   const [navbarType, setNavbarType] = useState();
@@ -39,6 +43,9 @@ function DashboardNavbar({ absolute, light, isMini }) {
   const { miniSidenav, transparentNavbar, fixedNavbar, openConfigurator } = controller;
   const [openMenu, setOpenMenu] = useState(false);
   const route = useLocation().pathname.split("/").slice(1);
+
+  const showSidebar = useSelector(state => state.showSidebar);
+  const customDispatch = useDispatch();
 
   useEffect(() => {
     // Setting the navbar type
@@ -59,7 +66,10 @@ function DashboardNavbar({ absolute, light, isMini }) {
     return () => window.removeEventListener("scroll", handleTransparentNavbar);
   }, [dispatch, fixedNavbar]);
 
-  const handleMiniSidenav = () => setMiniSidenav(dispatch, !miniSidenav);
+  const handleMiniSidenav = () => {
+    setMiniSidenav(dispatch, !miniSidenav);
+    // customDispatch(toggleSidebar(miniSidenav? true : false));
+  }
   const handleConfiguratorOpen = () => setOpenConfigurator(dispatch, !openConfigurator);
   const handleOpenMenu = (event) => setOpenMenu(event.currentTarget);
   const handleCloseMenu = () => setOpenMenu(false);
@@ -117,7 +127,7 @@ function DashboardNavbar({ absolute, light, isMini }) {
               />
             </SoftBox>
             <SoftBox color={light ? "white" : "inherit"}>
-              <Link to="/authentication/sign-in">
+              {/* <Link to="/authentication/sign-in">
                 <IconButton sx={navbarIconButton} size="small">
                   <Icon
                     sx={({ palette: { dark, white } }) => ({
@@ -134,7 +144,7 @@ function DashboardNavbar({ absolute, light, isMini }) {
                     Sign in
                   </SoftTypography>
                 </IconButton>
-              </Link>
+              </Link> */}
               <IconButton
                 size="small"
                 color="inherit"

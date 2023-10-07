@@ -17,7 +17,7 @@ import { useTimeline } from "examples/Timeline/context";
 // Custom styles for the TimelineItem
 import { timelineItem, timelineItemIcon } from "examples/Timeline/TimelineItem/styles";
 
-function TimelineItem({ color, icon, title, dateTime, description, badges, lastItem }) {
+function TimelineItem({ color, icon, title, email, description, badges, lastItem }) {
   const isDark = useTimeline();
 
   const renderBadges =
@@ -57,7 +57,7 @@ function TimelineItem({ color, icon, title, dateTime, description, badges, lastI
             fontWeight="medium"
             color={isDark ? "secondary" : "text"}
           >
-            {dateTime}
+            {email}
           </SoftTypography>
         </SoftBox>
         <SoftBox mt={2} mb={1.5}>
@@ -99,7 +99,7 @@ TimelineItem.propTypes = {
   ]),
   icon: PropTypes.node.isRequired,
   title: PropTypes.string.isRequired,
-  dateTime: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
   description: PropTypes.string,
   badges: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
   lastItem: PropTypes.bool,
