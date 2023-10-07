@@ -59,7 +59,7 @@ function Projects(_data) {
   );
   
   const { columns, rows } = data(details);
-
+//
   return (
     <Card>
       <SoftBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
