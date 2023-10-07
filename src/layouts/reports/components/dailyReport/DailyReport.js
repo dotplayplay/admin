@@ -134,7 +134,7 @@ const DailyReport = () => {
                       <tr>
                         {columns.map((column, columnIndex) => (
                           <th
-                            className={`text-slate-700 text-[10px] text-left pr-1 py-2 ${style.customTheadCol1}`}
+                            className={`text-slate-700 text-[10px] text-left pr-1 py-2 ${[4,5,6].includes(columnIndex) ? "bg-blue-200" : "bg-slate-100"}`}
                             key={columnIndex}
                           >{column.name}</th>
                         ))}
