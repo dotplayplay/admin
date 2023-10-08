@@ -1,29 +1,29 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import Card from "@mui/material/Card";
 import SoftBox from "components/SoftBox";
 import SoftButton from "components/SoftButton";
 import SoftTypography from "components/SoftTypography";
 
 //data
-import depositBonusReportData from './data';
+import depositBonusReportData from "../data";
 import { usePagination, Pagination } from "pagination-react-js";
-import { BsArrowUpLeft } from 'react-icons/bs';
-import { BsArrowUpRight } from 'react-icons/bs';
+import { BsArrowUpLeft, BsArrowUpRight, BsArrowLeft } from "react-icons/bs";
 
-const DepositBonusReport = () => {
+const PromoEventDetails = () => {
+  const { promoEventId } = useParams();
+  console.log(`promoEventId: ${promoEventId}`);
   const { summaryColumns, columns, summaryRows, rows } = depositBonusReportData;
-  const { currentPage, entriesPerPage, entries } = usePagination(1, 10);
-  const [sortedSummaryData, setSortedSummaryData] = useState(summaryRows);
-  const [sortedData, setSortedData] = useState(rows);
-  const [depositBonusDate, setdepositBonusDate] = useState(null);
-  const [showDate, setShowDate] = useState(false);
-  const navigate = useNavigate();
+  const filteredRows = rows.filter((row) => row.promoEventId === promoEventId);
+  console.log(`filteredRows: ${filteredRows}`);
 
-  const showBonusDetails = (promoEventId) => {
-    navigate(`/reports/${promoEventId}`);
-  }
+  const { currentPage, entriesPerPage, entries } = usePagination(1, 10);
+  // const [sortedSummaryData, setSortedSummaryData] = useState(summaryRows);
+  const [sortedData, setSortedData] = useState(filteredRows);
+  const [depositBonusDate, setdepositBonusDate] = useState(null);
+  // for filtering by date
+  const [showDate, setShowDate] = useState(false);
 
   // For search function
   const [searchQuery, setSearchQuery] = useState('');
@@ -31,34 +31,7 @@ const DepositBonusReport = () => {
     setSearchQuery(event.target.value);
   };
 
-  // For filtering by date
-  const handleShowDate = () => {
-    setShowDate(!showDate)
-  }
-
-  // Filter function for Summary Data
-  const sortSummaryData = (gameDate) => {
-    if (gameDate) {
-      const filteredData = rows.filter(row => {
-        const rowDate = new Date(row.date);
-        const sortDate = new Date(gameDate);
-        return rowDate.getTime() === sortDate.getTime();
-      });
-
-      filteredData.sort((a, b) => {
-        const dateA = new Date(a.date);
-        const dateB = new Date(b.date);
-        return dateA - dateB;
-      });
-
-      sortedSummaryData(filteredData);
-    } else {
-      sortedSummaryData(summaryRows);
-    }
-    setShowDate(!showDate);
-  };
-
-  // Filter function for users data
+  // Filter/sort by date function for users data
   const sortData = (gameDate) => {
     if (gameDate) {
       const filteredData = rows.filter(row => {
@@ -75,26 +48,32 @@ const DepositBonusReport = () => {
 
       setSortedData(filteredData);
     } else {
-      setSortedData(rows);
+      setSortedData(filteredRows);
     }
     setShowDate(!showDate);
   };
 
+  // Styling
   const style = {
     tableCol: "px-2 py-2 text-slate-800 text-[14px] text-center",
   }
 
   return (
     <div>
-      <SoftBox py={3}>
+      <SoftBox pb={3}>
         <SoftBox mb={3}>
           <Card>
             <div>
               <div className="bg-none">
                 <SoftBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
-                  <SoftTypography variant="h6">
-                    <p className="text-slate-700 uppercase">Deposit Bonus Report</p>
-                  </SoftTypography>
+                  <div className="flex align-center text-center gap-3">
+                    <Link to="/reports" className="pt-[1px]">
+                      <BsArrowLeft />
+                    </Link>
+                    <SoftTypography variant="h6">
+                      <p className="text-slate-700 uppercase">Bonus Report - {filteredRows[0].promoEvent}</p>
+                    </SoftTypography>
+                  </div>
                   <SoftTypography variant="h6">
                     <input
                       className="border-[1px] border-slate-400 rounded-[5px] px-4 py-[1px]"
@@ -130,7 +109,7 @@ const DepositBonusReport = () => {
                     <option value={rows?.length}>All</option>
                   </select>
                   <div className="flex-1"></div>
-                  <button className="px-4 mx-4 border-[1px] rounded-[5px] bg-slate-100" onClick={handleShowDate}>
+                  <button className="px-4 mx-4 border-[1px] rounded-[5px] bg-slate-100" onClick={()=>setShowDate(!showDate)}>
                     <SoftTypography variant="h6" color="#4A90E2">filter by date</SoftTypography>
                   </button>
                   {showDate && 
@@ -138,7 +117,7 @@ const DepositBonusReport = () => {
                     <div className="bg-[#fff] p-4 w-[80%] m-auto md:left-[40%] fixed top-[30%] md:w-[30%] mb-4">
                       <div className="flex top-[0px] bg-[#fff] sticky justify-between items-center gap-2 p-4">
                         <h2 className="text-[16px] font-extrabold">Filter</h2>
-                        <button onClick={handleShowDate}>&times;</button>
+                        <button onClick={()=>setShowDate(!showDate)}>&times;</button>
                       </div>
                       <div>
                         <SoftTypography variant="h6">Game Date:</ SoftTypography>
@@ -159,7 +138,7 @@ const DepositBonusReport = () => {
                   <table className="w-full">
                     <thead>
                       <tr>
-                        {summaryColumns.map((column, columnIndex) => (
+                        {columns.map((column, columnIndex) => (
                           <th
                             className="text-slate-700 bg-slate-100 text-[14px] text-center capitalize py-2 px-2"
                             key={columnIndex}
@@ -168,7 +147,7 @@ const DepositBonusReport = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {sortedSummaryData.slice(entries.indexOfFirst, entries.indexOfLast).filter((row) =>
+                      {sortedData.slice(entries.indexOfFirst, entries.indexOfLast).filter((row) =>
                         row.promoEvent.toLowerCase().includes(searchQuery.toLowerCase())
                       ).length === 0 ? (
                         <tr>
@@ -179,20 +158,19 @@ const DepositBonusReport = () => {
                           </td>
                         </tr>
                       ) : (
-                        sortedSummaryData.slice(entries.indexOfFirst, entries.indexOfLast).filter((row) =>
+                        sortedData.filter((row) =>
                           row.promoEvent.toLowerCase().includes(searchQuery.toLowerCase())
                         ).map((row, rowIndex) => (
                           <tr
                             key={rowIndex}
-                            onClick={() => showBonusDetails(row.promoEventId)}
                             className={`cursor-pointer ${rowIndex % 2 === 0 ? 'bg-slate-200' : 'bg-slate-100'}`}
                           >
-                            <td className={style.tableCol}>{rowIndex + 1}</td>
-                            <td className={`${style.tableCol}`}>{row.promoEvent}</td>
-                            <td className={style.tableCol}>{row.memberCount}</td>
+                            <td className={style.tableCol}>{row.userID}</td>
+                            <td className={`${style.tableCol}`}>{row.username}</td>
                             <td className={style.tableCol}>{row.totalDeposit}</td>
-                            <td className={style.tableCol}>{row.TotalLockedPPD}</td>
-                            <td className={style.tableCol}>{row.UnlockedUpToDate}</td>
+                            <td className={style.tableCol}>{row.totalBonusClaimed}</td>
+                            <td className={style.tableCol}>{row.totalWagered}</td>
+                            <td className={style.tableCol}>{row.date}</td>
                           </tr>
                         ))
                       )}
@@ -233,4 +211,4 @@ const DepositBonusReport = () => {
   );
 };
 
-export default DepositBonusReport;
+export default PromoEventDetails;

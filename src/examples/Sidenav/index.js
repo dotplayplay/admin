@@ -29,7 +29,7 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
   // close sidebar button
   const customDispatch = useDispatch();
   const closeSidenav = () => {
-    const isReportPage = pathname === '/reports';
+    const isReportPage = pathname.includes('/reports');
     if (isReportPage) {
       customDispatch(toggleSidebar(false));
     } else {
@@ -39,7 +39,7 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
 
   const [isSidebarBg, setIsSidebarBg] = useState(false);
   useEffect(() => {
-    const isReportPage = pathname === '/reports';
+    const isReportPage = pathname.includes('/reports');
     if (!isReportPage) {
       // A function that sets the mini state of the sidenav.
       function handleMiniSidenav() {
@@ -119,14 +119,12 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
   const [closeSidebarButton, showCloseSidebarButton] = useState(false);
   const showSidebar = useSelector(state => state.showSidebar);
   useEffect(() => {
-    const isReportPage = pathname === '/reports';
+    const isReportPage = pathname.includes('/reports');
     const isSignPage = () => pathname.includes("authentication")
-    console.log(showSidebar);
 
     if (isReportPage || isSignPage()) {
       showCloseSidebarButton(true);
       customDispatch(toggleSidebar(false));
-      console.log(location.pathname);
     } else {
       showCloseSidebarButton(false);
       customDispatch(toggleSidebar(true));

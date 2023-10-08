@@ -11,6 +11,8 @@ import themeRTL from "assets/theme/theme-rtl";
 
 //members details
 import MemberDetails from "layouts/tables/MemberDetails";
+// promo details
+import PromoEventDetails from "layouts/reports/components/depositBonusReport/details";
 
 //dashboard
 import Dashboard from "layouts/dashboard/index"
@@ -101,6 +103,7 @@ export default function App() {
             {getRoutes(routes)}
             <Route path="*" element={<Dashboard />} />
             <Route path="/details/:rowIndex" element={<MemberDetails />} />
+            <Route path="/reports/:promoEventId" element={<PromoEventDetails />} />
           </Routes>
       </ThemeProvider>
     </CacheProvider>
@@ -125,6 +128,7 @@ export default function App() {
           {getRoutes(routes)}
           <Route path="*" element={<Dashboard />} />
           <Route path="/details/:rowIndex" element={<MemberDetails />} />
+          <Route path="/reports/:promoEventId" element={<PromoEventDetails />} />
         </Routes>
     </ThemeProvider>
   );
