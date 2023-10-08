@@ -11,7 +11,7 @@ import theme from "assets/theme";
 import themeRTL from "assets/theme/theme-rtl";
 
 //members details
-import MemberDetails from "layouts/tables/MemberDetails";
+import MemberDetails from "layouts/adminTables/MemberDetails";
 
 //dashboard
 import Dashboard from "layouts/dashboard/index"

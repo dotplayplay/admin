@@ -25,9 +25,11 @@ import Dashboard from "layouts/dashboard";
 import Report from "layouts/reports";
 import Tables from "layouts/tables";
 import Profile from "layouts/profile";
+import Create from "layouts/create_admin";
 import SignIn from "layouts/authentication/sign-in";
 import SignUp from "layouts/authentication/sign-up";
 import Genaral from "layouts/genaral_settings";
+import AdminSetting from "layouts/adminTables";
 
 //  icons
 import Shop from "examples/Icons/Shop";
@@ -76,8 +78,8 @@ const routes = [
     component: <Genaral />,
     noCollapse: true
   },
-  
-  // { type: "title", title: "Account Pages", key: "account-pages" },
+
+  { type: "title", title: "Account Pages", key: "account-pages" },
   // {
   //   type: "collapse",
   //   name: "Profile",
@@ -87,25 +89,43 @@ const routes = [
   //   component: <Profile />,
   //   noCollapse: true,
   // },
+  {
+    // type: "collapse",
+    // name: "Create Admin",
+    // key: "Create Amdin",
+    route: "/Create",
+    // icon: <CustomerSupport size="12px" />,
+    component: <Create />,
+    noCollapse: true,
+  },
+  {
+    type: "collapse",
+    name: "Admin settings",
+    key: "admin-settings",
+    route: "/admin-settings",
+    icon: <Settings size="12px" />,
+    component: <AdminSetting />,
+    noCollapse: true
+  },
 
-  // {
-  //   type: "collapse",
-  //   name: "Sign In",
-  //   key: "sign-in",
-  //   route: "/authentication/sign-in",
-  //   icon: <Document size="12px" />,
-  //   component: <SignIn />,
-  //   noCollapse: true,
-  // },
-  // {
-  //   type: "collapse",
-  //   name: "Sign Up",
-  //   key: "sign-up",
-  //   route: "/authentication/sign-up",
-  //   icon: <SpaceShip size="12px" />,
-  //   component: <SignUp />,
-  //   noCollapse: true,
-  // },
+  {
+    type: "collapse",
+    name: "Sign In",
+    key: "sign-in",
+    route: "/authentication/sign-in",
+    icon: <Document size="12px" />,
+    component: <SignIn />,
+    noCollapse: true,
+  },
+  {
+    type: "collapse",
+    name: "Sign Up",
+    key: "sign-up",
+    route: "/authentication/sign-up",
+    icon: <SpaceShip size="12px" />,
+    component: <SignUp />,
+    noCollapse: true,
+  },
 ];
 
 export default routes;
