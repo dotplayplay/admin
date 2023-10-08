@@ -37,7 +37,7 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
     }
   }
 
-  const [isSidebarBg, setIsSidebarBg] = useState(false)
+  const [isSidebarBg, setIsSidebarBg] = useState(false);
   useEffect(() => {
     const isReportPage = pathname === '/reports';
     if (!isReportPage) {
@@ -120,12 +120,19 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
   const showSidebar = useSelector(state => state.showSidebar);
   useEffect(() => {
     const isReportPage = pathname === '/reports';
-    if (isReportPage) {
+    const isSignPage = () => pathname.includes("authentication")
+    console.log(showSidebar);
+
+    if (isReportPage || isSignPage()) {
       showCloseSidebarButton(true);
+      customDispatch(toggleSidebar(false));
+      console.log(location.pathname);
     } else {
       showCloseSidebarButton(false);
+      customDispatch(toggleSidebar(true));
     }
-  }, [pathname])
+    
+  }, [location.pathname, customDispatch])
   
   return (
     <>

@@ -68,7 +68,7 @@ const dailyReportTable = {
     },
     {
       date: "09/12/2023",
-      dau: "1832",
+      dau: "4032l98765434567",
       newRegister: "262",
       totalNewDeposit: "1024",
       newDeposit: "$3,304",
@@ -100,7 +100,7 @@ const dailyReportTable = {
     },
     {
       date: "10/03/2023",
-      dau: "1232",
+      dau: "4032l98765434567",
       newRegister: "102",
       totalNewDeposit: "123",
       newDeposit: "$13,304",
@@ -132,7 +132,7 @@ const dailyReportTable = {
     },
     {
       date: "03/08/2023",
-      dau: "4032lsdjfpoasjfdpogwref",
+      dau: "4032l98765434567",
       newRegister: "132",
       totalNewDeposit: "102",
       newDeposit: "$23,304",
@@ -164,7 +164,7 @@ const dailyReportTable = {
     },
     {
       date: "09/12/2023",
-      dau: "1832",
+      dau: "4032l98765434567",
       newRegister: "262",
       totalNewDeposit: "1024",
       newDeposit: "$3,304",
@@ -228,7 +228,7 @@ const dailyReportTable = {
     },
     {
       date: "03/08/2023",
-      dau: "4032lsdjfpoasjfdpogwref",
+      dau: "4032l98765434567",
       newRegister: "132",
       totalNewDeposit: "102",
       newDeposit: "$23,304",
@@ -260,7 +260,7 @@ const dailyReportTable = {
     },
     {
       date: "09/12/2023",
-      dau: "1832",
+      dau: "4032l98765434567",
       newRegister: "262",
       totalNewDeposit: "1024",
       newDeposit: "$3,304",
@@ -292,7 +292,7 @@ const dailyReportTable = {
     },
     {
       date: "10/03/2023",
-      dau: "1232",
+      dau: "4032l98765434567",
       newRegister: "102",
       totalNewDeposit: "123",
       newDeposit: "$13,304",
@@ -324,7 +324,7 @@ const dailyReportTable = {
     },
     {
       date: "03/08/2023",
-      dau: "4032lsdjfpoasjfdpogwref",
+      dau: "4032l98765434567",
       newRegister: "132",
       totalNewDeposit: "102",
       newDeposit: "$23,304",
@@ -356,7 +356,7 @@ const dailyReportTable = {
     },
     {
       date: "09/12/2023",
-      dau: "1832",
+      dau: "4032l98765434567",
       newRegister: "262",
       totalNewDeposit: "1024",
       newDeposit: "$3,304",
@@ -388,7 +388,7 @@ const dailyReportTable = {
     },
     {
       date: "10/03/2023",
-      dau: "1232",
+      dau: "4032l98765434567",
       newRegister: "102",
       totalNewDeposit: "123",
       newDeposit: "$13,304",
@@ -420,7 +420,7 @@ const dailyReportTable = {
     },
     {
       date: "03/08/2023",
-      dau: "4032lsdjfpoasjfdpogwref",
+      dau: "4032l98765434567",
       newRegister: "132",
       totalNewDeposit: "102",
       newDeposit: "$23,304",
@@ -452,7 +452,7 @@ const dailyReportTable = {
     },
     {
       date: "09/12/2023",
-      dau: "1832",
+      dau: "4032l98765434567",
       newRegister: "262",
       totalNewDeposit: "1024",
       newDeposit: "$3,304",
