@@ -144,7 +144,11 @@ const DepositBonusReport = () => {
                         <SoftTypography variant="h6">Game Date:</ SoftTypography>
                         <div className="h-full flex text-center align-center">
                           <DatePicker className="text-[14px] border-[1px] px-4 w-full py-[3px]" selected={depositBonusDate} onChange={date=>setdepositBonusDate(date)} />
-                          <button className="h-full text-black-200 hover:text-black-500 pt-1 px-3" onClick={()=>{setdepositBonusDate('');sortData();}}>&times;</button>
+                          <button className="h-full text-black-200 hover:text-black-500 pt-1 px-3" 
+                          onClick={()=>{
+                            setdepositBonusDate('');
+                            sortData();
+                          }}>&times;</button>
                         </div>
                       </div>
                       <SoftBox mt={4} mb={1}>

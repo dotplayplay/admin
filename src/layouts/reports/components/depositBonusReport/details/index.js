@@ -34,7 +34,7 @@ const PromoEventDetails = () => {
   // Filter/sort by date function for users data
   const sortData = (gameDate) => {
     if (gameDate) {
-      const filteredData = rows.filter(row => {
+      const filteredData = filteredRows.filter(row => {
         const rowDate = new Date(row.date);
         const sortDate = new Date(gameDate);
         return rowDate.getTime() === sortDate.getTime();
@@ -123,7 +123,11 @@ const PromoEventDetails = () => {
                         <SoftTypography variant="h6">Game Date:</ SoftTypography>
                         <div className="h-full flex text-center align-center">
                           <DatePicker className="text-[14px] border-[1px] px-4 w-full py-[3px]" selected={depositBonusDate} onChange={date=>setdepositBonusDate(date)} />
-                          <button className="h-full text-black-200 hover:text-black-500 pt-1 px-3" onClick={()=>{setdepositBonusDate('');sortData();}}>&times;</button>
+                          <button className="h-full text-black-200 hover:text-black-500 pt-1 px-3" 
+                          onClick={()=>{
+                            setdepositBonusDate('');
+                            sortData();
+                          }}>&times;</button>
                         </div>
                       </div>
                       <SoftBox mt={4} mb={1}>
@@ -148,7 +152,7 @@ const PromoEventDetails = () => {
                     </thead>
                     <tbody>
                       {sortedData.slice(entries.indexOfFirst, entries.indexOfLast).filter((row) =>
-                        row.promoEvent.toLowerCase().includes(searchQuery.toLowerCase())
+                        row.username.toLowerCase().includes(searchQuery.toLowerCase())
                       ).length === 0 ? (
                         <tr>
                           <td className={style.tableCol}>
@@ -159,14 +163,14 @@ const PromoEventDetails = () => {
                         </tr>
                       ) : (
                         sortedData.filter((row) =>
-                          row.promoEvent.toLowerCase().includes(searchQuery.toLowerCase())
+                          row.username.toLowerCase().includes(searchQuery.toLowerCase())
                         ).map((row, rowIndex) => (
                           <tr
                             key={rowIndex}
                             className={`cursor-pointer ${rowIndex % 2 === 0 ? 'bg-slate-200' : 'bg-slate-100'}`}
                           >
-                            <td className={style.tableCol}>{row.userID}</td>
-                            <td className={`${style.tableCol}`}>{row.username}</td>
+                            <td className={style.tableCol}>{row.username}</td>
+                            <td className={`${style.tableCol}`}>{row.userID}</td>
                             <td className={style.tableCol}>{row.totalDeposit}</td>
                             <td className={style.tableCol}>{row.totalBonusClaimed}</td>
                             <td className={style.tableCol}>{row.totalWagered}</td>
