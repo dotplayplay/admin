@@ -23,6 +23,7 @@
 //  layouts
 import Dashboard from "layouts/dashboard";
 import Report from "layouts/reports";
+import AuthorTables from "layouts/user_tables/components/authors";
 import Tables from "layouts/tables";
 import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
@@ -38,7 +39,6 @@ import Document from "examples/Icons/Document";
 import SpaceShip from "examples/Icons/SpaceShip";
 import CustomerSupport from "examples/Icons/CustomerSupport";
 import { GoReport } from "react-icons/go";
-import { MdOutlineVideogameAssetOff } from "react-icons/md";
 
 const routes = [
   {
@@ -49,6 +49,15 @@ const routes = [
     icon: <Shop size="12px" />,
     component: <Dashboard />,
     noCollapse: true,
+  },
+  {
+    type: "collapse",
+    name: "Users Tables",
+    key: "user-tables",
+    route: "/user-tables",
+    icon: <Office size="12px" />,
+    component: <AuthorTables />,
+    noCollapse: true
   },
   {
     type: "collapse",

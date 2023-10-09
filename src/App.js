@@ -13,7 +13,8 @@ import themeRTL from "assets/theme/theme-rtl";
 import MemberDetails from "layouts/tables/MemberDetails";
 // promo details
 import PromoEventDetails from "layouts/reports/components/depositBonusReport/details";
-
+// User - members details
+import MembersTable from "layouts/user_tables/components/members";
 //dashboard
 import Dashboard from "layouts/dashboard/index"
 
@@ -104,6 +105,7 @@ export default function App() {
             <Route path="*" element={<Dashboard />} />
             <Route path="/details/:rowIndex" element={<MemberDetails />} />
             <Route path="/reports/:promoEventId" element={<PromoEventDetails />} />
+            <Route path="/user-tables/members" element={<MembersTable />} />
           </Routes>
       </ThemeProvider>
     </CacheProvider>
@@ -129,6 +131,7 @@ export default function App() {
           <Route path="*" element={<Dashboard />} />
           <Route path="/details/:rowIndex" element={<MemberDetails />} />
           <Route path="/reports/:promoEventId" element={<PromoEventDetails />} />
+          <Route path="/user-tables/members" element={<MembersTable />} />
         </Routes>
     </ThemeProvider>
   );
