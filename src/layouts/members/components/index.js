@@ -1,35 +1,29 @@
+/* eslint-disable */
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import Card from "@mui/material/Card";
 import SoftBox from "components/SoftBox";
 import SoftButton from "components/SoftButton";
-import SoftTypography from "components/SoftTypography";
-import UserTableLayout from "../layout";
+import SoftTypography from "components/SoftTypography"
 
 //data
-import grrReport from './data/MembersData';
+import membersData from '../data/membersData';
 import { usePagination, Pagination } from "pagination-react-js";
-import { BsArrowUpLeft } from 'react-icons/bs';
-import { BsArrowUpRight } from 'react-icons/bs';
+import { BsArrowUpLeft, BsArrowUpRight } from 'react-icons/bs';
+import { RiWhatsappLine } from 'react-icons/ri';
 
-const MembersTable = () => {
-  const { columns, rows } = grrReport;
+const MembersTableComponent = ({ searchQuery }) => {
+  const { columns, rows } = MembersData;
   const { currentPage, entriesPerPage, entries } = usePagination(1, 10);
   const [sortedData, setSortedData] = useState(rows);
-  const [ggrReportDate, setGgrReportDate] = useState(null);
+  const [membersDate, setMembersDate] = useState(null);
   const [showDate, setShowDate] = useState(false);
   const navigate = useNavigate();
 
   const memberDetail = (rowId) => {
-    navigate(`/details/${rows[rowId].userID}`);
+    navigate(`/members/member/${rows[rowId].userID}`);
   }
-
-  // For search function
-  const [searchQuery, setSearchQuery] = useState('');
-  const handleSearch = (event) => {
-    setSearchQuery(event.target.value);
-  };
 
   // For filtering by date
   const handleShowDate = () => {
@@ -58,29 +52,15 @@ const MembersTable = () => {
   };
 
   const style = {
-    tableCol: "px-2 py-2 text-slate-800 text-[12px] text-center",
+    tableCol: "px-2 py-4 text-slate-800 text-[13px] text-center w-max min-w-[70px] max-w-[140px] hover:max-w-full truncate text-ellipsis",
   }
 
   return (
-    <UserTableLayout>
+    <div >
       <SoftBox py={3}>
         <SoftBox mb={3}>
           <Card>
             <div>
-              <div className="bg-none">
-                <SoftBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
-                  <SoftTypography variant="h6"><p className="text-slate-700">GGR Report</p></SoftTypography>
-                  <SoftTypography variant="h6">
-                    <input
-                      className="border-[1px] border-slate-400 rounded-[5px] px-4 py-[1px]"
-                      placeholder="search reports"
-                      value={searchQuery}
-                      onChange={handleSearch}
-                      type="text"
-                    />
-                  </SoftTypography>
-                </SoftBox>
-              </div>
               <SoftBox
                 sx={{
                   "& .MuiTableRow-root:not(:last-child)": {
@@ -91,9 +71,9 @@ const MembersTable = () => {
                   },
                 }}
               >
-                <div className="select-wrapper max-elements px-6 py-4 bg-slate-200 rounded-t-[10px] flex">
-                  <label className="text-[15px text-slate-700 px-2" htmlFor="max-elements">Entries per page:</label>
-                  <select className="py-2 text-[13px] cursor-pointer focus:outline-none px-2 rounded-[5px]" name="max-elements" id="max-elements" onChange={e => { currentPage.set(1); entriesPerPage.set(Number(e.target.value)); }}>
+                <div className="select-wrapper max-elements px-6 py-4 bg-white rounded-t-[10px] flex border-slate-200/50 border-[1px]">
+                  <label className="text-[15px] text-slate-700 px-2" htmlFor="max-elements">Entries per page:</label>
+                  <select className="py-2 text-[13px] cursor-pointer focus:outline-none px-2 bg-slate-200 rounded-[5px]" name="max-elements" id="max-elements" onChange={e => { currentPage.set(1); entriesPerPage.set(Number(e.target.value)); }}>
                     <option value={1}>1</option>
                     <option value={2}>2</option>
                     <option value={10}>10</option>
@@ -106,7 +86,7 @@ const MembersTable = () => {
                   </select>
                   <div className="flex-1"></div>
                   <button className="px-4 mx-4 border-[1px] rounded-[5px] bg-slate-100" onClick={handleShowDate}>
-                    <SoftTypography variant="h6" color="#4A90E2">filter by date</SoftTypography>
+                    <SoftTypography variant="h6" color="#aeb8c2">filter by date</SoftTypography>
                   </button>
                   {showDate && 
                   <div className="flex justify-center">
@@ -116,14 +96,14 @@ const MembersTable = () => {
                         <button onClick={handleShowDate}>&times;</button>
                       </div>
                       <div>
-                        <SoftTypography variant="h6">Game Date:</ SoftTypography>
+                        <SoftTypography variant="h6">Date Created:</ SoftTypography>
                         <div className="h-full flex text-center align-center">
-                          <DatePicker className="text-[14px] border-[1px] px-4 w-full py-[3px]" selected={ggrReportDate} onChange={date=>setGgrReportDate(date)} />
-                          <button className="h-full text-black-200 hover:text-black-500 pt-1 px-3" onClick={()=>{setGgrReportDate('');sortData();}}>&times;</button>
+                          <DatePicker className="text-[14px] border-[1px] px-4 w-full py-[3px]" selected={membersDate} onChange={date=>setMembersDate(date)} />
+                          <button className="h-full text-black-200 hover:text-black-500 pt-1 px-3" onClick={()=>{setMembersDate('');sortData();}}>&times;</button>
                         </div>
                       </div>
                       <SoftBox mt={4} mb={1}>
-                        <SoftButton variant="gradient" color="info" fullWidth onClick={()=>sortData(ggrReportDate)}>
+                        <SoftButton variant="gradient" color="info" fullWidth onClick={()=>sortData(membersDate)}>
                           <span>Sort Date</span>
                         </SoftButton>
                       </SoftBox>
@@ -136,7 +116,7 @@ const MembersTable = () => {
                       <tr>
                         {columns.map((column, columnIndex) => (
                           <th
-                            className="text-slate-700 bg-slate-100 text-[14px] text-center py-2 px-2"
+                            className="text-slate-700 bg-slate-200 text-[12px] text-center py-2 px-2 capitalize"
                             key={columnIndex}
                           >{column.name}</th>
                         ))}
@@ -159,15 +139,28 @@ const MembersTable = () => {
                         ).map((row, rowIndex) => (
                           <tr
                             key={rowIndex}
-                            onClick={() => memberDetail(rowIndex)}
-                            className={`cursor-pointer ${rowIndex % 2 === 0 ? 'bg-slate-200' : 'bg-slate-100'}`}
+                            className={`cursor-pointer ${rowIndex % 2 === 0 ? 'bg-slate-100' : 'bg-slate-200'}`}
                           >
-                            <td className={style.tableCol}>{row.username}</td>
                             <td className={`${style.tableCol}`}>{row.userID}</td>
-                            <td className={style.tableCol}>{row.totalWagered}</td>
-                            <td className={style.tableCol}>{row.totalPayout}</td>
-                            <td className={style.tableCol}>{row.totalGGR}</td>
-                            <td className={style.tableCol}>{row.date}</td>
+                            <td className={style.tableCol} onClick={()=>memberDetail(rowIndex)}>{row.username}</td>
+                            <td className={style.tableCol} onClick={()=>memberDetail(rowIndex)}>{row.fullName}</td>
+                            <td className={style.tableCol} onClick={()=>memberDetail(rowIndex)}>{row.phoneNumber}</td>
+                            <td className={style.tableCol} onClick={()=>memberDetail(rowIndex)}>{row.email}</td>
+                            <td className={style.tableCol} onClick={()=>memberDetail(rowIndex)}>{row.totalWagered}</td>
+                            <td className={style.tableCol} onClick={()=>memberDetail(rowIndex)}>{row.totalGGR}</td>
+                            <td className={style.tableCol} onClick={()=>memberDetail(rowIndex)}>{row.usdtPpdPpl}</td>
+                            <td className={style.tableCol} onClick={()=>memberDetail(rowIndex)}>{row.chatMessages}</td>
+                            <td className={style.tableCol} onClick={()=>memberDetail(rowIndex)}>{row.date} - {row.time}</td>
+                            <td className={style.tableCol} onClick={()=>memberDetail(rowIndex)}>{row.firstDepositDate} - {row.firstDepositTime}</td>
+                            <td className={style.tableCol} onClick={()=>memberDetail(rowIndex)}>{row.lastDepositDate} - {row.lastDepositTime}</td>
+                            <td className={style.tableCol} onClick={()=>memberDetail(rowIndex)}>{row.lastLoginDate} - {row.lastLoginTime}</td>
+                            <td className={style.tableCol} onClick={()=>memberDetail(rowIndex)}>{row.lastLoginIP}</td>
+                            <td className="px-2 py-1">
+                              <Link to={`${row.usdtPpdPpl}`} className={`w-max flex align-center text-center gap-x-[2px] ${rowIndex % 2 == 0? 'bg-slate-200' : 'bg-slate-300'} hover:bg-[#d7fce5] text-slate-600 hover:text-[#25D366] py-[5px] px-4 rounded-[5px] transition-all duration-150 ease-in-out`}>
+                                <RiWhatsappLine className="text-[22px] pt-[2px]" />
+                                <p className="text-[15px]">Chat</p>
+                              </Link>
+                            </td>
                           </tr>
                         ))
                       )}
@@ -204,8 +197,8 @@ const MembersTable = () => {
           navNextCustom={{ steps: 5, content: "\u00B7\u00B7\u00B7" }}
         />
       </SoftBox>
-    </UserTableLayout>
+    </div>
   );
 };
 
-export default MembersTable;
+export default MembersTableComponent;

@@ -28,7 +28,7 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
 
   // Pages that differ in Sidebar logic
   const isReportPage = pathname.includes('/reports');
-  const isUserTablesPage = pathname.includes('/user-tables');
+  const isUserTablesPage = pathname.includes('/members');
 
   // close sidebar button
   const customDispatch = useDispatch();

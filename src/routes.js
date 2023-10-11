@@ -23,7 +23,7 @@
 //  layouts
 import Dashboard from "layouts/dashboard";
 import Report from "layouts/reports";
-import AuthorTables from "layouts/user_tables/components/authors";
+import MembersTable from "layouts/members";
 import Tables from "layouts/tables";
 import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
@@ -52,22 +52,22 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "Users Tables",
-    key: "user-tables",
-    route: "/user-tables",
+    name: "Members",
+    key: "members",
+    route: "/members",
     icon: <Office size="12px" />,
-    component: <AuthorTables />,
+    component: <MembersTable />,
     noCollapse: true
   },
-  {
-    type: "collapse",
-    name: "Users Tables",
-    key: "tables",
-    route: "/tables",
-    icon: <Office size="12px" />,
-    component: <Tables />,
-    noCollapse: true
-  },
+  // {
+  //   type: "collapse",
+  //   name: "Users Tables",
+  //   key: "tables",
+  //   route: "/tables",
+  //   icon: <Office size="12px" />,
+  //   component: <Tables />,
+  //   noCollapse: true
+  // },
   {
     type: "collapse",
     name: "Reports",

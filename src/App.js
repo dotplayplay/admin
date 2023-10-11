@@ -14,7 +14,7 @@ import MemberDetails from "layouts/tables/MemberDetails";
 // promo details
 import PromoEventDetails from "layouts/reports/components/depositBonusReport/details";
 // User - members details
-import MembersTable from "layouts/user_tables/components/members";
+import MemberTable from "layouts/member";
 //dashboard
 import Dashboard from "layouts/dashboard/index"
 
@@ -105,7 +105,7 @@ export default function App() {
             <Route path="*" element={<Dashboard />} />
             <Route path="/details/:rowIndex" element={<MemberDetails />} />
             <Route path="/reports/:promoEventId" element={<PromoEventDetails />} />
-            <Route path="/user-tables/members" element={<MembersTable />} />
+            <Route path="/members/member/:memberId" element={<MemberTable />} />
           </Routes>
       </ThemeProvider>
     </CacheProvider>
@@ -130,8 +130,7 @@ export default function App() {
           {getRoutes(routes)}
           <Route path="*" element={<Dashboard />} />
           <Route path="/details/:rowIndex" element={<MemberDetails />} />
-          <Route path="/reports/:promoEventId" element={<PromoEventDetails />} />
-          <Route path="/user-tables/members" element={<MembersTable />} />
+          <Route path="/members/member/:memberId" element={<MemberTable />} />
         </Routes>
     </ThemeProvider>
   );
