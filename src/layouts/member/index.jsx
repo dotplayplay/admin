@@ -1,23 +1,23 @@
 /* eslint-disable */
 import React, { useState } from "react";
 import Sidebar from "./sidebar";
-import SoftBox from "components/SoftBox";
 import Footer from "examples/Footer";
 import MemberTable from "./components";
-import Grid from "@mui/material/Grid";
 
 const MemberTableLayout = () => {
   return (
-    <div className="">
-      <div className="grid grid-cols-3">
-        <div className="col-span-1">
+    <div className="w-full">
+      <div className="w-full flex overflow-x-hidden">
+        <div className="sticky top-0 w-max h-screen">
           <Sidebar />
         </div>
-        <div className="col-span-1">
+        <div className="w-full relative py-2 px-1 md:px-3">
           <MemberTable />
+          <div className="absolute bottom-0 right-0 p-2 bg-white w-full">
+            <Footer />
+          </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

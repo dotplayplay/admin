@@ -1,4 +1,69 @@
 /* FOR SIDEBAR */
+.nav_sidebar {
+  scrollbar-width: 10px;
+  scrollbar-color: #e4e7eb;
+  /* scrollbar-width: thin; */
+}
+
+.nav_sidebar::-webkit-scrollbar {
+  width: 10px;
+}
+
+.nav_sidebar::-webkit-scrollbar-thumb {
+  background: #e4e7eb;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+}
+
+.nav_sidebar::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+.nav_sidebar::-webkit-scrollbar-button {
+  display: none;
+}
+
+.nav_link {
+  transition: color .15s ease-in-out;
+}
+
 .nav_link::before {
-  content: "",
+  content: "";
+  position: absolute;
+  z-index: 15;
+  top: -10px;
+  right: -5px;
+  width: 15px;
+  height: 15px;
+  border-bottom-right-radius: 15px;
+  border-right: 5px solid #ffffff;
+  border-bottom: 5px solid #ffffff;
+  box-shadow: 13px 0 0 #ffffff;
+}
+
+.nav_link::after {
+  content: "";
+  position: absolute;
+  z-index: 15;
+  bottom: -10px;
+  right: -5px;
+  width: 15px;
+  height: 15px;
+  border-top-right-radius: 15px;
+  border-right: 5px solid #ffffff;
+  border-top: 5px solid #ffffff;
+  box-shadow: 13px 0 0 #ffffff;
+}
+
+.nav_link .link_icon {
+  color: #6e7b8b;
+  transition: color 0s;
+}
+
+.nav_link:hover .not_focused .link_icon {
+  color: #ffffff;
+}
+
+.nav_link:hover .not_focused * {
+  color: #ffffff;
 }

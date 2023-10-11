@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import SoftBox from "components/SoftBox";
 //data
 import memberData from '../data/memberData';
-import { usePagination, Pagination } from "pagination-react-js";
+import BasicInfo from './basicInfo';
 
 const MemberTable = () => {
   const { 
@@ -11,10 +10,11 @@ const MemberTable = () => {
   const { memberId } = useParams();
 
   return (
-    <div>
-      <SoftBox py={3}>
-        Member
-      </SoftBox>
+    <div className="min-w-full p-2">
+      <div className="w-full p-5">
+        <h2 className="font-[600] uppercase text-slate-800">User Information</h2>
+      </div>
+      <BasicInfo />
     </div>
   );
 };

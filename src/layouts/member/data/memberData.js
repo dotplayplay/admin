@@ -27,43 +27,23 @@ const initialSettings = {
 
 const memberData = {
   // Basic Information
-  basicInfo: {
-    columns: [
-      { name: "user ID", align: "left" },
-      { name: "Username", align: "left" },
-      { name: "Tag", align: "left" },
-      { name: "Mobile", align: "left" },
-      { name: "Verified mobile", align: "left" },
-      { name: "Email address", align: "left" },
-      { name: "Verified email address", align: "left" },
-      { name: "Password", align: "left" },
-      { name: "2FA", align: "left" },
-      { name: "KYC", align: "left" },
-      { name: "Hide gaming data", align: "center" },
-      { name: "Hide username", align: "left" },
-      { name: "Rediue Tip", align: "left" },
-      { name: "Chat", align: "left" },
-      { name: "Suspend", align: "left" },
-    ],
-    rows: [
-      {
-        userId: "12qrtzqi1",
-        username: "Ifeanyi345",
-        tag: "P2E",
-        mobile: "P2E",
-        emailAddress: "P2E",
-        verifiedMobile: true,
-        verifiedEmailAddress: true,
-        twoFactorAuth: true,
-        kyc: true,
-        hideGamingData: true,
-        hideUsername: true,
-        refuceTip: true,
-        chat: true,
-        suspend: true,
-      }
-    ]
-  },
+  basicInfo: [
+    { name: "user ID", value: "12qrtzqi1", id: "userId" },
+    { name: "Username", value: "Ifeanyi345", id: "username" },
+    { name: "Tag", value: "P2E", id: "tag" },
+    { name: "Mobile", value: "+2349039108633", id: "mobile" },
+    { name: "Verified mobile", value: true, id: "emailAddress" },
+    { name: "Email address", value: "valiantlongemail@gmail.com", id: "verifiedMobile" },
+    { name: "Verified email address", value: true, id: "verifiedEmailAddress" },
+    { name: "Password", value: "223456", id: "password" },
+    { name: "2FA", value: true, id: "twoFactorAuth" },
+    { name: "KYC", value: true, id: "kyc" },
+    { name: "Hide gaming data", value: true, id: "hideGamingData" },
+    { name: "Hide username", value: true, id: "hideUsername" },
+    { name: "Rediue Tip", value: true, id: "refuceTip" },
+    { name: "Chat", value: true, id: "chat" },
+    { name: "Suspend", value: true, id: "suspend" },
+  ],
 
   // Account Information
   accountInfo: {
