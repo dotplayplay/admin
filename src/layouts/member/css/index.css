@@ -1,0 +1,4 @@
+/* FOR SIDEBAR */
+.nav_link::before {
+  content: "",
+}

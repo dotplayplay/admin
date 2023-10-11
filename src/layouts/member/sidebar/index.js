@@ -53,7 +53,7 @@ const Sidebar = ({ active }) => {
         <ul className="flex flex-col gap-1">
           {navs.map((nav, index) => {
             return (
-            <li>
+            <li className="nav_link">
               <NavLink
                 to="{scrollId}"
                 smooth={true}

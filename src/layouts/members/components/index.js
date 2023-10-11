@@ -14,7 +14,7 @@ import { BsArrowUpLeft, BsArrowUpRight } from 'react-icons/bs';
 import { RiWhatsappLine } from 'react-icons/ri';
 
 const MembersTableComponent = ({ searchQuery }) => {
-  const { columns, rows } = MembersData;
+  const { columns, rows } = membersData;
   const { currentPage, entriesPerPage, entries } = usePagination(1, 10);
   const [sortedData, setSortedData] = useState(rows);
   const [membersDate, setMembersDate] = useState(null);
