@@ -10,6 +10,8 @@ import curved9 from "assets/images/curved-images/curved-6.jpg";
 import PageLayout from "examples/LayoutContainers/PageLayout";
 import { useForm } from "react-hook-form";
 import PinInput from "react-pin-input";
+import { toast } from "react-toastify";
+import axios from "axios";
 
 const MAX_STEP = 3
 
@@ -29,18 +31,23 @@ function SignIn() {
     setFormStep((cur) => cur + 1);
   };
 
-  console.log(JSON.stringify(watch(), null, 2));
+  // console.log(JSON.stringify(watch(), null, 2));
 
   const SubmitForm = async (values) => {
-    values.pin = pin;
+    const payload = {
+      username: values.username,
+      password: values.password,
+      // pin: values.pin
+    }
 
     try {
-      const apiUrl = 'https://documenter.getpostman.com/view/admin/auth/login';
-      const response = await axios.post(apiUrl, values);
+      const apiUrl = 'http://localhost:8080/admin/login';
+      const response = await axios.post(apiUrl, payload);
       if (response.status === 200) {
         console.log('Success:', response.data);
-        // You can add any success handling logic here, such as redirection or displaying a success message
-        // navigate('/admin-settings');
+        toast.success("Logged in successfully");
+        navigate("/admin-settings");
+
       } else {
         console.error('Unexpected response:', response);
       }
@@ -86,8 +93,8 @@ function SignIn() {
             <form onSubmit={handleSubmit(SubmitForm)}>
               <div className="flex">
                 {formStep > 0 && <button onClick={prevStep} type="button">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                   </svg>
 
                 </button>}
@@ -104,21 +111,21 @@ function SignIn() {
                     className="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1  invalid:border-pink-500 invalid:text-pink-600
                              focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
                     style={{
-                      border: errors.UserName
+                      border: errors.username
                         ? "1px solid red"
                         : "1px solid #ccc",
                     }}
                     type="text"
-                    placeholder="Enter Your UserName"
-                    {...register("UserName", {
+                    placeholder="Enter Your username"
+                    {...register("username", {
                       required: {
                         value: true,
-                        message: "UserName is Required"
+                        message: "userName is Required"
                       }
                     })}
 
                   />
-                  {errors.UserName && <p className="text-sm text-pink-500">{errors.UserName.message}</p>}
+                  {errors.userName && <p className="text-sm text-pink-500">{errors.userName.message}</p>}
 
                 </SoftBox>
               )}
@@ -133,13 +140,13 @@ function SignIn() {
                     className="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1  invalid:border-pink-500 invalid:text-pink-600
                         focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
                     style={{
-                      border: errors.Password
+                      border: errors.password
                         ? "1px solid red"
                         : "1px solid #ccc",
                     }}
                     type="password"
-                    placeholder="Password"
-                    {...register("Password")}
+                    placeholder="password"
+                    {...register("password")}
                   />
                 </SoftBox>
               )}

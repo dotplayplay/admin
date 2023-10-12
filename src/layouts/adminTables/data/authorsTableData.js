@@ -61,7 +61,7 @@ const authorsTableData = {
       Username: <Function job="sqz11829sgh" />,
       Status: (
         <SoftTypography variant="caption" color="white" fontWeight="medium">
-        Active
+        {}
         </SoftTypography>
       ),
       Account: (

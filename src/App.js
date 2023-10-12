@@ -4,7 +4,8 @@ import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 // @mui material components
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Sidenav from "examples/Sidenav";
 import Configurator from "examples/Configurator";
 import theme from "assets/theme";
@@ -23,6 +24,7 @@ import createCache from "@emotion/cache";
 import routes from "routes";
 // setOpenConfigurator
 import { useSoftUIController, setMiniSidenav, } from "context";
+import NotFound from "NotFound";
 
 export default function App() {
   const [controller, dispatch] = useSoftUIController();
@@ -129,33 +131,42 @@ export default function App() {
         {layout === "vr" && <Configurator />}
         <Routes>
           {getRoutes(routes)}
-          <Route path="*" element={<Dashboard />} />
-          <Route path="/details/:rowIndex" element={<MemberDetails />} />
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/details/:username" element={<MemberDetails />} />
+          <Route path="*" element={<NotFound />} />
+
         </Routes>
       </ThemeProvider>
     </CacheProvider>
   ) : (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      {layout === "dashboard" && (
-        <>
-          <Sidenav
-            color={sidenavColor}
-            brandName="DOTPLAYPLAY"
-            routes={routes}
-            onMouseEnter={handleOnMouseEnter}
-            onMouseLeave={handleOnMouseLeave}
-          />
-          <Configurator />
-          {/* {configsButton} */}
-        </>
-      )}
-      {layout === "vr" && <Configurator />}
-      <Routes>
-        {getRoutes(routes)}
-        <Route path="*" element={<Dashboard />} />
-        <Route path="/details/:rowIndex" element={<MemberDetails />} />
-      </Routes>
-    </ThemeProvider>
+
+    <>
+      <ToastContainer />
+
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        {layout === "dashboard" && (
+          <>
+            <Sidenav
+              color={sidenavColor}
+              brandName="DOTPLAYPLAY"
+              routes={routes}
+              onMouseEnter={handleOnMouseEnter}
+              onMouseLeave={handleOnMouseLeave}
+            />
+            <Configurator />
+            {/* {configsButton} */}
+          </>
+        )}
+        {layout === "vr" && <Configurator />}
+        <Routes>
+          {getRoutes(routes)}
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/details/:rowIndex" element={<MemberDetails />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </ThemeProvider>
+    </>
+
   );
 }

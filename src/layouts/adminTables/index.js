@@ -7,35 +7,41 @@ import SoftTypography from "components/SoftTypography";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
+import { useForm } from "react-hook-form";
 import Table from "examples/Tables/Table";
 
 // Data
 import authorsTableData from "layouts/adminTables/data/authorsTableData";
 import projectsTableData from "layouts/tables/data/projectsTableData";
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import { BsFillEyeFill } from 'react-icons/bs';
+import MemberDetails from "layouts/adminTables/MemberDetails"
 
 function Tables() {
   const { columns, rows } = authorsTableData;
   const [addMember, setAddMember] = useState(false);
+  const [loading, setLoadind] = useState(false)
   const navigate = useNavigate();
   const handleAddMember = () => {
     navigate('/Create')
     // setAddMember(!addMember)
   }
+  const { watch, register, handleSubmit, getValues, setValue,
+    formState: { errors, isValid } } = useForm({ mode: "all" });
 
-  const memberDetail = (rowId) => {
-    navigate(`/details/${rows[rowId].Username.props.job}`);
+  const [adminData, setAdminData] = useState([]);
+  const [data, setData] = useState([]);
+
+
+  const memberDetail = (_id, username, password, pin, suspend, activityLog) => {
+    const data = [_id, username, password, pin, suspend, activityLog]
+    setData((item) => [1, ...data]);
+    navigate(`/details/${username}`, { state: data });
+
   }
 
-  const [formData, setFormData] = useState({
-    AdminID: "",
-    password: "",
-    confirmPassword: "",
-    email: "",
-    number: "",
-    Username: "",
-    vipLevel: "",
-    affliateModel: "",
-  });
+  const [formData, setFormData] = useState([]);
   const [submittedData, setSubmittedData] = useState([]);
 
   useEffect(() => {
@@ -49,38 +55,62 @@ function Tables() {
     localStorage.setItem("submittedData", JSON.stringify(submittedData));
   }, [submittedData]);
 
-  const generateRandomData = () => {
-    const Username = Math.floor(Math.random() * 1000000);
 
-    setFormData({
-      AdminID: "",
-      password: "",
-      confirmPassword: "",
-      email: "",
-      number: "",
-      Username: Username,
-      vipLevel: "",
-      affliateModel: "",
-    });
-  };
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setFormData({ ...formData, [name]: value });
+  // };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSubmittedData([...submittedData, formData]);
-    generateRandomData();
+  const SubmitForm = async () => {
+    try {
+      await axios.get('http://localhost:8080/admin/all')
+        .then((response) => {
+          setAdminData(response.data.admins)
+          console.log(response.data.admins)
+          if (response.status === 200) {
+            console.log(response.data);
+          } else {
+            console.error('Unexpected response status:', response.status);
+            toast.error('An error occurred while fetching admin data.');
+          }
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+          toast.error('An error occurred while fetching admin data.');
+        });
+    } catch (error) {
+      console.error('Error:', error);
+      toast.error('An error occurred while submitting the form.');
+    }
   };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+  useEffect(() => {
+    SubmitForm()
+  }, [])
 
   const style = {
     input: "w-full border-[#6B6B6B] px-[5px] py-[1px] block border-[1px] rounded-[8px]",
-    tableCol: "px-4 py-2 text-center",
+    tableCol: "px-4 py-2 text-center text-white text-[15px]",
+    tableHead: "text-[#fff] bg-[#202128] justify-between flex w-[100%] text-[14px] text-center m-auto aline-middle px-4 py-2",
+    flex: "",
     label: "block text-[13px]",
     inputCon: "mb-[10px]"
   }
+  const formatApiDate = (dateString) => {
+    const date = new Date(dateString);
+
+    // Convert the date to a readable format
+    const options = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      timeZoneName: 'short',
+    };
+
+    return date.toLocaleString('en-US', options);
+  };
 
   return (
     <DashboardLayout>
@@ -102,6 +132,7 @@ function Tables() {
                   </SoftBox>
                 </div>
                 <SoftBox
+                  display="flex" justifyContent="space-between" alignItems="center" width="100%"
                   sx={{
                     "& .MuiTableRow-root:not(:last-child)": {
                       "& td": {
@@ -113,39 +144,60 @@ function Tables() {
                 >
                   <div className="overflow-x-auto">
                     <table>
-                      <thead>
-                        <tr>
-                          {columns.map((column, columnIndex) => (
-                            <th
-                              className="text-[#fff] bg-[#202128] w-full text-[14px] text-center px-4"
-                              key={columnIndex}
-                            >{column.name}</th>
-                          ))}
+                      <thead >
+                        <tr className="text-[14px] text-[#fff] text-center bg-[#202128]">
+                          <th>
+                            Amdim ID
+                          </th>
+                          <th>Username</th>
+                          <th>Status</th>
+                          <th>Account</th>
+                          <th>Permissions</th>
+                          <th className=''>Activity Log</th>
                         </tr>
                       </thead>
                       <tbody>
-                        {rows.map((row, rowIndex) => (
+                        {/* <td >{adminData.admins._id}</td> */}
+                        {adminData.map((row, rowIndex) => (
                           <tr
                             key={rowIndex}
-                            onClick={() => memberDetail(rowIndex)}
-                            className={`cursor-pointer ${rowIndex % 2 === 0 ? 'bg-[#706c6c]' : ''}`}
+                            // onClick={() => memberDetail(
+                            //   row._id,
+                            //   row.username,
+                            //   row.password,
+                            //   row.pin,
+                            //   row.suspend,
+                            //   row.activityLog
+                            // )
+                            // }
+                            className={`cursor-pointer ${rowIndex % 2 === 0 ? 'bg-[#706c6c]' : ''} m-10`}
                           >
-                            <td className={style.tableCol}>{row.AdminID}</td>
-                            <td className={style.tableCol}>{row.Username}</td>
-                            <td className={style.tableCol}>{row.Status}</td>
-                            <td className={style.tableCol}>{row.Account}</td>
-                            <td className={style.tableCol}>{row.Permissions}</td>
-                            <td className={style.tableCol}>{row.ActivityLog}</td>
-                            {/* <td className={style.tableCol}>{row.chatMessages}</td>
-                            <td className={style.tableCol}>{row.walletBalance}</td>
-                            <td className={style.tableCol}>{row.RegisteredDate}</td>
-                            <td className={style.tableCol}>{row.FirstDepositDate}</td>
-                            <td className={style.tableCol}>{row.LastDepositDate}</td>
-                            <td className={style.tableCol}>{row.LastLoginDate}</td>
-                            <td className={style.tableCol}>{row.LastLoginIP}</td>
-                            <td className={style.tableCol}>{row.Chat}</td>
-                            <td className={style.tableCol}>{row.status}</td>
-                            <td className={style.tableCol}>{row.action}</td> */}
+                            <td className={style.tableCol}>{row._id}</td>
+                            <td className={style.tableCol}>{row.username}</td>
+                            <td className={style.tableCol}>{row.suspend === 0 ? "Active" : "Inactive"}</td>
+                            <td className={style.tableCol}>
+                              <button
+                                onClick={() => memberDetail(
+                                  row._id,
+                                  row.username,
+                                  row.password,
+                                  row.pin,
+                                  row.suspend,
+                                  row.activityLog
+                                )
+                                }
+                                className='flex align-middle items-center justify-between '>
+                                <p>View </p>
+                                <i className='pl-2'><BsFillEyeFill /></i>
+                              </button>
+                            </td>
+                            <td className={style.tableCol}>
+                              <button className='flex align-middle items-center justify-between '>
+                                <p>View </p>
+                                <i className='pl-2'><BsFillEyeFill /></i>
+                              </button>
+                            </td>
+                            <td className={style.tableCol}>{formatApiDate(row?.lastLoginAt)}</td>
                           </tr>
                         ))}
                       </tbody>
@@ -155,6 +207,19 @@ function Tables() {
               </div>
             </Card>
           </SoftBox>
+          {/* {modalPopUp === true ? (
+            <MemberDetails
+              _id={data[1]}
+              username={data[2]}
+              password={data[3]}
+              pin={data[4]}
+              suspend={data[5]}
+            // Created={data[6]}
+            // hide={() => setModalPopUp(false)}
+            />
+           ) : (
+            ""
+          )}  */}
         </SoftBox>
       </div>
       <div className="members_table">
