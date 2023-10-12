@@ -1,3 +1,17 @@
+/* FOR BODY */
+body, html {
+  overflow: hidden;
+}
+
+/* DATA DISPLAY COLUMN */
+.data_column {
+  scrollbar-width: 12px;
+}
+
+.data_column::-webkit-scrollbar {
+  width: 12px;
+}
+
 /* FOR SIDEBAR */
 .nav_sidebar {
   scrollbar-width: 10px;

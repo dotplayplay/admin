@@ -88,6 +88,9 @@ const MembersTableComponent = ({ searchQuery }) => {
                   <button className="px-4 mx-4 border-[1px] rounded-[5px] bg-slate-100" onClick={handleShowDate}>
                     <SoftTypography variant="h6" color="#aeb8c2">filter by date</SoftTypography>
                   </button>
+                  <button className="px-4 mx-4 border-[1px] rounded-[5px] bg-slate-100" onClick={()=>navigate('/members/create-member')}>
+                    <SoftTypography variant="h6" color="#aeb8c2">Add member</SoftTypography>
+                  </button>
                   {showDate && 
                   <div className="flex justify-center">
                     <div className="bg-[#fff] p-4 w-[80%] m-auto md:left-[40%] fixed top-[30%] md:w-[30%] mb-4">

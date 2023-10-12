@@ -11,9 +11,9 @@ const MemberTableLayout = () => {
         <div className="sticky top-0 w-max h-screen">
           <Sidebar />
         </div>
-        <div className="w-full relative py-2 px-1 md:px-3">
+        <div className="data_column w-full h-screen relative py-2 px-1 md:px-3 overflow-y-scroll">
           <MemberTable />
-          <div className="absolute bottom-0 right-0 p-2 bg-white w-full">
+          <div className="p-2 bg-white w-full">
             <Footer />
           </div>
         </div>

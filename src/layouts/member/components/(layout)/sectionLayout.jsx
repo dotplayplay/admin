@@ -1,39 +1,16 @@
+/* eslint-disable */
 import React, { useState } from 'react';
-import MemberInfoLayout from '../(layout)';
 import ChoInput from 'layouts/member/templates/input';
-import memberData from '../../data/memberData';
 import ChoSwitch from 'layouts/member/templates/switch';
 
-const BasicInfo = () => {
-  const { basicInfo } = memberData;
-
-  // Sets the default state of the data
-  const initialInfoState = basicInfo.map(item => ({
-    name: item.name,
-    value: item.value,
-  }));
-  // Gives it an actual state
-  const [info, setInfo] = useState(initialInfoState);
-
-  const handleInputChange = (id, value) => {
-    const index = basicInfo.findIndex(item => item.id === id);
-    const infoCopy = [...info];
-
-    if (infoCopy[index].type === 'string') {
-      infoCopy[index] = {...infoCopy[index], value};
-    } else if (infoCopy[index].type === 'boolean') {
-      infoCopy[index] = { ...infoCopy[index], value: !infoCopy[index].value };
-    }
-    
-    setInfo(infoCopy);
-  }
-
+const MemberInfoLayout = ({ data, handleInputChange }) => {
   return (
-    <MemberInfoLayout id="basic-info" title="Basic Information">
+    <div id={data[0].id} className="w-full bg-white shadow-xl rounded-[10px] p-2 md:p-4">
+      <p className="text-md text-slate-600 font-[600]">{data[0].title}</p>
       <div className=''>
         <small className="uppercase tracking-[2px] font-[600] text-[10px] text-slate-400 mt-4">Input</small>
         <div className="py-4 grid md:grid-cols-2 gap-y-8 gap-x-4">
-        {basicInfo.map(item => {
+        {data.map(item => {
           if (item.type === 'string') {
             return (
               <ChoInput 
@@ -50,7 +27,7 @@ const BasicInfo = () => {
         </div>
         <small className="uppercase tracking-[2px] font-[600] text-[10px] text-slate-400 mt-4">switch</small>
         <div className="py-4 grid md:grid-cols-2 gap-y-8 gap-x-4">
-        {basicInfo.map(item => {
+        {data.map(item => {
           if (item.type === 'boolean') {
             return (
               <ChoSwitch 
@@ -67,8 +44,8 @@ const BasicInfo = () => {
         </div>
 
       </div>
-    </MemberInfoLayout>
+    </div>
   )
 }
 
-export default BasicInfo;
+export default MemberInfoLayout;

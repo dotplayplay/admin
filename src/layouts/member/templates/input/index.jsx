@@ -19,7 +19,7 @@ const ChoInput = (props) => {
     <div className='relative w-full flex justify-center text-center items-center'>
       <label 
         htmlFor={props.label} 
-        className="absolute top-[-12px] left-[30px] px-3 bg-white text-slate-400 text-[15px] font-[600] tracking-[2px]"
+        className="absolute top-[-12px] left-[30px] px-3 bg-white text-slate-500 text-[15px] font-[600] tracking-[1px]"
       >
         {props.label.toUpperCase()}
       </label>
@@ -32,7 +32,7 @@ const ChoInput = (props) => {
         onChange={handleInputChange}
         onFocus={()=>setInputFocused(true)}
         onBlur={()=>setInputFocused(false)}
-        className='w-full pl-3 h-[50px] border-[2px] rounded-[10px] text-[16px] text-slate-500 focus:outline-green-200'
+        className='w-full pl-3 h-[50px] border-[2px] border-slate-300 rounded-[10px] text-[16px] text-slate-500 focus:outline-green-300'
       />
       {(inputFocused && inputValue) && (<button className="absolute right-[10px] h-max" onMouseDown={()=>setInputValue('')}>
         <LiaTimesSolid className="text-[15px]" />
