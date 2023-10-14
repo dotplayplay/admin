@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import MemberInfoLayout from '../(layout)';
 import ChoInput from 'layouts/member/templates/input';
 import memberData from '../../data/memberData';
-import ChoSwitch from 'layouts/member/templates/switch';
 
 const WalletInfo = () => {
   const { walletInfo } = memberData;

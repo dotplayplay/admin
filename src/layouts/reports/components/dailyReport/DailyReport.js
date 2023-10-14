@@ -102,27 +102,27 @@ const DailyReport = () => {
                   </button>
                 </div>
                 {showDate ? (
-                    <div className="flex justify-center border-[1px]">
-                      <div className="bg-[#fff] p-4 w-[80%] m-auto md:left-[40%] fixed top-[30%] md:w-[30%] mb-4">
-                        <div className="flex top-[0px] bg-[#fff] sticky justify-between items-center gap-2 p-4">
-                          <h2 className="text-[16px] font-extrabold">Filter</h2>
-                          <button onClick={handleShowDate}>&times;</button>
-                        </div>
-                        <div>
-                          <SoftTypography variant="h6">Start Date:</ SoftTypography>
-                          <DatePicker className="text-[14px] border-[1px] px-4 w-full py-[3px]" selected={startDate} onChange={date => setStartDate(date)} />
-                        </div>
-                        <div className="mt-2">
-                          <SoftTypography variant="h6">End Date:</ SoftTypography>
-                          <DatePicker className="text-[14px] border-[1px] px-4 w-full py-[3px]" selected={endDate} onChange={date => setEndDate(date)} />
-                        </div>
-                        <SoftBox mt={4} mb={1}>
-                          <SoftButton variant="gradient" color="info" fullWidth>
-                            <button onClick={() => sortData(startDate, endDate)}>Sort Date</button>
-                          </SoftButton>
-                        </SoftBox>
+                  <div className="flex justify-center border-[1px]">
+                    <div className="bg-[#fff] p-4 w-[80%] m-auto md:left-[40%] fixed top-[30%] md:w-[30%] mb-4">
+                      <div className="flex top-[0px] bg-[#fff] sticky justify-between items-center gap-2 p-4">
+                        <h2 className="text-[16px] font-extrabold">Filter</h2>
+                        <button onClick={handleShowDate}>&times;</button>
                       </div>
+                      <div>
+                        <SoftTypography variant="h6">Start Date:</ SoftTypography>
+                        <DatePicker className="text-[14px] border-[1px] px-4 w-full py-[3px]" selected={startDate} onChange={date => setStartDate(date)} />
+                      </div>
+                      <div className="mt-2">
+                        <SoftTypography variant="h6">End Date:</ SoftTypography>
+                        <DatePicker className="text-[14px] border-[1px] px-4 w-full py-[3px]" selected={endDate} onChange={date => setEndDate(date)} />
+                      </div>
+                      <SoftBox mt={4} mb={1}>
+                        <SoftButton variant="gradient" color="info" fullWidth>
+                          <button onClick={() => sortData(startDate, endDate)}>Sort Date</button>
+                        </SoftButton>
+                      </SoftBox>
                     </div>
+                  </div>
                   ) : (<></>)
                 }
                 <div className="overflow-x-auto dashboard">

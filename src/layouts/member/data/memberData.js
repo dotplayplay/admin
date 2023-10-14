@@ -122,6 +122,377 @@ const memberData = {
     { name: "PPF Balance", type: 'string', value: "$34,034", id: "ppfBalance" },
     { name: "Total Monetary Balance", type: 'sting', value: '$345,345', id: "totalMonetaryBalance" },
   ],
+
+  // Game Settings
+  gameSetting: [
+    { name: "Crash", type: 'boolean', value: true, id: "crash" },
+    { name: "Hilo", type: 'boolean', value: false, id: "hilo" },
+    { name: "Mines", type: 'boolean', value: false, id: "mines" },
+    { name: "Tower", type: 'boolean', value: false, id: "tower" },
+    { name: "Keno", type: 'boolean', value: false, id: "keno" },
+    { name: "Dice", type: 'boolean', value: false, id: "dice" },
+    { name: "Plinko", type: 'boolean', value: false, id: "plinko" },
+    { name: "Lottery", type: 'boolean', value: false, id: "lottery" },
+  ],
+  
+  // Game Report
+  gameReport: {
+    columns: [
+      { name: "Date", align: "left" },
+      { name: "Game Type", align: "center" },
+      { name: "Total Wagered", align: "center" },
+      { name: "Total Payout", align: "center" },
+      { name: "Total GGR", align: "center" },
+    ],
+    rows: [
+      {
+        date: "03/05/2023",
+        time: "23:45",
+        gameTypes: "orginal",
+        totalWagered: "$3,543",
+        totalPayout: "$43,543",
+        totalGgr: "$345,234",
+      },
+      {
+        date: "03/05/2023",
+        time: "23:45",
+        gameTypes: "orginal",
+        totalWagered: "$45,345",
+        totalPayout: "$43,543",
+        totalGgr: "$345,234",
+      },
+      {
+        date: "03/05/2023",
+        time: "23:45",
+        gameTypes: "orginal",
+        totalWagered: "$45,345",
+        totalPayout: "$43,543",
+        totalGgr: "$345,234",
+      },
+    ],
+  },
+  
+  // Details Table
+  detailsTable: {
+    columns: [
+      { name: "Date", align: "left" },
+      { name: "Details", align: "center" },
+      { name: "Wager", align: "center" },
+      { name: "Payout", align: "center" },
+      { name: "Profit/Loss", align: "center" },
+      { name: "Company GGR", align: "center" },
+    ],
+    rows: [
+      {
+        date: "10/03/2023",
+        time: "23:45",
+        details: "https://bc.game/#/sd/11IHVPDY7C5V27",
+        wager: "$100",
+        payout: "$195",
+        profitLoss: "win",
+        companyGgr: "$95",
+      },
+      {
+        date: "03/05/2023",
+        time: "23:45",
+        details: "https://bc.game/#/sd/11IHVPDY7C5V27",
+        wager: "$100",
+        payout: "$195",
+        profitLoss: "win",
+        companyGgr: "$95",
+      },
+      {
+        date: "10/03/2023",
+        time: "23:45",
+        details: "https://bc.game/#/sd/11IHVPDY7C5V27",
+        wager: "$100",
+        payout: "$195",
+        profitLoss: "win",
+        companyGgr: "$95",
+      },
+    ],
+  },
+  
+  // Transaction Log
+  UsdtInfo: {
+    head: [
+      {title: 'USDT Wallet', id: 'usdt-wallet'}
+    ],
+    columns: [
+      { name: "Date", align: "left" },
+      { name: "TransID", align: "center" },
+      { name: "Type", align: "center" },
+      { name: "Remark", align: "center" },
+      { name: "Debit", align: "center" },
+      { name: "Credit", align: "center" },
+      { name: "Balance", align: "center" },
+    ],
+    rows: [
+      {
+        date: "10/03/2023",
+        time: "23:45",
+        transId: "tns0003323",
+        type: "Top Up",
+        remark: "success",
+        debit: "$345",
+        credit: "-",
+        balance: "$43,543",
+      },
+      {
+        date: "10/05/2023",
+        time: "23:45",
+        transId: "tns0003323",
+        type: "Unload",
+        remark: "success",
+        debit: "-",
+        credit: "$345",
+        balance: "$43,543",
+      },
+      {
+        date: "10/03/2023",
+        time: "23:45",
+        transId: "tns0003323",
+        type: "Swap",
+        remark: "success",
+        debit: "-",
+        credit: "$345",
+        balance: "$43,543",
+      },
+    ],
+  },
+
+  
+  PpdInfo: {
+    head: [
+      {title: 'PPD Wallet', id: 'ppd-wallet'}
+    ],
+    columns: [
+      { name: "Date", align: "left" },
+      { name: "TransID", align: "center" },
+      { name: "Type", align: "center" },
+      { name: "Remark", align: "center" },
+      { name: "Debit", align: "center" },
+      { name: "Credit", align: "center" },
+      { name: "Balance", align: "center" },
+    ],
+    rows: [
+      {
+        date: "10/03/2023",
+        time: "23:45",
+        transId: "tns0003323",
+        type: "Top Up",
+        remark: "success",
+        debit: "$345",
+        credit: "-",
+        balance: "$43,543",
+      },
+      {
+        date: "10/05/2023",
+        time: "23:45",
+        transId: "tns0003323",
+        type: "Unload",
+        remark: "success",
+        debit: "-",
+        credit: "$345",
+        balance: "$43,543",
+      },
+      {
+        date: "10/03/2023",
+        time: "23:45",
+        transId: "tns0003323",
+        type: "Swap",
+        remark: "success",
+        debit: "-",
+        credit: "$345",
+        balance: "$43,543",
+      },
+    ],
+  },
+
+  
+  PplInfo: {
+    head: [
+      {title: 'PPL Wallet', id: 'ppl-wallet'}
+    ],
+    columns: [
+      { name: "Date", align: "left" },
+      { name: "TransID", align: "center" },
+      { name: "Type", align: "center" },
+      { name: "Remark", align: "center" },
+      { name: "Debit", align: "center" },
+      { name: "Credit", align: "center" },
+      { name: "Balance", align: "center" },
+    ],
+    rows: [
+      {
+        date: "10/03/2023",
+        time: "23:45",
+        transId: "tns0003323",
+        type: "Top Up",
+        remark: "success",
+        debit: "$345",
+        credit: "-",
+        balance: "$43,543",
+      },
+      {
+        date: "10/05/2023",
+        time: "23:45",
+        transId: "tns0003323",
+        type: "Unload",
+        remark: "success",
+        debit: "-",
+        credit: "$345",
+        balance: "$43,543",
+      },
+      {
+        date: "10/03/2023",
+        time: "23:45",
+        transId: "tns0003323",
+        type: "Swap",
+        remark: "success",
+        debit: "-",
+        credit: "$345",
+        balance: "$43,543",
+      },
+    ],
+  },
+
+  
+  PpfInfo: {
+    head: [
+      {title: 'PPF Wallet', id: 'ppf-wallet'}
+    ],
+    columns: [
+      { name: "Date", align: "left" },
+      { name: "TransID", align: "center" },
+      { name: "Type", align: "center" },
+      { name: "Remark", align: "center" },
+      { name: "Debit", align: "center" },
+      { name: "Credit", align: "center" },
+      { name: "Balance", align: "center" },
+    ],
+    rows: [
+      {
+        date: "10/03/2023",
+        time: "23:45",
+        transId: "tns0003323",
+        type: "Top Up",
+        remark: "success",
+        debit: "$345",
+        credit: "-",
+        balance: "$43,543",
+      },
+      {
+        date: "10/05/2023",
+        time: "23:45",
+        transId: "tns0003323",
+        type: "Unload",
+        remark: "success",
+        debit: "-",
+        credit: "$345",
+        balance: "$43,543",
+      },
+      {
+        date: "10/03/2023",
+        time: "23:45",
+        transId: "tns0003323",
+        type: "Swap",
+        remark: "success",
+        debit: "-",
+        credit: "$345",
+        balance: "$43,543",
+      },
+    ],
+  },
+
+  
+  PpeInfo: {
+    head: [
+      {title: 'PPE Wallet', id: 'ppe-wallet'}
+    ],
+    columns: [
+      { name: "Date", align: "left" },
+      { name: "TransID", align: "center" },
+      { name: "Type", align: "center" },
+      { name: "Remark", align: "center" },
+      { name: "Debit", align: "center" },
+      { name: "Credit", align: "center" },
+      { name: "Balance", align: "center" },
+    ],
+    rows: [
+      {
+        date: "10/03/2023",
+        time: "23:45",
+        transId: "tns0003323",
+        type: "Top Up",
+        remark: "success",
+        debit: "$345",
+        credit: "-",
+        balance: "$43,543",
+      },
+      {
+        date: "10/05/2023",
+        time: "23:45",
+        transId: "tns0003323",
+        type: "Unload",
+        remark: "success",
+        debit: "-",
+        credit: "$345",
+        balance: "$43,543",
+      },
+      {
+        date: "10/03/2023",
+        time: "23:45",
+        transId: "tns0003323",
+        type: "Swap",
+        remark: "success",
+        debit: "-",
+        credit: "$345",
+        balance: "$43,543",
+      },
+    ],
+  },
+
+  DepositBonusLog: {
+    head: [
+      {title: 'Deposit Bonus Log', id: 'deposit-bonus-log'},
+    ],
+    columns: [
+      { name: "Transaction Date", align: "left" },
+      { name: "Promo Event", align: "center" },
+      { name: "Credit Amount", align: "center" },
+      { name: "Status", align: "center" },
+    ],
+    rows: [
+      {
+        date: "10/03/2023",
+        time: "23:45",
+        promoEvent: "1st Deposit 180%",
+        creditAmount: "$1,345",
+        status: "success",
+      },
+      {
+        date: "10/05/2023",
+        time: "23:45",
+        promoEvent: "1st Deposit 180%",
+        creditAmount: "$1,345",
+        status: "success",
+      },
+      {
+        date: "10/03/2023",
+        time: "23:45",
+        promoEvent: "1st Deposit 180%",
+        creditAmount: "$1,345",
+        status: "success",
+      },
+    ],
+  },
+
+    // Action
+    Action: [
+    { name: "Claim Button", type: 'boolean', value: true, id: "claimButton" },
+    { name: "Suspend from Withdrawal", type: 'boolean', value: false, id: "suspendFromWithdrawal" },
+  ],
 }
 
 export default memberData;

@@ -38,7 +38,6 @@ const Sidebar = ({ active }) => {
     {name: "Game settings", open: false, icon: <RiGamepadFill className={styles.icons} />, scrollTo: "game-settings"},
     {name: "Game report", open: false, icon: <RiBarChartGroupedFill className={styles.icons} />, scrollTo: "game-report"},
     {name: "Details table", open: false, icon: <RiDatabaseLine className={styles.icons} />, scrollTo: "details-table"},
-    {name: "Transactions", open: false, icon: <RiCashLine className={styles.icons} />, scrollTo: "transactions"},
     {name: "PPD wallet", open: false, icon: <RiCurrencyLine className={styles.icons} />, scrollTo: "ppd-wallet"},
     {name: "PPL wallet", open: false, icon: <RiCurrencyLine className={styles.icons} />, scrollTo: "ppl-wallet"},
     {name: "PPF wallet", open: false, icon: <RiCurrencyLine className={styles.icons} />, scrollTo: "ppf-wallet"},

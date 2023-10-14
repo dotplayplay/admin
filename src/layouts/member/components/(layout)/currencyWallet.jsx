@@ -7,8 +7,8 @@ import SoftTypography from 'components/SoftTypography';
 import SoftButton from 'components/SoftButton';
 import SoftBox from 'components/SoftBox';
 
-const DetailsTable = () => {
-  const { columns, rows } = MemberData.detailsTable;
+const CurrencyWallet = ({ currency }) => {
+  const { columns, rows, head } = currency;
   const [sortedData, setSortedData] = useState(rows);
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
@@ -39,8 +39,8 @@ const DetailsTable = () => {
   };
 
   return (
-    <div id='sessions-info' className="w-full bg-white shadow-xl rounded-[10px] p-2 md:p-4">
-      <p className="text-md text-slate-600 font-[600] mb-5">Details Table</p>
+    <div id={head[0].id} className="w-full bg-white shadow-xl rounded-[10px] p-2 md:p-4">
+      <p className="text-md text-slate-600 font-[600] mb-5">{head[0].title}</p>
       <small className="uppercase tracking-[2px] font-[600] text-[10px] text-slate-400 mt-2">Info</small>
       <div className="w-full flex justify-end p-2">
         <button className="px-4 mx-4 border-[1px] rounded-[5px] bg-slate-100" onClick={handleShowDate}>
@@ -76,7 +76,7 @@ const DetailsTable = () => {
           <thead>
             <tr>
             {columns.map((column, index) => (
-              <th key={index} className='text-[.875rem] md:text-[1.15rem] text-slate-600 font-[600] '>{column.name}</th>
+              <th key={index} className='text-[.875rem] md:text-[1.05rem] text-slate-600 font-[600]'>{column.name}</th>
             ))}
             </tr>
           </thead>
@@ -88,19 +88,22 @@ const DetailsTable = () => {
                 >{row.date} - {row.time}</td>
               <td 
                 className='text-[.875rem] text-slate-500 px-1 md:px-2 py-4 text-center w-max '
-                >{row.details}</td>
+                >{row.transId}</td>
               <td 
                 className='text-[.875rem] text-slate-500 px-1 md:px-2 py-4 text-center w-max '
-                >{row.wager}</td>
+                >{row.type}</td>
               <td 
                 className={`text-[.875rem] text-slate-500 px-1 md:px-2 py-4 text-center w-max `}
-                >{row.payout}</td>
+                >{row.remark}</td>
               <td 
                 className='text-[.875rem] text-slate-500 px-1 md:px-2 py-4 text-center w-max '
-                >{row.profitLoss}</td>
-                <td 
-                  className='text-[.875rem] text-slate-500 px-1 md:px-2 py-4 text-center w-max '
-                  >{row.companyGgr}</td>
+                >{row.debit}</td>
+              <td 
+                className='text-[.875rem] text-slate-500 px-1 md:px-2 py-4 text-center w-max '
+                >{row.credit}</td>
+              <td 
+                className='text-[.875rem] text-slate-500 px-1 md:px-2 py-4 text-center w-max '
+                >{row.balance}</td>
             </tr>
             ))}
           </tbody>
@@ -110,4 +113,4 @@ const DetailsTable = () => {
   )
 }
 
-export default DetailsTable;
+export default CurrencyWallet;

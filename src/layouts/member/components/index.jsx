@@ -7,6 +7,16 @@ import SessionInfo from './sessionUsed';
 import VipInfo from './vipInfo';
 import AffiliateInfo from './affiliateInfo';
 import WalletInfo from './walletInfo';
+import GameSetting from './gameSettings';
+import GameReport from './gameReport';
+import DetailsTable from './details';
+import UsdtWallet from './usdtWallet';
+import PpdWallet from './ppdWallet';
+import PplWallet from './pplWallet';
+import PpfWallet from './ppfWallet';
+import PpeWallet from './ppeWallet';
+import DepositBonusLog from './depositBonusLog';
+import Action from './action'
 
 const MemberTable = () => {
   const { memberId } = useParams();
@@ -23,6 +33,19 @@ const MemberTable = () => {
         <VipInfo />
         <AffiliateInfo />
         <WalletInfo />
+        <GameSetting />
+        <GameReport />
+        <DetailsTable />
+
+        {/* Transaction Logs */}
+        <UsdtWallet />
+        <PpdWallet />
+        <PplWallet />
+        <PpfWallet />
+        <PpeWallet />
+
+        <DepositBonusLog />
+        <Action />
       </div>
     </div>
   );
