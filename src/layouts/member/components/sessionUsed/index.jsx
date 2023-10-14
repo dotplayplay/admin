@@ -6,7 +6,7 @@ const SessionInfo = () => {
   const { columns, rows } = MemberData.sessionsInfo;
 
   return (
-    <div id='sessions-info' className="w-full bg-white shadow-xl rounded-[10px] p-2 md:p-4">
+    <div id='sessions' className="w-full bg-white shadow-xl rounded-[10px] p-2 md:p-4">
       <p className="text-md text-slate-600 font-[600] mb-5">Past Sessions</p>
       <small className="uppercase tracking-[2px] font-[600] text-[10px] text-slate-400 mt-2">Info</small>
       <div className='py-5 md:px-2 rounded-[10px] border-[1px]'>

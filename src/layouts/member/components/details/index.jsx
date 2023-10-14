@@ -39,7 +39,7 @@ const DetailsTable = () => {
   };
 
   return (
-    <div id='sessions-info' className="w-full bg-white shadow-xl rounded-[10px] p-2 md:p-4">
+    <div id='details-table' className="w-full bg-white shadow-xl rounded-[10px] p-2 md:p-4">
       <p className="text-md text-slate-600 font-[600] mb-5">Details Table</p>
       <small className="uppercase tracking-[2px] font-[600] text-[10px] text-slate-400 mt-2">Info</small>
       <div className="w-full flex justify-end p-2">

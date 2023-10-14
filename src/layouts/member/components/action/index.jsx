@@ -24,7 +24,7 @@ const Action = () => {
   }
 
   return (
-    <div id='action' className="w-full bg-white shadow-xl rounded-[10px] p-2 md:p-4 flex flex-col gap-5">
+    <div id='actions' className="w-full bg-white shadow-xl rounded-[10px] p-2 md:p-4 flex flex-col gap-5 mb-10">
       <p className="text-md text-slate-600 font-[600]">Actions</p>
 
       {/* EDITABLE SECTION */}

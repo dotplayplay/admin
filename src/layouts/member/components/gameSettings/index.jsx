@@ -24,7 +24,7 @@ const GameSetting = () => {
   }
 
   return (
-    <div id='affiliate-info' className="w-full bg-white shadow-xl rounded-[10px] p-2 md:p-4 flex flex-col gap-5">
+    <div id='game-settings' className="w-full bg-white shadow-xl rounded-[10px] p-2 md:p-4 flex flex-col gap-5">
       <p className="text-md text-slate-600 font-[600]">Game Settings</p>
 
       {/* EDITABLE SECTION */}
