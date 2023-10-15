@@ -17,6 +17,8 @@ import PromoEventDetails from "layouts/reports/components/depositBonusReport/det
 import MemberTable from "layouts/member";
 //dashboard
 import Dashboard from "layouts/dashboard/index"
+// create-member component
+import CreateMember from 'layouts/member/components/createMember';
 
 // plugins
 import rtlPlugin from "stylis-plugin-rtl";
@@ -106,6 +108,7 @@ export default function App() {
             <Route path="/details/:rowIndex" element={<MemberDetails />} />
             <Route path="/reports/:promoEventId" element={<PromoEventDetails />} />
             <Route path="/members/member/:memberId" element={<MemberTable />} />
+            <Route path="/members/create-member" element={<CreateMember />} />
           </Routes>
       </ThemeProvider>
     </CacheProvider>
@@ -131,6 +134,7 @@ export default function App() {
           <Route path="*" element={<Dashboard />} />
           <Route path="/details/:rowIndex" element={<MemberDetails />} />
           <Route path="/members/member/:memberId" element={<MemberTable />} />
+          <Route path="/members/create-member" element={<CreateMember />} />
         </Routes>
     </ThemeProvider>
   );

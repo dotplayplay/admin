@@ -56,7 +56,7 @@ const MembersTableComponent = ({ searchQuery }) => {
   }
 
   return (
-    <div >
+    <div className='pb-5'>
       <SoftBox py={3}>
         <SoftBox mb={3}>
           <Card>
