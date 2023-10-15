@@ -24,12 +24,12 @@ const GameSetting = () => {
   }
 
   return (
-    <div id='game-settings' className="w-full bg-white shadow-xl rounded-[10px] p-2 md:p-4 flex flex-col gap-5">
-      <p className="text-md text-slate-600 font-[600]">Game Settings</p>
+    <div id='game-settings' className="w-full bg-white shadow-xl rounded-[10px] px-2 py-4 md:p-4 flex flex-col gap-5">
+      <p className="text-[16px] sm:text-md text-slate-600 font-[600]">Game Settings</p>
 
       {/* EDITABLE SECTION */}
       <small className="uppercase tracking-[2px] font-[600] text-[10px] text-slate-400 mt-2">Switch</small>
-      <div className='w-full pb-4 grid md:grid-cols-2 gap-y-8 gap-x-4'>
+      <div className='w-full pb-4 grid sm:grid-cols-2 gap-y-8 gap-x-4'>
       {gameSetting.filter(item => item.type === 'boolean').map((data, index) => (
         <ChoSwitch 
           key={index} 

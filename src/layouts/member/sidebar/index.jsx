@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Link as NavLink } from 'react-scroll';
 import "../css/index.css";
+import { BiArrowBack } from 'react-icons/bi';
 
 // Icons
 import 
@@ -20,6 +21,7 @@ import
     RiGiftLine,
     RiAddBoxLine
   } from 'react-icons/ri';
+import { Link } from 'react-router-dom';
 
 const Sidebar = ({ active }) => {
   // Styles
@@ -57,14 +59,18 @@ const Sidebar = ({ active }) => {
 
 
   return (
-    <div className="nav_sidebar relative z-10 h-screen overflow-y-scroll overflow-x-hidden w-max bg-slate-800 py-4 pl-4 select-none">
-      <div className="pr-10 pt-5 pb-8">
+    <div className="nav_sidebar relative z-10 w-max h-screen bg-slate-800 py-4 overflow-y-scroll overflow-x-hidden select-none">
+      <Link to='/members' className='flex items-center text-center gap-2 w-[80%] mx-auto p-2 rounded-[5px] hover:bg-[#ffffff20] transition-all duration-150'>
+        <BiArrowBack className="text-[#ffffff] "/>
+        <p className='text-[.75rem] text-[#dddddd] pt-[3px] uppercase tracking-[2px]'>members</p>
+      </Link>
+      <div className="pr-10 pt-5 pb-8 pl-4">
         <h2 className="text-[22px] text-slate-200 font-600">User Details</h2>
         <div>
           <p className="text-[15px] text-slate-300 ">/Emmanuel Michael</p>
         </div>
       </div>
-      <div>
+      <div className='pl-4'>
         <ul className="flex flex-col gap-2">
           {navs.map((nav, index) => {
             return (

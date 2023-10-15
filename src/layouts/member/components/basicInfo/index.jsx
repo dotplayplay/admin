@@ -32,7 +32,7 @@ const BasicInfo = () => {
     <MemberInfoLayout id="basic-info" title="Basic Information">
       <div className=''>
         <small className="uppercase tracking-[2px] font-[600] text-[10px] text-slate-400 mt-4">Input</small>
-        <div className="py-4 grid md:grid-cols-2 gap-y-8 gap-x-4">
+        <div className="py-4 grid sm:grid-cols-2 gap-y-8 gap-x-4">
         {basicInfo.map(item => {
           if (item.type === 'string') {
             return (
@@ -49,7 +49,7 @@ const BasicInfo = () => {
         })}
         </div>
         <small className="uppercase tracking-[2px] font-[600] text-[10px] text-slate-400 mt-4">switch</small>
-        <div className="py-4 grid md:grid-cols-2 gap-y-8 gap-x-4">
+        <div className="py-4 grid sm:grid-cols-2 gap-y-8 gap-x-4">
         {basicInfo.map(item => {
           if (item.type === 'boolean') {
             return (

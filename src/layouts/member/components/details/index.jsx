@@ -39,8 +39,8 @@ const DetailsTable = () => {
   };
 
   return (
-    <div id='details-table' className="w-full bg-white shadow-xl rounded-[10px] p-2 md:p-4">
-      <p className="text-md text-slate-600 font-[600] mb-5">Details Table</p>
+    <div id='details-table' className="w-full bg-white shadow-xl rounded-[10px] px-2 py-4 md:p-4">
+      <p className="text-[16px] sm:text-md text-slate-600 font-[600] mb-5">Details Table</p>
       <small className="uppercase tracking-[2px] font-[600] text-[10px] text-slate-400 mt-2">Info</small>
       <div className="w-full flex justify-end p-2">
         <button className="px-4 mx-4 border-[1px] rounded-[5px] bg-slate-100" onClick={handleShowDate}>
@@ -72,11 +72,11 @@ const DetailsTable = () => {
           ) : (<></>)
         }
       <div className='py-5 md:px-2 rounded-[10px] border-[1px]'>
-        <table className='w-full'>
+        <table className='w-full overflow-x-scroll'>
           <thead>
             <tr>
             {columns.map((column, index) => (
-              <th key={index} className='text-[.875rem] md:text-[1.15rem] text-slate-600 font-[600] '>{column.name}</th>
+              <th key={index} className='text-[.75rem] md:text-[1.15rem] text-slate-600 font-[600] '>{column.name}</th>
             ))}
             </tr>
           </thead>
@@ -84,22 +84,24 @@ const DetailsTable = () => {
             {sortedData.map((row, index) => (
             <tr key={index}>
               <td 
-                className='text-[.875rem] text-slate-500 px-1 md:px-2 py-4 text-center w-max '
+                className='text-[.75rem] text-slate-500 px-1 md:px-2 py-4 text-center w-max '
                 >{row.date} - {row.time}</td>
               <td 
-                className='text-[.875rem] text-slate-500 px-1 md:px-2 py-4 text-center w-max '
-                >{row.details}</td>
+                className='text-[.75rem] px-1 md:px-2 py-2 text-center w-max '
+              >
+                <a href={row.details} className='bg-slate-200 text-[600] px-4 py-2 rounded-[5px] transition duration-150 hover:shadow-md'>Link</a>
+              </td>
               <td 
-                className='text-[.875rem] text-slate-500 px-1 md:px-2 py-4 text-center w-max '
+                className='text-[.75rem] text-slate-500 px-1 md:px-2 py-4 text-center w-max '
                 >{row.wager}</td>
               <td 
-                className={`text-[.875rem] text-slate-500 px-1 md:px-2 py-4 text-center w-max `}
+                className={`text-[.75rem] text-slate-500 px-1 md:px-2 py-4 text-center w-max `}
                 >{row.payout}</td>
               <td 
-                className='text-[.875rem] text-slate-500 px-1 md:px-2 py-4 text-center w-max '
+                className='text-[.75rem] text-slate-500 px-1 md:px-2 py-4 text-center w-max '
                 >{row.profitLoss}</td>
                 <td 
-                  className='text-[.875rem] text-slate-500 px-1 md:px-2 py-4 text-center w-max '
+                  className='text-[.75rem] text-slate-500 px-1 md:px-2 py-4 text-center w-max '
                   >{row.companyGgr}</td>
             </tr>
             ))}
