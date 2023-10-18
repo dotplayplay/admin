@@ -26,21 +26,23 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
   const { pathname } = location;
   const collapseName = pathname.split("/").slice(1)[0];
 
+  // Pages that differ in Sidebar logic
+  const isReportPage = pathname.includes('/reports');
+  const isUserTablesPage = pathname.includes('/members');
+
   // close sidebar button
   const customDispatch = useDispatch();
   const closeSidenav = () => {
-    const isReportPage = pathname === '/reports';
-    if (isReportPage) {
+    if (isReportPage || isUserTablesPage) {
       customDispatch(toggleSidebar(false));
     } else {
       setMiniSidenav(dispatch, true);
     }
   }
 
-  const [isSidebarBg, setIsSidebarBg] = useState(false)
+  const [isSidebarBg, setIsSidebarBg] = useState(false);
   useEffect(() => {
-    const isReportPage = pathname === '/reports';
-    if (!isReportPage) {
+    if (!isReportPage && !isUserTablesPage) {
       // A function that sets the mini state of the sidenav.
       function handleMiniSidenav() {
         setMiniSidenav(dispatch, window.innerWidth < 1200);
@@ -53,7 +55,7 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
 
       // Remove event listener on cleanup
       return () => window.removeEventListener("resize", handleMiniSidenav);
-    } else if(isReportPage) {
+    } else if(isReportPage || isUserTablesPage) {
       setIsSidebarBg(true);
     }
     
@@ -117,15 +119,21 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
 
 
   const [closeSidebarButton, showCloseSidebarButton] = useState(false);
+
+  // Logic to show or hide the close button in the sidebar
   const showSidebar = useSelector(state => state.showSidebar);
   useEffect(() => {
-    const isReportPage = pathname === '/reports';
-    if (isReportPage) {
+    const isSignPage = () => pathname.includes("authentication");
+
+    if (isReportPage || isUserTablesPage || isSignPage()) {
       showCloseSidebarButton(true);
+      customDispatch(toggleSidebar(false));
     } else {
       showCloseSidebarButton(false);
+      customDispatch(toggleSidebar(true));
     }
-  }, [pathname])
+    
+  }, [location.pathname, customDispatch])
   
   return (
     <>

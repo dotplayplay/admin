@@ -20,6 +20,10 @@
   /* 2 */
 }
 
+#lorem {
+  color: #d7fce5;
+}
+
 ::before,
 ::after {
   --tw-content: '';

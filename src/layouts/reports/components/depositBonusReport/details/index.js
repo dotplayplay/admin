@@ -1,63 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import Card from "@mui/material/Card";
 import SoftBox from "components/SoftBox";
 import SoftButton from "components/SoftButton";
 import SoftTypography from "components/SoftTypography";
 
 //data
-import grrReport from './data/ggrReportTable';
+import depositBonusReportData from "../data";
 import { usePagination, Pagination } from "pagination-react-js";
-import { BsArrowUpLeft } from 'react-icons/bs';
-import { BsArrowUpRight } from 'react-icons/bs';
+import { BsArrowUpLeft, BsArrowUpRight, BsArrowLeft } from "react-icons/bs";
 
-const GgrReport = () => {
-  const { columns, } = grrReport;
+const PromoEventDetails = () => {
+  const { promoEventId } = useParams();
+  console.log(`promoEventId: ${promoEventId}`);
+  const { summaryColumns, columns, summaryRows, rows } = depositBonusReportData;
+  const filteredRows = rows.filter((row) => row.promoEventId === promoEventId);
+  console.log(`filteredRows: ${filteredRows}`);
+
   const { currentPage, entriesPerPage, entries } = usePagination(1, 10);
-  const [sortedData, setSortedData] = useState([]);
-  const [ggrReportDate, setGgrReportDate] = useState(null);
+  // const [sortedSummaryData, setSortedSummaryData] = useState(summaryRows);
+  const [sortedData, setSortedData] = useState(filteredRows);
+  const [depositBonusDate, setdepositBonusDate] = useState(null);
+  // for filtering by date
   const [showDate, setShowDate] = useState(false);
-  const navigate = useNavigate();
-  const [originalData, setoriginalData] = useState([]);
-
-  let rows = [];
-
-  
-  const [loading,setLoading] = useState(true);
-  const [_data, setData] = useState();
-
-  useEffect(() => {
-    async function getLogs() {
-      const url = `http://localhost:8000/api/admin/reports-details`;
-      try {
-        setLoading(true);
-        const response = await fetch(url);
-        const data = await response.json();
-        if (data?.data) {
-          setData(data.data)
-          setLoading(false);
-        }
-      } catch (err) {
-        console.log(err.message);
-      }
-    }
-    getLogs();
-  }, []);
-
-  useEffect(()=>{
-    if(_data && _data.length > 0){
-      setSortedData(_data[0].users_reports)
-      setoriginalData(_data[0].users_reports)
-
-    }
-  },[loading])
-
-
-  const memberDetail = (rowId) => {
-    return;
-    navigate(`/details/${rows[rowId].userID}`);
-  }
 
   // For search function
   const [searchQuery, setSearchQuery] = useState('');
@@ -65,14 +31,10 @@ const GgrReport = () => {
     setSearchQuery(event.target.value);
   };
 
-  // For filtering by date
-  const handleShowDate = () => {
-    setShowDate(!showDate)
-  }
-
+  // Filter/sort by date function for users data
   const sortData = (gameDate) => {
     if (gameDate) {
-      const filteredData = rows.filter(row => {
+      const filteredData = filteredRows.filter(row => {
         const rowDate = new Date(row.date);
         const sortDate = new Date(gameDate);
         return rowDate.getTime() === sortDate.getTime();
@@ -86,24 +48,32 @@ const GgrReport = () => {
 
       setSortedData(filteredData);
     } else {
-      setSortedData(rows);
+      setSortedData(filteredRows);
     }
     setShowDate(!showDate);
   };
 
+  // Styling
   const style = {
-    tableCol: "px-2 py-2 text-slate-800 text-[12px] text-center",
+    tableCol: "px-2 py-2 text-slate-800 text-[14px] text-center",
   }
 
   return (
     <div>
-      <SoftBox py={3}>
+      <SoftBox pb={3}>
         <SoftBox mb={3}>
           <Card>
             <div>
               <div className="bg-none">
                 <SoftBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
-                  <SoftTypography variant="h6"><p className="text-slate-700">GGR Report</p></SoftTypography>
+                  <div className="flex align-center text-center gap-3">
+                    <Link to="/reports" className="pt-[1px]">
+                      <BsArrowLeft />
+                    </Link>
+                    <SoftTypography variant="h6">
+                      <p className="text-slate-700 uppercase">Bonus Report - {filteredRows[0].promoEvent}</p>
+                    </SoftTypography>
+                  </div>
                   <SoftTypography variant="h6">
                     <input
                       className="border-[1px] border-slate-400 rounded-[5px] px-4 py-[1px]"
@@ -126,7 +96,7 @@ const GgrReport = () => {
                 }}
               >
                 <div className="select-wrapper max-elements px-6 py-4 bg-slate-200 rounded-t-[10px] flex">
-                  <label className="text-[15px text-slate-700 px-2" htmlFor="max-elements">Entries per page:</label>
+                  <label className="text-[15px] text-slate-700 px-2" htmlFor="max-elements">Entries per page:</label>
                   <select className="py-2 text-[13px] cursor-pointer focus:outline-none px-2 rounded-[5px]" name="max-elements" id="max-elements" onChange={e => { currentPage.set(1); entriesPerPage.set(Number(e.target.value)); }}>
                     <option value={1}>1</option>
                     <option value={2}>2</option>
@@ -139,7 +109,7 @@ const GgrReport = () => {
                     <option value={rows?.length}>All</option>
                   </select>
                   <div className="flex-1"></div>
-                  <button className="px-4 mx-4 border-[1px] rounded-[5px] bg-slate-100" onClick={handleShowDate}>
+                  <button className="px-4 mx-4 border-[1px] rounded-[5px] bg-slate-100" onClick={()=>setShowDate(!showDate)}>
                     <SoftTypography variant="h6" color="#4A90E2">filter by date</SoftTypography>
                   </button>
                   {showDate && 
@@ -147,17 +117,21 @@ const GgrReport = () => {
                     <div className="bg-[#fff] p-4 w-[80%] m-auto md:left-[40%] fixed top-[30%] md:w-[30%] mb-4">
                       <div className="flex top-[0px] bg-[#fff] sticky justify-between items-center gap-2 p-4">
                         <h2 className="text-[16px] font-extrabold">Filter</h2>
-                        <button onClick={handleShowDate}>&times;</button>
+                        <button onClick={()=>setShowDate(!showDate)}>&times;</button>
                       </div>
                       <div>
                         <SoftTypography variant="h6">Game Date:</ SoftTypography>
                         <div className="h-full flex text-center align-center">
-                          <DatePicker className="text-[14px] border-[1px] px-4 w-full py-[3px]" selected={ggrReportDate} onChange={date=>setGgrReportDate(date)} />
-                          <button className="h-full text-black-200 hover:text-black-500 pt-1 px-3" onClick={()=>{setGgrReportDate('');sortData();}}>&times;</button>
+                          <DatePicker className="text-[14px] border-[1px] px-4 w-full py-[3px]" selected={depositBonusDate} onChange={date=>setdepositBonusDate(date)} />
+                          <button className="h-full text-black-200 hover:text-black-500 pt-1 px-3" 
+                          onClick={()=>{
+                            setdepositBonusDate('');
+                            sortData();
+                          }}>&times;</button>
                         </div>
                       </div>
                       <SoftBox mt={4} mb={1}>
-                        <SoftButton variant="gradient" color="info" fullWidth onClick={()=>sortData(ggrReportDate)}>
+                        <SoftButton variant="gradient" color="info" fullWidth onClick={()=>sortData(depositBonusDate)}>
                           <span>Sort Date</span>
                         </SoftButton>
                       </SoftBox>
@@ -170,7 +144,7 @@ const GgrReport = () => {
                       <tr>
                         {columns.map((column, columnIndex) => (
                           <th
-                            className="text-slate-700 bg-slate-100 text-[14px] text-center py-2 px-2"
+                            className="text-slate-700 bg-slate-100 text-[14px] text-center capitalize py-2 px-2"
                             key={columnIndex}
                           >{column.name}</th>
                         ))}
@@ -188,20 +162,19 @@ const GgrReport = () => {
                           </td>
                         </tr>
                       ) : (
-                        sortedData.slice(entries.indexOfFirst, entries.indexOfLast).filter((row) =>
+                        sortedData.filter((row) =>
                           row.username.toLowerCase().includes(searchQuery.toLowerCase())
                         ).map((row, rowIndex) => (
                           <tr
                             key={rowIndex}
-                            onClick={() => memberDetail(rowIndex)}
                             className={`cursor-pointer ${rowIndex % 2 === 0 ? 'bg-slate-200' : 'bg-slate-100'}`}
                           >
                             <td className={style.tableCol}>{row.username}</td>
                             <td className={`${style.tableCol}`}>{row.userID}</td>
-                            <td className={style.tableCol}>${row.totalWagered.toFixed(2)}</td>
-                            <td className={style.tableCol}>${row.totalPayout.toFixed(2)}</td>
-                            <td className={style.tableCol}>${row.totalGGR.toFixed(2)}</td>
-                            <td className={style.tableCol}>{new Date().toLocaleDateString()}</td>
+                            <td className={style.tableCol}>{row.totalDeposit}</td>
+                            <td className={style.tableCol}>{row.totalBonusClaimed}</td>
+                            <td className={style.tableCol}>{row.totalWagered}</td>
+                            <td className={style.tableCol}>{row.date}</td>
                           </tr>
                         ))
                       )}
@@ -242,4 +215,4 @@ const GgrReport = () => {
   );
 };
 
-export default GgrReport;
+export default PromoEventDetails;

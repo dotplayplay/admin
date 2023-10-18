@@ -1,7 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
-// redux
-import { useDispatch, useSelector } from 'react-redux';
 // @mui material components
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -13,7 +11,10 @@ import themeRTL from "assets/theme/theme-rtl";
 
 //members details
 import MemberDetails from "layouts/tables/MemberDetails";
-
+// promo details
+import PromoEventDetails from "layouts/reports/components/depositBonusReport/details";
+// User - members details
+import MemberTable from "layouts/member";
 //dashboard
 import Dashboard from "layouts/dashboard/index"
 
@@ -103,6 +104,8 @@ export default function App() {
             {getRoutes(routes)}
             <Route path="*" element={<Dashboard />} />
             <Route path="/details/:rowIndex" element={<MemberDetails />} />
+            <Route path="/reports/:promoEventId" element={<PromoEventDetails />} />
+            <Route path="/members/member/:memberId" element={<MemberTable />} />
           </Routes>
       </ThemeProvider>
     </CacheProvider>
@@ -127,6 +130,7 @@ export default function App() {
           {getRoutes(routes)}
           <Route path="*" element={<Dashboard />} />
           <Route path="/details/:rowIndex" element={<MemberDetails />} />
+          <Route path="/members/member/:memberId" element={<MemberTable />} />
         </Routes>
     </ThemeProvider>
   );

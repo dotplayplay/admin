@@ -192,10 +192,10 @@ const GameReport = () => {
                           <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'bg-slate-200' : 'bg-slate-100'}>
                             <td className={style.tableCol}>{row.no}</td>
                             <td className={style.tableCol}>{row.game}</td>
-                            <td className={style.tableCol}>{row.totalWagered}</td>
-                            <td className={style.tableCol}>{row.totalPayout}</td>
-                            <td className={style.tableCol}>{row.totalGGR.toFixed(2)}</td>
-                            <td className={style.tableCol}>{row.totalGGR.toFixed(2)}</td>
+                            <td className={style.tableCol}>${row.totalWagered.toFixed(2)}</td>
+                            <td className={style.tableCol}>${row.totalPayout.toFixed(2)}</td>
+                            <td className={style.tableCol}>${row.totalGGR.toFixed(2)}</td>
+                            <td className={style.tableCol}>${row.totalGGR.toFixed(2)}</td>
                             <td className={style.tableCol}>{new Date().toLocaleDateString()}</td>
                           </tr>
                         ))
