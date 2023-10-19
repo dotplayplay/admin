@@ -27,7 +27,8 @@ import Tables from "layouts/tables";
 import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
 import SignUp from "layouts/authentication/sign-up";
-import Genaral from "layouts/genaral_settings";
+import Genaral from "layouts/genaral_settings"
+import Userprofile from "layouts/userprofile";
 
 //  icons
 import Shop from "examples/Icons/Shop";
@@ -51,9 +52,9 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "Members",
-    key: "members",
-    route: "/members",
+    name: "Users Tables",
+    key: "tables",
+    route: "/tables",
     icon: <Office size="12px" />,
     component: <Tables />,
     noCollapse: true
@@ -76,36 +77,46 @@ const routes = [
     component: <Genaral />,
     noCollapse: true
   },
-  
-  // { type: "title", title: "Account Pages", key: "account-pages" },
-  // {
-  //   type: "collapse",
-  //   name: "Profile",
-  //   key: "profile",
-  //   route: "/profile",
-  //   icon: <CustomerSupport size="12px" />,
-  //   component: <Profile />,
-  //   noCollapse: true,
-  // },
 
-  // {
-  //   type: "collapse",
-  //   name: "Sign In",
-  //   key: "sign-in",
-  //   route: "/authentication/sign-in",
-  //   icon: <Document size="12px" />,
-  //   component: <SignIn />,
-  //   noCollapse: true,
-  // },
-  // {
-  //   type: "collapse",
-  //   name: "Sign Up",
-  //   key: "sign-up",
-  //   route: "/authentication/sign-up",
-  //   icon: <SpaceShip size="12px" />,
-  //   component: <SignUp />,
-  //   noCollapse: true,
-  // },
+  {
+    name: "User Profile",
+    key: "user-pofile",
+    route: "/user-pofile",
+    icon: <Settings size="12px" />,
+    component: <Userprofile />,
+    noCollapse: true
+  },
+  
+  
+  { type: "title", title: "Account Pages", key: "account-pages" },
+  {
+    type: "collapse",
+    name: "Profile",
+    key: "profile",
+    route: "/profile",
+    icon: <CustomerSupport size="12px" />,
+    component: <Profile />,
+    noCollapse: true,
+  },
+
+  {
+    type: "collapse",
+    name: "Sign In",
+    key: "sign-in",
+    route: "/authentication/sign-in",
+    icon: <Document size="12px" />,
+    component: <SignIn />,
+    noCollapse: true,
+  },
+  {
+    type: "collapse",
+    name: "Sign Up",
+    key: "sign-up",
+    route: "/authentication/sign-up",
+    icon: <SpaceShip size="12px" />,
+    component: <SignUp />,
+    noCollapse: true,
+  },
 ];
 
 export default routes;

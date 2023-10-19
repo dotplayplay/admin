@@ -50,6 +50,9 @@ const DailyReport = () => {
 
   const style = {
     tableCol: "py-3 text-slate-800 text-center text-[10px] max-w-[40px] hover:max-w-full text-ellipsis truncate",
+    customTheadCol1: [4,5,6].includes(4) ? "bg-blue-200" : "bg-slate-100",
+    customTheadCol2: [4,5,6].includes(5) ? "bg-blue-200" : "bg-slate-100",
+    customTheadCo31: [4,5,6].includes(7) ? "bg-blue-200" : "bg-slate-100",
   }
 
   return (
@@ -129,14 +132,10 @@ const DailyReport = () => {
                   <table className="w-full">
                     <thead>
                       <tr>
-                        {columns.map((column, columnIndex) => (
+                        {columns.map((column, index) => (
                           <th
-                            className={`text-slate-700 text-[10px] text-left pr-1 py-2 ${
-                              columnIndex === 4 || columnIndex === 5 || columnIndex === 6
-                                ? "bg-blue-200"
-                                : "bg-slate-100"
-                            }`}
-                            key={columnIndex}
+                            className={`text-slate-700 text-[10px] text-left pr-1 py-2 ${[4,5,6].includes(index) ? "bg-blue-200" : "bg-slate-100"}`}
+                            key={index}
                           >{column.name}</th>
                         ))}
                       </tr>

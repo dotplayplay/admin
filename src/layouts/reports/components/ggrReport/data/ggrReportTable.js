@@ -57,7 +57,7 @@ const grrReport = {
       totalPayout: "$1,000",
       totalGGR: "$200",
       date: "10/07/2023"
-    },
+    },//
     {
       userID: "q56fd23",
       username: "JohnDoe",
