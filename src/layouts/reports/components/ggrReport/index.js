@@ -16,7 +16,7 @@ const GgrReport = () => {
   const navigate = useNavigate();
 
   const memberDetail = (rowId) => {
-    navigate(`/details/${rows[rowId].userID.props.children}`);
+    navigate(`/detail/${rows[rowId].userID.props.children}`);
   }
 
   const [searchQuery, setSearchQuery] = useState('');

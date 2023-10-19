@@ -11,16 +11,14 @@ import { useForm } from "react-hook-form";
 import Table from "examples/Tables/Table";
 
 // Data
-import authorsTableData from "layouts/adminTables/data/authorsTableData";
-import projectsTableData from "layouts/tables/data/projectsTableData";
+
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { BsFillEyeFill } from 'react-icons/bs';
-import MemberDetails from "layouts/adminTables/MemberDetails"
+// import MemberDetails from "layouts/adminTables/MemberDetails"
 
 function Tables() {
-  const { columns, rows } = authorsTableData;
-  const [addMember, setAddMember] = useState(false);
+  // const { columns, rows } = authorsTableData;
   const [loading, setLoadind] = useState(false)
   const navigate = useNavigate();
   const handleAddMember = () => {
@@ -34,14 +32,13 @@ function Tables() {
   const [data, setData] = useState([]);
 
 
-  const memberDetail = (_id, username, password, pin, suspend, activityLog) => {
-    const data = [_id, username, password, pin, suspend, activityLog]
+  const adminDetail = (_id, username, password, pin, suspend, activityLog, adminData,row) => {
+    const datas = [_id, username, password, pin, suspend, activityLog, adminData,row]
     setData((item) => [1, ...data]);
-    navigate(`/details/${username}`, { state: data });
+    navigate(`/details/${username}`, { state: datas });
 
   }
 
-  const [formData, setFormData] = useState([]);
   const [submittedData, setSubmittedData] = useState([]);
 
   useEffect(() => {
@@ -56,10 +53,6 @@ function Tables() {
   }, [submittedData]);
 
 
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setFormData({ ...formData, [name]: value });
-  // };
 
   const SubmitForm = async () => {
     try {
@@ -70,8 +63,8 @@ function Tables() {
           if (response.status === 200) {
             console.log(response.data);
           } else {
-            console.error('Unexpected response status:', response.status);
-            toast.error('An error occurred while fetching admin data.');
+            console.error(response.status);
+            toast.error(response.error);
           }
         })
         .catch((error) => {
@@ -95,22 +88,22 @@ function Tables() {
     label: "block text-[13px]",
     inputCon: "mb-[10px]"
   }
-  const formatApiDate = (dateString) => {
-    const date = new Date(dateString);
+  // const formatApiDate = (dateString) => {
+  //   const date = new Date(dateString);
 
-    // Convert the date to a readable format
-    const options = {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit',
-      timeZoneName: 'short',
-    };
+  //   // Convert the date to a readable format
+  //   const options = {
+  //     year: 'numeric',
+  //     month: 'long',
+  //     day: 'numeric',
+  //     hour: '2-digit',
+  //     minute: '2-digit',
+  //     second: '2-digit',
+  //     timeZoneName: 'short',
+  //   };
 
-    return date.toLocaleString('en-US', options);
-  };
+  //   return date.toLocaleString('en-US', options);
+  // };
 
   return (
     <DashboardLayout>
@@ -142,8 +135,8 @@ function Tables() {
                     },
                   }}
                 >
-                  <div className="overflow-x-auto">
-                    <table>
+                  <SoftBox className="overflow-x-auto w-[100%]">
+                    <table className='w-[100%]'>
                       <thead >
                         <tr className="text-[14px] text-[#fff] text-center bg-[#202128]">
                           <th>
@@ -161,7 +154,7 @@ function Tables() {
                         {adminData.map((row, rowIndex) => (
                           <tr
                             key={rowIndex}
-                            // onClick={() => memberDetail(
+                            // onClick={() => adminDetail(
                             //   row._id,
                             //   row.username,
                             //   row.password,
@@ -177,13 +170,14 @@ function Tables() {
                             <td className={style.tableCol}>{row.suspend === 0 ? "Active" : "Inactive"}</td>
                             <td className={style.tableCol}>
                               <button
-                                onClick={() => memberDetail(
+                                onClick={() => adminDetail(
                                   row._id,
                                   row.username,
                                   row.password,
                                   row.pin,
                                   row.suspend,
-                                  row.activityLog
+                                  row.activityLog,
+                                  row
                                 )
                                 }
                                 className='flex align-middle items-center justify-between '>
@@ -192,17 +186,42 @@ function Tables() {
                               </button>
                             </td>
                             <td className={style.tableCol}>
-                              <button className='flex align-middle items-center justify-between '>
+                              <button
+                                onClick={() => adminDetail(
+                                  row._id,
+                                  row.username,
+                                  row.password,
+                                  row.pin,
+                                  row.suspend,
+                                  row.activityLog,
+                                  row
+                                )
+                                }
+                                className='flex align-middle items-center justify-between '>
                                 <p>View </p>
                                 <i className='pl-2'><BsFillEyeFill /></i>
                               </button>
                             </td>
-                            <td className={style.tableCol}>{formatApiDate(row?.lastLoginAt)}</td>
+                            <td className={style.tableCol}>
+                              <button
+                                onClick={() => adminDetail(
+                                  row._id,
+                                  row.username,
+                                  row.password,
+                                  row.pin,
+                                  row.suspend,
+                                  row.activityLog,
+                                  row
+                                )
+                                } className='flex align-middle items-center justify-between '>
+                                <p>View </p>
+                                <i className='pl-2'><BsFillEyeFill /></i>
+                              </button></td>
                           </tr>
                         ))}
                       </tbody>
                     </table>
-                  </div>
+                  </SoftBox>
                 </SoftBox>
               </div>
             </Card>

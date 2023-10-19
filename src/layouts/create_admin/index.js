@@ -24,47 +24,36 @@ function Overview() {
     const nextForm = () => {
         setFormStep((cur) => cur + 1);
     };
-
-    // console.log(JSON.stringify(watch(), null, 2));
-
-
-
-
-    const SubmitForm =  (values) => {
+    const SubmitForm = (values) => {
         const payload = {
             username: values.username,
             password: values.password,
             pin: values.pin
         }
         console.log(payload);
-        
-
         try {
-             axios.post('http://localhost:8080/admin/create', payload)
-                .then((res) => {
-                    toast.success(res.data.message);
-                    navigate("/authentication/sign-in");
-                    console.log(res.data);
+            axios.post('http://localhost:8080/admin/create', payload)
+                .then((response) => {
+                    if (response.status === 200) {
+                        console.log(response.data);
+                        navigate('/admin-settings')
+                    } else {
+                        toast.error(response.error)
+                        // console.error(response.status);
+                    };
                 })
-                
+
         } catch (data) {
-            alert('Error:', data.error);
-            toast.error('An error occurred while submitting the form.');
+            toast.error(data.error);
         }
-      
-    } 
+    }
     const prevStep = () => {
         setFormStep((cur) => cur - 1)
     }
-
     const handlePinChange = (value) => {
-        // Prevent further input when the PIN reaches MAX_PIN_LENGTH
         setPin(value);
         setValue("pin", value);
-        // Manually set the PIN value in the form (optional)
-        // setValue("pin", value);
     };
-
     const validatePasswordMatch = () => {
         const { password, CPassword } = getValues(["password", "CPassword"]);
         return password === CPassword;
@@ -79,7 +68,7 @@ function Overview() {
                     <form onSubmit={handleSubmit(SubmitForm)}>
                         <div className="flex">
                             {formStep > 0 && <button onClick={prevStep} type="button">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" class="w-4 h-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                                 </svg>
 

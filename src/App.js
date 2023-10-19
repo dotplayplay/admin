@@ -12,7 +12,6 @@ import theme from "assets/theme";
 import themeRTL from "assets/theme/theme-rtl";
 
 //members details
-import MemberDetails from "layouts/adminTables/MemberDetails";
 
 //dashboard
 import Dashboard from "layouts/dashboard/index"
@@ -25,6 +24,10 @@ import routes from "routes";
 // setOpenConfigurator
 import { useSoftUIController, setMiniSidenav, } from "context";
 import NotFound from "NotFound";
+
+//Admin details
+import AdminDetails from "layouts/adminTables/AdminDetails";
+import MemberDetails from "layouts/tables/MemberDetails";
 
 export default function App() {
   const [controller, dispatch] = useSoftUIController();
@@ -132,9 +135,9 @@ export default function App() {
         <Routes>
           {getRoutes(routes)}
           <Route path="/" element={<Dashboard />} />
-          <Route path="/details/:username" element={<MemberDetails />} />
+          <Route path="/details/:username" element={<AdminDetails />} />
+          <Route path="/detail/:rowId" element={<MemberDetails />} />
           <Route path="*" element={<NotFound />} />
-
         </Routes>
       </ThemeProvider>
     </CacheProvider>
@@ -162,7 +165,8 @@ export default function App() {
         <Routes>
           {getRoutes(routes)}
           <Route path="/" element={<Dashboard />} />
-          <Route path="/details/:rowIndex" element={<MemberDetails />} />
+          <Route path="/details/:username" element={<AdminDetails />} />
+          <Route path="/detail/:rowId" element={<MemberDetails />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </ThemeProvider>

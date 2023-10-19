@@ -22,7 +22,7 @@ function Tables() {
   }
 
   const memberDetail = (rowId) => {
-    navigate(`/details/${rows[rowId].userID.props.job}`);
+    navigate(`/detail/${rows[rowId].userID.props.job}`);
   }
 
   const [formData, setFormData] = useState({
