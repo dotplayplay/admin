@@ -59,11 +59,18 @@ const Sidebar = ({ active }) => {
 
 
   return (
-    <div className="nav_sidebar relative z-10 w-max h-screen bg-slate-800 py-4 overflow-y-scroll overflow-x-hidden select-none">
-      <Link to='/members' className='flex items-center text-center gap-2 w-[80%] mx-auto p-2 rounded-[5px] hover:bg-[#ffffff20] transition-all duration-150'>
-        <BiArrowBack className="text-[#ffffff] "/>
-        <p className='text-[.75rem] text-[#dddddd] pt-[3px] uppercase tracking-[2px]'>members</p>
-      </Link>
+    <div className="nav_sidebar relative z-10 w-max h-screen bg-slate-800 pb-4 overflow-y-scroll overflow-x-hidden select-none">
+      <div 
+        className='sticky top-0 z-[150] w-full bg-[#1E293B] py-4 shadow-[0px_2px_3px_3px_rgba(255,255,255,0.1)] rounded-br-[10px] rounded-bl-[10px]'
+      >
+        <Link 
+          to='/members' 
+          className='flex items-center text-center gap-2 w-[80%] mx-auto p-2 rounded-[5px] hover:bg-[#ffffff20] transition-all duration-150'
+        >
+          <BiArrowBack className="text-[#ffffff] "/>
+          <p className='text-[.75rem] text-[#dddddd] pt-[3px] uppercase tracking-[2px]'>members</p>
+        </Link>
+      </div>
       <div className="pr-10 pt-5 pb-8 pl-4">
         <h2 className="text-[22px] text-slate-200 font-600">User Details</h2>
         <div>
