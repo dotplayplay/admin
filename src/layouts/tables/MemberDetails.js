@@ -13,7 +13,7 @@ import editRole from './data/memberDetailsTable';
 
 const MemberDetails = () => {
   const location = useLocation();
-  const row = location?.state;
+  const row = location.state;
   const { basicInformation,
     accountInformation,
     sessions,

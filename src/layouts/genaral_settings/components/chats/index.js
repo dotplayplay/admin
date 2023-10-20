@@ -13,9 +13,9 @@ const initialChatRules = `1. Don't spam, harass or be offensive to other users. 
 6. Use the designated language chatrooms accordingly.`
 
 export default function Chat() {
-  const [ chatRules, setchatRules ] = useState(initialChatRules)
+  const [chatRules, setchatRules] = useState(initialChatRules)
 
-  const [ ischatRules, setIschatRules ] = useState(false)
+  const [ischatRules, setIschatRules] = useState(false)
 
   const handleEdit = () => {
     setIschatRules(false)
@@ -25,29 +25,31 @@ export default function Chat() {
     <Card>
       <SoftBox pt={2} px={2}>
         <SoftTypography variant="h6" fontWeight="medium" textTransform="capitalize">
-            Chat Room Settings
+
+          Chat Room Settings
         </SoftTypography>
         <div className="chat-rules-input">
-            <label htmlFor="min deposit"><b>Chat Room Rules </b></label>
-            <div className="sbhuvwa">
-              <div className="chat-rules-input-content">
-                { ischatRules ?  
-                <textarea value={chatRules} onChange={(e)=> setchatRules(e.target.value)} type="text" placeholder='e.g 1. .....................' /> 
+          <label htmlFor="min deposit"><b>Chat Room Rules </b></label>
+          <div className="sbhuvwa">
+            <div className="chat-rules-input-content">
+              {ischatRules ?
+                <textarea value={chatRules} onChange={(e) => setchatRules(e.target.value)} type="text" placeholder='e.g 1. .....................' />
                 : <p className="chat-rules-list">{chatRules}</p>}
-              </div>
-              { ischatRules ? 
+
+            </div>
+            {ischatRules ?
               <SoftBox mt={0} mb={0}>
                 <SoftButton onClick={handleEdit} variant="gradient" color="info" >
                   Set
                 </SoftButton>
               </SoftBox>
-              : <span onClick={()=> ischatRules ? setIschatRules(false) :  setIschatRules(true) } >Edit</span> }
-            </div>
+              : <span onClick={() => ischatRules ? setIschatRules(false) : setIschatRules(true)} >Edit</span>}
+          </div>
         </div>
         <div>
           Chat Settings
         </div>
       </SoftBox>
     </Card>
-    )
+  )
 }
