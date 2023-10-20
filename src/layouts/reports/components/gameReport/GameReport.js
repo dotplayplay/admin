@@ -20,9 +20,7 @@ const GameReport = () => {
 
   let rows = [];
 
-
-
-  const [loading,setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [_data, setData] = useState();
 
   useEffect(() => {
@@ -47,9 +45,8 @@ const GameReport = () => {
     if(_data && _data.length > 0){
       setSortedData(_data[0].games_reports)
       setoriginalData(_data[0].games_reports)
-
     }
-  },[loading])
+  },[loading]);
 
 
   // For filtering by date

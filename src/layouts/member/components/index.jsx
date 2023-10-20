@@ -24,6 +24,7 @@ import Action from './action'
 
 const MemberTable = () => {
   const customDispatch = useDispatch();
+  
   return (
     <div className="relative min-w-full p-2">
       <div 

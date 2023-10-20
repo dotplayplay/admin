@@ -1,29 +1,6 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react'
-import Switch from "@mui/material/Switch";
-import SoftTypography from "components/SoftTypography";
+import React, { useState, useEffect } from 'react'
 
-const initialSettings = {
-  twoFA: false,
-  kyc: false,
-  gameData: false,
-  hideUsername: false,
-  refuseTip: false,
-  chat: false,
-  suspend: false,
-  rollPoint: false,
-  sendRain: false,
-  receiveRain: false,
-  sendCoindrop: false,
-  receiveCoindrop: false,
-  sendTip: false,
-  hitBingo: false,
-  noFeeWithdrawal: false,
-  recharge: false,
-  weeklyCashback: false,
-  monthlyCashback: false,
-  suspendAffiliate: false,
-};
 
 const memberData = {
   // Basic Information
