@@ -18,7 +18,7 @@ import MemberTable from "layouts/member";
 //dashboard
 import Dashboard from "layouts/dashboard/index"
 // create-member component
-import CreateMember from 'layouts/member/components/createMember';
+import CreateMember from 'layouts/createMember';
 
 // plugins
 import rtlPlugin from "stylis-plugin-rtl";
