@@ -1,6 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
-
 // @mui material components
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -13,8 +12,15 @@ import themeRTL from "assets/theme/theme-rtl";
 
 //members details
 
+import MemberDetails from "layouts/tables/MemberDetails";
+// promo details
+import PromoEventDetails from "layouts/reports/components/depositBonusReport/details";
+// User - members details
+import MemberTable from "layouts/member";
 //dashboard
 import Dashboard from "layouts/dashboard/index"
+// create-member component
+import CreateMember from 'layouts/member/components/createMember';
 
 // plugins
 import rtlPlugin from "stylis-plugin-rtl";
@@ -28,6 +34,7 @@ import NotFound from "NotFound";
 //Admin details
 import AdminDetails from "layouts/adminTables/AdminDetails";
 import MemberDetails from "layouts/tables/MemberDetails";
+import { toggleReportPage } from "reducers/actions";
 
 export default function App() {
   const [controller, dispatch] = useSoftUIController();
@@ -61,11 +68,6 @@ export default function App() {
       setOnMouseEnter(false);
     }
   };
-
-  // Change the openConfigurator state
-  // const handleConfiguratorOpen = () => setOpenConfigurator(dispatch, !openConfigurator);
-
-  // Setting the dir attribute for the body element
   useEffect(() => {
     document.body.setAttribute("dir", direction);
   }, [direction]);
@@ -89,30 +91,6 @@ export default function App() {
       return null;
     });
 
-  // const configsButton = (
-  //   <SoftBox
-  //     display="flex"
-  //     justifyContent="center"
-  //     alignItems="center"
-  //     width="3.5rem"
-  //     height="3.5rem"
-  //     bgColor="white"
-  //     shadow="sm"
-  //     borderRadius="50%"
-  //     position="fixed"
-  //     right="2rem"
-  //     bottom="2rem"
-  //     zIndex={99}
-  //     color="dark"
-  //     sx={{ cursor: "pointer" }}
-  //     onClick={handleConfiguratorOpen}
-  //   >
-  //     <Icon fontSize="default" color="inherit">
-  //       settings
-  //     </Icon>
-  //   </SoftBox>
-  // );
-
   return direction === "rtl" ? (
     <CacheProvider value={rtlCache}>
       <ThemeProvider theme={themeRTL}>
@@ -121,7 +99,6 @@ export default function App() {
           <>
             <Sidenav
               color={sidenavColor}
-
               brandName="DOTPLAYPLAY"
               routes={routes}
               onMouseEnter={handleOnMouseEnter}
@@ -134,18 +111,17 @@ export default function App() {
         {layout === "vr" && <Configurator />}
         <Routes>
           {getRoutes(routes)}
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/details/:username" element={<AdminDetails />} />
-          <Route path="/detail/:rowId" element={<MemberDetails />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="*" element={<Dashboard />} />
+          <Route path="/details/:rowIndex" element={<MemberDetails />} />
+          <Route path="/reports/:promoEventId" element={<PromoEventDetails />} />
+          <Route path="/members/member/:memberId" element={<MemberTable />} />
+          <Route path="/members/create-member" element={<CreateMember />} />
         </Routes>
       </ThemeProvider>
     </CacheProvider>
   ) : (
-
     <>
       <ToastContainer />
-
       <ThemeProvider theme={theme}>
         <CssBaseline />
         {layout === "dashboard" && (
@@ -167,10 +143,54 @@ export default function App() {
           <Route path="/" element={<Dashboard />} />
           <Route path="/details/:username" element={<AdminDetails />} />
           <Route path="/detail/:rowId" element={<MemberDetails />} />
+          <Route path="*" element={<Dashboard />} />
+          <Route path="/details/:rowIndex" element={<MemberDetails />} />
+          <Route path="/members/member/:memberId" element={<MemberTable />} />
+          <Route path="/members/create-member" element={<CreateMember />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </ThemeProvider>
     </>
 
-  );
+    // </CacheProvider>
+  )
+
+  // : (
+
+  //   <>
+  //     <ToastContainer />
+
+  //     <ThemeProvider theme={theme}>
+  //       <CssBaseline />
+  //       {layout === "dashboard" && (
+  //         <>
+  //           <Sidenav
+  //             color={sidenavColor}
+  //             brandName="DOTPLAYPLAY"
+  //             routes={routes}
+  //             onMouseEnter={handleOnMouseEnter}
+  //             onMouseLeave={handleOnMouseLeave}
+  //           />
+  //           <Configurator />
+  //           {/* {configsButton} */}
+  //         </>
+  //       )}
+  //       {layout === "vr" && <Configurator />}
+  //       <Routes>
+  //         {getRoutes(routes)}
+  //         <Route path="/" element={<Dashboard />} />
+  //         <Route path="/details/:username" element={<AdminDetails />} />
+  //         <Route path="/detail/:rowId" element={<MemberDetails />} />
+  //         <Route path="*" element={<NotFound />} />
+  //       </Routes>
+  //     </ThemeProvider>
+  //   </>
+
+  //         <Route path="*" element={<Dashboard />} />
+  //         <Route path="/details/:rowIndex" element={<MemberDetails />} />
+  //         <Route path="/members/member/:memberId" element={<MemberTable />} />
+  //         <Route path="/members/create-member" element={<CreateMember />} />
+  //       </Routes>
+  //   </ThemeProvider>
+  // );
 }

@@ -18,6 +18,11 @@
   /* 2 */
   border-color: #e5e7eb;
   /* 2 */
+  scroll-behavior: smooth;
+}
+
+#lorem {
+  color: #40c06f;
 }
 
 ::before,

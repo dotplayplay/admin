@@ -1,17 +1,3 @@
-/**
-=========================================================
-* Soft UI Dashboard React - v4.0.1
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
 
 import { useMemo } from "react";
 
@@ -37,7 +23,6 @@ import configs from "examples/Charts/BarCharts/ReportsBarChart/configs";
 
 function ReportsBarChart({ color, title, description, chart, items }) {
   const { data, options } = configs(chart.labels || [], chart.datasets || {});
-
   const renderItems = items.map(({ icon, label, progress }) => (
     <Grid item xs={6} sm={3} key={label}>
       <BarReportsChartItem

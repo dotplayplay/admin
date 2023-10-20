@@ -8,6 +8,12 @@
 .pincode-input-text{
   @apply w-2
 }
+/* To remove the blue onclick of browsers */
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
 .create_user_container {
   overflow-y: auto;
   z-index: 1000;
@@ -36,6 +42,7 @@
 .create_user_container::-webkit-scrollbar {
   height: 5px;
   width: 1px;
+  color: #9dc9fa;
 }
 
 body:has(.add_member) .members_table {
@@ -92,4 +99,17 @@ body:has(.game) .container {
 
 .toggle input[type="checkbox"]:checked + label::before {
   transform: translateX(20px);
+}
+
+/* FOR GAME REPORT */
+.long-date {
+  display: none;
+}
+
+.date-col:hover .short-date {
+  display: none;
+}
+
+.date-col:hover .long-date {
+  display: inline;
 }

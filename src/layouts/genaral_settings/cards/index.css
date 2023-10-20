@@ -32,29 +32,35 @@
 }
 
 /* =================== chat settings ======================= */
-.chat-setting-input{
+.chat-rules-input{
     padding: 10px;
-    min-height: 330px;
+    min-height: 250px;
     font-size: 14px;
     padding-bottom: 30px;
 }
-.chat-setting-input span{
+.chat-rules-input span{
     color: rgb(122, 200, 231);
     font-weight: 400;
     font-size: 15px;
     cursor: pointer;
 }
-.chat-setting-input .sbhuvwa{
+.chat-rules-input .sbhuvwa{
     gap: 50px;
 }
-.chat-setting-input-content{
+.chat-rules-input-content{
     display: flex;
     width: 70%;
     flex-direction: column;
 }
-.chat-setting-input-content textarea{
-    min-height: 230px;
+.chat-rules-input-content textarea{
+    min-height: 200px;
     min-width: 100%;
+}
+
+.chat-rules-input-content .chat-rules-list {
+    max-width: 100%;
+    white-space: pre-wrap;
+    line-height: 1.25;
 }
 
 

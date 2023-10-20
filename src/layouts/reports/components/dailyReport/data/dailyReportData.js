@@ -7,7 +7,7 @@ const dailyReportTable = {
     { name: "new Register", align: "center" },
     { name: "total New Deposit", align: "center" },
     { name: "new Deposit", align: "center" },
-    { name: "total ReDeposit", align: "center" },
+    { name: "total Re- Deposit", align: "center" },
     { name: "total Deposit", align: "center" },
     { name: "total Withdrawal", align: "center" },
     { name: "total wagered", align: "center" },
@@ -26,7 +26,7 @@ const dailyReportTable = {
     { name: "total Free Unlocked", align: "center" },
     { name: "commision Rakeback", align: "center" },
     { name: "direct Referal", align: "center" },
-    { name: "total AffiliateUnlocked", align: "center" },
+    { name: "total Affiliate Unlocked", align: "center" },
     { name: "recharge", align: "center" },
     { name: "weekly Cashback", align: "center" },
     { name: "monthly Cashback", align: "center" },
@@ -35,460 +35,452 @@ const dailyReportTable = {
   ],
   rows: [
     {
-      date: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-         03/08/2023
-        </SoftTypography>
-      ),
-      dau: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          4032
-        </SoftTypography>
-      ),
-      newRegister: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          132
-        </SoftTypography>
-      ),
-      totalNewDeposit: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          102
-        </SoftTypography>
-      ),
-      newDeposit: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $23,304
-        </SoftTypography>
-      ),
-      totalReDeposit: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $3,304
-        </SoftTypography>
-      ),
-      totalDeposit: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $10,000
-        </SoftTypography>
-      ),
-      totalWithdrawal: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $1,000
-        </SoftTypography>
-      ),
-      totalwagered: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $2,400
-        </SoftTypography>
-      ),
-      totalWinningPayout: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $400
-        </SoftTypography>
-      ),
-      totalGGR: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          4000.49
-        </SoftTypography>
-      ),
-      totalDepositBonus: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $350
-        </SoftTypography>
-      ),
-      totalDepositUnlocked: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $200
-        </SoftTypography>
-      ),
-      vipLevelUp: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $400
-        </SoftTypography>
-      ),
-      luckySpin: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $4,500
-        </SoftTypography>
-      ),
-      rollCompetion: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $150
-        </SoftTypography>
-      ),
-      dailyContest: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $450
-        </SoftTypography>
-      ),
-      medal: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $250
-        </SoftTypography>
-      ),
-      binggo: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $350
-        </SoftTypography>
-      ),
-      rain: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $100
-        </SoftTypography>
-      ),
-      coindrop: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $50
-        </SoftTypography>
-      ),
-      totalFreeUnlocked: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $350
-        </SoftTypography>
-      ),
-      commisionRakeback: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $3,503
-        </SoftTypography>
-      ),
-      directReferal: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $3,103
-        </SoftTypography>
-      ),
-      totalAffiliateUnlocked: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $1,503
-        </SoftTypography>
-      ),
-      recharge: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $1,123
-        </SoftTypography>
-      ),
-      weeklyCashback: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $1,403
-        </SoftTypography>
-      ),
-      monthlyCashback: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $432
-        </SoftTypography>
-      ),
-      ticket: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $34
-        </SoftTypography>
-      ),
-      prize: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $342
-        </SoftTypography>
-      ),
+      date: "03/08/2023",
+      dau: "4032l98765434567",
+      newRegister: "132",
+      totalNewDeposit: "102",
+      newDeposit: "$23,304",
+      totalReDeposit: "$3,304",
+      totalDeposit: "$10,000",
+      totalWithdrawal: "$1,000",
+      totalwagered: "$2,400",
+      totalWinningPayout: "$400",
+      totalGGR: "4000.49",
+      totalDepositBonus: "$350",
+      totalDepositUnlocked: "$200",
+      vipLevelUp: "$400",
+      luckySpin: "$4,500",
+      rollCompetion: "$150",
+      dailyContest: "$450",
+      medal: "$250",
+      binggo: "$350",
+      rain: "$100",
+      coindrop: "$50",
+      totalFreeUnlocked: "$350",
+      commisionRakeback: "$3,503",
+      directReferal: "$3,103",
+      totalAffiliateUnlocked: "$1,503",
+      recharge: "$1,123",
+      weeklyCashback: "$1,403",
+      monthlyCashback: "$432",
+      ticket: "$34",
+      prize: "$342",
     },
     {
-      date: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-         09/12/2023
-        </SoftTypography>
-      ),
-      dau: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          1832
-        </SoftTypography>
-      ),
-      newRegister: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          262
-        </SoftTypography>
-      ),
-      totalNewDeposit: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          1024
-        </SoftTypography>
-      ),
-      newDeposit: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $3,304
-        </SoftTypography>
-      ),
-      totalReDeposit: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $1,304
-        </SoftTypography>
-      ),
-      totalDeposit: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $10,120
-        </SoftTypography>
-      ),
-      totalWithdrawal: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $1,000
-        </SoftTypography>
-      ),
-      totalwagered: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $1,400
-        </SoftTypography>
-      ),
-      totalWinningPayout: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $300
-        </SoftTypography>
-      ),
-      totalGGR: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          2010.49
-        </SoftTypography>
-      ),
-      totalDepositBonus: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $250
-        </SoftTypography>
-      ),
-      totalDepositUnlocked: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $100
-        </SoftTypography>
-      ),
-      vipLevelUp: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $130
-        </SoftTypography>
-      ),
-      luckySpin: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $1,500
-        </SoftTypography>
-      ),
-      rollCompetion: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $350
-        </SoftTypography>
-      ),
-      dailyContest: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $420
-        </SoftTypography>
-      ),
-      medal: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $150
-        </SoftTypography>
-      ),
-      binggo: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $210
-        </SoftTypography>
-      ),
-      rain: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $121
-        </SoftTypography>
-      ),
-      coindrop: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $501
-        </SoftTypography>
-      ),
-      totalFreeUnlocked: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $550
-        </SoftTypography>
-      ),
-      commisionRakeback: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $2,303
-        </SoftTypography>
-      ),
-      directReferal: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $1,103
-        </SoftTypography>
-      ),
-      totalAffiliateUnlocked: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $2,503
-        </SoftTypography>
-      ),
-      recharge: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $1,023
-        </SoftTypography>
-      ),
-      weeklyCashback: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $1,303
-        </SoftTypography>
-      ),
-      monthlyCashback: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $132
-        </SoftTypography>
-      ),
-      ticket: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $343
-        </SoftTypography>
-      ),
-      prize: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $309
-        </SoftTypography>
-      ),
+      date: "09/12/2023",
+      dau: "4032l98765434567",
+      newRegister: "262",
+      totalNewDeposit: "1024",
+      newDeposit: "$3,304",
+      totalReDeposit: "$1,304",
+      totalDeposit: "$10,120",
+      totalWithdrawal: "$1,000",
+      totalwagered: "$1,400",
+      totalWinningPayout: "$300",
+      totalGGR: "2010.49",
+      totalDepositBonus: "$250",
+      totalDepositUnlocked: "$100",
+      vipLevelUp: "$130",
+      luckySpin: "$1,500",
+      rollCompetion: "$350",
+      dailyContest: "$420",
+      medal: "$150",
+      binggo: "$210",
+      rain: "$121",
+      coindrop: "$501",
+      totalFreeUnlocked: "$550",
+      commisionRakeback: "$2,303",
+      directReferal: "$1,103",
+      totalAffiliateUnlocked: "$2,503",
+      recharge: "$1,023",
+      weeklyCashback: "$1,303",
+      monthlyCashback: "$132",
+      ticket: "$343",
+      prize: "$309",
     },
     {
-      date: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-         10/03/2023
-        </SoftTypography>
-      ),
-      dau: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          1232
-        </SoftTypography>
-      ),
-      newRegister: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          102
-        </SoftTypography>
-      ),
-      totalNewDeposit: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          123
-        </SoftTypography>
-      ),
-      newDeposit: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $13,304
-        </SoftTypography>
-      ),
-      totalReDeposit: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $3,318
-        </SoftTypography>
-      ),
-      totalDeposit: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $10,300
-        </SoftTypography>
-      ),
-      totalWithdrawal: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $2,000
-        </SoftTypography>
-      ),
-      totalwagered: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $2,340
-        </SoftTypography>
-      ),
-      totalWinningPayout: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $100
-        </SoftTypography>
-      ),
-      totalGGR: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          2020.19
-        </SoftTypography>
-      ),
-      totalDepositBonus: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $150
-        </SoftTypography>
-      ),
-      totalDepositUnlocked: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $100
-        </SoftTypography>
-      ),
-      vipLevelUp: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $230
-        </SoftTypography>
-      ),
-      luckySpin: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $500
-        </SoftTypography>
-      ),
-      rollCompetion: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $120
-        </SoftTypography>
-      ),
-      dailyContest: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $450
-        </SoftTypography>
-      ),
-      medal: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $223
-        </SoftTypography>
-      ),
-      binggo: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $150
-        </SoftTypography>
-      ),
-      rain: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $200
-        </SoftTypography>
-      ),
-      coindrop: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $80
-        </SoftTypography>
-      ),
-      totalFreeUnlocked: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $150
-        </SoftTypography>
-      ),
-      commisionRakeback: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $3,123
-        </SoftTypography>
-      ),
-      directReferal: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $103
-        </SoftTypography>
-      ),
-      totalAffiliateUnlocked: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $2,503
-        </SoftTypography>
-      ),
-      recharge: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $1,221
-        </SoftTypography>
-      ),
-      weeklyCashback: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $2,403
-        </SoftTypography>
-      ),
-      monthlyCashback: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $102
-        </SoftTypography>
-      ),
-      ticket: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $343
-        </SoftTypography>
-      ),
-      prize: (
-        <SoftTypography variant="caption" color="white" fontWeight="medium">
-          $32
-        </SoftTypography>
-      ),
+      date: "10/03/2023",
+      dau: "4032l98765434567",
+      newRegister: "102",
+      totalNewDeposit: "123",
+      newDeposit: "$13,304",
+      totalReDeposit: "$3,318",
+      totalDeposit: "$10,300",
+      totalWithdrawal: "$2,000",
+      totalwagered: "$2,340",
+      totalWinningPayout: "$100",
+      totalGGR: "2020.19",
+      totalDepositBonus: "$150",
+      totalDepositUnlocked: "$100",
+      vipLevelUp: "$230",
+      luckySpin: "$500",
+      rollCompetion: "$120",
+      dailyContest: "$450",
+      medal: "$223",
+      binggo: "$150",
+      rain: "$200",
+      coindrop: "$80",
+      totalFreeUnlocked: "$150",
+      commisionRakeback: "$3,123",
+      directReferal: "$103",
+      totalAffiliateUnlocked: "$2,503",
+      recharge: "$1,221",
+      weeklyCashback: "$2,403",
+      monthlyCashback: "$102",
+      ticket: "$343",
+      prize: "$32",
+    },
+    {
+      date: "03/08/2023",
+      dau: "4032l98765434567",
+      newRegister: "132",
+      totalNewDeposit: "102",
+      newDeposit: "$23,304",
+      totalReDeposit: "$3,304",
+      totalDeposit: "$10,000",
+      totalWithdrawal: "$1,000",
+      totalwagered: "$2,400",
+      totalWinningPayout: "$400",
+      totalGGR: "4000.49",
+      totalDepositBonus: "$350",
+      totalDepositUnlocked: "$200",
+      vipLevelUp: "$400",
+      luckySpin: "$4,500",
+      rollCompetion: "$150",
+      dailyContest: "$450",
+      medal: "$250",
+      binggo: "$350",
+      rain: "$100",
+      coindrop: "$50",
+      totalFreeUnlocked: "$350",
+      commisionRakeback: "$3,503",
+      directReferal: "$3,103",
+      totalAffiliateUnlocked: "$1,503",
+      recharge: "$1,123",
+      weeklyCashback: "$1,403",
+      monthlyCashback: "$432",
+      ticket: "$34",
+      prize: "$342",
+    },
+    {
+      date: "09/12/2023",
+      dau: "4032l98765434567",
+      newRegister: "262",
+      totalNewDeposit: "1024",
+      newDeposit: "$3,304",
+      totalReDeposit: "$1,304",
+      totalDeposit: "$10,120",
+      totalWithdrawal: "$1,000",
+      totalwagered: "$1,400",
+      totalWinningPayout: "$300",
+      totalGGR: "2010.49",
+      totalDepositBonus: "$250",
+      totalDepositUnlocked: "$100",
+      vipLevelUp: "$130",
+      luckySpin: "$1,500",
+      rollCompetion: "$350",
+      dailyContest: "$420",
+      medal: "$150",
+      binggo: "$210",
+      rain: "$121",
+      coindrop: "$501",
+      totalFreeUnlocked: "$550",
+      commisionRakeback: "$2,303",
+      directReferal: "$1,103",
+      totalAffiliateUnlocked: "$2,503",
+      recharge: "$1,023",
+      weeklyCashback: "$1,303",
+      monthlyCashback: "$132",
+      ticket: "$343",
+      prize: "$309",
+    },
+    {
+      date: "10/03/2023",
+      dau: "18765434567232",
+      newRegister: "102",
+      totalNewDeposit: "123",
+      newDeposit: "$13,304",
+      totalReDeposit: "$3,318",
+      totalDeposit: "$10,300",
+      totalWithdrawal: "$2,000",
+      totalwagered: "$2,340",
+      totalWinningPayout: "$100",
+      totalGGR: "2020.19",
+      totalDepositBonus: "$150",
+      totalDepositUnlocked: "$100",
+      vipLevelUp: "$230",
+      luckySpin: "$500",
+      rollCompetion: "$120",
+      dailyContest: "$450",
+      medal: "$223",
+      binggo: "$150",
+      rain: "$200",
+      coindrop: "$80",
+      totalFreeUnlocked: "$150",
+      commisionRakeback: "$3,123",
+      directReferal: "$103",
+      totalAffiliateUnlocked: "$2,503",
+      recharge: "$1,221",
+      weeklyCashback: "$2,403",
+      monthlyCashback: "$102",
+      ticket: "$343",
+      prize: "$32",
+    },
+    {
+      date: "03/08/2023",
+      dau: "4032l98765434567",
+      newRegister: "132",
+      totalNewDeposit: "102",
+      newDeposit: "$23,304",
+      totalReDeposit: "$3,304",
+      totalDeposit: "$10,000",
+      totalWithdrawal: "$1,000",
+      totalwagered: "$2,400",
+      totalWinningPayout: "$400",
+      totalGGR: "4000.49",
+      totalDepositBonus: "$350",
+      totalDepositUnlocked: "$200",
+      vipLevelUp: "$400",
+      luckySpin: "$4,500",
+      rollCompetion: "$150",
+      dailyContest: "$450",
+      medal: "$250",
+      binggo: "$350",
+      rain: "$100",
+      coindrop: "$50",
+      totalFreeUnlocked: "$350",
+      commisionRakeback: "$3,503",
+      directReferal: "$3,103",
+      totalAffiliateUnlocked: "$1,503",
+      recharge: "$1,123",
+      weeklyCashback: "$1,403",
+      monthlyCashback: "$432",
+      ticket: "$34",
+      prize: "$342",
+    },
+    {
+      date: "09/12/2023",
+      dau: "4032l98765434567",
+      newRegister: "262",
+      totalNewDeposit: "1024",
+      newDeposit: "$3,304",
+      totalReDeposit: "$1,304",
+      totalDeposit: "$10,120",
+      totalWithdrawal: "$1,000",
+      totalwagered: "$1,400",
+      totalWinningPayout: "$300",
+      totalGGR: "2010.49",
+      totalDepositBonus: "$250",
+      totalDepositUnlocked: "$100",
+      vipLevelUp: "$130",
+      luckySpin: "$1,500",
+      rollCompetion: "$350",
+      dailyContest: "$420",
+      medal: "$150",
+      binggo: "$210",
+      rain: "$121",
+      coindrop: "$501",
+      totalFreeUnlocked: "$550",
+      commisionRakeback: "$2,303",
+      directReferal: "$1,103",
+      totalAffiliateUnlocked: "$2,503",
+      recharge: "$1,023",
+      weeklyCashback: "$1,303",
+      monthlyCashback: "$132",
+      ticket: "$343",
+      prize: "$309",
+    },
+    {
+      date: "10/03/2023",
+      dau: "4032l98765434567",
+      newRegister: "102",
+      totalNewDeposit: "123",
+      newDeposit: "$13,304",
+      totalReDeposit: "$3,318",
+      totalDeposit: "$10,300",
+      totalWithdrawal: "$2,000",
+      totalwagered: "$2,340",
+      totalWinningPayout: "$100",
+      totalGGR: "2020.19",
+      totalDepositBonus: "$150",
+      totalDepositUnlocked: "$100",
+      vipLevelUp: "$230",
+      luckySpin: "$500",
+      rollCompetion: "$120",
+      dailyContest: "$450",
+      medal: "$223",
+      binggo: "$150",
+      rain: "$200",
+      coindrop: "$80",
+      totalFreeUnlocked: "$150",
+      commisionRakeback: "$3,123",
+      directReferal: "$103",
+      totalAffiliateUnlocked: "$2,503",
+      recharge: "$1,221",
+      weeklyCashback: "$2,403",
+      monthlyCashback: "$102",
+      ticket: "$343",
+      prize: "$32",
+    },
+    {
+      date: "03/08/2023",
+      dau: "4032l98765434567",
+      newRegister: "132",
+      totalNewDeposit: "102",
+      newDeposit: "$23,304",
+      totalReDeposit: "$3,304",
+      totalDeposit: "$10,000",
+      totalWithdrawal: "$1,000",
+      totalwagered: "$2,400",
+      totalWinningPayout: "$400",
+      totalGGR: "4000.49",
+      totalDepositBonus: "$350",
+      totalDepositUnlocked: "$200",
+      vipLevelUp: "$400",
+      luckySpin: "$4,500",
+      rollCompetion: "$150",
+      dailyContest: "$450",
+      medal: "$250",
+      binggo: "$350",
+      rain: "$100",
+      coindrop: "$50",
+      totalFreeUnlocked: "$350",
+      commisionRakeback: "$3,503",
+      directReferal: "$3,103",
+      totalAffiliateUnlocked: "$1,503",
+      recharge: "$1,123",
+      weeklyCashback: "$1,403",
+      monthlyCashback: "$432",
+      ticket: "$34",
+      prize: "$342",
+    },
+    {
+      date: "09/12/2023",
+      dau: "4032l98765434567",
+      newRegister: "262",
+      totalNewDeposit: "1024",
+      newDeposit: "$3,304",
+      totalReDeposit: "$1,304",
+      totalDeposit: "$10,120",
+      totalWithdrawal: "$1,000",
+      totalwagered: "$1,400",
+      totalWinningPayout: "$300",
+      totalGGR: "2010.49",
+      totalDepositBonus: "$250",
+      totalDepositUnlocked: "$100",
+      vipLevelUp: "$130",
+      luckySpin: "$1,500",
+      rollCompetion: "$350",
+      dailyContest: "$420",
+      medal: "$150",
+      binggo: "$210",
+      rain: "$121",
+      coindrop: "$501",
+      totalFreeUnlocked: "$550",
+      commisionRakeback: "$2,303",
+      directReferal: "$1,103",
+      totalAffiliateUnlocked: "$2,503",
+      recharge: "$1,023",
+      weeklyCashback: "$1,303",
+      monthlyCashback: "$132",
+      ticket: "$343",
+      prize: "$309",
+    },
+    {
+      date: "10/03/2023",
+      dau: "4032l98765434567",
+      newRegister: "102",
+      totalNewDeposit: "123",
+      newDeposit: "$13,304",
+      totalReDeposit: "$3,318",
+      totalDeposit: "$10,300",
+      totalWithdrawal: "$2,000",
+      totalwagered: "$2,340",
+      totalWinningPayout: "$100",
+      totalGGR: "2020.19",
+      totalDepositBonus: "$150",
+      totalDepositUnlocked: "$100",
+      vipLevelUp: "$230",
+      luckySpin: "$500",
+      rollCompetion: "$120",
+      dailyContest: "$450",
+      medal: "$223",
+      binggo: "$150",
+      rain: "$200",
+      coindrop: "$80",
+      totalFreeUnlocked: "$150",
+      commisionRakeback: "$3,123",
+      directReferal: "$103",
+      totalAffiliateUnlocked: "$2,503",
+      recharge: "$1,221",
+      weeklyCashback: "$2,403",
+      monthlyCashback: "$102",
+      ticket: "$343",
+      prize: "$32",
+    },
+    {
+      date: "03/08/2023",
+      dau: "4032l98765434567",
+      newRegister: "132",
+      totalNewDeposit: "102",
+      newDeposit: "$23,304",
+      totalReDeposit: "$3,304",
+      totalDeposit: "$10,000",
+      totalWithdrawal: "$1,000",
+      totalwagered: "$2,400",
+      totalWinningPayout: "$400",
+      totalGGR: "4000.49",
+      totalDepositBonus: "$350",
+      totalDepositUnlocked: "$200",
+      vipLevelUp: "$400",
+      luckySpin: "$4,500",
+      rollCompetion: "$150",
+      dailyContest: "$450",
+      medal: "$250",
+      binggo: "$350",
+      rain: "$100",
+      coindrop: "$50",
+      totalFreeUnlocked: "$350",
+      commisionRakeback: "$3,503",
+      directReferal: "$3,103",
+      totalAffiliateUnlocked: "$1,503",
+      recharge: "$1,123",
+      weeklyCashback: "$1,403",
+      monthlyCashback: "$432",
+      ticket: "$34",
+      prize: "$342",
+    },
+    {
+      date: "09/12/2023",
+      dau: "4032l98765434567",
+      newRegister: "262",
+      totalNewDeposit: "1024",
+      newDeposit: "$3,304",
+      totalReDeposit: "$1,304",
+      totalDeposit: "$10,120",
+      totalWithdrawal: "$1,000",
+      totalwagered: "$1,400",
+      totalWinningPayout: "$300",
+      totalGGR: "2010.49",
+      totalDepositBonus: "$250",
+      totalDepositUnlocked: "$100",
+      vipLevelUp: "$130",
+      luckySpin: "$1,500",
+      rollCompetion: "$350",
+      dailyContest: "$420",
+      medal: "$150",
+      binggo: "$210",
+      rain: "$121",
+      coindrop: "$501",
+      totalFreeUnlocked: "$550",
+      commisionRakeback: "$2,303",
+      directReferal: "$1,103",
+      totalAffiliateUnlocked: "$2,503",
+      recharge: "$1,023",
+      weeklyCashback: "$1,303",
+      monthlyCashback: "$132",
+      ticket: "$343",
+      prize: "$309",
     },
   ]
 }

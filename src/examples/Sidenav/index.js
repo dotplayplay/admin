@@ -1,6 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
+// redux 
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleSidebar } from '../../reducers/actions';
 
 // @mui material components
 import List from "@mui/material/List";
@@ -23,20 +26,39 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
   const { pathname } = location;
   const collapseName = pathname.split("/").slice(1)[0];
 
-  const closeSidenav = () => setMiniSidenav(dispatch, true);
+  // Pages that differ in Sidebar logic
+  const isReportPage = pathname.includes('/reports');
+  const isUserTablesPage = pathname.includes('/members');
 
-  useEffect(() => {
-    // A function that sets the mini state of the sidenav.
-    function handleMiniSidenav() {
-      setMiniSidenav(dispatch, window.innerWidth < 1200);
+  // close sidebar button
+  const customDispatch = useDispatch();
+  const closeSidenav = () => {
+    if (isReportPage || isUserTablesPage) {
+      customDispatch(toggleSidebar(false));
+    } else {
+      setMiniSidenav(dispatch, true);
     }
+  }
 
-    window.addEventListener("resize", handleMiniSidenav);
+  const [isSidebarBg, setIsSidebarBg] = useState(false);
+  useEffect(() => {
+    if (!isReportPage && !isUserTablesPage) {
+      // A function that sets the mini state of the sidenav.
+      function handleMiniSidenav() {
+        setMiniSidenav(dispatch, window.innerWidth < 1200);
+      }
+      // set's sidebar background to transparent
+      setIsSidebarBg(false);
 
-    handleMiniSidenav();
+      window.addEventListener("resize", handleMiniSidenav);
+      handleMiniSidenav();
 
-    // Remove event listener on cleanup
-    return () => window.removeEventListener("resize", handleMiniSidenav);
+      // Remove event listener on cleanup
+      return () => window.removeEventListener("resize", handleMiniSidenav);
+    } else if(isReportPage || isUserTablesPage) {
+      setIsSidebarBg(true);
+    }
+    
   }, [dispatch, location]);
 
   const renderRoutes = routes.map(({ type, name, icon, title, noCollapse, key, route, href }) => {
@@ -95,11 +117,30 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
     return returnValue;
   });
 
+
+  const [closeSidebarButton, showCloseSidebarButton] = useState(false);
+
+  // Logic to show or hide the close button in the sidebar
+  const showSidebar = useSelector(state => state.showSidebar);
+  useEffect(() => {
+    const isSignPage = () => pathname.includes("authentication");
+
+    if (isReportPage || isUserTablesPage || isSignPage()) {
+      showCloseSidebarButton(true);
+      customDispatch(toggleSidebar(false));
+    } else {
+      showCloseSidebarButton(false);
+      customDispatch(toggleSidebar(true));
+    }
+    
+  }, [location.pathname, customDispatch])
+  
   return (
-    <SidenavRoot {...rest} variant="permanent" ownerState={{ transparentSidenav, miniSidenav }}>
+    <>
+    {showSidebar && <SidenavRoot {...rest} variant="permanent" ownerState={{ ...(isSidebarBg ? { miniSidenav } : { transparentSidenav, miniSidenav })}}>
       <SoftBox pt={3} pb={1} px={4} textAlign="center">
         <SoftBox
-          display={{ xs: "block", xl: "none" }}
+          display={{ xs: "block", xl: closeSidebarButton? "block" : "none" }}
           position="absolute"
           top={0}
           right={0}
@@ -125,7 +166,8 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
       </SoftBox>
       <Divider />
       <List>{renderRoutes}</List>
-    </SidenavRoot>
+    </SidenavRoot>}
+    </>
   );
 }
 

@@ -25,6 +25,15 @@ module.exports = {
         "2xl": "1536px",
         // => @media (min-width: 1536px) { ... }
       },
+      before: {
+        content: "''",
+      },
+      after: {
+        content: "''",
+      },
+      boxShadow: {
+        'xl': '10px 10px 30px #bebebe90, -10px -10px 30px #ffffff90',
+      }
     },
   },
   plugins: [],
