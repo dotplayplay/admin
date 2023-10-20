@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import Card from "@mui/material/Card";
 import SoftBox from "components/SoftBox";
@@ -11,11 +11,43 @@ import { BsArrowUpLeft } from 'react-icons/bs';
 import { BsArrowUpRight } from 'react-icons/bs';
 
 const GameReport = () => {
-  const { columns, rows } = gameReport;
+  let { columns, } = gameReport;
   const { currentPage, entriesPerPage, entries } = usePagination(1, 10);
-  const [sortedData, setSortedData] = useState(rows);
+  const [sortedData, setSortedData] = useState([]);
   const [gameReportDate, setGameReportDate] = useState(null);
   const [showDate, setShowDate] = useState(false);
+  const [originalData, setoriginalData] = useState([]);
+
+  let rows = [];
+
+  const [loading, setLoading] = useState(true);
+  const [_data, setData] = useState();
+
+  useEffect(() => {
+    async function getLogs() {
+      const url = `http://localhost:8000/api/admin/reports-details`;
+      try {
+        setLoading(true);
+        const response = await fetch(url);
+        const data = await response.json();
+        if (data?.data) {
+          setData(data.data)
+          setLoading(false);
+        }
+      } catch (err) {
+        console.log(err.message);
+      }
+    }
+    getLogs();
+  }, []);
+
+  useEffect(()=>{
+    if(_data && _data.length > 0){
+      setSortedData(_data[0].games_reports)
+      setoriginalData(_data[0].games_reports)
+    }
+  },[loading]);
+
 
   // For filtering by date
   const handleShowDate = () => {
@@ -23,7 +55,7 @@ const GameReport = () => {
   }
 
   const sortData = (gameDate) => {
-    if (gameDate) {
+    if (gameDate && sortData.length !== 0) {
       const filteredData = rows.filter(row => {
         const rowDate = new Date(row.date);
         const sortDate = new Date(gameDate);
@@ -38,7 +70,7 @@ const GameReport = () => {
 
       setSortedData(filteredData);
     } else {
-      setSortedData(rows);
+      setSortedData(originalData);
     }
     setShowDate(!showDate);
   };
@@ -157,11 +189,11 @@ const GameReport = () => {
                           <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'bg-slate-200' : 'bg-slate-100'}>
                             <td className={style.tableCol}>{row.no}</td>
                             <td className={style.tableCol}>{row.game}</td>
-                            <td className={style.tableCol}>{row.totalWagered}</td>
-                            <td className={style.tableCol}>{row.totalPayout}</td>
-                            <td className={style.tableCol}>{row.totalGGR}</td>
-                            <td className={style.tableCol}>{row.GGR}</td>
-                            <td className={style.tableCol}>{row.date}</td>
+                            <td className={style.tableCol}>${row.totalWagered.toFixed(2)}</td>
+                            <td className={style.tableCol}>${row.totalPayout.toFixed(2)}</td>
+                            <td className={style.tableCol}>${row.totalGGR.toFixed(2)}</td>
+                            <td className={style.tableCol}>${row.totalGGR.toFixed(2)}</td>
+                            <td className={style.tableCol}>{new Date().toLocaleDateString()}</td>
                           </tr>
                         ))
                       )}

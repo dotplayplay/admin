@@ -49,7 +49,7 @@ const DailyReport = () => {
   };
 
   const style = {
-    tableCol: "py-3 text-slate-800 text-center text-[10px] max-w-[40px] hover:max-w-full text-ellipsis truncate",
+    tableCol: "py-3 pl-1 text-slate-800 text-center text-[12px] max-w-[70px] hover:max-w-full text-ellipsis truncate",
   }
 
   return (
@@ -102,43 +102,54 @@ const DailyReport = () => {
                   </button>
                 </div>
                 {showDate ? (
-                    <div className="flex justify-center border-[1px]">
-                      <div className="bg-[#fff] p-4 w-[80%] m-auto md:left-[40%] fixed top-[30%] md:w-[30%] mb-4">
-                        <div className="flex top-[0px] bg-[#fff] sticky justify-between items-center gap-2 p-4">
-                          <h2 className="text-[16px] font-extrabold">Filter</h2>
-                          <button onClick={handleShowDate}>&times;</button>
-                        </div>
-                        <div>
-                          <SoftTypography variant="h6">Start Date:</ SoftTypography>
-                          <DatePicker className="text-[14px] border-[1px] px-4 w-full py-[3px]" selected={startDate} onChange={date => setStartDate(date)} />
-                        </div>
-                        <div className="mt-2">
-                          <SoftTypography variant="h6">End Date:</ SoftTypography>
-                          <DatePicker className="text-[14px] border-[1px] px-4 w-full py-[3px]" selected={endDate} onChange={date => setEndDate(date)} />
-                        </div>
-                        <SoftBox mt={4} mb={1}>
-                          <SoftButton variant="gradient" color="info" fullWidth>
-                            <button onClick={() => sortData(startDate, endDate)}>Sort Date</button>
-                          </SoftButton>
-                        </SoftBox>
+                  <div className="flex justify-center border-[1px]">
+                    <div className="bg-[#fff] p-4 w-[80%] m-auto md:left-[40%] fixed top-[30%] md:w-[30%] mb-4">
+                      <div className="flex top-[0px] bg-[#fff] sticky justify-between items-center gap-2 p-4">
+                        <h2 className="text-[16px] font-extrabold">Filter</h2>
+                        <button onClick={handleShowDate}>&times;</button>
                       </div>
+                      <div>
+                        <SoftTypography variant="h6">Start Date:</ SoftTypography>
+                        <DatePicker className="text-[14px] border-[1px] px-4 w-full py-[3px]" selected={startDate} onChange={date => setStartDate(date)} />
+                      </div>
+                      <div className="mt-2">
+                        <SoftTypography variant="h6">End Date:</ SoftTypography>
+                        <DatePicker className="text-[14px] border-[1px] px-4 w-full py-[3px]" selected={endDate} onChange={date => setEndDate(date)} />
+                      </div>
+                      <SoftBox mt={4} mb={1}>
+                        <SoftButton variant="gradient" color="info" fullWidth>
+                          <button onClick={() => sortData(startDate, endDate)}>Sort Date</button>
+                        </SoftButton>
+                      </SoftBox>
                     </div>
+                  </div>
                   ) : (<></>)
                 }
                 <div className="overflow-x-auto dashboard">
                   <table className="w-full">
                     <thead>
                       <tr>
-                        {columns.map((column, columnIndex) => (
+                        {columns
+                        .map((column, columnIndex) => {
+                          const getColumnBackgroundClass = (index) => {
+                            if ([4,5,6].includes(index)) {
+                              return "bg-blue-200/80";
+                            } else if ([8,9,10,13].includes(index)) {
+                              return "bg-yellow-200/40";
+                            } else if ([11,12,14,15,16,17,18,19,20,21,25,26,27].includes(index)) {
+                              return "bg-green-200/80";
+                            } else if ([22,23,24,28,29].includes(index)) {
+                              return "bg-violet-200/80";
+                            } else {
+                              return "bg-slate-100";
+                            }
+                          };
+                          return (
                           <th
-                            className={`text-slate-700 text-[10px] text-left pr-1 py-2 ${
-                              columnIndex === 4 || columnIndex === 5 || columnIndex === 6
-                                ? "bg-blue-200"
-                                : "bg-slate-100"
-                            }`}
+                            className={`text-slate-700 text-[11px] text-left capitalize pl-1 py-2 ${getColumnBackgroundClass(columnIndex)}`}
                             key={columnIndex}
                           >{column.name}</th>
-                        ))}
+                        )})}
                       </tr>
                     </thead>
                     <tbody>
@@ -176,28 +187,28 @@ const DailyReport = () => {
                               <td className={`${style.tableCol} bg-blue-400/20`}>{row.totalReDeposit}</td>
                               <td className={`${style.tableCol} bg-blue-400/20`}>{row.totalDeposit}</td>
                               <td className={`${style.tableCol}`}>{row.totalWithdrawal}</td>
-                              <td className={`${style.tableCol}`}>{row.totalwagered}</td>
-                              <td className={`${style.tableCol}`}>{row.totalWinningPayout}</td>
-                              <td className={`${style.tableCol}`}>{row.totalGGR}</td>
-                              <td className={`${style.tableCol}`}>{row.totalDepositBonus}</td>
-                              <td className={`${style.tableCol}`}>{row.totalDepositUnlocked}</td>
-                              <td className={`${style.tableCol}`}>{row.vipLevelUp}</td>
-                              <td className={`${style.tableCol}`}>{row.luckySpin}</td>
-                              <td className={`${style.tableCol}`}>{row.rollCompetion}</td>
-                              <td className={`${style.tableCol}`}>{row.dailyContest}</td>
-                              <td className={`${style.tableCol}`}>{row.medal}</td>
-                              <td className={`${style.tableCol}`}>{row.binggo}</td>
-                              <td className={`${style.tableCol}`}>{row.rain}</td>
-                              <td className={`${style.tableCol}`}>{row.coindrop}</td>
-                              <td className={`${style.tableCol}`}>{row.totalFreeUnlocked}</td>
-                              <td className={`${style.tableCol}`}>{row.commisionRakeback}</td>
-                              <td className={`${style.tableCol}`}>{row.directReferal}</td>
-                              <td className={`${style.tableCol}`}>{row.totalAffiliateUnlocked}</td>
-                              <td className={`${style.tableCol}`}>{row.recharge}</td>
-                              <td className={`${style.tableCol}`}>{row.weeklyCashback}</td>
-                              <td className={`${style.tableCol}`}>{row.monthlyCashback}</td>
-                              <td className={`${style.tableCol}`}>{row.ticket}</td>
-                              <td className={`${style.tableCol}`}>{row.prize}</td>
+                              <td className={`${style.tableCol} bg-yellow-400/20`}>{row.totalwagered}</td>
+                              <td className={`${style.tableCol} bg-yellow-400/20`}>{row.totalWinningPayout}</td>
+                              <td className={`${style.tableCol} bg-yellow-400/20`}>{row.totalGGR}</td>
+                              <td className={`${style.tableCol} bg-green-400/20`}>{row.totalDepositBonus}</td>
+                              <td className={`${style.tableCol} bg-green-400/20`}>{row.totalDepositUnlocked}</td>
+                              <td className={`${style.tableCol} bg-yellow-400/20`}>{row.vipLevelUp}</td>
+                              <td className={`${style.tableCol} bg-green-400/20`}>{row.luckySpin}</td>
+                              <td className={`${style.tableCol} bg-green-400/20`}>{row.rollCompetion}</td>
+                              <td className={`${style.tableCol} bg-green-400/20`}>{row.dailyContest}</td>
+                              <td className={`${style.tableCol} bg-green-400/20`}>{row.medal}</td>
+                              <td className={`${style.tableCol} bg-green-400/20`}>{row.binggo}</td>
+                              <td className={`${style.tableCol} bg-green-400/20`}>{row.rain}</td>
+                              <td className={`${style.tableCol} bg-green-400/20`}>{row.coindrop}</td>
+                              <td className={`${style.tableCol} bg-green-400/20`}>{row.totalFreeUnlocked}</td>
+                              <td className={`${style.tableCol} bg-violet-400/20`}>{row.commisionRakeback}</td>
+                              <td className={`${style.tableCol} bg-violet-400/20`}>{row.directReferal}</td>
+                              <td className={`${style.tableCol} bg-violet-400/20`}>{row.totalAffiliateUnlocked}</td>
+                              <td className={`${style.tableCol} bg-green-400/20`}>{row.recharge}</td>
+                              <td className={`${style.tableCol} bg-green-400/20`}>{row.weeklyCashback}</td>
+                              <td className={`${style.tableCol} bg-green-400/20`}>{row.monthlyCashback}</td>
+                              <td className={`${style.tableCol} bg-violet-400/20`}>{row.ticket}</td>
+                              <td className={`${style.tableCol} bg-violet-400/20`}>{row.prize}</td>
                             </tr>
                         )})
                       )}

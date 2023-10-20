@@ -8,19 +8,16 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from '@mui/icons-material/Menu';
 import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
-import SoftAvatar from "components/SoftAvatar";
-import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Cube from "examples/Icons/Cube";
 import Document from "examples/Icons/Document";
 import { MdReportProblem } from "react-icons/md";
+import { RiCoinsLine } from "react-icons/ri";
 import breakpoints from "assets/theme/base/breakpoints";
-import curved0 from "assets/images/curved-images/curved0.jpg";
 
 // redux
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleSidebar } from '../../../../reducers/actions';
 
-import { navbarMobileMenu } from "examples/Navbars/DashboardNavbar/styles";
 
 export default function Header(Taps) {
   const [tabsOrientation, setTabsOrientation] = useState("horizontal");
@@ -57,24 +54,6 @@ export default function Header(Taps) {
 
   return (
     <SoftBox position="relative">
-      {/* <DashboardNavbar absolute light /> */}
-    {/* <SoftBox
-        display="flex"
-        alignItems="center"
-        position="relative"
-        minHeight="18.75rem"
-        borderRadius="xl"
-        sx={{
-          backgroundImage: ({ functions: { rgba, linearGradient }, palette: { gradients } }) =>
-            `${linearGradient(
-              rgba(gradients.info.main, 0.6),
-              rgba(gradients.info.state, 0.6)
-            )}, url(${curved0})`,
-          backgroundSize: "cover",
-          backgroundPosition: "50%",
-          overflow: "hidden",
-        }}
-      /> */}
       <Card
         sx={{
           backdropFilter: `saturate(200%) blur(30px)`,
@@ -97,8 +76,7 @@ export default function Header(Taps) {
                   sx={{
                     px: 3,
                     '& .MuiSvgIcon-root': {
-                      // Custom styles for the MenuIcon
-                      fontSize: 24, // Change the icon size to 24px
+                      fontSize: 24,
                     },
                     height: "100%",
                   }}
@@ -125,6 +103,7 @@ export default function Header(Taps) {
                 <Tab label="Game Report" onClick={()=> handleNavigate('gameReport')} icon={<Cube />} />
                 <Tab label="Daily Report" onClick={()=> handleNavigate('dailyReport')} icon={<Document />} />
                 <Tab label="GGR Report" onClick={()=> handleNavigate('ggrReport')} icon={<MdReportProblem />} />
+                <Tab label="Deposit Bonus Report" onClick={()=> handleNavigate('depositBonusReport')} icon={<RiCoinsLine />} />
               </Tabs>
             </AppBar>
           </Grid>
