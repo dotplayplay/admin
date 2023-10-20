@@ -40,6 +40,8 @@ import SpaceShip from "examples/Icons/SpaceShip";
 import CustomerSupport from "examples/Icons/CustomerSupport";
 import { GoReport } from "react-icons/go";
 import { MdOutlineVideogameAssetOff } from "react-icons/md";
+import MembersTable from "layouts/members";
+import Userprofile from "layouts/userprofile";
 
 const routes = [
   {

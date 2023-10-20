@@ -33,7 +33,7 @@ import NotFound from "NotFound";
 
 //Admin details
 import AdminDetails from "layouts/adminTables/AdminDetails";
-import MemberDetails from "layouts/tables/MemberDetails";
+// import MemberDetails from "layouts/tables/MemberDetails";
 import { toggleReportPage } from "reducers/actions";
 
 export default function App() {
