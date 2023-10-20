@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+*::placeholder{
+@apply text-sm
+}
+.pincode-input-text{
+  @apply w-2
+}
 /* To remove the blue onclick of browsers */
 * {
   -webkit-tap-highlight-color: transparent;

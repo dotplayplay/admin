@@ -40,7 +40,7 @@ const editRole = () => {
 
   const [twoFA, setTwoFA] = useState(false);
   const [kyc, setKyc] = useState(false);
-  const [gameData, setGameData] = useState(false);
+  const [gameData, setGameData] = useState(false); 
   const [hideUsername, setHideUsername] = useState(false);
   const [refuseTip, setRefuseTip] = useState(false);
   const [chat, setChat] = useState(false);
