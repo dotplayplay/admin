@@ -19,7 +19,6 @@ const membersData = {
     { name: "Chat ", align: "center" },
   ],
   // rows: [],
-  /*
   rows: [
     {
       username: "Ifeanyi305",
@@ -274,22 +273,21 @@ const membersData = {
 
     }
   ],
-  */
 }
 
-const url = `http://localhost:8000/api/admin/members-details`;
-const fetchData = async () => {
-  try {
-    const response = await fetch(url);
-    const data = await response.json();
-    if (data?.data) {
-      membersData.rows = data.data;
-    }
-  } catch (err) {
-    console.log(err.message);
-  }
-};
+// const url = `http://localhost:8000/api/admin/members-details`;
+// const fetchData = async () => {
+//   try {
+//     const response = await fetch(url);
+//     const data = await response.json();
+//     if (data?.data) {
+//       membersData.rows = data.data;
+//     }
+//   } catch (err) {
+//     console.log(err.message);
+//   }
+// };
 
-fetchData(); 
+// fetchData(); 
 
 export default membersData;
