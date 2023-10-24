@@ -1,12 +1,10 @@
 /* eslint-disable react/prop-types */
-import React, { useState, useEffect } from 'react'
-
 
 const memberData = {
   // Basic Information
   basicInfo: [
     { id: "basic-info", title: "Basic Information"},
-    { name: "user ID", type: 'string', value: "12qrtzqi1", id: "userId" },
+    { name: "user ID", type: 'string', value: 'FnNMetXa3QNBGEvMViozxT1spps1', id: "userId" },
     { name: "Username", type: 'string', value: "Ifeanyi345", id: "username" },
     { name: "Tag", type: 'string', value: "P2E", id: "tag" },
     { name: "Mobile", type: 'string', value: "+2349039108633", id: "mobile" },

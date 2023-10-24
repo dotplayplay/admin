@@ -1,11 +1,30 @@
+/* eslint-disable */
+
 import React, { useState } from 'react';
 import MemberInfoLayout from '../(layout)';
 import ChoInput from 'layouts/member/templates/input';
 import memberData from '../../data/memberData';
 import ChoSwitch from 'layouts/member/templates/switch';
 
-const BasicInfo = () => {
-  const { basicInfo } = memberData;
+const BasicInfo = ({ data }) => {
+  const [basicInfo, setBasicInfo] = useState([
+    { id: "basic-info", title: "Basic Information"},
+    { name: "user ID", type: 'string', value: data.user_id, id: "userId" },
+    { name: "Username", type: 'string', value: data.username, id: "username" },
+    // { name: "Tag", type: 'string', value: "P2E", id: "tag" },
+    // { name: "Mobile", type: 'string', value: "+2349039108633", id: "mobile" },
+    // { name: "Verified mobile", type: 'boolean', value: true, id: "emailAddress" },
+    // { name: "Email address", type: 'string', value: data.email, id: "verifiedMobile" },
+    // { name: "Verified email address", type: 'boolean', value: true, id: "verifiedEmailAddress" },
+    // { name: "Password", type: 'boolean', value: "223456", id: "password" },
+    { name: "2FA", type: 'boolean', value: data.fa, id: "twoFactorAuth" },
+    { name: "KYC", type: 'boolean', value: data.kyc, id: "kyc" },
+    { name: "Hide from public", type: 'boolean', value: data.hidden_from_public, id: "hideFromPublic" },
+    { name: "Hide profile", type: 'boolean', value: data.hide_profile, id: "hideProfile" },
+    { name: "Refuse Tip", type: 'boolean', value: data.refuse_tips, id: "refuceTip" },
+    // { name: "Chat", type: 'boolean', value: true, id: "chat" },
+    { name: "Suspend", type: 'boolean', value: data.is_suspend, id: "suspend" },
+  ]);
 
   // Sets the default state of the data
   const initialInfoState = basicInfo.map(item => ({

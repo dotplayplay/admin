@@ -31,7 +31,7 @@ const GameReport = () => {
         const response = await fetch(url);
         const data = await response.json();
         if (data?.data) {
-          setData(data.data)
+          setData(data.data);
           setLoading(false);
         }
       } catch (err) {
@@ -43,8 +43,8 @@ const GameReport = () => {
 
   useEffect(()=>{
     if(_data && _data.length > 0){
-      setSortedData(_data[0].games_reports)
-      setoriginalData(_data[0].games_reports)
+      setSortedData(_data[0].games_reports);
+      setoriginalData(_data[0].games_reports);
     }
   },[loading]);
 

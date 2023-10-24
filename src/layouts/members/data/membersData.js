@@ -1,6 +1,20 @@
 import React, { useEffect } from 'react';
 
-const membersData = {
+const url = `http://localhost:8000/api/admin/all-members`;
+
+const fetchData = async () => {
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    if (data) {
+      membersData.rows = data;
+    }
+  } catch (err) {
+    console.log(err.message);
+  }
+};
+
+const MembersData = {
   columns: [
     { name: "user ID", align: "center" },
     { name: "username", align: "center" },
@@ -18,7 +32,7 @@ const membersData = {
     { name: "Last Login IP", align: "center" },
     { name: "Chat ", align: "center" },
   ],
-  // rows: [],
+  rows: [],
   /*
   rows: [
     {
@@ -273,23 +287,7 @@ const membersData = {
       P2eEb: "$35,234",
 
     }
-  ],
-  */
+  ],*/
 }
 
-const url = `http://localhost:8000/api/admin/members-details`;
-const fetchData = async () => {
-  try {
-    const response = await fetch(url);
-    const data = await response.json();
-    if (data?.data) {
-      membersData.rows = data.data;
-    }
-  } catch (err) {
-    console.log(err.message);
-  }
-};
-
-fetchData(); 
-
-export default membersData;
+export default MembersData;

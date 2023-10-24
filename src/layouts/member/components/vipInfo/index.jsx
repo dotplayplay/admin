@@ -1,9 +1,25 @@
+/* eslint-disable */
 import React, { useState } from 'react';
 import memberData from '../../data/memberData';
 import ChoSwitch from '../../templates/switch';
 
-const VipInfo = () => {
-  const { vipInfo } = memberData;
+const VipInfo = ({ data }) => {
+  const [vipInfo, setVipInfo] = useState([
+    { name: "Level", type: 'string', value: data.vip_level, id: "level" },
+    { name: "Rank", type: 'string', value: "Bronze", id: "rank" },
+    { name: "Total Wagered", type: 'string', value: data.totalwagered, id: "totalWagered" },
+    // { name: "Roll Point Game", type: 'show_boolean', value: true, id: "rollPointGame" },
+    // { name: "Send Rain", type: 'show_boolean', value: true, id: "emailAddress" },
+    // { name: "Receive Rain", type: 'show_boolean', value: true, id: "receiveRain" },
+    // { name: "Send Coindrop", type: 'show_boolean', value: true, id: "sendCoindrop" },
+    // { name: "Receive Coindrop", type: 'show_boolean', value: true, id: "receiveCoindrop" },
+    // { name: "Send Tip", type: 'show_boolean', value: false, id: "sendTip" },
+    // { name: "Hit Bingo", type: 'show_boolean', value: false, id: "hitBingo" },
+    // { name: "No Fee Withdrawal", type: 'show_boolean', value: false, id: "noFeeWithdrawal" },
+    // { name: "Recharge", type: 'boolean', value: false, id: "recharge" },
+    // { name: "Weekly Cashback", type: 'boolean', value: false, id: "weeklyCashback" },
+    // { name: "Monthly Cashback", type: 'boolean', value: false, id: "monthlyCashback" },
+  ]);
   // Sets the default state of the data
   const initialInfoState = vipInfo.map(item => ({
     name: item.name,

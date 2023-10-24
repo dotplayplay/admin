@@ -13,7 +13,6 @@ import { BsArrowUpLeft, BsArrowUpRight, BsArrowLeft } from "react-icons/bs";
 
 const PromoEventDetails = () => {
   const { promoEventId } = useParams();
-  console.log(`promoEventId: ${promoEventId}`);
   const { summaryColumns, columns, summaryRows, rows } = depositBonusReportData;
   const filteredRows = rows.filter((row) => row.promoEventId === promoEventId);
   console.log(`filteredRows: ${filteredRows}`);

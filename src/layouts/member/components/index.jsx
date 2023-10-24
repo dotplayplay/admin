@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { RiMenu4Fill } from 'react-icons/ri';
 // redux 
 import { useDispatch } from 'react-redux';
@@ -24,6 +25,31 @@ import Action from './action'
 
 const MemberTable = () => {
   const customDispatch = useDispatch();
+  const { memberId } = useParams();
+  const [memberData, setMemberData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchData() {
+      try { 
+        setLoading(true);
+        const url = `http://localhost:8000/api/admin/member-profile/${memberId}`;
+        const response = await fetch(url);
+        if (response.ok) {
+          const data = await response.json();
+          console.log('Data fetched: ', data); // console log
+          setMemberData(data);
+          setLoading(false);
+        } else {
+          console.error('Error fetching data:', response.statusText);
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    }
+    
+    fetchData();
+  }, [memberId]);
   
   return (
     <div className="relative min-w-full p-2">
@@ -38,35 +64,37 @@ const MemberTable = () => {
         </button>
         <h2 className="font-[600] text-[1.15rem] lg:text-[1.5rem] uppercase text-slate-600">User Information</h2>
       </div>
+      {loading? 
+      <div>Loading... </div> :
       <div className='flex flex-col gap-10 w-full'>
-        <BasicInfo />
-        <AccountInfo />
-        <SessionInfo />
-        <VipInfo />
-        <AffiliateInfo />
-        <WalletInfo />
-        <GameSetting />
-        <GameReport />
-        <DetailsTable />
+        <BasicInfo data={memberData.basicInfo[0]} />
+        <AccountInfo data={memberData.accountInfo[0]} />
+        {/* <SessionInfo data={memberData.sessionInfo} /> */}
+        <VipInfo data={memberData.vipInfo[0]} />
+        <AffiliateInfo data={memberData} />
+        {/* <WalletInfo data={memberData} />
+        <GameSetting data={memberData} />
+        <GameReport data={memberData} />
+        <DetailsTable data={memberData} /> */}
 
         {/* Transaction Logs */}
-        <UsdtWallet />
-        <PpdWallet />
-        <PplWallet />
-        <PpfWallet />
-        <PpeWallet />
+        {/* <UsdtWallet data={memberData} />
+        <PpdWallet data={memberData} />
+        <PplWallet data={memberData} />
+        <PpfWallet data={memberData} />
+        <PpeWallet data={memberData} />
 
-        <DepositBonusLog />
-        <Action />
+        <DepositBonusLog data={memberData} />
+        <Action data={memberData} /> */}
         <div 
-          className="sticky bottom-0 left-0 bg-slate-200 flex justify-end w-full px-3 py-3 rounded-[5px] shadow-[0_-5px_7px_1px_rgba(0,0,0,0.15)]"
+          className="sticky bottom-0 left-0 bg-slate-100 flex justify-end w-full px-3 py-3 rounded-[5px] shadow-[0_-5px_7px_1px_rgba(0,0,0,0.15)]"
         >
           <button 
-            className="bg-slate-500 hover:bg-slate-500/90 text-[.875rem] text-[#ffffff] text-[600] px-4 py-1 rounded-[5px] uppercase tracking-[2px] transition duration-150"
+            className="bg-slate-500 hover:bg-slate-500/90 text-[.875rem] text-slate-50 text-[600] px-4 py-1 rounded-[5px] uppercase tracking-[2px] shadow-md transition duration-150"
           >Save
           </button>
         </div>
-      </div>
+      </div>}
     </div>
   );
 };

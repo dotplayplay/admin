@@ -15,13 +15,14 @@ const CreateMember = () => {
   const customDispatch = useDispatch();
   const showSidebar = useSelector(state => state.showMemberSidebar);
   
-  const { basicInfo } = memberData;
+  const [createMemberData, setCreateMemberData] = useState({
+    email: '',
+    isEmailVerified: '',
+    password: '',
+    promoCode: '',
+  });
 
-  // Sets the default state of the data
-  const initialInfoState = basicInfo.map(item => ({
-    name: item.name,
-    value: item.value,
-  }));
+  useEffect
 
   const handleResize = () => {
     if (window.innerWidth > 1024) {
@@ -54,37 +55,32 @@ const CreateMember = () => {
           <div className=''>
             <small className="uppercase tracking-[2px] font-[600] text-[10px] text-slate-400 mt-4">Input</small>
             <div className="py-4 grid sm:grid-cols-2 gap-y-8 gap-x-4">
-            {basicInfo.map(item => {
-              if (item.type === 'string') {
-                return (
-                  <ChoInput 
-                    key={item.id} 
-                    label={item.name} 
-                    value={item.value}
-                    onChange={()=>handleInputChange(item.id, item.value)} 
-                  />
-                );
-              } else {
-                return null;
-              }
-            })}
+              <ChoInput 
+                label='Email' 
+                type='email'
+                value={createMemberData.email}
+                onChange={(e)=>setCreateMemberData({...createMemberData, email: e.target.value})} 
+              />
+              <ChoInput 
+                label='Password' 
+                type='password'
+                value={createMemberData.password}
+                onChange={()=>handleInputChange(item.id, item.value)} 
+              />
+              <ChoInput 
+                label='Promo Code' 
+                value={createMemberData.promoCode}
+                placeholder='(Optional)'
+                onChange={()=>handleInputChange(item.id, item.value)} 
+              />
             </div>
             <small className="uppercase tracking-[2px] font-[600] text-[10px] text-slate-400 mt-4">switch</small>
             <div className="py-4 grid sm:grid-cols-2 gap-y-8 gap-x-4">
-            {basicInfo.map(item => {
-              if (item.type === 'boolean') {
-                return (
-                  <ChoSwitch 
-                    key={item.id} 
-                    label={item.name} 
-                    value={item.value} 
-                    onChange={()=>handleInputChange(item.id)} 
-                  />
-                );
-              } else {
-                return null;
-              }
-            })}
+              <ChoSwitch 
+                label='' 
+                value={item.value} 
+                onChange={()=>handleInputChange(item.id)} 
+              />
             </div>
 
           </div>

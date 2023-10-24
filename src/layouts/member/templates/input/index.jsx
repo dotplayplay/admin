@@ -34,7 +34,8 @@ const ChoInput = (props) => {
         onBlur={()=>setInputFocused(false)}
         className='w-full pl-3 h-[50px] border-[2px] border-slate-300 rounded-[5px] text-[16px] text-slate-500 focus:outline-green-300'
       />
-      {(inputFocused && inputValue) && (<button className="absolute right-[10px] h-max" onMouseDown={()=>setInputValue('')}>
+      {(inputFocused && inputValue) && (
+      <button className="absolute right-[10px] h-max" onMouseDown={()=>setInputValue('')}>
         <LiaTimesSolid className="text-[15px]" />
       </button>)}
     </div>

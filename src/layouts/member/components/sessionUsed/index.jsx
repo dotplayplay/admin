@@ -2,8 +2,18 @@
 import React, { useState } from 'react';
 import MemberData from '../../data/memberData';
 
-const SessionInfo = () => {
-  const { columns, rows } = MemberData.sessionsInfo;
+const SessionInfo = ({ data }) => {
+  const { columns, rows } = accountInfo;
+  const [accountInfo, setAccountInfo] = useState({
+    columns: [
+      { name: "Browser", align: "left" },
+      { name: "Location", align: "center" },
+      { name: "IP Address", align: "center" },
+      { name: "Last Used", align: "center" },
+      { name: "Action", align: "center" },
+    ],
+    rows: [data],
+  });
 
   return (
     <div id='sessions' className="w-full bg-white shadow-xl rounded-[10px] px-2 py-4 md:p-4">
