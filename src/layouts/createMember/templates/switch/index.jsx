@@ -1,12 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { PropTypes } from 'prop-types';
 
 const ChoSwitch = (props) => {
   const [isChecked, setIsChecked] = useState(Boolean(props.value));
 
   const handleToggle = () => {
-    props.action === true? setIsChecked(!isChecked) : null;
+    const newValue = !isChecked;
+    setIsChecked(newValue);
+    if (props.onChange) {
+      props.onChange(newValue);
+      console.log('changing input from input component');
+    }
   }
+  useEffect(() => {
+    console.log('input component');
+  }, []);
+  
 
   return (
     <div 

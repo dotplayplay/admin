@@ -58,7 +58,7 @@ const Sidebar = ({ active }) => {
         </Link>
       </div>
       <div className="pr-6 pt-5 pb-8 pl-4">
-        <h2 className="text-[20px] text-slate-200 font-600">Create Member</h2>
+        <h2 className="text-[18px] text-slate-300 font-600 uppercase">Create Member</h2>
         {/* <div>
           <p className="text-[15px] text-slate-300 ">/Emmanuel Michael</p>
         </div> */}

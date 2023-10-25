@@ -7,7 +7,6 @@ import Sidebar from "./sidebar";
 import Footer from "examples/Footer";
 import { RiCloseFill } from 'react-icons/ri';
 
-import memberData from './data';
 import ChoInput from 'layouts/member/templates/input';
 import ChoSwitch from 'layouts/member/templates/switch';
 
@@ -17,12 +16,15 @@ const CreateMember = () => {
   
   const [createMemberData, setCreateMemberData] = useState({
     email: '',
-    isEmailVerified: '',
+    isEmailVerified: false,
     password: '',
     promoCode: '',
   });
+  console.log('createMember component');
 
-  useEffect
+  useEffect(() => {
+    console.log('createMember data: ', createMemberData);
+  }, [createMemberData]);
 
   const handleResize = () => {
     if (window.innerWidth > 1024) {
@@ -50,39 +52,46 @@ const CreateMember = () => {
         {showSidebar && <div className="sticky z-[150] top-0 w-max h-screen transition duration-200">
           <Sidebar />
         </div>}
-        <div className="data_column w-full relative py-2 px-1 md:px-3">
-          
-          <div className=''>
+        <div className="data_column w-full relative py-2 pt-5 px-1 md:px-3 min-h-screen">
+          <div className='h-full'>
             <small className="uppercase tracking-[2px] font-[600] text-[10px] text-slate-400 mt-4">Input</small>
             <div className="py-4 grid sm:grid-cols-2 gap-y-8 gap-x-4">
               <ChoInput 
                 label='Email' 
                 type='email'
                 value={createMemberData.email}
-                onChange={(e)=>setCreateMemberData({...createMemberData, email: e.target.value})} 
+                placeholder='(Mandatory)'
+                onChange={(value)=>setCreateMemberData({...createMemberData, email: value})} 
               />
               <ChoInput 
                 label='Password' 
                 type='password'
                 value={createMemberData.password}
-                onChange={()=>handleInputChange(item.id, item.value)} 
+                placeholder='(Mandatory)'
+                onChange={(value)=>setCreateMemberData({...createMemberData, password: value})} 
               />
               <ChoInput 
                 label='Promo Code' 
                 value={createMemberData.promoCode}
                 placeholder='(Optional)'
-                onChange={()=>handleInputChange(item.id, item.value)} 
+                onChange={(value)=>setCreateMemberData({...createMemberData, promoCode: value})} 
               />
             </div>
             <small className="uppercase tracking-[2px] font-[600] text-[10px] text-slate-400 mt-4">switch</small>
             <div className="py-4 grid sm:grid-cols-2 gap-y-8 gap-x-4">
               <ChoSwitch 
-                label='' 
-                value={item.value} 
-                onChange={()=>handleInputChange(item.id)} 
+                label='Email Verification' 
+                value={createMemberData.isEmailVerified} 
+                onChange={(value) => {
+                  setCreateMemberData({...createMemberData, isEmailVerified: !Boolean(value)});
+                  console.log('change');}
+                }
               />
             </div>
 
+          </div>
+          <div className='sticky bottom-0 w-full p-[1rem] bg-slate-100 flex justify-end'>
+            <button className='bg-slate-800 text-[#ffffff] text-[.875rem] px-[1rem] py-[.5rem] rounded-[5px] shadow-md'>Add Member</button>
           </div>
               
           <div className="p-2 bg-white w-full mb-4">
