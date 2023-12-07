@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Card from "@mui/material/Card";
 import Icon from "@mui/material/Icon";
 import Menu from "@mui/material/Menu";
@@ -8,10 +8,31 @@ import SoftTypography from "components/SoftTypography";
 import Table from "examples/Tables/Table";
 import data from "layouts/dashboard/components/Projects/data";
 
-function Projects() {
-  const { columns, rows } = data();
+function Projects(_data) {
+
+  // const { columns, rows } = data();
   const [menu, setMenu] = useState(null);
 
+  const [details, setDetails] = useState([])
+  const [modal,setModal] = useState("total-wagered-ranking")
+
+  useEffect(()=>{
+    if( _data !== undefined){
+      const retrieved = _data.data
+      if(retrieved !== undefined){
+        if(modal === "total-wagered-ranking"){
+          setDetails(retrieved[2].totalWageredRanking)
+        }else if(modal === "total-win-ranking"){
+          setDetails(retrieved[2].totalWinRanking)
+        }else if(modal === "total-loss-ranking"){
+          setDetails(retrieved[2].totalLossRanking)
+        }else if(modal === "total-bet-ranking"){
+          setDetails(retrieved[2].totalBetRanking)
+        }
+      }
+    }
+  })
+//
   const openMenu = ({ currentTarget }) => setMenu(currentTarget);
   const closeMenu = () => setMenu(null);
 
@@ -30,11 +51,14 @@ function Projects() {
       open={Boolean(menu)}
       onClose={closeMenu}
     >
-      <MenuItem onClick={closeMenu}>Trending games</MenuItem>
-      <MenuItem onClick={closeMenu}>Top winning games</MenuItem>
-      <MenuItem onClick={closeMenu}>Top affiliate</MenuItem>
+      <MenuItem onClick={() => { closeMenu();  setModal("total-wagered-ranking"); }}>Total wagered ranking</MenuItem>
+      <MenuItem onClick={() => { closeMenu();  setModal("total-win-ranking"); }}>Total winning ranking</MenuItem>
+      <MenuItem onClick={() => { closeMenu();  setModal("total-loss-ranking"); }}>Total lossing ranking</MenuItem>
+      <MenuItem onClick={() => { closeMenu();  setModal("total-bet-ranking"); }}>Total bet ranking</MenuItem>
     </Menu>
   );
+  
+  const { columns, rows } = data(details);
 
   return (
     <Card>

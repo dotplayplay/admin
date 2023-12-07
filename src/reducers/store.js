@@ -4,6 +4,7 @@ import { configureStore } from '@reduxjs/toolkit';
 const initialState = {
   showSidebar: true,
   reportPage: false,
+  memberSidebar: false,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -13,11 +14,16 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         showSidebar: action.payload,
       };
-      case 'IS_REPORT_PAGE':
-        return {
-          ...state,
-          reportPage: action.payload,
-        };
+    case 'IS_REPORT_PAGE':
+      return {
+        ...state,
+        reportPage: action.payload,
+      };
+    case 'IS_MEMBER_SIDEBAR':
+      return {
+        ...state,
+        showMemberSidebar: action.payload,
+      };
     default:
       return state;
   }
